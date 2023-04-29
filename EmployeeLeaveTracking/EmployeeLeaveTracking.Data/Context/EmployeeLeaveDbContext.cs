@@ -45,7 +45,7 @@ namespace EmployeeLeaveTracking.Data.Context
             modelBuilder.Entity<Employee>()
                 .HasOne(e => e.Manager)
                 .WithMany(m => m.Employees)
-                .HasForeignKey(e => e.ManagerID);
+                .HasForeignKey(e => e.ManagerId);
 
             modelBuilder.Entity<LeaveBalance>()
                 .HasKey(lb => new { lb.EmployeeId, lb.LeaveTypeId, lb.YearMonth });
@@ -74,6 +74,16 @@ namespace EmployeeLeaveTracking.Data.Context
               .HasOne(lr => lr.Status)
               .WithMany(lt => lt.LeaveRequests)
               .HasForeignKey(lr => lr.StatusId);
+
+            /*modelBuilder.Entity<Manager>()
+                        .HasOne(lr => lr.User)
+                        .WithMany(lt => lt.Managers)
+                        .HasForeignKey(lr => lr.UserId);
+
+            modelBuilder.Entity<Employee>()
+                       .HasOne(lr => lr.User)
+                       .WithMany(lt => lt.Employees)
+                       .HasForeignKey(lr => lr.UserId);*/
         }
     }
 }

@@ -15,7 +15,7 @@ namespace EmployeeLeaveTracking.Data.Context
                     FirstName = "Neha",
                     LastName = "Patole",
                     Email = "neha@gmail.com",
-                    ManagerID = 1
+                    ManagerId = 1
                 },
                 new Employee
                 {
@@ -23,7 +23,7 @@ namespace EmployeeLeaveTracking.Data.Context
                     FirstName = "Sayali",
                     LastName = "Kadam",
                     Email = "sayali@gmail.com",
-                    ManagerID = 1
+                    ManagerId = 1
                 });
         }
     }

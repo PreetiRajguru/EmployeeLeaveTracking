@@ -7,10 +7,10 @@ namespace EmployeeLeaveTracking.Data.DTOs
         public int Id { get; set; }
 
 
-        [Required(ErrorMessage = "Employee ID is a required field.")]
+        [Required(ErrorMessage = "Employee Id is a required field.")]
         public int EmployeeId { get; set; }
 
-        [Required(ErrorMessage = "Leave type ID is a required field.")]
+        [Required(ErrorMessage = "Leave type Id is a required field.")]
         public int LeaveTypeId { get; set; }
 
 

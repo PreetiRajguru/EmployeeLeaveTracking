@@ -9,10 +9,10 @@ namespace EmployeeLeaveTracking.Data.DTOs
         [MaxLength(500, ErrorMessage = "Maximum length for the request comments is 500 characters.")]
         public string RequestComments { get; set; }
 
-        [Required(ErrorMessage = "Employee ID is a required field.")]
+        [Required(ErrorMessage = "Employee Id is a required field.")]
         public int EmployeeId { get; set; }
 
-        [Required(ErrorMessage = "Leave type ID is a required field.")]
+        [Required(ErrorMessage = "Leave type Id is a required field.")]
         public int LeaveTypeId { get; set; }
 
         [Required(ErrorMessage = "Start date is a required field.")]

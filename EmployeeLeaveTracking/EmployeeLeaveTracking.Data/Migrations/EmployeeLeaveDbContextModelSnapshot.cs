@@ -21,59 +21,71 @@ namespace EmployeeLeaveTracking.Data.Migrations
 
             modelBuilder.Entity("EmployeeLeaveTracking.Data.Models.Employee", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ManagerID")
+                    b.Property<int?>("ManagerId")
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("ManagerID");
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ManagerId");
 
                     b.ToTable("Employees");
 
                     b.HasData(
                         new
                         {
-                            ID = 1,
+                            Id = 1,
                             Email = "neha@gmail.com",
                             FirstName = "Neha",
+                            IsDeleted = false,
                             LastName = "Patole",
-                            ManagerID = 1
+                            ManagerId = 1
                         },
                         new
                         {
-                            ID = 2,
+                            Id = 2,
                             Email = "sayali@gmail.com",
                             FirstName = "Sayali",
+                            IsDeleted = false,
                             LastName = "Kadam",
-                            ManagerID = 1
+                            ManagerId = 1
                         });
                 });
 
             modelBuilder.Entity("EmployeeLeaveTracking.Data.Models.LeaveBalance", b =>
                 {
-                    b.Property<int>("EmployeeID")
+                    b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<int>("LeaveTypeID")
+                    b.Property<int>("LeaveTypeId")
                         .HasColumnType("int");
 
                     b.Property<int>("YearMonth")
@@ -82,119 +94,184 @@ namespace EmployeeLeaveTracking.Data.Migrations
                     b.Property<decimal>("Balance")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("ID")
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
                         .HasColumnType("int");
 
-                    b.HasKey("EmployeeID", "LeaveTypeID", "YearMonth");
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("bit");
 
-                    b.HasIndex("LeaveTypeID");
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("EmployeeId", "LeaveTypeId", "YearMonth");
+
+                    b.HasIndex("LeaveTypeId");
 
                     b.ToTable("LeaveBalances");
                 });
 
             modelBuilder.Entity("EmployeeLeaveTracking.Data.Models.LeaveRequest", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("EmployeeID")
-                        .HasColumnType("int");
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("EndDate")
+                    b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("LeaveTypeID")
+                    b.Property<int>("EmployeeId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("LeaveTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("RequestComments")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("StartDate")
+                    b.Property<DateTime?>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("StatusID")
+                    b.Property<int>("StatusId")
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("EmployeeID");
+                    b.HasIndex("EmployeeId");
 
-                    b.HasIndex("LeaveTypeID");
+                    b.HasIndex("LeaveTypeId");
 
-                    b.HasIndex("StatusID");
+                    b.HasIndex("StatusId");
 
                     b.ToTable("LeaveRequests");
                 });
 
             modelBuilder.Entity("EmployeeLeaveTracking.Data.Models.LeaveType", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("LeaveTypeName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LeaveTypeName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
 
                     b.ToTable("LeaveTypes");
                 });
 
             modelBuilder.Entity("EmployeeLeaveTracking.Data.Models.Manager", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Managers");
 
                     b.HasData(
                         new
                         {
-                            ID = 1,
+                            Id = 1,
                             Email = "sarika@gmail.com",
                             FirstName = "Sarika",
+                            IsDeleted = false,
                             LastName = "Bhosale"
                         });
                 });
 
             modelBuilder.Entity("EmployeeLeaveTracking.Data.Models.StatusMaster", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("StatusType")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("StatusType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Status");
                 });
@@ -211,6 +288,12 @@ namespace EmployeeLeaveTracking.Data.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -221,6 +304,9 @@ namespace EmployeeLeaveTracking.Data.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
@@ -229,6 +315,12 @@ namespace EmployeeLeaveTracking.Data.Migrations
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -405,9 +497,7 @@ namespace EmployeeLeaveTracking.Data.Migrations
                 {
                     b.HasOne("EmployeeLeaveTracking.Data.Models.Manager", "Manager")
                         .WithMany("Employees")
-                        .HasForeignKey("ManagerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ManagerId");
 
                     b.Navigation("Manager");
                 });
@@ -416,13 +506,13 @@ namespace EmployeeLeaveTracking.Data.Migrations
                 {
                     b.HasOne("EmployeeLeaveTracking.Data.Models.Employee", "Employee")
                         .WithMany("LeaveBalances")
-                        .HasForeignKey("EmployeeID")
+                        .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("EmployeeLeaveTracking.Data.Models.LeaveType", "LeaveType")
                         .WithMany("LeaveBalances")
-                        .HasForeignKey("LeaveTypeID")
+                        .HasForeignKey("LeaveTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -435,19 +525,19 @@ namespace EmployeeLeaveTracking.Data.Migrations
                 {
                     b.HasOne("EmployeeLeaveTracking.Data.Models.Employee", "Employee")
                         .WithMany("LeaveRequests")
-                        .HasForeignKey("EmployeeID")
+                        .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("EmployeeLeaveTracking.Data.Models.LeaveType", "LeaveType")
                         .WithMany("LeaveRequests")
-                        .HasForeignKey("LeaveTypeID")
+                        .HasForeignKey("LeaveTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("EmployeeLeaveTracking.Data.Models.StatusMaster", "Status")
                         .WithMany("LeaveRequests")
-                        .HasForeignKey("StatusID")
+                        .HasForeignKey("StatusId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

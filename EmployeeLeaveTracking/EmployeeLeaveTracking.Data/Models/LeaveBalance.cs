@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace EmployeeLeaveTracking.Data.Models
+﻿namespace EmployeeLeaveTracking.Data.Models
 {
     public class LeaveBalance
     {
@@ -14,8 +12,23 @@ namespace EmployeeLeaveTracking.Data.Models
        
         public int YearMonth { get; set; }
 
-        public Employee Employee { get; set; }
 
-        public LeaveType LeaveType { get; set; }
+
+        public DateTime? CreatedDate { get; set; }
+
+        public string? CreatedBy { get; set; }
+
+        public DateTime? ModifiedDate { get; set; }
+
+        public string? ModifiedBy { get; set; }
+
+        public bool? IsDeleted { get; set; } = false;
+
+
+
+
+        public Employee? Employee { get; set; }
+
+        public LeaveType? LeaveType { get; set; }
     }
 }

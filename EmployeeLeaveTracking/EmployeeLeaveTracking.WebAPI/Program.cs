@@ -60,6 +60,8 @@ builder.Services.AddSingleton(mapperConfig.CreateMapper());
 builder.Services.AddScoped<EmployeeLeaveTracking.Services.Interfaces.ILogger, LoggerService>();
 builder.Services.AddScoped<IRepository, RepositoryManagerService>();
 builder.Services.AddScoped<IUserAuthentication, UserAuthenticationService>();
+builder.Services.AddScoped<IEmployee, EmployeeService>();
+builder.Services.AddScoped<ILeaveBalance, LeaveBalanceService>();
 
 
 var jwtConfig = builder.Configuration.GetSection("jwtConfig");

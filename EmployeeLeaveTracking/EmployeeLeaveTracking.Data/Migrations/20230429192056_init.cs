@@ -28,6 +28,11 @@ namespace EmployeeLeaveTracking.Data.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -52,41 +57,56 @@ namespace EmployeeLeaveTracking.Data.Migrations
                 name: "LeaveTypes",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    LeaveTypeName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
+                    LeaveTypeName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LeaveTypes", x => x.ID);
+                    table.PrimaryKey("PK_LeaveTypes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Managers",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Managers", x => x.ID);
+                    table.PrimaryKey("PK_Managers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Status",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StatusType = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false)
+                    StatusType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Status", x => x.ID);
+                    table.PrimaryKey("PK_Status", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -199,48 +219,58 @@ namespace EmployeeLeaveTracking.Data.Migrations
                 name: "Employees",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ManagerID = table.Column<int>(type: "int", nullable: false)
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ManagerId = table.Column<int>(type: "int", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Employees", x => x.ID);
+                    table.PrimaryKey("PK_Employees", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Employees_Managers_ManagerID",
-                        column: x => x.ManagerID,
+                        name: "FK_Employees_Managers_ManagerId",
+                        column: x => x.ManagerId,
                         principalTable: "Managers",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
                 name: "LeaveBalances",
                 columns: table => new
                 {
-                    EmployeeID = table.Column<int>(type: "int", nullable: false),
-                    LeaveTypeID = table.Column<int>(type: "int", nullable: false),
+                    EmployeeId = table.Column<int>(type: "int", nullable: false),
+                    LeaveTypeId = table.Column<int>(type: "int", nullable: false),
                     YearMonth = table.Column<int>(type: "int", nullable: false),
-                    ID = table.Column<int>(type: "int", nullable: false),
-                    Balance = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false),
+                    Balance = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LeaveBalances", x => new { x.EmployeeID, x.LeaveTypeID, x.YearMonth });
+                    table.PrimaryKey("PK_LeaveBalances", x => new { x.EmployeeId, x.LeaveTypeId, x.YearMonth });
                     table.ForeignKey(
-                        name: "FK_LeaveBalances_Employees_EmployeeID",
-                        column: x => x.EmployeeID,
+                        name: "FK_LeaveBalances_Employees_EmployeeId",
+                        column: x => x.EmployeeId,
                         principalTable: "Employees",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_LeaveBalances_LeaveTypes_LeaveTypeID",
-                        column: x => x.LeaveTypeID,
+                        name: "FK_LeaveBalances_LeaveTypes_LeaveTypeId",
+                        column: x => x.LeaveTypeId,
                         principalTable: "LeaveTypes",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -248,52 +278,57 @@ namespace EmployeeLeaveTracking.Data.Migrations
                 name: "LeaveRequests",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    RequestComments = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    EmployeeID = table.Column<int>(type: "int", nullable: false),
-                    LeaveTypeID = table.Column<int>(type: "int", nullable: false),
-                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    StatusID = table.Column<int>(type: "int", nullable: false)
+                    RequestComments = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmployeeId = table.Column<int>(type: "int", nullable: false),
+                    LeaveTypeId = table.Column<int>(type: "int", nullable: false),
+                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    StatusId = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_LeaveRequests", x => x.ID);
+                    table.PrimaryKey("PK_LeaveRequests", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_LeaveRequests_Employees_EmployeeID",
-                        column: x => x.EmployeeID,
+                        name: "FK_LeaveRequests_Employees_EmployeeId",
+                        column: x => x.EmployeeId,
                         principalTable: "Employees",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_LeaveRequests_LeaveTypes_LeaveTypeID",
-                        column: x => x.LeaveTypeID,
+                        name: "FK_LeaveRequests_LeaveTypes_LeaveTypeId",
+                        column: x => x.LeaveTypeId,
                         principalTable: "LeaveTypes",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_LeaveRequests_Status_StatusID",
-                        column: x => x.StatusID,
+                        name: "FK_LeaveRequests_Status_StatusId",
+                        column: x => x.StatusId,
                         principalTable: "Status",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
                 table: "Managers",
-                columns: new[] { "ID", "Email", "FirstName", "LastName" },
-                values: new object[] { 1, "sarika@gmail.com", "Sarika", "Bhosale" });
+                columns: new[] { "Id", "CreatedBy", "CreatedDate", "Email", "FirstName", "IsDeleted", "LastName", "ModifiedBy", "ModifiedDate" },
+                values: new object[] { 1, null, null, "sarika@gmail.com", "Sarika", false, "Bhosale", null, null });
 
             migrationBuilder.InsertData(
                 table: "Employees",
-                columns: new[] { "ID", "Email", "FirstName", "LastName", "ManagerID" },
-                values: new object[] { 1, "neha@gmail.com", "Neha", "Patole", 1 });
+                columns: new[] { "Id", "CreatedBy", "CreatedDate", "Email", "FirstName", "IsDeleted", "LastName", "ManagerId", "ModifiedBy", "ModifiedDate" },
+                values: new object[] { 1, null, null, "neha@gmail.com", "Neha", false, "Patole", 1, null, null });
 
             migrationBuilder.InsertData(
                 table: "Employees",
-                columns: new[] { "ID", "Email", "FirstName", "LastName", "ManagerID" },
-                values: new object[] { 2, "sayali@gmail.com", "Sayali", "Kadam", 1 });
+                columns: new[] { "Id", "CreatedBy", "CreatedDate", "Email", "FirstName", "IsDeleted", "LastName", "ManagerId", "ModifiedBy", "ModifiedDate" },
+                values: new object[] { 2, null, null, "sayali@gmail.com", "Sayali", false, "Kadam", 1, null, null });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -335,29 +370,29 @@ namespace EmployeeLeaveTracking.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Employees_ManagerID",
+                name: "IX_Employees_ManagerId",
                 table: "Employees",
-                column: "ManagerID");
+                column: "ManagerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LeaveBalances_LeaveTypeID",
+                name: "IX_LeaveBalances_LeaveTypeId",
                 table: "LeaveBalances",
-                column: "LeaveTypeID");
+                column: "LeaveTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LeaveRequests_EmployeeID",
+                name: "IX_LeaveRequests_EmployeeId",
                 table: "LeaveRequests",
-                column: "EmployeeID");
+                column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LeaveRequests_LeaveTypeID",
+                name: "IX_LeaveRequests_LeaveTypeId",
                 table: "LeaveRequests",
-                column: "LeaveTypeID");
+                column: "LeaveTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_LeaveRequests_StatusID",
+                name: "IX_LeaveRequests_StatusId",
                 table: "LeaveRequests",
-                column: "StatusID");
+                column: "StatusId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
