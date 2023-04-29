@@ -62,6 +62,11 @@ builder.Services.AddScoped<IRepository, RepositoryManagerService>();
 builder.Services.AddScoped<IUserAuthentication, UserAuthenticationService>();
 builder.Services.AddScoped<IEmployee, EmployeeService>();
 builder.Services.AddScoped<ILeaveBalance, LeaveBalanceService>();
+builder.Services.AddScoped<ILeaveRequest, LeaveRequestService>();
+builder.Services.AddScoped<ILeaveType, LeaveTypeService>();
+builder.Services.AddScoped<IManager, ManagerService>();
+builder.Services.AddScoped<IStatusMaster, StatusMasterService>();
+
 
 
 var jwtConfig = builder.Configuration.GetSection("jwtConfig");

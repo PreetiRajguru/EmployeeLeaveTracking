@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeLeaveTracking.WebAPI.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("api/employees")]
     public class EmployeeController : ControllerBase
     {
         private readonly IEmployee _employeeService;

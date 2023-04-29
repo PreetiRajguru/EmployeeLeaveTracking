@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace StudentTeacher.Controllers;
 
 
-[Route("api/userauthentication")]
+[Route("api/[controller]")]
 [ApiController]
 public class AuthController : BaseApiController
 {
