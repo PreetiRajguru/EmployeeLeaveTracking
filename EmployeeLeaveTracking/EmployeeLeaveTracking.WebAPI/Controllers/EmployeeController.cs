@@ -17,23 +17,58 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<EmployeeDTO> GetAllEmployees()
+        public ActionResult<IEnumerable<EmployeeDTO>> GetAllEmployees()
         {
-            return _employeeService.GetAllEmployees();
+            try
+            {
+                var employees = _employeeService.GetAllEmployees();
+                return Ok(employees);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpGet("{id}")]
-        public EmployeeDTO GetEmployeeById(int id)
+        public ActionResult<EmployeeDTO> GetEmployeeById(int id)
         {
-            return _employeeService.GetEmployeeById(id);
+            try
+            {
+                var employee = _employeeService.GetEmployeeById(id);
+
+                if (employee == null)
+                {
+                    return NotFound("Employee not found.");
+                }
+
+                return Ok(employee);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpPost]
         public ActionResult<EmployeeDTO> CreateEmployee(EmployeeDTO employeeDto)
         {
-            var employee = _employeeService.CreateEmployee(employeeDto);
 
-            return CreatedAtAction(nameof(GetEmployeeById), new { id = employee.Id }, employee);
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                var employee = _employeeService.CreateEmployee(employeeDto);
+
+                return CreatedAtAction(nameof(GetEmployeeById), new { id = employee.Id }, employee);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpPut("{id}")]
@@ -46,6 +81,11 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 
             try
             {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
                 var updatedEmployee = _employeeService.UpdateEmployee(employeeDto);
 
                 return Ok(updatedEmployee);
@@ -79,6 +119,3 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
     }
 }
-
-
-

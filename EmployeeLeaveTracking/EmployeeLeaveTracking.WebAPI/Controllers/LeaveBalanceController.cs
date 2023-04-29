@@ -30,36 +30,66 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         [HttpPost]
         public ActionResult<LeaveBalanceDTO> AddLeaveBalance(LeaveBalanceDTO leaveBalance)
         {
-            var result = _leaveBalanceService.AddLeaveBalance(leaveBalance);
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
 
-            return CreatedAtAction(nameof(GetLeaveBalanceById), new { id = result.Id }, result);
+                var result = _leaveBalanceService.AddLeaveBalance(leaveBalance);
+
+                return CreatedAtAction(nameof(GetLeaveBalanceById), new { id = result.Id }, result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpPut("{id}")]
         public ActionResult<LeaveBalanceDTO> UpdateLeaveBalance(int id, LeaveBalanceDTO leaveBalance)
         {
-            if (id != leaveBalance.Id)
+            try
             {
-                return BadRequest();
+                if (id != leaveBalance.Id)
+                {
+                    return BadRequest();
+                }
+
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                var result = _leaveBalanceService.UpdateLeaveBalance(leaveBalance);
+
+                return Ok(result);
             }
-
-            var result = _leaveBalanceService.UpdateLeaveBalance(leaveBalance);
-
-            return Ok(result);
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpDelete("{id}")]
         public ActionResult<bool> DeleteLeaveBalance(int id)
         {
-            var result = _leaveBalanceService.DeleteLeaveBalance(id);
-
-            if (result)
+            try
             {
-                return Ok(result);
-            }
+                var result = _leaveBalanceService.DeleteLeaveBalance(id);
 
-            return NotFound();
+                if (result)
+                {
+                    return Ok(result);
+                }
+
+                return NotFound();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
     }
-
 }

@@ -19,67 +19,111 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<LeaveRequestDTO>> Get()
         {
-            var leaveRequests = _leaveRequestService.GetAllLeaveRequests();
-
-            if (leaveRequests == null || leaveRequests.Count() == 0)
+            try
             {
-                return NoContent();
-            }
+                var leaveRequests = _leaveRequestService.GetAllLeaveRequests();
 
-            return Ok(leaveRequests);
+                if (leaveRequests == null || leaveRequests.Count() == 0)
+                {
+                    return NoContent();
+                }
+
+                return Ok(leaveRequests);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpGet("{id}")]
         public ActionResult<LeaveRequestDTO> GetById(int id)
         {
-            var leaveRequest = _leaveRequestService.GetLeaveRequestById(id);
-
-            if (leaveRequest == null)
+            try
             {
-                return NotFound();
-            }
+                var leaveRequest = _leaveRequestService.GetLeaveRequestById(id);
 
-            return Ok(leaveRequest);
+                if (leaveRequest == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(leaveRequest);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpPost]
         public ActionResult<LeaveRequestDTO> Post(LeaveRequestDTO leaveRequest)
         {
-            var newLeaveRequest = _leaveRequestService.AddLeaveRequest(leaveRequest);
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
 
-            return CreatedAtAction(nameof(GetById), new { id = newLeaveRequest.Id }, newLeaveRequest);
+                var newLeaveRequest = _leaveRequestService.AddLeaveRequest(leaveRequest);
+
+                return CreatedAtAction(nameof(GetById), new { id = newLeaveRequest.Id }, newLeaveRequest);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpPut("{id}")]
         public ActionResult<LeaveRequestDTO> Put(int id, LeaveRequestDTO leaveRequest)
         {
-            if (id != leaveRequest.Id)
+            try
             {
-                return BadRequest();
+                if (id != leaveRequest.Id)
+                {
+                    return BadRequest();
+                }
+
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                var updatedLeaveRequest = _leaveRequestService.UpdateLeaveRequest(leaveRequest);
+
+                if (updatedLeaveRequest == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(updatedLeaveRequest);
             }
-
-            var updatedLeaveRequest = _leaveRequestService.UpdateLeaveRequest(leaveRequest);
-
-            if (updatedLeaveRequest == null)
+            catch (Exception ex)
             {
-                return NotFound();
+                return StatusCode(500, ex.Message);
             }
-
-            return Ok(updatedLeaveRequest);
         }
 
         [HttpDelete("{id}")]
         public ActionResult<bool> Delete(int id)
         {
-            var isDeleted = _leaveRequestService.DeleteLeaveRequest(id);
-
-            if (!isDeleted)
+            try
             {
-                return NotFound();
-            }
+                var isDeleted = _leaveRequestService.DeleteLeaveRequest(id);
 
-            return Ok(true);
+                if (!isDeleted)
+                {
+                    return NotFound();
+                }
+
+                return Ok(true);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
     }
-
 }

@@ -3,6 +3,7 @@ using EmployeeLeaveTracking.Data.Models;
 using EmployeeLeaveTracking.Services.Interfaces;
 using EmployeeLeaveTracking.Services.Services;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace EmployeeLeaveTracking.WebAPI.Controllers
 {
@@ -20,58 +21,93 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         [HttpGet]
         public IActionResult GetAllManagers()
         {
-            var managers = _managerService.GetAllManagers();
-            return Ok(managers);
+            try
+            {
+                var managers = _managerService.GetAllManagers();
+                return Ok(managers);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpGet("{id}")]
         public IActionResult GetManagerById(int id)
         {
-            var manager = _managerService.GetManagerById(id);
-            if (manager == null)
+            try
             {
-                return NotFound();
+                var manager = _managerService.GetManagerById(id);
+                if (manager == null)
+                {
+                    return NotFound();
+                }
+                return Ok(manager);
             }
-            return Ok(manager);
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpPost]
         public IActionResult CreateManager([FromBody] ManagerDTO manager)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest();
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+                var createdManager = _managerService.CreateManager(manager);
+                return CreatedAtAction(nameof(GetManagerById), new { id = createdManager.Id }, createdManager);
             }
-            var createdManager = _managerService.CreateManager(manager);
-            return CreatedAtAction(nameof(GetManagerById), new { id = createdManager.Id }, createdManager);
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpPut("{id}")]
         public IActionResult UpdateManager(int id, [FromBody] ManagerDTO manager)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest();
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest();
+                }
+                manager.Id = id;
+                var updatedManager = _managerService.UpdateManager(manager);
+                if (updatedManager == null)
+                {
+                    return NotFound();
+                }
+                return Ok(updatedManager);
             }
-            manager.Id = id;
-            var updatedManager = _managerService.UpdateManager(manager);
-            if (updatedManager == null)
+            catch (Exception ex)
             {
-                return NotFound();
+                return StatusCode(500, ex.Message);
             }
-            return Ok(updatedManager);
         }
 
 
         [HttpDelete("{id}")]
         public IActionResult DeleteManager(int id)
         {
-            var result = _managerService.DeleteManager(id);
-            if (!result)
+            try
             {
-                return NotFound();
+                var result = _managerService.DeleteManager(id);
+                if (!result)
+                {
+                    return NotFound();
+                }
+                return Ok(result);
             }
-            return Ok(result);
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
     }
 }

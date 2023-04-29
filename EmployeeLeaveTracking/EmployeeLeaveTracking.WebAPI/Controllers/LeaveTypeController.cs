@@ -19,59 +19,101 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         [HttpGet]
         public IActionResult GetAllLeaveTypes()
         {
-            var leaveTypes = _leaveTypeService.GetAllLeaveTypes();
-            return Ok(leaveTypes);
+            try
+            {
+                var leaveTypes = _leaveTypeService.GetAllLeaveTypes();
+                return Ok(leaveTypes);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred while getting leave types: {ex.Message}");
+            }
         }
 
         [HttpGet("{id}")]
         public IActionResult GetLeaveTypeById(int id)
         {
-            var leaveType = _leaveTypeService.GetLeaveTypeById(id);
-            if (leaveType == null)
+            try
             {
-                return NotFound();
+                var leaveType = _leaveTypeService.GetLeaveTypeById(id);
+                if (leaveType == null)
+                {
+                    return NotFound();
+                }
+                return Ok(leaveType);
             }
-            return Ok(leaveType);
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred while getting leave type by ID {id}: {ex.Message}");
+            }
         }
 
         [HttpPost]
         public IActionResult AddLeaveType([FromBody] LeaveTypeDTO leaveType)
         {
-            if (leaveType == null)
+            if (ModelState.IsValid)
             {
-                return BadRequest();
-            }
+                try
+                {
+                    if (leaveType == null)
+                    {
+                        return BadRequest();
+                    }
 
-            var addedLeaveType = _leaveTypeService.AddLeaveType(leaveType);
-            return CreatedAtAction(nameof(GetLeaveTypeById), new { id = addedLeaveType.Id }, addedLeaveType);
+                    var addedLeaveType = _leaveTypeService.AddLeaveType(leaveType);
+                    return CreatedAtAction(nameof(GetLeaveTypeById), new { id = addedLeaveType.Id }, addedLeaveType);
+                }
+                catch (Exception ex)
+                {
+                    return StatusCode(500, $"An error occurred while adding a new leave type: {ex.Message}");
+                }
+            }
+            return BadRequest(ModelState);
         }
 
         [HttpPut("{id}")]
         public IActionResult UpdateLeaveType(int id, [FromBody] LeaveTypeDTO leaveType)
         {
-            if (leaveType == null || id != leaveType.Id)
+            if (ModelState.IsValid)
             {
-                return BadRequest();
-            }
+                try
+                {
+                    if (leaveType == null || id != leaveType.Id)
+                    {
+                        return BadRequest();
+                    }
 
-            var updatedLeaveType = _leaveTypeService.UpdateLeaveType(leaveType);
-            if (updatedLeaveType == null)
-            {
-                return NotFound();
+                    var updatedLeaveType = _leaveTypeService.UpdateLeaveType(leaveType);
+                    if (updatedLeaveType == null)
+                    {
+                        return NotFound();
+                    }
+                    return Ok(updatedLeaveType);
+                }
+                catch (Exception ex)
+                {
+                    return StatusCode(500, $"An error occurred while updating leave type with ID {id}: {ex.Message}");
+                }
             }
-            return Ok(updatedLeaveType);
+            return BadRequest(ModelState);
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteLeaveType(int id)
         {
-            var deleted = _leaveTypeService.DeleteLeaveType(id);
-            if (deleted)
+            try
             {
-                return NoContent();
+                var deleted = _leaveTypeService.DeleteLeaveType(id);
+                if (deleted)
+                {
+                    return NoContent();
+                }
+                return NotFound();
             }
-            return NotFound();
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred while deleting leave type with ID {id}: {ex.Message}");
+            }
         }
     }
-
 }

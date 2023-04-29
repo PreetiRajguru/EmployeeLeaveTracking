@@ -1,7 +1,8 @@
 ﻿using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Services.Interfaces;
-using EmployeeLeaveTracking.Services.Services;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
 
 namespace EmployeeLeaveTracking.WebAPI.Controllers
 {
@@ -18,66 +19,100 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<StatusMasterDTO> GetAllStatusMasters()
+        public IActionResult GetAllStatusMasters()
         {
-            return _statusMasterService.GetAllStatusMasters();
+            try
+            {
+                var statusMasters = _statusMasterService.GetAllStatusMasters();
+                return Ok(statusMasters);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpGet("{id}")]
         public IActionResult GetStatusMasterById(int id)
         {
-            var statusMaster = _statusMasterService.GetStatusMasterById(id);
-
-            if (statusMaster == null)
+            try
             {
-                return NotFound();
+                var statusMaster = _statusMasterService.GetStatusMasterById(id);
+                if (statusMaster == null)
+                {
+                    return NotFound();
+                }
+                return Ok(statusMaster);
             }
-
-            return Ok(statusMaster);
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpPost]
-        public IActionResult AddStatusMaster(StatusMasterDTO statusMaster)
+        public IActionResult AddStatusMaster([FromBody] StatusMasterDTO statusMaster)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                var newStatusMaster = _statusMasterService.AddStatusMaster(statusMaster);
+
+                return CreatedAtAction(nameof(GetStatusMasterById), new { id = newStatusMaster.Id }, newStatusMaster);
             }
-
-            var newStatusMaster = _statusMasterService.AddStatusMaster(statusMaster);
-
-            return CreatedAtAction(nameof(GetStatusMasterById), new { id = newStatusMaster.Id }, newStatusMaster);
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateStatusMaster(int id, StatusMasterDTO statusMaster)
+        public IActionResult UpdateStatusMaster(int id, [FromBody] StatusMasterDTO statusMaster)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                var updatedStatusMaster = _statusMasterService.UpdateStatusMaster(id, statusMaster);
+
+                if (updatedStatusMaster == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(updatedStatusMaster);
             }
-
-            var updatedStatusMaster = _statusMasterService.UpdateStatusMaster(id, statusMaster);
-
-            if (updatedStatusMaster == null)
+            catch (Exception ex)
             {
-                return NotFound();
+                return StatusCode(500, ex.Message);
             }
-
-            return Ok(updatedStatusMaster);
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteStatusMaster(int id)
         {
-            var deleted = _statusMasterService.DeleteStatusMaster(id);
-
-            if (!deleted)
+            try
             {
-                return NotFound();
-            }
+                var deleted = _statusMasterService.DeleteStatusMaster(id);
 
-            return NoContent();
+                if (!deleted)
+                {
+                    return NotFound();
+                }
+
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
     }
 }
