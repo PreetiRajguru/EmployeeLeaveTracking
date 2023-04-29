@@ -74,3 +74,4 @@ D:\Final Project\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracki
 D:\Final Project\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Debug\net6.0\EmployeeLeaveTracking.WebAPI.genruntimeconfig.cache
 D:\Final Project\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Debug\net6.0\ref\EmployeeLeaveTracking.WebAPI.dll
 D:\Final Project\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Debug\net6.0\AutoMapper.dll
+D:\Final Project\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Debug\net6.0\NLog.dll

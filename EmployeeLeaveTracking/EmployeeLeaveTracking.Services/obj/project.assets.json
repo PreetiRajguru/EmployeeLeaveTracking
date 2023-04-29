@@ -664,6 +664,19 @@
           }
         }
       },
+      "NLog/5.1.4": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/NLog.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/NLog.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "runtime.native.System/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1861,6 +1874,22 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "EmployeeLeaveTracking.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "AutoMapper": "12.0.1",
+          "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.14",
+          "Microsoft.EntityFrameworkCore": "5.0.14",
+          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.14"
+        },
+        "compile": {
+          "bin/placeholder/EmployeeLeaveTracking.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EmployeeLeaveTracking.Data.dll": {}
+        }
       }
     }
   },
@@ -2716,6 +2745,30 @@
         "newtonsoft.json.10.0.1.nupkg.sha512",
         "newtonsoft.json.nuspec",
         "tools/install.ps1"
+      ]
+    },
+    "NLog/5.1.4": {
+      "sha512": "Ki0XThITEd//RrQ21yi1HB/Uid4pzTRE5YLvEpk91d0vDXp3OPtVCvWgrYsqqcpTwiipFSOLSsU1RblaexrFiA==",
+      "type": "package",
+      "path": "nlog/5.1.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "N.png",
+        "lib/net35/NLog.dll",
+        "lib/net35/NLog.xml",
+        "lib/net45/NLog.dll",
+        "lib/net45/NLog.xml",
+        "lib/net46/NLog.dll",
+        "lib/net46/NLog.xml",
+        "lib/netstandard1.3/NLog.dll",
+        "lib/netstandard1.3/NLog.xml",
+        "lib/netstandard1.5/NLog.dll",
+        "lib/netstandard1.5/NLog.xml",
+        "lib/netstandard2.0/NLog.dll",
+        "lib/netstandard2.0/NLog.xml",
+        "nlog.5.1.4.nupkg.sha512",
+        "nlog.nuspec"
       ]
     },
     "runtime.native.System/4.3.0": {
@@ -6237,16 +6290,23 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "EmployeeLeaveTracking.Data/1.0.0": {
+      "type": "project",
+      "path": "../EmployeeLeaveTracking.Data/EmployeeLeaveTracking.Data.csproj",
+      "msbuildProject": "../EmployeeLeaveTracking.Data/EmployeeLeaveTracking.Data.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "AutoMapper >= 12.0.1",
+      "EmployeeLeaveTracking.Data >= 1.0.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.14",
       "Microsoft.EntityFrameworkCore >= 5.0.14",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.14",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.14",
-      "Microsoft.EntityFrameworkCore.Tools >= 5.0.14"
+      "Microsoft.EntityFrameworkCore.Tools >= 5.0.14",
+      "NLog >= 5.1.4"
     ]
   },
   "packageFolders": {
@@ -6275,7 +6335,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Final Project\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Data\\EmployeeLeaveTracking.Data.csproj": {
+              "projectPath": "D:\\Final Project\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Data\\EmployeeLeaveTracking.Data.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -6315,6 +6379,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[5.0.14, )"
+          },
+          "NLog": {
+            "target": "Package",
+            "version": "[5.1.4, )"
           }
         },
         "imports": [

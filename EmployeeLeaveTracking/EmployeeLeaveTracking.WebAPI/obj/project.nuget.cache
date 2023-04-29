@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "RtU2PYMNa/TJRSO2AAzmEKWgxufnqGqRSzf6mwCzID+Nk1DI9HGwKu8dMKSaV3LH04QAZ+bzFTUHN+rKCewxBg==",
+  "dgSpecHash": "yvb2Dt6jCrCS2/C+9j4C6j9hRws/tqEMJlRQsqK7sKqqyQRFSDsds28mhO0BXWgnoYIJBTCxDd5yqdRqGerATQ==",
   "success": true,
   "projectFilePath": "D:\\Final Project\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\EmployeeLeaveTracking.WebAPI.csproj",
   "expectedPackageFiles": [
@@ -43,6 +43,7 @@
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\newtonsoft.json\\10.0.1\\newtonsoft.json.10.0.1.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\nlog\\5.1.4\\nlog.5.1.4.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",

@@ -12,3 +12,6 @@ D:\Final Project\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracki
 D:\Final Project\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Debug\net6.0\EmployeeLeaveTracking.Services.pdb
 D:\Final Project\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Debug\net6.0\EmployeeLeaveTracking.Services.genruntimeconfig.cache
 D:\Final Project\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Debug\net6.0\ref\EmployeeLeaveTracking.Services.dll
+D:\Final Project\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Debug\net6.0\EmployeeLeaveTracking.Data.dll
+D:\Final Project\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Debug\net6.0\EmployeeLeaveTracking.Data.pdb
+D:\Final Project\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Debug\net6.0\EmployeeLeaveTracking.Services.csproj.CopyComplete

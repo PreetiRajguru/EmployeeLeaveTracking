@@ -2,9 +2,12 @@ using AutoMapper;
 using EmployeeLeaveTracking.Data.Context;
 using EmployeeLeaveTracking.Data.Mappers;
 using EmployeeLeaveTracking.Data.Models;
+using EmployeeLeaveTracking.Services.Interfaces;
+using EmployeeLeaveTracking.Services.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using StudentTeacher.Service.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,6 +48,14 @@ var mapperConfig = new MapperConfiguration(map =>
     map.AddProfile<UserProfile>();
 });
 builder.Services.AddSingleton(mapperConfig.CreateMapper());
+
+
+
+builder.Services.AddScoped<ILoggerManager, LoggerManager>();
+builder.Services.AddScoped<IRepositoryManager, RepositoryManagerService>();
+builder.Services.AddScoped<IUserAuthenticationRepository, UserAuthenticationService>();
+
+
 
 var app = builder.Build();
 

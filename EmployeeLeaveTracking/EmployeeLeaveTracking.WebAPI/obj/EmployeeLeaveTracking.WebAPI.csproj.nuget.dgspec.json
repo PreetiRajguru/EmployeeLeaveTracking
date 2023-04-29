@@ -27,11 +27,7 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {
-              "D:\\Final Project\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Services\\EmployeeLeaveTracking.Services.csproj": {
-                "projectPath": "D:\\Final Project\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Services\\EmployeeLeaveTracking.Services.csproj"
-              }
-            }
+            "projectReferences": {}
           }
         },
         "warningProperties": {
@@ -116,7 +112,11 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\Final Project\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Data\\EmployeeLeaveTracking.Data.csproj": {
+                "projectPath": "D:\\Final Project\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Data\\EmployeeLeaveTracking.Data.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -156,6 +156,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[5.0.14, )"
+            },
+            "NLog": {
+              "target": "Package",
+              "version": "[5.1.4, )"
             }
           },
           "imports": [

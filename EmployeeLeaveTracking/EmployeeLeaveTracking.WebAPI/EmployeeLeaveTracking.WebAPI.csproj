@@ -27,8 +27,4 @@
     <ProjectReference Include="..\EmployeeLeaveTracking.Services\EmployeeLeaveTracking.Services.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>

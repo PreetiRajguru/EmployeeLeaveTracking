@@ -21,8 +21,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\EmployeeLeaveTracking.Services\EmployeeLeaveTracking.Services.csproj" />
-  </ItemGroup>
-
 </Project>
