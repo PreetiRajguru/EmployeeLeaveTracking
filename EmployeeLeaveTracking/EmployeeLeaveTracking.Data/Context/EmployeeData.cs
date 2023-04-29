@@ -24,7 +24,7 @@ namespace EmployeeLeaveTracking.Data.Context
                 },
                 new Employee
                 {
-                    ID = 1,
+                    ID = 2,
                     FirstName = "Sayali",
                     LastName = "Kadam",
                     Email = "sayali@gmail.com",

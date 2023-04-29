@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "knRdduldUYAO2GnWYKW4+pmIvVFSVE4BlnOMaznGISy0ufcdnTvORiRxnhv3vhEC1QBCdN/hM5FvGfDTdFzKdQ==",
+  "dgSpecHash": "RtU2PYMNa/TJRSO2AAzmEKWgxufnqGqRSzf6mwCzID+Nk1DI9HGwKu8dMKSaV3LH04QAZ+bzFTUHN+rKCewxBg==",
   "success": true,
   "projectFilePath": "D:\\Final Project\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\EmployeeLeaveTracking.WebAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\HP\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.14\\microsoft.aspnetcore.cryptography.internal.5.0.14.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.14\\microsoft.aspnetcore.cryptography.keyderivation.5.0.14.nupkg.sha512",

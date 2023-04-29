@@ -5,6 +5,10 @@ VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeLeaveTracking.WebAPI", "EmployeeLeaveTracking.WebAPI\EmployeeLeaveTracking.WebAPI.csproj", "{A636D7AB-0EEF-4825-AE39-A97422F8D658}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeLeaveTracking.Data", "EmployeeLeaveTracking.Data\EmployeeLeaveTracking.Data.csproj", "{C05A3407-4105-41AF-8396-5B77AAEB76A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeLeaveTracking.Services", "EmployeeLeaveTracking.Services\EmployeeLeaveTracking.Services.csproj", "{B8A8EB10-D2A0-4C5B-9A6B-E150B1068BB4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{A636D7AB-0EEF-4825-AE39-A97422F8D658}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A636D7AB-0EEF-4825-AE39-A97422F8D658}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A636D7AB-0EEF-4825-AE39-A97422F8D658}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C05A3407-4105-41AF-8396-5B77AAEB76A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C05A3407-4105-41AF-8396-5B77AAEB76A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C05A3407-4105-41AF-8396-5B77AAEB76A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C05A3407-4105-41AF-8396-5B77AAEB76A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8A8EB10-D2A0-4C5B-9A6B-E150B1068BB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8A8EB10-D2A0-4C5B-9A6B-E150B1068BB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8A8EB10-D2A0-4C5B-9A6B-E150B1068BB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8A8EB10-D2A0-4C5B-9A6B-E150B1068BB4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

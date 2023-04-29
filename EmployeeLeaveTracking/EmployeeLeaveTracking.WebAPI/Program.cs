@@ -1,6 +1,8 @@
+using AutoMapper;
 using EmployeeLeaveTracking.Data.Context;
 using EmployeeLeaveTracking.Data.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,6 +32,15 @@ builder.Services.AddDbContext<EmployeeLeaveDbContext>(options =>
 
 options.UseSqlServer(builder.Configuration.GetConnectionString("ConnStr")));
 
+
+builder.Services.Configure<ApiBehaviorOptions>(options => { options.SuppressModelStateInvalidFilter = true; });
+var mapperConfig = new MapperConfiguration(map =>
+{
+   /* map.AddProfile<TeacherMappingProfile>();
+    map.AddProfile<StudentMappingProfile>();
+    map.AddProfile<UserMappingProfile>();*/
+});
+builder.Services.AddSingleton(mapperConfig.CreateMapper());
 
 var app = builder.Build();
 

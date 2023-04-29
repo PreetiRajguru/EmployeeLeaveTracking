@@ -16,7 +16,7 @@ namespace EmployeeLeaveTracking.Data.Context
         public DbSet<LeaveType> LeaveTypes { get; set; }
         public DbSet<LeaveBalance> LeaveBalances { get; set; }
         public DbSet<LeaveRequest> LeaveRequests { get; set; }
-
+        public DbSet<StatusMaster> Status { get; set; }
 
         public EmployeeLeaveDbContext()
         {
