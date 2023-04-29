@@ -4,14 +4,14 @@ namespace EmployeeLeaveTracking.Data.DTOs
 {
     public class LeaveBalanceDTO
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
 
         [Required(ErrorMessage = "Employee ID is a required field.")]
-        public int EmployeeID { get; set; }
+        public int EmployeeId { get; set; }
 
         [Required(ErrorMessage = "Leave type ID is a required field.")]
-        public int LeaveTypeID { get; set; }
+        public int LeaveTypeId { get; set; }
 
 
         [Required(ErrorMessage = "Balance is a required field.")]

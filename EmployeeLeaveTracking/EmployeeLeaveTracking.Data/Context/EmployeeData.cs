@@ -11,7 +11,7 @@ namespace EmployeeLeaveTracking.Data.Context
             builder.HasData(
                 new Employee
                 {
-                    ID = 1,
+                    Id = 1,
                     FirstName = "Neha",
                     LastName = "Patole",
                     Email = "neha@gmail.com",
@@ -19,7 +19,7 @@ namespace EmployeeLeaveTracking.Data.Context
                 },
                 new Employee
                 {
-                    ID = 2,
+                    Id = 2,
                     FirstName = "Sayali",
                     LastName = "Kadam",
                     Email = "sayali@gmail.com",

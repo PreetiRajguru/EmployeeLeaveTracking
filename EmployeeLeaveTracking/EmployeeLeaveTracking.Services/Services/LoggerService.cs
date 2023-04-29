@@ -3,10 +3,10 @@ using NLog;
 
 namespace EmployeeLeaveTracking.Services.Services;
 
-public class LoggerManager : ILoggerManager
+public class LoggerService : Interfaces.ILogger
 {
-    private static ILogger logger = LogManager.GetCurrentClassLogger();
-    public LoggerManager() { }
+    private static NLog.ILogger logger = LogManager.GetCurrentClassLogger();
+    public LoggerService() { }
     public void LogDebug(string message)
     {
         logger.Debug(message);

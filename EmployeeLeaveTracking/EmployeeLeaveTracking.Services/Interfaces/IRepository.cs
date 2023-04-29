@@ -1,9 +1,9 @@
 ﻿namespace EmployeeLeaveTracking.Services.Interfaces;
 
-public interface IRepositoryManager
+public interface IRepository
 {
    /* ITeacherRepository Teacher { get; }
     IStudentRepository Student { get; }*/
-    IUserAuthenticationRepository UserAuthentication { get; }
+    IUserAuthentication UserAuthentication { get; }
     Task SaveAsync();
 }

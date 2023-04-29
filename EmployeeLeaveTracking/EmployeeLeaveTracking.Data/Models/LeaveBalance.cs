@@ -4,11 +4,11 @@ namespace EmployeeLeaveTracking.Data.Models
 {
     public class LeaveBalance
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
        
-        public int EmployeeID { get; set; }
+        public int EmployeeId { get; set; }
 
-        public int LeaveTypeID { get; set; }
+        public int LeaveTypeId { get; set; }
 
         public decimal Balance { get; set; }
        

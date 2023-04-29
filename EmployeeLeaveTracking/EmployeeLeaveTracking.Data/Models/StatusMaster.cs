@@ -4,7 +4,7 @@ namespace EmployeeLeaveTracking.Data.Models
 {
     public class StatusMaster
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         public string StatusType { get; set; }
 

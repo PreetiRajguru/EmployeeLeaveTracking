@@ -4,7 +4,7 @@ namespace EmployeeLeaveTracking.Data.DTOs
 {
     public class EmployeeDTO
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
 
         [Required(ErrorMessage = "Employee first name is a required field.")]
@@ -23,6 +23,6 @@ namespace EmployeeLeaveTracking.Data.DTOs
 
 
         [Required(ErrorMessage = "Manager ID is a required field.")]
-        public int ManagerID { get; set; }
+        public int ManagerId { get; set; }
     }
 }

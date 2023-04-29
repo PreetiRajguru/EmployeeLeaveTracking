@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace StudentTeacher.Service.Services;
 
-public class RepositoryManagerService : IRepositoryManager
+public class RepositoryManagerService : IRepository
 {
     private EmployeeLeaveDbContext _repositoryContext;
 
@@ -15,7 +15,7 @@ public class RepositoryManagerService : IRepositoryManager
     private IStudentRepository _studentRepository;*/
 
 
-    private IUserAuthenticationRepository _userAuthenticationRepository;
+    private IUserAuthentication _userAuthenticationRepository;
     private UserManager<User> _userManager;
     private IMapper _mapper;
     private IConfiguration _configuration;
@@ -29,7 +29,7 @@ public class RepositoryManagerService : IRepositoryManager
     }
 
  
-    public IUserAuthenticationRepository UserAuthentication
+    public IUserAuthentication UserAuthentication
     {
         get
         {

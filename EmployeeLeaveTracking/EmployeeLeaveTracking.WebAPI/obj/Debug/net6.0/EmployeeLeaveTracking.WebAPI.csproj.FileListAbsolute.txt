@@ -21,7 +21,6 @@ D:\Final Project\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracki
 D:\Final Project\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 D:\Final Project\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Debug\net6.0\Microsoft.OpenApi.dll
 D:\Final Project\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
-D:\Final Project\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Debug\net6.0\Newtonsoft.Json.dll
 D:\Final Project\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\Final Project\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\Final Project\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -75,3 +74,4 @@ D:\Final Project\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracki
 D:\Final Project\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Debug\net6.0\ref\EmployeeLeaveTracking.WebAPI.dll
 D:\Final Project\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Debug\net6.0\AutoMapper.dll
 D:\Final Project\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Debug\net6.0\NLog.dll
+D:\Final Project\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

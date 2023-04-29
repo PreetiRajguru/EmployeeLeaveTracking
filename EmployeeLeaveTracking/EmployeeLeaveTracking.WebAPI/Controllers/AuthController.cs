@@ -11,7 +11,7 @@ namespace StudentTeacher.Controllers;
 [ApiController]
 public class AuthController : BaseApiController
 {
-    public AuthController(IRepositoryManager repository, ILoggerManager logger, IMapper mapper) : base(repository, logger, mapper)
+    public AuthController(IRepository repository, EmployeeLeaveTracking.Services.Interfaces.ILogger logger, IMapper mapper) : base(repository, logger, mapper)
     {
     }
 
@@ -23,12 +23,12 @@ public class AuthController : BaseApiController
         return !userResult.Succeeded ? new BadRequestObjectResult(userResult) : StatusCode(201);
     }
 
-   /* [HttpPost("login")]
+    [HttpPost("login")]
     public async Task<IActionResult> Authenticate([FromBody] UserLoginDTO user)
     {
-        return !await _repository.UserAuthentication.ValidateUserAsync(user) 
-            ? Unauthorized() 
+        return !await _repository.UserAuthentication.ValidateUserAsync(user)
+            ? Unauthorized()
             : Ok(new { Token = await _repository.UserAuthentication.CreateTokenAsync() });
-    }*/
+    }
 
 }

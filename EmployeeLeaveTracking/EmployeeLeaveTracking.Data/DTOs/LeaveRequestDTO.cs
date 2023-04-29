@@ -4,16 +4,16 @@ namespace EmployeeLeaveTracking.Data.DTOs
 {
     public class LeaveRequestDTO
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [MaxLength(500, ErrorMessage = "Maximum length for the request comments is 500 characters.")]
         public string RequestComments { get; set; }
 
         [Required(ErrorMessage = "Employee ID is a required field.")]
-        public int EmployeeID { get; set; }
+        public int EmployeeId { get; set; }
 
         [Required(ErrorMessage = "Leave type ID is a required field.")]
-        public int LeaveTypeID { get; set; }
+        public int LeaveTypeId { get; set; }
 
         [Required(ErrorMessage = "Start date is a required field.")]
         public DateTime StartDate { get; set; }
@@ -23,7 +23,7 @@ namespace EmployeeLeaveTracking.Data.DTOs
 
 
         [Required(ErrorMessage = "Status ID is a required field.")]
-        public int StatusID { get; set; }
+        public int StatusId { get; set; }
 
     }
 }

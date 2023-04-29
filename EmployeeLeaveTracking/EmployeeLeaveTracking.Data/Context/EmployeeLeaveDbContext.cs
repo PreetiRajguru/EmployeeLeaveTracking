@@ -48,32 +48,32 @@ namespace EmployeeLeaveTracking.Data.Context
                 .HasForeignKey(e => e.ManagerID);
 
             modelBuilder.Entity<LeaveBalance>()
-                .HasKey(lb => new { lb.EmployeeID, lb.LeaveTypeID, lb.YearMonth });
+                .HasKey(lb => new { lb.EmployeeId, lb.LeaveTypeId, lb.YearMonth });
 
             modelBuilder.Entity<LeaveBalance>()
                 .HasOne(lb => lb.Employee)
                 .WithMany(e => e.LeaveBalances)
-                .HasForeignKey(lb => lb.EmployeeID);
+                .HasForeignKey(lb => lb.EmployeeId);
 
             modelBuilder.Entity<LeaveBalance>()
                 .HasOne(lb => lb.LeaveType)
                 .WithMany(lt => lt.LeaveBalances)
-                .HasForeignKey(lb => lb.LeaveTypeID);
+                .HasForeignKey(lb => lb.LeaveTypeId);
 
             modelBuilder.Entity<LeaveRequest>()
                 .HasOne(lr => lr.Employee)
                 .WithMany(e => e.LeaveRequests)
-                .HasForeignKey(lr => lr.EmployeeID);
+                .HasForeignKey(lr => lr.EmployeeId);
 
             modelBuilder.Entity<LeaveRequest>()
                 .HasOne(lr => lr.LeaveType)
                 .WithMany(lt => lt.LeaveRequests)
-                .HasForeignKey(lr => lr.LeaveTypeID);
+                .HasForeignKey(lr => lr.LeaveTypeId);
 
             modelBuilder.Entity<LeaveRequest>()
               .HasOne(lr => lr.Status)
               .WithMany(lt => lt.LeaveRequests)
-              .HasForeignKey(lr => lr.StatusID);
+              .HasForeignKey(lr => lr.StatusId);
         }
     }
 }

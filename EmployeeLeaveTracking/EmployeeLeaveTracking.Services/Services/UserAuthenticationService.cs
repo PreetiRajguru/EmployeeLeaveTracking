@@ -4,10 +4,14 @@ using EmployeeLeaveTracking.Data.Models;
 using EmployeeLeaveTracking.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace StudentTeacher.Service.Services;
 
-public sealed class UserAuthenticationService : IUserAuthenticationRepository
+public sealed class UserAuthenticationService : IUserAuthentication
 {
     private readonly UserManager<User> _userManager;
     private readonly IConfiguration _configuration;
@@ -35,7 +39,7 @@ public sealed class UserAuthenticationService : IUserAuthenticationRepository
         return result;
     }
 
- /*   public async Task<string> CreateTokenAsync() 
+    public async Task<string> CreateTokenAsync()
     {
         var signingCredentials = GetSigningCredentials();
         var claims = await GetClaims();
@@ -77,7 +81,7 @@ public sealed class UserAuthenticationService : IUserAuthenticationRepository
         signingCredentials: signingCredentials
         );
         return tokenOptions;
-    }*/
+    }
 
 
 }

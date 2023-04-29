@@ -4,7 +4,7 @@ namespace EmployeeLeaveTracking.Data.Models
 {
     public class LeaveType
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string LeaveTypeName { get; set; }
 
         public List<LeaveBalance> LeaveBalances { get; set; }

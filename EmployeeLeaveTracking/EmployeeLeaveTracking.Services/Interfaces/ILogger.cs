@@ -1,6 +1,6 @@
 ﻿namespace EmployeeLeaveTracking.Services.Interfaces;
 
-public interface ILoggerManager
+public interface ILogger
 {
     void LogInfo(string message);
     void LogWarn(string message);

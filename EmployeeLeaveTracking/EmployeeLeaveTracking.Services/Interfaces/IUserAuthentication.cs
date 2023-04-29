@@ -3,12 +3,12 @@ using EmployeeLeaveTracking.Data.DTOs;
 
 namespace EmployeeLeaveTracking.Services.Interfaces;
 
-public interface IUserAuthenticationRepository
+public interface IUserAuthentication
 {
     Task<IdentityResult> RegisterUserAsync(UserRegistrationDTO userForRegistration);
     Task<bool> ValidateUserAsync(UserLoginDTO loginDto);
 
-    /*Task<string> CreateTokenAsync();*/
+    Task<string> CreateTokenAsync();
 }
 
 

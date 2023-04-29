@@ -4,7 +4,7 @@ namespace EmployeeLeaveTracking.Data.DTOs
 {
     public class LeaveTypeDTO
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
 
         [Required(ErrorMessage = "Leave type name is a required field.")]
