@@ -74,6 +74,11 @@ namespace EmployeeLeaveTracking.Data.Context
                 .HasOne(lr => lr.LeaveType)
                 .WithMany(lt => lt.LeaveRequests)
                 .HasForeignKey(lr => lr.LeaveTypeID);
+
+            modelBuilder.Entity<LeaveRequest>()
+              .HasOne(lr => lr.Status)
+              .WithMany(lt => lt.LeaveRequests)
+              .HasForeignKey(lr => lr.StatusID);
         }
     }
 }

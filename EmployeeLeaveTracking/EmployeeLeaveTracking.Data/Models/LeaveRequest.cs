@@ -14,7 +14,8 @@ namespace EmployeeLeaveTracking.Data.Models
         public int LeaveTypeID { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public string Status { get; set; }
+        public int StatusID { get; set; }
+        public StatusMaster Status { get; set; }
 
         public Employee Employee { get; set; }
         public LeaveType LeaveType { get; set; }
