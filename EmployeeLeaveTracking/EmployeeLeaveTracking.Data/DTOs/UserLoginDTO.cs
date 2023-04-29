@@ -1,11 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace StudentTeacher.Core.Dtos;
-public class UserLoginDto 
+namespace EmployeeLeaveTracking.Data.DTOs
 {
-    [Required(ErrorMessage = "Username is required")]
-    public string? UserName { get; init; }
+    public class UserLoginDTO
+    {
+        [Required(ErrorMessage = "Username is required")]
+        public string? UserName { get; init; }
 
-    [Required(ErrorMessage = "Password is required")]
-    public string? Password { get; init; }
+        [Required(ErrorMessage = "Password is required")]
+        public string? Password { get; init; }
+    }
 }

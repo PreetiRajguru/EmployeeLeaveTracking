@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
-using StudentTeacher.Core.Dtos;
-using StudentTeacher.Core.Models;
+using EmployeeLeaveTracking.Data.DTOs;
+using EmployeeLeaveTracking.Data.Models;
 
-namespace StudentTeacher.Core.Mappings;
-public class UserProfile : Profile
+namespace EmployeeLeaveTracking.Data.Mappers
 {
-    public UserProfile()
+    public class UserProfile : Profile
     {
-        CreateMap<UserRegistrationDto, User>();
+        public UserProfile()
+        {
+            CreateMap<UserRegistrationDTO , User>();
+        }
     }
 }
