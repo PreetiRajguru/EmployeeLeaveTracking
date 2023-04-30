@@ -8,7 +8,7 @@ namespace EmployeeLeaveTracking.Data.Models
 
         public string? LastName { get; set; }
 
-        public bool IsManager { get; set; }
+        public int ManagerId { get; set; }
 
         public DateTime? CreatedDate { get; set; }
 
@@ -20,7 +20,11 @@ namespace EmployeeLeaveTracking.Data.Models
 
         public bool? IsDeleted { get; set; } = false;
 
-        public List<LeaveRequest>? LeaveRequests { get; set; }
+        /*public User Manager { get; set; }*/
+
+        public List<LeaveRequest>? ManagerLeaveRequests { get; set; }
+
+        public List<LeaveRequest> EmployeeLeaveRequests { get; set; }
 
         public User()
         {

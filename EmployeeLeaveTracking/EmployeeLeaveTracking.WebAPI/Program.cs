@@ -46,7 +46,6 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("ConnStr")));
 builder.Services.Configure<ApiBehaviorOptions>(options => { options.SuppressModelStateInvalidFilter = true; });
 var mapperConfig = new MapperConfiguration(map =>
 {
-    map.AddProfile<LeaveBalanceProfile>();
     map.AddProfile<LeaveRequestProfile>();
     map.AddProfile<LeaveTypeProfile>();
     map.AddProfile<UserProfile>();
@@ -58,7 +57,6 @@ builder.Services.AddSingleton(mapperConfig.CreateMapper());
 builder.Services.AddScoped<EmployeeLeaveTracking.Services.Interfaces.ILogger, LoggerService>();
 builder.Services.AddScoped<IRepository, RepositoryManagerService>();
 builder.Services.AddScoped<IUserAuthentication, UserAuthenticationService>();
-builder.Services.AddScoped<ILeaveBalance, LeaveBalanceService>();
 builder.Services.AddScoped<ILeaveRequest, LeaveRequestService>();
 builder.Services.AddScoped<ILeaveType, LeaveTypeService>();
 builder.Services.AddScoped<IStatusMaster, StatusMasterService>();

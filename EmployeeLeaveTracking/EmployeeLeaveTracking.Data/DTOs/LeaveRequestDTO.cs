@@ -24,11 +24,11 @@ namespace EmployeeLeaveTracking.Data.DTOs
 
 
         [Required(ErrorMessage = "Manager Id is a required field.")]
-        public int ManagerId { get; set; }
+        public string? ManagerId { get; set; }
 
 
         [Required(ErrorMessage = "Employee Id is a required field.")]
-        public int EmployeeId { get; set; }
+        public string? EmployeeId { get; set; }
 
 
 

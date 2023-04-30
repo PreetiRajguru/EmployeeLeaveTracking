@@ -29,9 +29,9 @@ namespace EmployeeLeaveTracking.Data.Models
 
 
 
-        public int ManagerId { get; set; }
+        public string ManagerId { get; set; }
 
-        public int EmployeeId { get; set; }
+        public string EmployeeId { get; set; }
 
         public int LeaveTypeId { get; set; }
 
@@ -39,9 +39,9 @@ namespace EmployeeLeaveTracking.Data.Models
 
 
 
-        public User? Manager { get; set; }
-
         public User? Employee { get; set; }
+
+        public User? Manager { get; set; }
 
         public StatusMaster? StatusMaster { get; set; }
 

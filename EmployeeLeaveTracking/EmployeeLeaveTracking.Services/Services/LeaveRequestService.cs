@@ -59,6 +59,7 @@ namespace EmployeeLeaveTracking.Services.Services
             {
                 RequestComments = leaveRequest.RequestComments,
                 EmployeeId = leaveRequest.EmployeeId,
+                ManagerId = leaveRequest.ManagerId,
                 LeaveTypeId = leaveRequest.LeaveTypeId,
                 StartDate = leaveRequest.StartDate,
                 EndDate = leaveRequest.EndDate,

@@ -36,17 +36,33 @@ namespace EmployeeLeaveTracking.Data.Context
         {
             base.OnModelCreating(modelBuilder);
 
-            
+            modelBuilder.ApplyConfiguration(new UserData());
+
             modelBuilder.Entity<LeaveRequest>()
            .HasOne(lb => lb.Manager)
-           .WithMany(lt => lt.LeaveRequests)
-           .HasForeignKey(lb => lb.ManagerId);
+           .WithMany(lt => lt.ManagerLeaveRequests)
+           .HasForeignKey(lb => lb.ManagerId)
+           .OnDelete(DeleteBehavior.NoAction);
 
 
             modelBuilder.Entity<LeaveRequest>()
            .HasOne(lb => lb.Employee)
-           .WithMany(lt => lt.LeaveRequests)
-           .HasForeignKey(lb => lb.EmployeeId);
+           .WithMany(lt => lt.EmployeeLeaveRequests)
+           .HasForeignKey(lb => lb.EmployeeId)
+           .OnDelete(DeleteBehavior.NoAction);
+
+
+            /*  modelBuilder.Entity<LeaveRequest>()
+                  .HasOne(u => u.Manager)
+                  .WithMany()
+                  .HasForeignKey(u => u.Manager_Id)
+                  .OnDelete(DeleteBehavior.Restrict);
+
+              modelBuilder.Entity<LeaveRequest>()
+                  .HasOne(u => u.Employee)
+                  .WithMany()
+                  .HasForeignKey(u => u.EmployeeId)
+                  .OnDelete(DeleteBehavior.Restrict);*/
 
 
             modelBuilder.Entity<LeaveRequest>()
@@ -59,6 +75,12 @@ namespace EmployeeLeaveTracking.Data.Context
           .HasOne(lb => lb.StatusMaster)
           .WithMany(lt => lt.LeaveRequests)
           .HasForeignKey(lb => lb.StatusId);
+
+
+            /*modelBuilder.Entity<User>()
+         .HasOne(lb => lb.Manager)
+         .WithMany(lt => lt.Users)
+         .HasForeignKey(lb => lb.ManagerId);*/
         }
     }
 }

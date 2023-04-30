@@ -20,6 +20,6 @@ namespace EmployeeLeaveTracking.Data.DTOs
 
         public string? PhoneNumber { get; init; }
 
-        public bool IsManager { get; init; }
+        public int ManagerId { get; init; }
     }
 }

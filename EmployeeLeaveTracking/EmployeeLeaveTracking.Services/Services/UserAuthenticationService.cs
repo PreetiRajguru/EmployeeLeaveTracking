@@ -82,6 +82,4 @@ public sealed class UserAuthenticationService : IUserAuthentication
         );
         return tokenOptions;
     }
-
-
 }
