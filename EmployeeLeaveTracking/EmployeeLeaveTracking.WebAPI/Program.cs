@@ -67,6 +67,16 @@ builder.Services.AddScoped<ILeaveType, LeaveTypeService>();
 builder.Services.AddScoped<IManager, ManagerService>();
 builder.Services.AddScoped<IStatusMaster, StatusMasterService>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
+
 
 
 var jwtConfig = builder.Configuration.GetSection("jwtConfig");
@@ -131,6 +141,7 @@ builder.Services.AddSwaggerGen(c =>
 
 
 var app = builder.Build();
+app.UseCors("AllowAll");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
