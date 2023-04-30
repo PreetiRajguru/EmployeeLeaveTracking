@@ -8,18 +8,24 @@ namespace EmployeeLeaveTracking.Data.Models
 
         public string? LastName { get; set; }
 
+        public bool IsManager { get; set; }
+
         public DateTime? CreatedDate { get; set; }
 
-        public string? CreatedBy { get; set; }
+        public int? CreatedBy { get; set; }
 
         public DateTime? ModifiedDate { get; set; }
 
-        public string? ModifiedBy { get; set; }
+        public int? ModifiedBy { get; set; }
 
         public bool? IsDeleted { get; set; } = false;
 
-        /*public List<Manager>? Managers { get; set; }
+        public List<LeaveRequest>? LeaveRequests { get; set; }
 
-        public List<Employee>? Employees { get; set; }*/
+        public User()
+        {
+            CreatedDate = DateTime.UtcNow;
+            ModifiedDate = DateTime.UtcNow;
+        }
     }
 }

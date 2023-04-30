@@ -8,31 +8,49 @@ namespace EmployeeLeaveTracking.Data.Models
 
         public string? RequestComments { get; set; }
 
-        public int EmployeeId { get; set; }
-
-        public int LeaveTypeId { get; set; }
-
         public DateTime? StartDate { get; set; }
 
         public DateTime? EndDate { get; set; }
+
+        public int TotalDays { get; set; }
+
+
+        /*public int YearMonth { get; set; }*/
+
+        public DateTime? CreatedDate { get; set; }
+
+        public int? CreatedBy { get; set; }
+
+        public DateTime? ModifiedDate { get; set; }
+
+        public int? ModifiedBy { get; set; }
+
+        public bool? IsDeleted { get; set; } = false;
+
+
+
+        public int ManagerId { get; set; }
+
+        public int EmployeeId { get; set; }
+
+        public int LeaveTypeId { get; set; }
 
         public int StatusId { get; set; }
 
 
 
-        public DateTime? CreatedDate { get; set; }
+        public User? Manager { get; set; }
 
-        public string? CreatedBy { get; set; }
+        public User? Employee { get; set; }
 
-        public DateTime? ModifiedDate { get; set; }
+        public StatusMaster? StatusMaster { get; set; }
 
-        public string? ModifiedBy { get; set; }
-
-        public bool? IsDeleted { get; set; } = false;
-
-
-        public StatusMaster? Status { get; set; }
-        public Employee? Employee { get; set; }
         public LeaveType? LeaveType { get; set; }
+
+        public LeaveRequest()
+        {
+            CreatedDate = DateTime.UtcNow;
+            ModifiedDate = DateTime.UtcNow;
+        }
     }
 }

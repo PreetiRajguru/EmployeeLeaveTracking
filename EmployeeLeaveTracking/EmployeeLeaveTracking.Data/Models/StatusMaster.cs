@@ -11,14 +11,21 @@ namespace EmployeeLeaveTracking.Data.Models
 
         public DateTime? CreatedDate { get; set; }
 
-        public string? CreatedBy { get; set; }
+        public int? CreatedBy { get; set; }
 
         public DateTime? ModifiedDate { get; set; }
 
-        public string? ModifiedBy { get; set; }
+        public int? ModifiedBy { get; set; }
 
         public bool? IsDeleted { get; set; } = false;
 
+
         public List<LeaveRequest>? LeaveRequests { get; set; }
+
+        public StatusMaster()
+        {
+            CreatedDate = DateTime.UtcNow;
+            ModifiedDate = DateTime.UtcNow;
+        }
     }
 }

@@ -5882,11 +5882,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Final Project\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Services\\EmployeeLeaveTracking.Services.csproj",
+      "projectUniqueName": "D:\\Final Project BE\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Services\\EmployeeLeaveTracking.Services.csproj",
       "projectName": "EmployeeLeaveTracking.Services",
-      "projectPath": "D:\\Final Project\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Services\\EmployeeLeaveTracking.Services.csproj",
+      "projectPath": "D:\\Final Project BE\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Services\\EmployeeLeaveTracking.Services.csproj",
       "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "D:\\Final Project\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Services\\obj\\",
+      "outputPath": "D:\\Final Project BE\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Services\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5903,8 +5903,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Final Project\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Data\\EmployeeLeaveTracking.Data.csproj": {
-              "projectPath": "D:\\Final Project\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Data\\EmployeeLeaveTracking.Data.csproj"
+            "D:\\Final Project BE\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Data\\EmployeeLeaveTracking.Data.csproj": {
+              "projectPath": "D:\\Final Project BE\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Data\\EmployeeLeaveTracking.Data.csproj"
             }
           }
         }

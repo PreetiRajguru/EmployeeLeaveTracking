@@ -19,5 +19,7 @@ namespace EmployeeLeaveTracking.Data.DTOs
         public string? Email { get; init; }
 
         public string? PhoneNumber { get; init; }
+
+        public bool IsManager { get; init; }
     }
 }

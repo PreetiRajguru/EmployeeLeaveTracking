@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Final Project\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Data\\EmployeeLeaveTracking.Data.csproj": {}
+    "D:\\Final Project BE\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Data\\EmployeeLeaveTracking.Data.csproj": {}
   },
   "projects": {
-    "D:\\Final Project\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Data\\EmployeeLeaveTracking.Data.csproj": {
+    "D:\\Final Project BE\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Data\\EmployeeLeaveTracking.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Final Project\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Data\\EmployeeLeaveTracking.Data.csproj",
+        "projectUniqueName": "D:\\Final Project BE\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Data\\EmployeeLeaveTracking.Data.csproj",
         "projectName": "EmployeeLeaveTracking.Data",
-        "projectPath": "D:\\Final Project\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Data\\EmployeeLeaveTracking.Data.csproj",
+        "projectPath": "D:\\Final Project BE\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Data\\EmployeeLeaveTracking.Data.csproj",
         "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-        "outputPath": "D:\\Final Project\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Data\\obj\\",
+        "outputPath": "D:\\Final Project BE\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
