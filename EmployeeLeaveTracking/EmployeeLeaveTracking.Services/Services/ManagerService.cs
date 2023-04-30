@@ -2,24 +2,22 @@
 using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Data.Models;
 using EmployeeLeaveTracking.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EmployeeLeaveTracking.Services.Services
 {
     public class ManagerService : IManager
     {
+
         private readonly EmployeeLeaveDbContext _context;
+
 
         public ManagerService(EmployeeLeaveDbContext context)
         {
             _context = context;
         }
 
-        public IEnumerable<ManagerDTO> GetAllManagers()
+
+        public IEnumerable<ManagerDTO> GetAll()
         {
             var managers = _context.Managers.Where(m => m.IsDeleted == (false)).ToList();
             return managers.Select(m => new ManagerDTO
@@ -31,7 +29,7 @@ namespace EmployeeLeaveTracking.Services.Services
             });
         }
 
-        public ManagerDTO GetManagerById(int id)
+        public ManagerDTO GetById(int id)
         {
             var manager = _context.Managers.FirstOrDefault(m => m.Id == id && m.IsDeleted == (false));
             if (manager == null)
@@ -47,7 +45,7 @@ namespace EmployeeLeaveTracking.Services.Services
             };
         }
 
-        public ManagerDTO CreateManager(ManagerDTO manager)
+        public ManagerDTO Create(ManagerDTO manager)
         {
             var newManager = new Manager
             {
@@ -61,7 +59,7 @@ namespace EmployeeLeaveTracking.Services.Services
             return manager;
         }
 
-        public ManagerDTO UpdateManager(ManagerDTO manager)
+        public ManagerDTO Update(ManagerDTO manager)
         {
             var existingManager = _context.Managers.FirstOrDefault(m => m.Id == manager.Id && m.IsDeleted == (false));
             if (existingManager == null)
@@ -75,7 +73,7 @@ namespace EmployeeLeaveTracking.Services.Services
             return manager;
         }
 
-        public bool DeleteManager(int id)
+        public bool Delete(int id)
         {
             var existingManager = _context.Managers.FirstOrDefault(m => m.Id == id && m.IsDeleted == (false));
             if (existingManager == null)

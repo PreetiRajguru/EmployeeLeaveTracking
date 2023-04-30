@@ -1,8 +1,6 @@
 ﻿using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 
 namespace EmployeeLeaveTracking.WebAPI.Controllers
 {
@@ -19,11 +17,11 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllStatusMasters()
+        public IActionResult GetAll()
         {
             try
             {
-                var statusMasters = _statusMasterService.GetAllStatusMasters();
+                var statusMasters = _statusMasterService.GetAll();
                 return Ok(statusMasters);
             }
             catch (Exception ex)
@@ -33,11 +31,11 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetStatusMasterById(int id)
+        public IActionResult GetById(int id)
         {
             try
             {
-                var statusMaster = _statusMasterService.GetStatusMasterById(id);
+                var statusMaster = _statusMasterService.GetById(id);
                 if (statusMaster == null)
                 {
                     return NotFound();
@@ -51,7 +49,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddStatusMaster([FromBody] StatusMasterDTO statusMaster)
+        public IActionResult Create([FromBody] StatusMasterDTO statusMaster)
         {
             try
             {
@@ -60,9 +58,9 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
                     return BadRequest(ModelState);
                 }
 
-                var newStatusMaster = _statusMasterService.AddStatusMaster(statusMaster);
+                var newStatusMaster = _statusMasterService.Create(statusMaster);
 
-                return CreatedAtAction(nameof(GetStatusMasterById), new { id = newStatusMaster.Id }, newStatusMaster);
+                return CreatedAtAction(nameof(GetById), new { id = newStatusMaster.Id }, newStatusMaster);
             }
             catch (Exception ex)
             {
@@ -71,7 +69,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateStatusMaster(int id, [FromBody] StatusMasterDTO statusMaster)
+        public IActionResult Update(int id, [FromBody] StatusMasterDTO statusMaster)
         {
             try
             {
@@ -80,7 +78,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
                     return BadRequest(ModelState);
                 }
 
-                var updatedStatusMaster = _statusMasterService.UpdateStatusMaster(id, statusMaster);
+                var updatedStatusMaster = _statusMasterService.Update(id, statusMaster);
 
                 if (updatedStatusMaster == null)
                 {
@@ -96,11 +94,11 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteStatusMaster(int id)
+        public IActionResult Delete(int id)
         {
             try
             {
-                var deleted = _statusMasterService.DeleteStatusMaster(id);
+                var deleted = _statusMasterService.Delete(id);
 
                 if (!deleted)
                 {

@@ -2,12 +2,6 @@
 using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Data.Models;
 using EmployeeLeaveTracking.Services.Interfaces;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EmployeeLeaveTracking.Services.Services
 {
@@ -20,7 +14,7 @@ namespace EmployeeLeaveTracking.Services.Services
             _dbContext = dbContext;
         }
 
-        public IEnumerable<StatusMasterDTO> GetAllStatusMasters()
+        public IEnumerable<StatusMasterDTO> GetAll()
         {
             var statusMasters = _dbContext.Status.Where(s => s.IsDeleted == (false)).ToList();
             return statusMasters.Select(s => new StatusMasterDTO
@@ -30,7 +24,7 @@ namespace EmployeeLeaveTracking.Services.Services
             });
         }
 
-        public StatusMasterDTO GetStatusMasterById(int id)
+        public StatusMasterDTO? GetById(int id)
         {
             var statusMaster = _dbContext.Status.FirstOrDefault(s => s.Id == id && s.IsDeleted == (false));
             return statusMaster != null ? new StatusMasterDTO
@@ -40,7 +34,7 @@ namespace EmployeeLeaveTracking.Services.Services
             } : null;
         }
 
-        public StatusMasterDTO AddStatusMaster(StatusMasterDTO statusMaster)
+        public StatusMasterDTO Create(StatusMasterDTO statusMaster)
         {
             var newStatusMaster = new StatusMaster
             {
@@ -54,7 +48,7 @@ namespace EmployeeLeaveTracking.Services.Services
             return statusMaster;
         }
 
-        public StatusMasterDTO UpdateStatusMaster(int id, StatusMasterDTO statusMaster)
+        public StatusMasterDTO Update(int id, StatusMasterDTO statusMaster)
         {
             var existingStatusMaster = _dbContext.Status.FirstOrDefault(s => s.Id == id && s.IsDeleted == (false));
 
@@ -74,7 +68,7 @@ namespace EmployeeLeaveTracking.Services.Services
             };
         }
 
-        public bool DeleteStatusMaster(int id)
+        public bool Delete(int id)
         {
             var existingStatusMaster = _dbContext.Status.FirstOrDefault(s => s.Id == id && s.IsDeleted == (false));
 

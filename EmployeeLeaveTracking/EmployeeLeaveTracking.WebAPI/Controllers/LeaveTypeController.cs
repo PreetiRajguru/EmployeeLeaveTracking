@@ -17,11 +17,11 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllLeaveTypes()
+        public IActionResult GetAll()
         {
             try
             {
-                var leaveTypes = _leaveTypeService.GetAllLeaveTypes();
+                var leaveTypes = _leaveTypeService.GetAll();
                 return Ok(leaveTypes);
             }
             catch (Exception ex)
@@ -31,11 +31,11 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetLeaveTypeById(int id)
+        public IActionResult GetById(int id)
         {
             try
             {
-                var leaveType = _leaveTypeService.GetLeaveTypeById(id);
+                var leaveType = _leaveTypeService.GetById(id);
                 if (leaveType == null)
                 {
                     return NotFound();
@@ -49,33 +49,34 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddLeaveType([FromBody] LeaveTypeDTO leaveType)
+        public IActionResult Create([FromBody] LeaveTypeDTO leaveType)
         {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    if (leaveType == null)
-                    {
-                        return BadRequest();
-                    }
 
-                    var addedLeaveType = _leaveTypeService.AddLeaveType(leaveType);
-                    return CreatedAtAction(nameof(GetLeaveTypeById), new { id = addedLeaveType.Id }, addedLeaveType);
-                }
-                catch (Exception ex)
+            try
+            {
+                if (leaveType == null)
                 {
-                    return StatusCode(500, $"An error occurred while adding a new leave type: {ex.Message}");
+                    return BadRequest();
                 }
+               
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                var addedLeaveType = _leaveTypeService.Create(leaveType);
+                return CreatedAtAction(nameof(GetById), new { id = addedLeaveType.Id }, addedLeaveType);
+
             }
-            return BadRequest(ModelState);
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred while adding a new leave type: {ex.Message}");
+            }
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateLeaveType(int id, [FromBody] LeaveTypeDTO leaveType)
+        public IActionResult Update(int id, [FromBody] LeaveTypeDTO leaveType)
         {
-            if (ModelState.IsValid)
-            {
                 try
                 {
                     if (leaveType == null || id != leaveType.Id)
@@ -83,7 +84,12 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
                         return BadRequest();
                     }
 
-                    var updatedLeaveType = _leaveTypeService.UpdateLeaveType(leaveType);
+                    if (!ModelState.IsValid)
+                    {
+                        return BadRequest(ModelState);
+                    }
+
+                    var updatedLeaveType = _leaveTypeService.Update(leaveType);
                     if (updatedLeaveType == null)
                     {
                         return NotFound();
@@ -93,17 +99,15 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
                 catch (Exception ex)
                 {
                     return StatusCode(500, $"An error occurred while updating leave type with ID {id}: {ex.Message}");
-                }
-            }
-            return BadRequest(ModelState);
+                }   
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteLeaveType(int id)
+        public IActionResult Delete(int id)
         {
             try
             {
-                var deleted = _leaveTypeService.DeleteLeaveType(id);
+                var deleted = _leaveTypeService.Delete(id);
                 if (deleted)
                 {
                     return NoContent();

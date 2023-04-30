@@ -1,6 +1,5 @@
 ﻿using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Services.Interfaces;
-using EmployeeLeaveTracking.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeLeaveTracking.WebAPI.Controllers
@@ -17,11 +16,11 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<EmployeeDTO>> GetAllEmployees()
+        public ActionResult<IEnumerable<EmployeeDTO>> GetAll()
         {
             try
             {
-                var employees = _employeeService.GetAllEmployees();
+                var employees = _employeeService.GetAll();
                 return Ok(employees);
             }
             catch (Exception ex)
@@ -31,11 +30,11 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<EmployeeDTO> GetEmployeeById(int id)
+        public ActionResult<EmployeeDTO> GetById(int id)
         {
             try
             {
-                var employee = _employeeService.GetEmployeeById(id);
+                var employee = _employeeService.GetById(id);
 
                 if (employee == null)
                 {
@@ -51,7 +50,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpPost]
-        public ActionResult<EmployeeDTO> CreateEmployee(EmployeeDTO employeeDto)
+        public ActionResult<EmployeeDTO> Create(EmployeeDTO employeeDto)
         {
 
             try
@@ -61,9 +60,9 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
                     return BadRequest(ModelState);
                 }
 
-                var employee = _employeeService.CreateEmployee(employeeDto);
+                var employee = _employeeService.Create(employeeDto);
 
-                return CreatedAtAction(nameof(GetEmployeeById), new { id = employee.Id }, employee);
+                return CreatedAtAction(nameof(GetById), new { id = employee.Id }, employee);
             }
             catch (Exception ex)
             {
@@ -72,7 +71,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult<EmployeeDTO> UpdateEmployee(int id, EmployeeDTO employeeDto)
+        public ActionResult<EmployeeDTO> Update(int id, EmployeeDTO employeeDto)
         {
             if (id != employeeDto.Id)
             {
@@ -86,7 +85,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
                     return BadRequest(ModelState);
                 }
 
-                var updatedEmployee = _employeeService.UpdateEmployee(employeeDto);
+                var updatedEmployee = _employeeService.Update(employeeDto);
 
                 return Ok(updatedEmployee);
             }
@@ -97,11 +96,11 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public ActionResult<bool> DeleteEmployee(int id)
+        public ActionResult<bool> Delete(int id)
         {
             try
             {
-                var result = _employeeService.DeleteEmployee(id);
+                var result = _employeeService.Delete(id);
 
                 if (result)
                 {

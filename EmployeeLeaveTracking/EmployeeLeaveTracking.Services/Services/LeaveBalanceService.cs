@@ -2,11 +2,6 @@
 using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Data.Models;
 using EmployeeLeaveTracking.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EmployeeLeaveTracking.Services.Services
 {
@@ -19,7 +14,7 @@ namespace EmployeeLeaveTracking.Services.Services
             _dbContext = dbContext;
         }
 
-        public IEnumerable<LeaveBalanceDTO> GetAllLeaveBalances()
+        public IEnumerable<LeaveBalanceDTO> GetAll()
         {
             return _dbContext.LeaveBalances
                 .Where(lb => lb.IsDeleted == (false))
@@ -34,7 +29,7 @@ namespace EmployeeLeaveTracking.Services.Services
                 .ToList();
         }
 
-        public LeaveBalanceDTO GetLeaveBalanceById(int id)
+        public LeaveBalanceDTO GetById(int id)
         {
             var leaveBalance = _dbContext.LeaveBalances
                 .SingleOrDefault(lb => lb.Id == id && lb.IsDeleted == (false));
@@ -54,7 +49,7 @@ namespace EmployeeLeaveTracking.Services.Services
             };
         }
 
-        public LeaveBalanceDTO AddLeaveBalance(LeaveBalanceDTO leaveBalance)
+        public LeaveBalanceDTO Create(LeaveBalanceDTO leaveBalance)
         {
             var newLeaveBalance = new LeaveBalance
             {
@@ -72,7 +67,7 @@ namespace EmployeeLeaveTracking.Services.Services
             return leaveBalance;
         }
 
-        public LeaveBalanceDTO UpdateLeaveBalance(LeaveBalanceDTO leaveBalance)
+        public LeaveBalanceDTO Update(LeaveBalanceDTO leaveBalance)
         {
             var existingLeaveBalance = _dbContext.LeaveBalances
                 .SingleOrDefault(lb => lb.Id == leaveBalance.Id && lb.IsDeleted == (false));
@@ -92,7 +87,7 @@ namespace EmployeeLeaveTracking.Services.Services
             return leaveBalance;
         }
 
-        public bool DeleteLeaveBalance(int id)
+        public bool Delete(int id)
         {
             var leaveBalance = _dbContext.LeaveBalances
                 .SingleOrDefault(lb => lb.Id == id && lb.IsDeleted == (false));

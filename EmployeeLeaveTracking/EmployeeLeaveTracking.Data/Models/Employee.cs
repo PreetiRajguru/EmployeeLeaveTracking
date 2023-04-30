@@ -14,6 +14,7 @@ namespace EmployeeLeaveTracking.Data.Models
 
         public int? ManagerId { get; set; }
 
+
         /*public int? UserId { get; set; }*/
 
 

@@ -2,11 +2,6 @@
 using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Data.Models;
 using EmployeeLeaveTracking.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EmployeeLeaveTracking.Services.Services
 {
@@ -19,7 +14,7 @@ namespace EmployeeLeaveTracking.Services.Services
             _dbContext = dbContext;
         }
 
-        public IEnumerable<LeaveRequestDTO> GetAllLeaveRequests()
+        public IEnumerable<LeaveRequestDTO> GetAll()
         {
             return _dbContext.LeaveRequests
                 .Where(lr => lr.IsDeleted == (false))
@@ -36,7 +31,7 @@ namespace EmployeeLeaveTracking.Services.Services
                 .ToList();
         }
 
-        public LeaveRequestDTO GetLeaveRequestById(int id)
+        public LeaveRequestDTO GetById(int id)
         {
             var leaveRequest = _dbContext.LeaveRequests
                 .SingleOrDefault(lr => lr.Id == id && lr.IsDeleted == (false));
@@ -58,7 +53,7 @@ namespace EmployeeLeaveTracking.Services.Services
             };
         }
 
-        public LeaveRequestDTO AddLeaveRequest(LeaveRequestDTO leaveRequest)
+        public LeaveRequestDTO Create(LeaveRequestDTO leaveRequest)
         {
             var newLeaveRequest = new LeaveRequest
             {
@@ -78,7 +73,7 @@ namespace EmployeeLeaveTracking.Services.Services
             return leaveRequest;
         }
 
-        public LeaveRequestDTO UpdateLeaveRequest(LeaveRequestDTO leaveRequest)
+        public LeaveRequestDTO Update(LeaveRequestDTO leaveRequest)
         {
             var existingLeaveRequest = _dbContext.LeaveRequests
                 .SingleOrDefault(lr => lr.Id == leaveRequest.Id && lr.IsDeleted == (false));
@@ -100,7 +95,7 @@ namespace EmployeeLeaveTracking.Services.Services
             return leaveRequest;
         }
 
-        public bool DeleteLeaveRequest(int id)
+        public bool Delete(int id)
         {
             var leaveRequest = _dbContext.LeaveRequests
                 .SingleOrDefault(lr => lr.Id == id && lr.IsDeleted == (false));

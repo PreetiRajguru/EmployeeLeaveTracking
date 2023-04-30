@@ -2,11 +2,6 @@
 using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Data.Models;
 using EmployeeLeaveTracking.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EmployeeLeaveTracking.Services.Services
 {
@@ -19,7 +14,7 @@ namespace EmployeeLeaveTracking.Services.Services
             _dbContext = dbContext;
         }
 
-        public IEnumerable<LeaveTypeDTO> GetAllLeaveTypes()
+        public IEnumerable<LeaveTypeDTO> GetAll()
         {
             var leaveTypes = _dbContext.LeaveTypes.Where(lt => lt.IsDeleted == (false)).Select(lt => new LeaveTypeDTO
             {
@@ -30,7 +25,7 @@ namespace EmployeeLeaveTracking.Services.Services
             return leaveTypes;
         }
 
-        public LeaveTypeDTO GetLeaveTypeById(int id)
+        public LeaveTypeDTO GetById(int id)
         {
             var leaveType = _dbContext.LeaveTypes.Where(lt => lt.IsDeleted == (false) && lt.Id == id).Select(lt => new LeaveTypeDTO
             {
@@ -41,7 +36,7 @@ namespace EmployeeLeaveTracking.Services.Services
             return leaveType;
         }
 
-        public LeaveTypeDTO AddLeaveType(LeaveTypeDTO leaveType)
+        public LeaveTypeDTO Create(LeaveTypeDTO leaveType)
         {
             var newLeaveType = new LeaveType
             {
@@ -56,7 +51,7 @@ namespace EmployeeLeaveTracking.Services.Services
             return leaveType;
         }
 
-        public LeaveTypeDTO UpdateLeaveType(LeaveTypeDTO leaveType)
+        public LeaveTypeDTO Update(LeaveTypeDTO leaveType)
         {
             var existingLeaveType = _dbContext.LeaveTypes.Find(leaveType.Id);
 
@@ -72,7 +67,7 @@ namespace EmployeeLeaveTracking.Services.Services
             return leaveType;
         }
 
-        public bool DeleteLeaveType(int id)
+        public bool Delete(int id)
         {
             var existingLeaveType = _dbContext.LeaveTypes.Find(id);
 

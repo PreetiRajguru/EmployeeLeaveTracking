@@ -1,9 +1,6 @@
 ﻿using EmployeeLeaveTracking.Data.DTOs;
-using EmployeeLeaveTracking.Data.Models;
 using EmployeeLeaveTracking.Services.Interfaces;
-using EmployeeLeaveTracking.Services.Services;
 using Microsoft.AspNetCore.Mvc;
-using System;
 
 namespace EmployeeLeaveTracking.WebAPI.Controllers
 {
@@ -19,11 +16,11 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllManagers()
+        public IActionResult GetAll()
         {
             try
             {
-                var managers = _managerService.GetAllManagers();
+                var managers = _managerService.GetAll();
                 return Ok(managers);
             }
             catch (Exception ex)
@@ -33,11 +30,11 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetManagerById(int id)
+        public IActionResult GetById(int id)
         {
             try
             {
-                var manager = _managerService.GetManagerById(id);
+                var manager = _managerService.GetById(id);
                 if (manager == null)
                 {
                     return NotFound();
@@ -51,7 +48,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateManager([FromBody] ManagerDTO manager)
+        public IActionResult Create([FromBody] ManagerDTO manager)
         {
             try
             {
@@ -59,8 +56,8 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
                 {
                     return BadRequest();
                 }
-                var createdManager = _managerService.CreateManager(manager);
-                return CreatedAtAction(nameof(GetManagerById), new { id = createdManager.Id }, createdManager);
+                var createdManager = _managerService.Create(manager);
+                return CreatedAtAction(nameof(GetById), new { id = createdManager.Id }, createdManager);
             }
             catch (Exception ex)
             {
@@ -69,7 +66,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateManager(int id, [FromBody] ManagerDTO manager)
+        public IActionResult Update(int id, [FromBody] ManagerDTO manager)
         {
             try
             {
@@ -78,7 +75,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
                     return BadRequest();
                 }
                 manager.Id = id;
-                var updatedManager = _managerService.UpdateManager(manager);
+                var updatedManager = _managerService.Update(manager);
                 if (updatedManager == null)
                 {
                     return NotFound();
@@ -93,11 +90,11 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteManager(int id)
+        public IActionResult Delete(int id)
         {
             try
             {
-                var result = _managerService.DeleteManager(id);
+                var result = _managerService.Delete(id);
                 if (!result)
                 {
                     return NotFound();

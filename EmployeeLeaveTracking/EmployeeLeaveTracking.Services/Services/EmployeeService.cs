@@ -14,7 +14,7 @@ namespace EmployeeLeaveTracking.Services.Services
             _dbContext = dbContext;
         }
 
-        public IEnumerable<EmployeeDTO> GetAllEmployees()
+        public IEnumerable<EmployeeDTO> GetAll()
         {
             return _dbContext.Employees.Where(e => e.IsDeleted == (false)).Select(e => new EmployeeDTO
             {
@@ -26,7 +26,7 @@ namespace EmployeeLeaveTracking.Services.Services
             });
         }
 
-        public EmployeeDTO GetEmployeeById(int id)
+        public EmployeeDTO GetById(int id)
         {
             var employee = _dbContext.Employees.FirstOrDefault(e => e.Id == id && e.IsDeleted==(false));
 
@@ -45,7 +45,7 @@ namespace EmployeeLeaveTracking.Services.Services
             };
         }
 
-        public EmployeeDTO CreateEmployee(EmployeeDTO employeeDto)
+        public EmployeeDTO Create(EmployeeDTO employeeDto)
         {
             var employee = new Employee
             {
@@ -62,7 +62,7 @@ namespace EmployeeLeaveTracking.Services.Services
             return employeeDto;
         }
 
-        public EmployeeDTO UpdateEmployee(EmployeeDTO employeeDto)
+        public EmployeeDTO Update(EmployeeDTO employeeDto)
         {
             var employee = _dbContext.Employees.FirstOrDefault(e => e.Id == employeeDto.Id && e.IsDeleted == (false));
 
@@ -81,7 +81,7 @@ namespace EmployeeLeaveTracking.Services.Services
             return employeeDto;
         }
 
-        public bool DeleteEmployee(int id)
+        public bool Delete(int id)
         {
             var employee = _dbContext.Employees.FirstOrDefault(e => e.Id == id && e.IsDeleted == (false));
 

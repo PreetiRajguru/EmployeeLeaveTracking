@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace StudentTeacher.Controllers
 {
-    [Route("api/[controller]/register")]
+    [Route("api/[controller]")]
     [ApiController]
     public class AuthController : BaseApiController
     {
@@ -14,7 +14,7 @@ namespace StudentTeacher.Controllers
         {
         }
 
-        [HttpPost]
+        [HttpPost("register")]
         public async Task<IActionResult> RegisterUser([FromBody] UserRegistrationDTO userRegistration)
         {
             try

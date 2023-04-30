@@ -1,6 +1,5 @@
 ﻿using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Services.Interfaces;
-using EmployeeLeaveTracking.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeLeaveTracking.WebAPI.Controllers
@@ -21,7 +20,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         {
             try
             {
-                var leaveRequests = _leaveRequestService.GetAllLeaveRequests();
+                var leaveRequests = _leaveRequestService.GetAll();
 
                 if (leaveRequests == null || leaveRequests.Count() == 0)
                 {
@@ -41,7 +40,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         {
             try
             {
-                var leaveRequest = _leaveRequestService.GetLeaveRequestById(id);
+                var leaveRequest = _leaveRequestService.GetById(id);
 
                 if (leaveRequest == null)
                 {
@@ -66,7 +65,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
                     return BadRequest(ModelState);
                 }
 
-                var newLeaveRequest = _leaveRequestService.AddLeaveRequest(leaveRequest);
+                var newLeaveRequest = _leaveRequestService.Create(leaveRequest);
 
                 return CreatedAtAction(nameof(GetById), new { id = newLeaveRequest.Id }, newLeaveRequest);
             }
@@ -91,7 +90,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
                     return BadRequest(ModelState);
                 }
 
-                var updatedLeaveRequest = _leaveRequestService.UpdateLeaveRequest(leaveRequest);
+                var updatedLeaveRequest = _leaveRequestService.Update(leaveRequest);
 
                 if (updatedLeaveRequest == null)
                 {
@@ -111,7 +110,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         {
             try
             {
-                var isDeleted = _leaveRequestService.DeleteLeaveRequest(id);
+                var isDeleted = _leaveRequestService.Delete(id);
 
                 if (!isDeleted)
                 {

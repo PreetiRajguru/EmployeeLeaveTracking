@@ -1,12 +1,13 @@
-﻿using EmployeeLeaveTracking.Services.Interfaces;
-using NLog;
+﻿using NLog;
 
 namespace EmployeeLeaveTracking.Services.Services;
 
 public class LoggerService : Interfaces.ILogger
 {
     private static NLog.ILogger logger = LogManager.GetCurrentClassLogger();
+
     public LoggerService() { }
+
     public void LogDebug(string message)
     {
         logger.Debug(message);

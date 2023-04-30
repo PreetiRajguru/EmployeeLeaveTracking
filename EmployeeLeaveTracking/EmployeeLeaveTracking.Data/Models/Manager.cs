@@ -15,6 +15,7 @@ namespace EmployeeLeaveTracking.Data.Models
        
         public string? Email { get; set; }
 
+
       /*  public int UserId { get; set; }*/
 
 
