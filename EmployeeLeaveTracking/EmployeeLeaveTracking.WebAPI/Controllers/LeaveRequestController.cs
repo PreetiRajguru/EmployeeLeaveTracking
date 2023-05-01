@@ -176,5 +176,18 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
             return Ok(leaves);
         }
 
+
+        [HttpPut("{id}/status/{statusId}")]
+        public async Task<int> UpdateLeaveRequestStatus(int id, int statusId)
+        {
+            int result = await _leaveRequestService.UpdateLeaveRequestStatus(id, statusId);
+
+           /* if (result)
+            {
+                return NoContent();
+            }
+*/
+            return result;
+        }
     }
 }

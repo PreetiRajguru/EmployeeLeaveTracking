@@ -4,6 +4,7 @@ namespace EmployeeLeaveTracking.Data.DTOs
 {
     public class UserRegistrationDTO
     {
+        public string  Id { get; set; }
         public string? FirstName { get; init; }
 
         public string? LastName { get; init; }

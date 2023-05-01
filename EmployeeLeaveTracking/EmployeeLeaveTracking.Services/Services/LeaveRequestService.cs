@@ -202,5 +202,29 @@ namespace EmployeeLeaveTracking.Services.Services
 
             return leaveRequests;
         }
+
+        public async Task<LeaveRequest> GetLeaveById(int id)
+        {
+            return await _dbContext.LeaveRequests.FirstOrDefaultAsync(l => l.Id == id);
+        }
+
+
+
+        public async Task<int> UpdateLeaveRequestStatus(int id, int statusId)
+        {
+            var leaveRequest = await GetLeaveById(id);
+
+            if (leaveRequest == null)
+            {
+                return statusId;
+            }
+
+            leaveRequest.StatusId = statusId;
+            _dbContext.Entry(leaveRequest).State = EntityState.Modified;
+            await _dbContext.SaveChangesAsync();
+
+            return statusId;
+        }
+
     }
 }

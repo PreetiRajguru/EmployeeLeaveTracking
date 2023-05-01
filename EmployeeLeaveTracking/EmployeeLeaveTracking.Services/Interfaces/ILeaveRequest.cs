@@ -1,4 +1,5 @@
 ﻿using EmployeeLeaveTracking.Data.DTOs;
+using EmployeeLeaveTracking.Data.Models;
 
 namespace EmployeeLeaveTracking.Services.Interfaces
 {
@@ -22,5 +23,10 @@ namespace EmployeeLeaveTracking.Services.Interfaces
         Task<List<LeaveRequestDTO>> GetAllLeavesByStatusIdAsync(int statusId);
 
         List<LeaveRequestDTO> GetLeaveRequestsByStatusAndManager(int statusId, string managerId);
+
+
+        Task<LeaveRequest> GetLeaveById(int id);
+
+        Task<int> UpdateLeaveRequestStatus(int id, int statusId);
     }
 }

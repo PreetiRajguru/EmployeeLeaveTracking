@@ -21,6 +21,7 @@ namespace EmployeeLeaveTracking.Services.Services
                 .Where(u => u.ManagerId == managerId)
                 .Select(u => new UserRegistrationDTO
                 {
+                    Id = u.Id,
                     FirstName = u.FirstName,
                     LastName = u.LastName,
                     UserName = u.UserName,
