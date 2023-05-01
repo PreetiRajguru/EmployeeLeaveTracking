@@ -1,5 +1,6 @@
 ﻿using EmployeeLeaveTracking.Data.Context;
 using EmployeeLeaveTracking.Data.DTOs;
+using EmployeeLeaveTracking.Data.Mappers;
 using EmployeeLeaveTracking.Data.Models;
 using EmployeeLeaveTracking.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -121,24 +122,40 @@ namespace EmployeeLeaveTracking.Services.Services
 
 
 
-        public async Task<List<LeaveRequestDTO>> GetAllLeavesByEmployeeIdAsync(string employeeId)
-        {
-            var leaveRequests = await _dbContext.LeaveRequests
-                .Where(lr => lr.EmployeeId == employeeId)
-                .ToListAsync();
+        /*   public async Task<List<LeaveRequestDTO>> GetAllLeavesByEmployeeIdAsync(string employeeId)
+           {
+               var leaveRequests = await _dbContext.LeaveRequests
+                   .Where(lr => lr.EmployeeId == employeeId)
+                   .ToListAsync();
 
-            return leaveRequests.Select(lr => new LeaveRequestDTO
-            {
-                Id = lr.Id,
-                RequestComments = lr.RequestComments,
-                StartDate = (DateTime)lr.StartDate,
-                EndDate = (DateTime)lr.EndDate,
-                TotalDays = lr.TotalDays,
-                ManagerId = lr.ManagerId,
-                EmployeeId = lr.EmployeeId,
-                LeaveTypeId = lr.LeaveTypeId,
-                StatusId = lr.StatusId
-            }).ToList();
+               return leaveRequests.Select(lr => new LeaveRequestDTO
+               {
+                   Id = lr.Id,
+                   RequestComments = lr.RequestComments,
+                   StartDate = (DateTime)lr.StartDate,
+                   EndDate = (DateTime)lr.EndDate,
+                   TotalDays = lr.TotalDays,
+                   ManagerId = lr.ManagerId,
+                   EmployeeId = lr.EmployeeId,
+                   LeaveTypeId = lr.LeaveTypeId,
+                   StatusId = lr.StatusId
+               }).ToList();
+           }*/
+
+
+
+
+
+        public List<UserLeaveRequestDTO> GetAllLeavesByEmployeeId(string employeeId)
+        {
+            IQueryable<LeaveRequest> leaveRequestByEmployeeId = _dbContext.LeaveRequests
+            .Include(m => m.Manager)
+             .Include(m => m.Employee)
+            .Include(m => m.LeaveType)
+            .Include(m => m.StatusMaster)
+            .Where(c => c.EmployeeId.Equals(employeeId));
+
+            return leaveRequestByEmployeeId.Select(c => new UserLeaveRequestMapper().Map(c)).ToList();
         }
 
 
