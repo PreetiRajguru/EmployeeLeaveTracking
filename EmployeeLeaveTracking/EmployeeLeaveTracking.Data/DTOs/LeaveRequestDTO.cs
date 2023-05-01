@@ -20,6 +20,7 @@ namespace EmployeeLeaveTracking.Data.DTOs
         public DateTime EndDate { get; set; }
 
 
+        [Required(ErrorMessage = "Total Days is a required field.")]
         public int TotalDays { get; set; }
 
 

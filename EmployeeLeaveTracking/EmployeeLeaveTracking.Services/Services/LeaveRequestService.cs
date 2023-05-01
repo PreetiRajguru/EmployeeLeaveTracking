@@ -2,6 +2,7 @@
 using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Data.Models;
 using EmployeeLeaveTracking.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeLeaveTracking.Services.Services
 {
@@ -26,6 +27,7 @@ namespace EmployeeLeaveTracking.Services.Services
                     LeaveTypeId = lr.LeaveTypeId,
                     StartDate = (DateTime)lr.StartDate,
                     EndDate = (DateTime)lr.EndDate,
+                    TotalDays = lr.TotalDays,
                     StatusId = lr.StatusId
                 })
                 .ToList();
@@ -49,6 +51,7 @@ namespace EmployeeLeaveTracking.Services.Services
                 LeaveTypeId = leaveRequest.LeaveTypeId,
                 StartDate = (DateTime)leaveRequest.StartDate,
                 EndDate = (DateTime)leaveRequest.EndDate,
+                TotalDays = leaveRequest.TotalDays,
                 StatusId = leaveRequest.StatusId
             };
         }
@@ -63,6 +66,7 @@ namespace EmployeeLeaveTracking.Services.Services
                 LeaveTypeId = leaveRequest.LeaveTypeId,
                 StartDate = leaveRequest.StartDate,
                 EndDate = leaveRequest.EndDate,
+                TotalDays = leaveRequest.TotalDays,
                 StatusId = leaveRequest.StatusId
             };
 
@@ -86,9 +90,11 @@ namespace EmployeeLeaveTracking.Services.Services
 
             existingLeaveRequest.RequestComments = leaveRequest.RequestComments;
             existingLeaveRequest.EmployeeId = leaveRequest.EmployeeId;
+            existingLeaveRequest.ManagerId = leaveRequest.ManagerId;
             existingLeaveRequest.LeaveTypeId = leaveRequest.LeaveTypeId;
             existingLeaveRequest.StartDate = leaveRequest.StartDate;
             existingLeaveRequest.EndDate = leaveRequest.EndDate;
+            existingLeaveRequest.TotalDays = leaveRequest.TotalDays;
             existingLeaveRequest.StatusId = leaveRequest.StatusId;
 
             _dbContext.SaveChanges();
@@ -111,6 +117,73 @@ namespace EmployeeLeaveTracking.Services.Services
             _dbContext.SaveChanges();
 
             return true;
+        }
+
+
+
+        public async Task<List<LeaveRequestDTO>> GetAllLeavesByEmployeeIdAsync(string employeeId)
+        {
+            var leaveRequests = await _dbContext.LeaveRequests
+                .Where(lr => lr.EmployeeId == employeeId)
+                .ToListAsync();
+
+            return leaveRequests.Select(lr => new LeaveRequestDTO
+            {
+                Id = lr.Id,
+                RequestComments = lr.RequestComments,
+                StartDate = (DateTime)lr.StartDate,
+                EndDate = (DateTime)lr.EndDate,
+                TotalDays = lr.TotalDays,
+                ManagerId = lr.ManagerId,
+                EmployeeId = lr.EmployeeId,
+                LeaveTypeId = lr.LeaveTypeId,
+                StatusId = lr.StatusId
+            }).ToList();
+        }
+
+
+
+        public async Task<List<LeaveRequestDTO>> GetAllLeavesByStatusIdAsync(int statusId)
+        {
+            var leaveRequests = await _dbContext.LeaveRequests
+                .Where(lr => lr.StatusId == statusId)
+                .ToListAsync();
+
+            return leaveRequests.Select(lr => new LeaveRequestDTO
+            {
+                Id = lr.Id,
+                RequestComments = lr.RequestComments,
+                StartDate = (DateTime)lr.StartDate,
+                EndDate = (DateTime)lr.EndDate,
+                TotalDays = lr.TotalDays,
+                ManagerId = lr.ManagerId,
+                EmployeeId = lr.EmployeeId,
+                LeaveTypeId = lr.LeaveTypeId,
+                StatusId = lr.StatusId
+            }).ToList();
+        }
+
+
+
+        public List<LeaveRequestDTO> GetLeaveRequestsByStatusAndManager(int statusId, string managerId)
+        {
+            var leaveRequests = _dbContext.LeaveRequests
+                .Where(lr => lr.StatusId == statusId && lr.ManagerId == managerId)
+                .Select(lr => new LeaveRequestDTO
+                {
+                    Id = lr.Id,
+                    RequestComments = lr.RequestComments,
+                    StartDate = (DateTime)lr.StartDate,
+                    EndDate = (DateTime)lr.EndDate,
+                    TotalDays = lr.TotalDays,
+                    ManagerId = lr.ManagerId,
+                    EmployeeId = lr.EmployeeId,
+                    LeaveTypeId = lr.LeaveTypeId,
+                    StatusId = lr.StatusId
+                })
+                .ToList();
+
+            return leaveRequests;
         }
     }
 }

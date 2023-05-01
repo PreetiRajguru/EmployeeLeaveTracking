@@ -124,5 +124,33 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+
+        [HttpGet("employee/{employeeId}")]
+        public async Task<ActionResult<List<LeaveRequestDTO>>> GetAllLeavesByEmployeeId(string employeeId)
+        {
+            var leaveRequests = await _leaveRequestService.GetAllLeavesByEmployeeIdAsync(employeeId);
+
+            return Ok(leaveRequests);
+        }
+
+
+        [HttpGet("status/{statusId}")]
+        public async Task<ActionResult<List<LeaveRequestDTO>>> GetAllLeavesByStatusId(int statusId)
+        {
+            var leaveRequests = await _leaveRequestService.GetAllLeavesByStatusIdAsync(statusId);
+
+            return Ok(leaveRequests);
+        }
+
+
+
+        [HttpGet("leaves/{statusId}/{managerId}")]
+        public ActionResult<IEnumerable<LeaveRequestDTO>> GetLeavesByStatusAndManager(int statusId, string managerId)
+        {
+            var leaves =  _leaveRequestService.GetLeaveRequestsByStatusAndManager(statusId, managerId);
+            return Ok(leaves);
+        }
+
     }
 }

@@ -60,6 +60,7 @@ builder.Services.AddScoped<IUserAuthentication, UserAuthenticationService>();
 builder.Services.AddScoped<ILeaveRequest, LeaveRequestService>();
 builder.Services.AddScoped<ILeaveType, LeaveTypeService>();
 builder.Services.AddScoped<IStatusMaster, StatusMasterService>();
+builder.Services.AddScoped<IUser, UserService>();
 
 builder.Services.AddCors(options =>
 {

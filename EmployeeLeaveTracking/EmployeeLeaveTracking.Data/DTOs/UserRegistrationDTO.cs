@@ -13,7 +13,7 @@ namespace EmployeeLeaveTracking.Data.DTOs
         public string? UserName { get; init; }
 
 
-        [Required(ErrorMessage = "Password is required")]
+        /*[Required(ErrorMessage = "Password is required")]*/
         public string? Password { get; init; }
 
         public string? Email { get; init; }

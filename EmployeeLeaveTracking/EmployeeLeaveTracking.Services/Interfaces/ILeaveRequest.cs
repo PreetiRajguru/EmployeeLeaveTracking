@@ -13,5 +13,11 @@ namespace EmployeeLeaveTracking.Services.Interfaces
         LeaveRequestDTO Update(LeaveRequestDTO leaveRequest);
 
         bool Delete(int id);
+
+        Task<List<LeaveRequestDTO>> GetAllLeavesByEmployeeIdAsync(string employeeId);
+
+        Task<List<LeaveRequestDTO>> GetAllLeavesByStatusIdAsync(int statusId);
+
+        List<LeaveRequestDTO> GetLeaveRequestsByStatusAndManager(int statusId, string managerId);
     }
 }
