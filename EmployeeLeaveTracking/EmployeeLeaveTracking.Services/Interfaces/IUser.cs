@@ -6,6 +6,6 @@ namespace EmployeeLeaveTracking.Services.Interfaces
     {
         IEnumerable<UserRegistrationDTO> GetUsersByManagerId(int managerId);
 
-      /*  IEnumerable<UserRegistrationDTO> GetUserDetails(string employeeId);*/
+        IEnumerable<UserRegistrationDTO> GetUserDetails(string employeeId);
     }
 }

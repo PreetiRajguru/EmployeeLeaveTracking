@@ -23,13 +23,13 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
             return Ok(users);
         }
 
-/*
+
         [HttpGet]
         [Route("employee/{employeeId}")]
         public ActionResult<IEnumerable<UserRegistrationDTO>> GetUserDetails(string employeeId)
         {
             var user = _userService.GetUserDetails(employeeId);
             return Ok(user);
-        }*/
+        }
     }
 }

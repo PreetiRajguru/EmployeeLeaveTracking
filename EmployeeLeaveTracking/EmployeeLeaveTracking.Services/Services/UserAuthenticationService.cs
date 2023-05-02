@@ -17,12 +17,14 @@ public sealed class UserAuthenticationService : IUserAuthentication
     private readonly IConfiguration _configuration;
     private readonly IMapper _mapper;
     private User? _user;
+    private readonly RoleManager<IdentityRole> _roleManager;
 
-    public UserAuthenticationService(UserManager<User> userManager, IConfiguration configuration, IMapper mapper)
+    public UserAuthenticationService(UserManager<User> userManager, IConfiguration configuration, IMapper mapper, RoleManager<IdentityRole> roleManager)
     {
         _userManager = userManager;
         _configuration = configuration;
-        _mapper = mapper;   
+        _mapper = mapper;
+        _roleManager = roleManager;
     }
 
     public async Task<IdentityResult> RegisterUserAsync(UserRegistrationDTO userRegistration)
@@ -30,7 +32,30 @@ public sealed class UserAuthenticationService : IUserAuthentication
         var user = _mapper.Map<User>(userRegistration);
         var result = await _userManager.CreateAsync(user, userRegistration.Password);
 
-        await _userManager.AddToRoleAsync(user, "Manager");
+        if (result.Succeeded)
+        {
+            if (!await _roleManager.RoleExistsAsync("Manager"))
+            {
+                var managerRole = new IdentityRole("Manager");
+                await _roleManager.CreateAsync(managerRole);
+            }
+
+            if (!await _roleManager.RoleExistsAsync("Employee"))
+            {
+                var employeeRole = new IdentityRole("Employee");
+                await _roleManager.CreateAsync(employeeRole);
+            }
+
+            if (userRegistration.ManagerId == 0)
+            {
+                await _userManager.AddToRoleAsync(user, "Manager");
+            }
+            else
+            {
+                await _userManager.AddToRoleAsync(user, "Employee");
+            }
+        }
+
         return result;
     }
 

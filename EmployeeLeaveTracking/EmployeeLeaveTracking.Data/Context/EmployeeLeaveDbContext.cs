@@ -72,7 +72,7 @@ namespace EmployeeLeaveTracking.Data.Context
         {
             PasswordHasher<User> passwordHasher = new();
 
-            User user = new User()
+            User user = new()
             {
                 Id = "1",
                 FirstName = "Sarika",
