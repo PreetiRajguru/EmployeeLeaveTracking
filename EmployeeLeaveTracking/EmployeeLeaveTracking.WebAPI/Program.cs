@@ -21,8 +21,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-
+ 
+   
 builder.Services.AddIdentity<User, IdentityRole>(o =>
 {
     o.Password.RequireDigit = false;
@@ -32,7 +32,7 @@ builder.Services.AddIdentity<User, IdentityRole>(o =>
     o.User.RequireUniqueEmail = true;
 })
        .AddEntityFrameworkStores<EmployeeLeaveDbContext>()
-       .AddDefaultTokenProviders();
+       .AddDefaultTokenProviders().AddRoles<IdentityRole>();
 
 builder.Services.AddAuthentication();
 /*builder.Services.ConfigureIdentity();

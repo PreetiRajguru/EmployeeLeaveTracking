@@ -120,32 +120,6 @@ namespace EmployeeLeaveTracking.Services.Services
             return true;
         }
 
-
-
-        /*   public async Task<List<LeaveRequestDTO>> GetAllLeavesByEmployeeIdAsync(string employeeId)
-           {
-               var leaveRequests = await _dbContext.LeaveRequests
-                   .Where(lr => lr.EmployeeId == employeeId)
-                   .ToListAsync();
-
-               return leaveRequests.Select(lr => new LeaveRequestDTO
-               {
-                   Id = lr.Id,
-                   RequestComments = lr.RequestComments,
-                   StartDate = (DateTime)lr.StartDate,
-                   EndDate = (DateTime)lr.EndDate,
-                   TotalDays = lr.TotalDays,
-                   ManagerId = lr.ManagerId,
-                   EmployeeId = lr.EmployeeId,
-                   LeaveTypeId = lr.LeaveTypeId,
-                   StatusId = lr.StatusId
-               }).ToList();
-           }*/
-
-
-
-
-
         public List<UserLeaveRequestDTO> GetAllLeavesByEmployeeId(string employeeId)
         {
             IQueryable<LeaveRequest> leaveRequestByEmployeeId = _dbContext.LeaveRequests

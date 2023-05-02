@@ -51,20 +51,6 @@ namespace EmployeeLeaveTracking.Data.Context
            .HasForeignKey(lb => lb.EmployeeId)
            .OnDelete(DeleteBehavior.NoAction);
 
-
-            /*  modelBuilder.Entity<LeaveRequest>()
-                  .HasOne(u => u.Manager)
-                  .WithMany()
-                  .HasForeignKey(u => u.Manager_Id)
-                  .OnDelete(DeleteBehavior.Restrict);
-
-              modelBuilder.Entity<LeaveRequest>()
-                  .HasOne(u => u.Employee)
-                  .WithMany()
-                  .HasForeignKey(u => u.EmployeeId)
-                  .OnDelete(DeleteBehavior.Restrict);*/
-
-
             modelBuilder.Entity<LeaveRequest>()
            .HasOne(lb => lb.LeaveType)
            .WithMany(lt => lt.LeaveRequests)
@@ -75,12 +61,6 @@ namespace EmployeeLeaveTracking.Data.Context
           .HasOne(lb => lb.StatusMaster)
           .WithMany(lt => lt.LeaveRequests)
           .HasForeignKey(lb => lb.StatusId);
-
-
-            /*modelBuilder.Entity<User>()
-         .HasOne(lb => lb.Manager)
-         .WithMany(lt => lt.Users)
-         .HasForeignKey(lb => lb.ManagerId);*/
         }
     }
 }

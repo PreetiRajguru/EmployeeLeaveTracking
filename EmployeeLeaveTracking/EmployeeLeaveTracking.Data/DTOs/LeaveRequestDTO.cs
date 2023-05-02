@@ -11,6 +11,7 @@ namespace EmployeeLeaveTracking.Data.DTOs
         public string? RequestComments { get; set; }
 
 
+
         [Required(ErrorMessage = "Start date is a required field.")]
         public DateTime StartDate { get; set; }
 
@@ -20,12 +21,15 @@ namespace EmployeeLeaveTracking.Data.DTOs
         public DateTime EndDate { get; set; }
 
 
+
         [Required(ErrorMessage = "Total Days is a required field.")]
         public int TotalDays { get; set; }
 
 
+
         [Required(ErrorMessage = "Manager Id is a required field.")]
         public string? ManagerId { get; set; }
+
 
 
         [Required(ErrorMessage = "Employee Id is a required field.")]

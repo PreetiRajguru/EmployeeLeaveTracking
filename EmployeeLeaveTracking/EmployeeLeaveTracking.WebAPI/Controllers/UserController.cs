@@ -1,6 +1,5 @@
 ﻿using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Services.Interfaces;
-using EmployeeLeaveTracking.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeLeaveTracking.WebAPI.Controllers
@@ -17,7 +16,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpGet]
-        [Route("manager/{managerId}")]
+        [Route("employees/{managerId}")]
         public  ActionResult<IEnumerable<UserRegistrationDTO>> GetUsersByManagerId(int managerId)
         {
             var users =  _userService.GetUsersByManagerId(managerId);
@@ -25,7 +24,12 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
 
-
-
+        [HttpGet]
+        [Route("employee/{employeeId}")]
+        public ActionResult<IEnumerable<UserRegistrationDTO>> GetUserDetails(string employeeId)
+        {
+            var user = _userService.GetUserDetails(employeeId);
+            return Ok(user);
+        }
     }
 }

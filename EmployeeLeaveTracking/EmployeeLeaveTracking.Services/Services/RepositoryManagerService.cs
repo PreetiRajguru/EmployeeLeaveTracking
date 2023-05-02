@@ -11,10 +11,6 @@ public class RepositoryManagerService : IRepository
 {
     private EmployeeLeaveDbContext _repositoryContext;
 
-    /*private ITeacherRepository _teacherRepository;
-    private IStudentRepository _studentRepository;*/
-
-
     private IUserAuthentication _userAuthenticationRepository;
     private UserManager<User> _userManager;
     private IMapper _mapper;
@@ -28,7 +24,6 @@ public class RepositoryManagerService : IRepository
         _configuration = configuration; 
     }
 
- 
     public IUserAuthentication UserAuthentication
     {
         get
@@ -39,27 +34,4 @@ public class RepositoryManagerService : IRepository
         }
     }
     public Task SaveAsync() => _repositoryContext.SaveChangesAsync();
-
-
-
-
-    /* public ITeacherRepository Teacher
-   {
-       get
-       {
-           if (_teacherRepository is null)
-               _teacherRepository = new TeacherRepository( _repositoryContext);
-           return _teacherRepository;
-       }
-   }
-   public IStudentRepository Student
-   {
-       get
-       {
-           if (_studentRepository is null)
-               _studentRepository = new StudentRepository(_repositoryContext);
-           return _studentRepository;
-       }
-   }*/
-
 }

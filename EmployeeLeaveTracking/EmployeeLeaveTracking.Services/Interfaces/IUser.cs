@@ -1,9 +1,4 @@
 ﻿using EmployeeLeaveTracking.Data.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace EmployeeLeaveTracking.Services.Interfaces
 {
@@ -11,5 +6,6 @@ namespace EmployeeLeaveTracking.Services.Interfaces
     {
         IEnumerable<UserRegistrationDTO> GetUsersByManagerId(int managerId);
 
+        IEnumerable<UserRegistrationDTO> GetUserDetails(string employeeId);
     }
 }

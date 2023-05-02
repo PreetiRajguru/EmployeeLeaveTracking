@@ -46,7 +46,7 @@ namespace StudentTeacher.Controllers
 
                 return !await _repository.UserAuthentication.ValidateUserAsync(user)
                     ? Unauthorized()
-                    : Ok(new { Token = await _repository.UserAuthentication.CreateTokenAsync() });
+                    : Ok(new { Token = await _repository.UserAuthentication.CreateTokenAsync() , Role = _repository.UserAuthentication.GetRoles() });
             }
             catch (Exception ex)
             {

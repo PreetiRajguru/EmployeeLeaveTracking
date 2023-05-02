@@ -12,12 +12,12 @@
 
         public int TotalDays { get; set; }
 
-        public string ManagerName { get; set; }
+        public string? ManagerName { get; set; }
 
-        public string EmployeeName { get; set; }
+        public string? EmployeeName { get; set; }
 
-        public string LeaveTypeName { get; set; }
+        public string? LeaveTypeName { get; set; }
 
-        public string StatusName { get; set; }
+        public string? StatusName { get; set; }
     }
 }

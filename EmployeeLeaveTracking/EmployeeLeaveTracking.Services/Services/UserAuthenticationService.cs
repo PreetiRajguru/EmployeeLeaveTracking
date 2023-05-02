@@ -59,7 +59,8 @@ public sealed class UserAuthenticationService : IUserAuthentication
     {
         var claims = new List<Claim>
         {
-            new Claim(ClaimTypes.Name, _user.UserName)
+            new Claim(ClaimTypes.Name, _user.UserName),
+            new Claim(ClaimTypes.Sid, _user.Id)
         };
         var roles = await _userManager.GetRolesAsync(_user);
         foreach (var role in roles)
@@ -68,6 +69,16 @@ public sealed class UserAuthenticationService : IUserAuthentication
         }
         return claims;
     }
+
+
+    //get role
+    public Task<IList<string>> GetRoles()
+    {
+        return _userManager.GetRolesAsync(_user); 
+    }
+    
+
+
 
     private JwtSecurityToken GenerateTokenOptions(SigningCredentials signingCredentials, List<Claim> claims)
     {
