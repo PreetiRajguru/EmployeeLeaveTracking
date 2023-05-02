@@ -1,0 +1,51 @@
+.App-link {
+  color: #61dafb;
+}
+
+.loginRoot {
+  padding: '1.5em 3em';
+  width: '330px';
+  margin: 'auto';
+  margin-top: '16vH';
+  /* [theme.breakpoints.down('xs')]: {
+    width: 'auto';
+    margin: '0.5em 0.5em';
+    padding: '1em';
+  }; */
+};
+form {
+  margin-top: '3em';
+}
+inputField {
+  margin-bottom: '1.5em';
+}
+submitButton {
+  margin-top: '0.5em';
+  height: '3.1em';
+  font-size: '1em';
+  font-weight: 500;
+}
+titleLogo {
+  display: 'block';
+  width: '7em';
+  margin: '0 auto';
+  /* [theme.breakpoints.down('xs')]: {
+    width: '6em';
+  }; */
+}
+footerText {
+  margin-top: '1em';
+  text-align: 'center';
+}
+link {
+  cursor: 'pointer';
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
