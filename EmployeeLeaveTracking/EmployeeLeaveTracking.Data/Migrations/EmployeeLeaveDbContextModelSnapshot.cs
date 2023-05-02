@@ -33,7 +33,6 @@ namespace EmployeeLeaveTracking.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("EmployeeId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime?>("EndDate")
@@ -46,7 +45,6 @@ namespace EmployeeLeaveTracking.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("ManagerId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int?>("ModifiedBy")
@@ -233,18 +231,22 @@ namespace EmployeeLeaveTracking.Data.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a530d74c-08be-47ab-a1f6-3fb947dd6627",
-                            CreatedDate = new DateTime(2023, 4, 30, 21, 51, 45, 848, DateTimeKind.Utc).AddTicks(5845),
+                            ConcurrencyStamp = "1200206b-6f46-4f51-a9a3-49a0bbe1a197",
+                            CreatedDate = new DateTime(2023, 5, 2, 18, 35, 38, 5, DateTimeKind.Utc).AddTicks(9280),
+                            Email = "Sarika@gmail.com",
                             EmailConfirmed = false,
                             FirstName = "Sarika",
                             IsDeleted = false,
                             LastName = "Bhosale",
                             LockoutEnabled = false,
                             ManagerId = 0,
-                            ModifiedDate = new DateTime(2023, 4, 30, 21, 51, 45, 848, DateTimeKind.Utc).AddTicks(7365),
+                            ModifiedDate = new DateTime(2023, 5, 2, 18, 35, 38, 5, DateTimeKind.Utc).AddTicks(9848),
+                            PasswordHash = "AQAAAAEAACcQAAAAEA40N85mLJLeD55fII4BY/BmH8mExCA9nmZ6v8HWbPu465DF2g447vt4rgRQ9D6ZkQ==",
+                            PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b4d7ebba-5185-4080-9cca-e7a153826636",
-                            TwoFactorEnabled = false
+                            SecurityStamp = "67386cc6-4f1d-48a0-88df-d8641fc8018f",
+                            TwoFactorEnabled = false,
+                            UserName = "sarika"
                         });
                 });
 
@@ -273,6 +275,22 @@ namespace EmployeeLeaveTracking.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1",
+                            ConcurrencyStamp = "1",
+                            Name = "Manager",
+                            NormalizedName = "Manager"
+                        },
+                        new
+                        {
+                            Id = "2",
+                            ConcurrencyStamp = "2",
+                            Name = "Employee",
+                            NormalizedName = "Employee"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -358,6 +376,13 @@ namespace EmployeeLeaveTracking.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "1",
+                            RoleId = "1"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -384,8 +409,7 @@ namespace EmployeeLeaveTracking.Data.Migrations
                     b.HasOne("EmployeeLeaveTracking.Data.Models.User", "Employee")
                         .WithMany("EmployeeLeaveRequests")
                         .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("EmployeeLeaveTracking.Data.Models.LeaveType", "LeaveType")
                         .WithMany("LeaveRequests")
@@ -396,8 +420,7 @@ namespace EmployeeLeaveTracking.Data.Migrations
                     b.HasOne("EmployeeLeaveTracking.Data.Models.User", "Manager")
                         .WithMany("ManagerLeaveRequests")
                         .HasForeignKey("ManagerId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("EmployeeLeaveTracking.Data.Models.StatusMaster", "StatusMaster")
                         .WithMany("LeaveRequests")

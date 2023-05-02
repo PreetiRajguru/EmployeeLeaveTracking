@@ -29,13 +29,15 @@ public sealed class UserAuthenticationService : IUserAuthentication
     {
         var user = _mapper.Map<User>(userRegistration);
         var result = await _userManager.CreateAsync(user, userRegistration.Password);
+
+        await _userManager.AddToRoleAsync(user, "Manager");
         return result;
     }
 
     public async Task<bool> ValidateUserAsync(UserLoginDTO loginDto)
     {
         _user = await _userManager.FindByNameAsync(loginDto.UserName);
-        var result = _user != null && await _userManager.CheckPasswordAsync(_user, loginDto.Password);
+        bool result = _user != null && await _userManager.CheckPasswordAsync(_user, loginDto.Password);
         return result;
     }
 
@@ -49,8 +51,8 @@ public sealed class UserAuthenticationService : IUserAuthentication
 
     private SigningCredentials GetSigningCredentials()
     {
-        var jwtConfig = _configuration.GetSection("jwtConfig");
-        var key = Encoding.UTF8.GetBytes(jwtConfig["Secret"]);
+        var jwtConfig = _configuration.GetSection("JwtConfig");
+        var key = Encoding.UTF8.GetBytes(jwtConfig["secret"]);
         var secret = new SymmetricSecurityKey(key);
         return new SigningCredentials(secret, SecurityAlgorithms.HmacSha256);
     }
@@ -70,15 +72,10 @@ public sealed class UserAuthenticationService : IUserAuthentication
         return claims;
     }
 
-
-    //get role
     public Task<IList<string>> GetRoles()
     {
         return _userManager.GetRolesAsync(_user); 
     }
-    
-
-
 
     private JwtSecurityToken GenerateTokenOptions(SigningCredentials signingCredentials, List<Claim> claims)
     {

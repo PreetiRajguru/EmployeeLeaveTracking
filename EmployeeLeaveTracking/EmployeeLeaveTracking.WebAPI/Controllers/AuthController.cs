@@ -34,6 +34,8 @@ namespace StudentTeacher.Controllers
             }
         }
 
+
+       /* [Authorize]*/
         [HttpPost("login")]
         public async Task<IActionResult> Authenticate([FromBody] UserLoginDTO user)
         {
@@ -46,7 +48,7 @@ namespace StudentTeacher.Controllers
 
                 return !await _repository.UserAuthentication.ValidateUserAsync(user)
                     ? Unauthorized()
-                    : Ok(new { Token = await _repository.UserAuthentication.CreateTokenAsync() , Role = _repository.UserAuthentication.GetRoles() });
+                    : Ok(new { Token = await _repository.UserAuthentication.CreateTokenAsync() , Role = _repository.UserAuthentication.GetRoles().Result });
             }
             catch (Exception ex)
             {

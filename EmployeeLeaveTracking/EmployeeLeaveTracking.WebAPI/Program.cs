@@ -17,31 +17,19 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
  
-   
-builder.Services.AddIdentity<User, IdentityRole>(o =>
-{
-    o.Password.RequireDigit = false;
-    o.Password.RequireLowercase = false;
-    o.Password.RequireUppercase = false;
-    o.Password.RequireNonAlphanumeric = false;
-    o.User.RequireUniqueEmail = true;
-})
+builder.Services.AddIdentity<User, IdentityRole>()
        .AddEntityFrameworkStores<EmployeeLeaveDbContext>()
-       .AddDefaultTokenProviders().AddRoles<IdentityRole>();
+       .AddDefaultTokenProviders().AddRoles<IdentityRole>(); ;
 
-builder.Services.AddAuthentication();
-/*builder.Services.ConfigureIdentity();
-builder.Services.ConfigureJWT(builder.Configuration);*/
+ 
 
 builder.Services.AddDbContext<EmployeeLeaveDbContext>(options =>
 
 options.UseSqlServer(builder.Configuration.GetConnectionString("ConnStr")));
-
 
 builder.Services.Configure<ApiBehaviorOptions>(options => { options.SuppressModelStateInvalidFilter = true; });
 var mapperConfig = new MapperConfiguration(map =>
@@ -53,7 +41,7 @@ var mapperConfig = new MapperConfiguration(map =>
 builder.Services.AddSingleton(mapperConfig.CreateMapper());
 
 
-
+builder.Services.AddControllers();
 builder.Services.AddScoped<EmployeeLeaveTracking.Services.Interfaces.ILogger, LoggerService>();
 builder.Services.AddScoped<IRepository, RepositoryManagerService>();
 builder.Services.AddScoped<IUserAuthentication, UserAuthenticationService>();
@@ -73,16 +61,18 @@ builder.Services.AddCors(options =>
 });
 
 
-
-var jwtConfig = builder.Configuration.GetSection("jwtConfig");
+var jwtConfig = builder.Configuration.GetSection("JwtConfig");
 var secretKey = jwtConfig["secret"];
 builder.Services.AddAuthentication(opt =>
 {
     opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    opt.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
 })
 .AddJwtBearer(options =>
 {
+    options.SaveToken = true;
+    options.RequireHttpsMetadata = false;
     options.TokenValidationParameters = new TokenValidationParameters
     {
         ValidateIssuer = true,
@@ -145,8 +135,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
-
+app.UseHttpsRedirection(); 
 
 app.UseAuthentication();
 

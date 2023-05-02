@@ -15,13 +15,12 @@ namespace EmployeeLeaveTracking.Services.Services
             _dbContext = dbContext;
         }
 
-        public  IEnumerable<UserRegistrationDTO> GetUsersByManagerId(int managerId)
+        public IEnumerable<UserRegistrationDTO> GetUsersByManagerId(int managerId)
         {
-            var users =  _dbContext.Users
+            var users = _dbContext.Users
                 .Where(u => u.ManagerId == managerId)
                 .Select(u => new UserRegistrationDTO
                 {
-                    Id = u.Id,
                     FirstName = u.FirstName,
                     LastName = u.LastName,
                     UserName = u.UserName,
@@ -33,22 +32,22 @@ namespace EmployeeLeaveTracking.Services.Services
             return users;
         }
 
-        public IEnumerable<UserRegistrationDTO> GetUserDetails(string employeeId)
-        {
-            var user = _dbContext.Users
-                .Where(u => u.Id.Equals(employeeId))
-                .Select(u => new UserRegistrationDTO
-                {
-                    Id = u.Id,
-                    FirstName = u.FirstName,
-                    LastName = u.LastName,
-                    UserName = u.UserName,
-                    Email = u.Email,
-                    PhoneNumber = u.PhoneNumber,
-                    ManagerId = u.ManagerId
-                });
+        /*  public IEnumerable<UserRegistrationDTO> GetUserDetails(string employeeId)
+          {
+              var user = _dbContext.Users
+                  .Where(u => u.Id.Equals(employeeId))
+                  .Select(u => new UserRegistrationDTO
+                  {
+                      Id = u.Id,
+                      FirstName = u.FirstName,
+                      LastName = u.LastName,
+                      UserName = u.UserName,
+                      Email = u.Email,
+                      PhoneNumber = u.PhoneNumber,
+                      ManagerId = u.ManagerId
+                  });
 
-            return user;
-        }
+              return user;
+          }*/
     }
 }

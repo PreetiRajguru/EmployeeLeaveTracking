@@ -211,8 +211,8 @@ namespace EmployeeLeaveTracking.Data.Migrations
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ModifiedBy = table.Column<int>(type: "int", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: true),
-                    ManagerId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ManagerId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     LeaveTypeId = table.Column<int>(type: "int", nullable: false),
                     StatusId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -244,9 +244,24 @@ namespace EmployeeLeaveTracking.Data.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "1", "1", "Manager", "Manager" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[] { "2", "2", "Employee", "Employee" });
+
+            migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "CreatedBy", "CreatedDate", "Email", "EmailConfirmed", "FirstName", "IsDeleted", "LastName", "LockoutEnabled", "LockoutEnd", "ManagerId", "ModifiedBy", "ModifiedDate", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "1", 0, "a530d74c-08be-47ab-a1f6-3fb947dd6627", null, new DateTime(2023, 4, 30, 21, 51, 45, 848, DateTimeKind.Utc).AddTicks(5845), null, false, "Sarika", false, "Bhosale", false, null, 0, null, new DateTime(2023, 4, 30, 21, 51, 45, 848, DateTimeKind.Utc).AddTicks(7365), null, null, null, null, false, "b4d7ebba-5185-4080-9cca-e7a153826636", false, null });
+                values: new object[] { "1", 0, "1200206b-6f46-4f51-a9a3-49a0bbe1a197", null, new DateTime(2023, 5, 2, 18, 35, 38, 5, DateTimeKind.Utc).AddTicks(9280), "Sarika@gmail.com", false, "Sarika", false, "Bhosale", false, null, 0, null, new DateTime(2023, 5, 2, 18, 35, 38, 5, DateTimeKind.Utc).AddTicks(9848), null, null, "AQAAAAEAACcQAAAAEA40N85mLJLeD55fII4BY/BmH8mExCA9nmZ6v8HWbPu465DF2g447vt4rgRQ9D6ZkQ==", "1234567890", false, "67386cc6-4f1d-48a0-88df-d8641fc8018f", false, "sarika" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { "1", "1" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
