@@ -35,9 +35,9 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const rows = [
     {
-        firstname: "Aashish",
+        firstname: "Preeti",
         lastname: "Rajguru",
-        email: "aashish@gmail.com",
+        email: "preeti@gmail.com",
         status: "Approved"
     }
 ];
@@ -156,7 +156,7 @@ const ViewEmployeeDetails = () => {
                             <Button variant="outlined" onClick={() => navigate("/viewempdetails")}>View Details</Button>
                         </StyledTableCell> */}
                         </StyledTableRow>
-                    ))}
+                    ))} 
                 </TableBody>
             </Table>
         </TableContainer>
@@ -166,3 +166,6 @@ const ViewEmployeeDetails = () => {
 }
 
 export default ViewEmployeeDetails
+
+
+// "No Leaves Taken By This Employee" 

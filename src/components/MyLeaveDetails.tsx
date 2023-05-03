@@ -40,9 +40,9 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const rows = [
     {
-        firstname: "Aashish",
+        firstname: "Preeti",
         lastname: "Rajguru",
-        email: "aashish@gmail.com"
+        email: "preeti@gmail.com"
     }
 ];
 

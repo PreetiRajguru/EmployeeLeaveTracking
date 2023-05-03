@@ -40,7 +40,7 @@ export default function AddEmployee() {
       axios.post('/api/Auth/register', newData)
         .then((response) => {
           console.log(response.data);
-          alert("Employee Added Successfully.")
+          alert("Employee Added Successfully.");
         });
     }
     catch (error: any) {

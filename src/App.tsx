@@ -11,6 +11,7 @@ import ApplyForLeaves from './components/ApplyForLeaves';
 import About from './components/About'
 import MyLeaveDetails from './components/MyLeaveDetails'
 import axios from 'axios'
+import LeaveBalance from './components/LeaveBalance';
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
         <Route path="/viewempdetails/:empId" element={<ViewEmployeeDetails />} />
         <Route path="/applyforleaves" element={<ApplyForLeaves />} />
         <Route path="/leavedetails" element={<MyLeaveDetails />} />
+        {/* <Route path="/leavebalance" element={<LeaveBalance/>}/> */}
       </Routes>
       
       </BrowserRouter>

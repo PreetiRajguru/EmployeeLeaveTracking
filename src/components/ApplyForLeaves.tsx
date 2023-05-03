@@ -45,8 +45,9 @@ function BasicCard() {
 }
 
 const ApplyForLeaves = () => {
+  const navigate = useNavigate();
   const [leaveTypeDetails, setLeaveTypeDetails] = useState({
-    managerId: "1",
+    managerId: "7f8c62e3-c231-41b7-b401-c7915e8fb705",
     statusId: 1,
     employeeId: "",
     requestComments: "",
@@ -76,13 +77,14 @@ const ApplyForLeaves = () => {
       axios.post('/api/LeaveRequest', newLeaveTypeDetails)
         .then((response) => {
           console.log(response.data);
+          alert("Leave Request Sent Succesfully");
         });
     }
     catch (error: any) {
       alert(error.response.data.message);
     }
     setLeaveTypeDetails({
-      managerId: "1",
+      managerId: "7f8c62e3-c231-41b7-b401-c7915e8fb705",
       statusId: 1,
       employeeId: "",
       requestComments: "",
@@ -241,7 +243,7 @@ const ApplyForLeaves = () => {
           </Button>
           <Button
             variant="contained"
-            //   onClick={handleBackButton}
+            // onClick={handleBackButton}
             sx={{ mt: 2 }}
           >
             Back
