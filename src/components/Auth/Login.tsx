@@ -8,8 +8,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-// import { toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import { FormControlLabel, Checkbox } from '@mui/material';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -31,19 +30,19 @@ export default function Login() {
       localStorage.setItem("token", JSON.stringify(response.data.token));
       localStorage.setItem("role", JSON.stringify(response.data.role));
 
-      // if (response.data.role[0] == "Manager") {
-      //   navigate(`/addemployee`);
-      // }
-      // if (response.data.role[0] == "employee") {
-      //   navigate(`/applyforleaves`);
-      // } else {
-      //   alert();
-      // }
-      response.data.role[0] == "Manager" ? navigate(`/addemployee`) : navigate(`/applyforleaves`);
-          
+      if (response.data.role[0] == "Manager") {
+        navigate(`/addemployee`);
+        alert("Login Successfull");
+      }
+      else if (response.data.role[0] == "Employee") {
+        navigate(`/applyforleaves`);
+        alert("Login Successfull");
+      } 
+      // response.data.role[0] == "Manager" ? navigate(`/addemployee`) : navigate(`/applyforleaves`);  
     }
     catch (error: any) {
-      alert(error.response.data.message);
+      // alert("User not Authorized " + error.response.data.message);
+      alert("User not Authorized ");
     }
     setData({
       username: "",
@@ -88,7 +87,7 @@ export default function Login() {
             label="Username"
             name="username"
             value={data.username}
-            autoComplete="username"
+            autoComplete='off'
             autoFocus
             onChange={handleInputChange}
           />
@@ -101,7 +100,7 @@ export default function Login() {
             label="Password"
             type="password"
             id="password"
-            autoComplete="current-password"
+            autoComplete='off'
             onChange={handleInputChange}
           />
           {/* <FormControlLabel

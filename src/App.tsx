@@ -4,14 +4,13 @@ import './App.css';
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
 import Navigation from './components/Navigation';
-import ViewEmployess from './components/ViewEmployees';
-import ViewEmployeeDetails from './components/ViewEmployeeDetails';
+import ViewEmployess from './components/Manager/ViewEmployees';
+import ViewEmployeeDetails from './components/Manager/ViewEmployeeDetails';
 import AddEmployee from './components/Manager/AddEmployee';
-import ApplyForLeaves from './components/ApplyForLeaves';
+import ApplyForLeaves from './components/Employee/ApplyForLeaves';
 import About from './components/About'
-import MyLeaveDetails from './components/MyLeaveDetails'
+import MyLeaveDetails from './components/Employee/MyLeaveDetails'
 import axios from 'axios'
-import LeaveBalance from './components/LeaveBalance';
 
 function App() {
 

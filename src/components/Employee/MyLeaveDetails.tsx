@@ -78,7 +78,7 @@ export default function CustomizedTables() {
     useEffect(() => {
         const fetchLeaveDetails = async () => {
             try {
-                const response = await axios.get("/api/LeaveRequest/employee/b1618c3d-5d6d-4342-9eec-87df69439c0e");
+                const response = await axios.get("/api/LeaveRequest/employee/8922e768-ed48-43ec-8740-9201c0fdae46");
                 setData(response.data);
                 console.log(data)
             } catch (error) {

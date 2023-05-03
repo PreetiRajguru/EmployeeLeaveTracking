@@ -253,5 +253,4 @@ const ApplyForLeaves = () => {
     </Box>
   );
 };
-
 export default ApplyForLeaves;
