@@ -10,7 +10,7 @@ namespace EmployeeLeaveTracking.Data.Models
 
         public string? LastName { get; set; }
 
-        public int ManagerId { get; set; }
+        public string ManagerId { get; set; }
 
         public DateTime? CreatedDate { get; set; }
 

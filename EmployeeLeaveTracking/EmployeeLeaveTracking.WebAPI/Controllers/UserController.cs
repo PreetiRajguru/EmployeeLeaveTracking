@@ -17,7 +17,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 
         [HttpGet]
         [Route("employees/{managerId}")]
-        public  ActionResult<IEnumerable<UserRegistrationDTO>> GetUsersByManagerId(int managerId)
+        public  ActionResult<IEnumerable<UserRegistrationDTO>> GetUsersByManagerId(string managerId)
         {
             var users =  _userService.GetUsersByManagerId(managerId);
             return Ok(users);

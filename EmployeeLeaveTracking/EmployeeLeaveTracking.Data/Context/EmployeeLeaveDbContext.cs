@@ -36,9 +36,11 @@ namespace EmployeeLeaveTracking.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            this.SeedUsers(modelBuilder);
+            /*this.SeedUsers(modelBuilder);*/
             this.SeedRoles(modelBuilder);
-            this.SeedUserRoles(modelBuilder);
+           /* this.SeedUserRoles(modelBuilder);*/
+
+
             /* modelBuilder.ApplyConfiguration(new UserData());*/
 
 
@@ -68,7 +70,7 @@ namespace EmployeeLeaveTracking.Data.Context
         }
 
 
-        private void SeedUsers(ModelBuilder builder)
+        /*private void SeedUsers(ModelBuilder builder)
         {
             PasswordHasher<User> passwordHasher = new();
 
@@ -88,7 +90,7 @@ namespace EmployeeLeaveTracking.Data.Context
 
             builder.Entity<User>().HasData(user);
         }
-
+*/
         private void SeedRoles(ModelBuilder builder)
         {
             builder.Entity<IdentityRole>().HasData(
@@ -97,11 +99,11 @@ namespace EmployeeLeaveTracking.Data.Context
                 );
         }
 
-        private void SeedUserRoles(ModelBuilder builder)
+        /*private void SeedUserRoles(ModelBuilder builder)
         {
             builder.Entity<IdentityUserRole<string>>().HasData(
                 new IdentityUserRole<string>() { RoleId = "1", UserId = "1" }
                 );
-        }
+        }*/
     }
 }

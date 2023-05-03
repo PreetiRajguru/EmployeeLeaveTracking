@@ -22,7 +22,7 @@ namespace EmployeeLeaveTracking.Data.DTOs
 
         public string? PhoneNumber { get; init; }
 
-        public int ManagerId { get; init; }
+        public string ManagerId { get; init; }
 
        
     }

@@ -15,10 +15,10 @@ namespace EmployeeLeaveTracking.Services.Services
             _dbContext = dbContext;
         }
 
-        public IEnumerable<UserRegistrationDTO> GetUsersByManagerId(int managerId)
+        public IEnumerable<UserRegistrationDTO> GetUsersByManagerId(string managerId)
         {
             var users = _dbContext.Users
-                .Where(u => u.ManagerId == managerId)
+                .Where(u => u.ManagerId.Equals(managerId))
                 .Select(u => new UserRegistrationDTO
                 {
                     FirstName = u.FirstName,

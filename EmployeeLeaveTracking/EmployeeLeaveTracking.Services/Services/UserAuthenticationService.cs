@@ -36,7 +36,7 @@ public sealed class UserAuthenticationService : IUserAuthentication
         {
             if (!await _roleManager.RoleExistsAsync("Manager"))
             {
-                var managerRole = new IdentityRole("Manager");
+              var managerRole = new IdentityRole("Manager");
                 await _roleManager.CreateAsync(managerRole);
             }
 
@@ -46,7 +46,7 @@ public sealed class UserAuthenticationService : IUserAuthentication
                 await _roleManager.CreateAsync(employeeRole);
             }
 
-            if (userRegistration.ManagerId == 0)
+            if (userRegistration.ManagerId == "")
             {
                 await _userManager.AddToRoleAsync(user, "Manager");
             }
@@ -99,7 +99,7 @@ public sealed class UserAuthenticationService : IUserAuthentication
 
     public Task<IList<string>> GetRoles()
     {
-        return _userManager.GetRolesAsync(_user); 
+        return _userManager.GetRolesAsync(_user);
     }
 
     private JwtSecurityToken GenerateTokenOptions(SigningCredentials signingCredentials, List<Claim> claims)
