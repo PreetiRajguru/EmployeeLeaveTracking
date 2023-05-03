@@ -26,5 +26,9 @@ namespace EmployeeLeaveTracking.Services.Interfaces
         Task<LeaveRequest> GetLeaveById(int id);
 
         Task<int> UpdateLeaveRequestStatus(int id, int statusId);
+
+        double LeaveBalance(string employeeId);
+
+
     }
 }

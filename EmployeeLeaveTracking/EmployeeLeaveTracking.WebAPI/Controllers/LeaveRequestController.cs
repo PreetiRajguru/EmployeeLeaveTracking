@@ -1,5 +1,6 @@
 ﻿using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Services.Interfaces;
+using EmployeeLeaveTracking.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeLeaveTracking.WebAPI.Controllers
@@ -170,12 +171,24 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         {
             int result = await _leaveRequestService.UpdateLeaveRequestStatus(id, statusId);
 
-           /* if (result)
-            {
-                return NoContent();
-            }
-*/
+            /* if (result)
+             {
+                 return NoContent();
+             }
+ */
             return result;
         }
-    }
+
+
+
+
+        [HttpGet("balance/{employeeId}")]
+        public IActionResult LeaveBalance(string employeeId)
+        {
+            double balance = _leaveRequestService
+                .LeaveBalance(employeeId);
+
+            return Ok(balance);
+        }
+    } 
 }

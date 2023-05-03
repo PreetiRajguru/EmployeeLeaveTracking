@@ -12,6 +12,7 @@ public interface IUserAuthentication
     Task<string> CreateTokenAsync();
 
     Task<IList<string>> GetRoles();
+    public string GetUserId();
 }
 
 

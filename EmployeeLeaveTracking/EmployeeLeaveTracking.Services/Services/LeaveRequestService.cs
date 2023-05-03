@@ -3,7 +3,9 @@ using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Data.Mappers;
 using EmployeeLeaveTracking.Data.Models;
 using EmployeeLeaveTracking.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace EmployeeLeaveTracking.Services.Services
 {
@@ -124,15 +126,13 @@ namespace EmployeeLeaveTracking.Services.Services
         {
             IQueryable<LeaveRequest> leaveRequestByEmployeeId = _dbContext.LeaveRequests
             .Include(m => m.Manager)
-             .Include(m => m.Employee)
+            .Include(m => m.Employee)
             .Include(m => m.LeaveType)
             .Include(m => m.StatusMaster)
             .Where(c => c.EmployeeId.Equals(employeeId));
 
             return leaveRequestByEmployeeId.Select(c => new UserLeaveRequestMapper().Map(c)).ToList();
         }
-
-
 
         public async Task<List<LeaveRequestDTO>> GetAllLeavesByStatusIdAsync(int statusId)
         {
@@ -200,5 +200,24 @@ namespace EmployeeLeaveTracking.Services.Services
             return statusId;
         }
 
+
+        public double LeaveBalance(string employeeId)
+        {
+            StatusMaster? approvedLeaves = _dbContext.Status.Where(s => s.StatusType.ToLower() == "approved").FirstOrDefault();
+            List<LeaveRequest> leaveRequests = _dbContext.LeaveRequests
+                .Where(lr => lr.EmployeeId.Equals(employeeId) && lr.StatusId == approvedLeaves.Id)
+                .ToList(); int totalDays = leaveRequests.Sum(lr => lr.TotalDays);
+
+            DateTime dt = DateTime.Now;
+            int month = dt.Month;
+
+            double balance = (month * 1.5) - totalDays;
+
+            return balance;
+        }
+
+
+
+       
     }
 }

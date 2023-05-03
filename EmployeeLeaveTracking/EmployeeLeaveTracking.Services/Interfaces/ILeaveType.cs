@@ -13,5 +13,7 @@ namespace EmployeeLeaveTracking.Services.Interfaces
         LeaveTypeDTO Update(LeaveTypeDTO leaveType);
 
         bool Delete(int id);
+
+        List<LeaveTypeWithTotalDaysDTO> GetLeaveTypesWithTotalDaysTaken(string employeeId);
     }
 }

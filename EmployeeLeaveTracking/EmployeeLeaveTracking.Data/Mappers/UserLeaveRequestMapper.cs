@@ -10,6 +10,7 @@ namespace EmployeeLeaveTracking.Data.Mappers
             return new UserLeaveRequestDTO
             {
                 Id = entity.Id,
+                UserId = entity.EmployeeId,
                 RequestComments = entity.RequestComments,
                 StartDate = (DateTime)entity.StartDate,
                 EndDate = (DateTime)entity.EndDate,
@@ -20,6 +21,5 @@ namespace EmployeeLeaveTracking.Data.Mappers
                 StatusName = entity.StatusMaster.StatusType
             };
         }
-
     }
 }

@@ -119,5 +119,15 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
                 return StatusCode(500, $"An error occurred while deleting leave type with ID {id}: {ex.Message}");
             }
         }
+
+
+        [HttpGet("employee/{employeeId}/leavetypes")]
+        public ActionResult<List<LeaveTypeWithTotalDaysDTO>> GetLeaveTypesWithTotalDays(string employeeId)
+        {
+            var leaveTypesWithTotalDays = _leaveTypeService.GetLeaveTypesWithTotalDaysTaken(employeeId);
+
+            return Ok(leaveTypesWithTotalDays);
+        }
+
     }
 }

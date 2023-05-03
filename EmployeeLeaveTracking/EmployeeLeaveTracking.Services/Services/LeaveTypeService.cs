@@ -82,5 +82,25 @@ namespace EmployeeLeaveTracking.Services.Services
 
             return true;
         }
+
+  
+
+        public List<LeaveTypeWithTotalDaysDTO> GetLeaveTypesWithTotalDaysTaken(string employeeId)
+        {
+            StatusMaster? approvedLeaves = _dbContext.Status.Where(s => s.StatusType.ToLower() == "approved").FirstOrDefault();
+
+            var leaveTypesWithTotalDays = _dbContext.LeaveTypes
+                .Select(lt => new LeaveTypeWithTotalDaysDTO
+                {
+                    LeaveTypeId = lt.Id,
+                    LeaveTypeName = lt.LeaveTypeName,
+                    TotalDaysTaken = _dbContext.LeaveRequests
+                        .Where(lr => lr.EmployeeId == employeeId && lr.LeaveTypeId == lt.Id && lr.StatusId == approvedLeaves.Id)
+                        .Sum(lr => lr.TotalDays)
+                })
+                .ToList();
+
+            return leaveTypesWithTotalDays;
+        }
     }
 }

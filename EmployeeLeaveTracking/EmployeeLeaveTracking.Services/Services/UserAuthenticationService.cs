@@ -30,6 +30,7 @@ public sealed class UserAuthenticationService : IUserAuthentication
     public async Task<IdentityResult> RegisterUserAsync(UserRegistrationDTO userRegistration)
     {
         var user = _mapper.Map<User>(userRegistration);
+        
         var result = await _userManager.CreateAsync(user, userRegistration.Password);
 
         if (result.Succeeded)
@@ -101,7 +102,10 @@ public sealed class UserAuthenticationService : IUserAuthentication
     {
         return _userManager.GetRolesAsync(_user);
     }
-
+    public string GetUserId()
+    { 
+        return _user.Id;
+    }
     private JwtSecurityToken GenerateTokenOptions(SigningCredentials signingCredentials, List<Claim> claims)
     {
         var jwtSettings = _configuration.GetSection("JwtConfig");

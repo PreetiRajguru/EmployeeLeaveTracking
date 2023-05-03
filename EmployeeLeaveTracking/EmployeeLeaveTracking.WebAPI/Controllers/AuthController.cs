@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using EmployeeLeaveTracking.Data.DTOs;
+using EmployeeLeaveTracking.Data.Models;
 using EmployeeLeaveTracking.Services.Interfaces;
 using EmployeeLeaveTracking.WebAPI.Controllers;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace StudentTeacher.Controllers
@@ -10,7 +12,8 @@ namespace StudentTeacher.Controllers
     [ApiController]
     public class AuthController : BaseApiController
     {
-        public AuthController(IRepository repository, EmployeeLeaveTracking.Services.Interfaces.ILogger logger, IMapper mapper) : base(repository, logger, mapper)
+        public AuthController(IRepository repository, EmployeeLeaveTracking.Services.Interfaces.ILogger logger, IMapper mapper) 
+            : base(repository, logger, mapper)
         {
         }
 
@@ -46,9 +49,15 @@ namespace StudentTeacher.Controllers
                     return BadRequest(ModelState);
                 }
 
-                return !await _repository.UserAuthentication.ValidateUserAsync(user)
+
+/*                await _userManager.GetUserId*/
+
+
+
+                var ddd = await _repository.UserAuthentication.ValidateUserAsync(user);
+                return !ddd
                     ? Unauthorized()
-                    : Ok(new { Token = await _repository.UserAuthentication.CreateTokenAsync() , Role = _repository.UserAuthentication.GetRoles().Result });
+                    : Ok(new { Token = await _repository.UserAuthentication.CreateTokenAsync() , Role = _repository.UserAuthentication.GetRoles().Result , Id = _repository.UserAuthentication.GetUserId() });
             }
             catch (Exception ex)
             {

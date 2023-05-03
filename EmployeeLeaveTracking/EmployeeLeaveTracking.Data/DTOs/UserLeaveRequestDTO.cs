@@ -1,4 +1,7 @@
-﻿namespace EmployeeLeaveTracking.Data.DTOs
+﻿using System.Runtime.CompilerServices;
+using System.Text;
+
+namespace EmployeeLeaveTracking.Data.DTOs
 {
     public class UserLeaveRequestDTO
     {
@@ -19,5 +22,7 @@
         public string? LeaveTypeName { get; set; }
 
         public string? StatusName { get; set; }
+
+        public string UserId { get; set; } 
     }
 }
