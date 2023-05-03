@@ -9,6 +9,7 @@ import ViewEmployeeDetails from './components/Manager/ViewEmployeeDetails';
 import AddEmployee from './components/Manager/AddEmployee';
 import ApplyForLeaves from './components/Employee/ApplyForLeaves';
 import About from './components/About'
+import ErrorPage from './components/ErrorPage'
 import MyLeaveDetails from './components/Employee/MyLeaveDetails'
 import axios from 'axios'
 
@@ -32,6 +33,7 @@ function App() {
         <Route path="/viewempdetails/:empId" element={<ViewEmployeeDetails />} />
         <Route path="/applyforleaves" element={<ApplyForLeaves />} />
         <Route path="/leavedetails" element={<MyLeaveDetails />} />
+        <Route path="/*" element={<ErrorPage />} />
         {/* <Route path="/leavebalance" element={<LeaveBalance/>}/> */}
       </Routes>
       

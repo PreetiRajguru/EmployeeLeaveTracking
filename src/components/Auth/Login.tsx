@@ -31,7 +31,7 @@ export default function Login() {
       localStorage.setItem("role", JSON.stringify(response.data.role));
 
       if (response.data.role[0] == "Manager") {
-        navigate(`/addemployee`);
+        navigate(`/viewemployees`);
         alert("Login Successfull");
       }
       else if (response.data.role[0] == "Employee") {
