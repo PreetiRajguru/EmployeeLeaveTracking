@@ -2,16 +2,24 @@
 using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Data.Models;
 using EmployeeLeaveTracking.Services.Interfaces;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace EmployeeLeaveTracking.Services.Services
 {
     public class LeaveTypeService : ILeaveType
     {
         private readonly EmployeeLeaveDbContext _dbContext;
+        private readonly UserManager<User> _userManager;
+        private User? _user;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public LeaveTypeService(EmployeeLeaveDbContext dbContext)
+        public LeaveTypeService(EmployeeLeaveDbContext dbContext, UserManager<User> userManager, IHttpContextAccessor httpContextAccessor)
         {
             _dbContext = dbContext;
+            _userManager = userManager;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public IEnumerable<LeaveTypeDTO> GetAll()
@@ -85,9 +93,11 @@ namespace EmployeeLeaveTracking.Services.Services
 
   
 
-        public List<LeaveTypeWithTotalDaysDTO> GetLeaveTypesWithTotalDaysTaken(string employeeId)
+        public List<LeaveTypeWithTotalDaysDTO> GetLeaveTypesWithTotalDaysTaken()
         {
             StatusMaster? approvedLeaves = _dbContext.Status.Where(s => s.StatusType.ToLower() == "approved").FirstOrDefault();
+
+            var id = _httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.Sid);
 
             var leaveTypesWithTotalDays = _dbContext.LeaveTypes
                 .Select(lt => new LeaveTypeWithTotalDaysDTO
@@ -95,7 +105,7 @@ namespace EmployeeLeaveTracking.Services.Services
                     LeaveTypeId = lt.Id,
                     LeaveTypeName = lt.LeaveTypeName,
                     TotalDaysTaken = _dbContext.LeaveRequests
-                        .Where(lr => lr.EmployeeId == employeeId && lr.LeaveTypeId == lt.Id && lr.StatusId == approvedLeaves.Id)
+                        .Where(lr => lr.EmployeeId == id && lr.LeaveTypeId == lt.Id && lr.StatusId == approvedLeaves.Id)
                         .Sum(lr => lr.TotalDays)
                 })
                 .ToList();

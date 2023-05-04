@@ -1,11 +1,13 @@
 ﻿using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Services.Interfaces;
 using EmployeeLeaveTracking.Services.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeLeaveTracking.WebAPI.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
     public class LeaveTypeController : ControllerBase
     {
@@ -121,10 +123,10 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
 
-        [HttpGet("employee/{employeeId}/leavetypes")]
-        public ActionResult<List<LeaveTypeWithTotalDaysDTO>> GetLeaveTypesWithTotalDays(string employeeId)
+        [HttpGet("employee/leavetypes")]
+        public ActionResult<List<LeaveTypeWithTotalDaysDTO>> GetLeaveTypesWithTotalDays()
         {
-            var leaveTypesWithTotalDays = _leaveTypeService.GetLeaveTypesWithTotalDaysTaken(employeeId);
+            var leaveTypesWithTotalDays = _leaveTypeService.GetLeaveTypesWithTotalDaysTaken();
 
             return Ok(leaveTypesWithTotalDays);
         }

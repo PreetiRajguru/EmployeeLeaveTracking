@@ -1,18 +1,21 @@
 ﻿using EmployeeLeaveTracking.Data.Context;
 using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Services.Interfaces;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+
+using System.Security.Claims;
 
 namespace EmployeeLeaveTracking.Services.Services
 {
     public class UserService : IUser
     {
         private readonly EmployeeLeaveDbContext _dbContext;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public UserService(EmployeeLeaveDbContext dbContext)
+        public UserService(EmployeeLeaveDbContext dbContext, IHttpContextAccessor httpContextAccessor)
         {
             _dbContext = dbContext;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public IEnumerable<UserRegistrationDTO> GetUsersByManagerId(string managerId)
@@ -50,5 +53,9 @@ namespace EmployeeLeaveTracking.Services.Services
             return user;
         }
 
+        public string GetCurrentUserById()
+        {
+            return _httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.Sid);
+        }
     }
 }

@@ -18,7 +18,7 @@ namespace StudentTeacher.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> RegisterUser([FromBody] UserRegistrationDTO userRegistration)
+        public async Task<IActionResult> RegisterUser([FromBody] NewUserDTO userRegistration)
         {
             try
             {
@@ -49,15 +49,10 @@ namespace StudentTeacher.Controllers
                     return BadRequest(ModelState);
                 }
 
-
-/*                await _userManager.GetUserId*/
-
-
-
-                var ddd = await _repository.UserAuthentication.ValidateUserAsync(user);
-                return !ddd
+                var validate = await _repository.UserAuthentication.ValidateUserAsync(user);
+                return !validate
                     ? Unauthorized()
-                    : Ok(new { Token = await _repository.UserAuthentication.CreateTokenAsync() , Role = _repository.UserAuthentication.GetRoles().Result , Id = _repository.UserAuthentication.GetUserId() });
+                    : Ok(new { Token = await _repository.UserAuthentication.CreateTokenAsync() , Role = _repository.UserAuthentication.GetRoles().Result[0] , Id = _repository.UserAuthentication.GetUserId() });
             }
             catch (Exception ex)
             {

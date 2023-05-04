@@ -20,7 +20,9 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public IEnumerable<LeaveRequestDTO> GetAll()
         {
-            return _dbContext.LeaveRequests
+            try
+            {
+                return _dbContext.LeaveRequests
                 .Where(lr => lr.IsDeleted == (false))
                 .Select(lr => new LeaveRequestDTO
                 {
@@ -34,6 +36,11 @@ namespace EmployeeLeaveTracking.Services.Services
                     StatusId = lr.StatusId
                 })
                 .ToList();
+            }catch(Exception ex)
+            {
+                throw new Exception();
+            }
+            
         }
 
         public LeaveRequestDTO GetById(int id)

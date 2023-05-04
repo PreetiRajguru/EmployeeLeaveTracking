@@ -14,6 +14,6 @@ namespace EmployeeLeaveTracking.Services.Interfaces
 
         bool Delete(int id);
 
-        List<LeaveTypeWithTotalDaysDTO> GetLeaveTypesWithTotalDaysTaken(string employeeId);
+        List<LeaveTypeWithTotalDaysDTO> GetLeaveTypesWithTotalDaysTaken();
     }
 }

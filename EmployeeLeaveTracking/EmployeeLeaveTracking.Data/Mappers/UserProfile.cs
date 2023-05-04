@@ -9,6 +9,7 @@ namespace EmployeeLeaveTracking.Data.Mappers
         public UserProfile()
         {
             CreateMap<UserRegistrationDTO , User>();
+            CreateMap<NewUserDTO, User>();
         }
     }
 }
