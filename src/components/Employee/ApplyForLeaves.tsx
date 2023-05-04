@@ -58,7 +58,6 @@ const ApplyForLeaves = () => {
   });
   const [leaveTypeName, setLeaveTypeName] = useState<any>([]);
 
-  
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -74,13 +73,11 @@ const ApplyForLeaves = () => {
     };
 
     try {
-      axios.post('/api/LeaveRequest', newLeaveTypeDetails)
-        .then((response) => {
-          console.log(response.data);
-          alert("Leave Request Sent Succesfully");
-        });
-    }
-    catch (error: any) {
+      axios.post("/api/LeaveRequest", newLeaveTypeDetails).then((response) => {
+        console.log(response.data);
+        alert("Leave Request Sent Succesfully");
+      });
+    } catch (error: any) {
       alert(error.response.data.message);
     }
     setLeaveTypeDetails({
@@ -92,7 +89,7 @@ const ApplyForLeaves = () => {
       endDate: "",
       totalDays: "",
       leaveTypeId: undefined,
-    })
+    });
   };
 
   useEffect(() => {
@@ -103,8 +100,10 @@ const ApplyForLeaves = () => {
         .catch((error) => console.log(error));
     };
 
-
     fetchLeaveTypes();
+
+    const role = localStorage.getItem("role");
+    console.log(role);
   }, []);
 
   const handleInputChange = (event: any) => {
@@ -125,75 +124,7 @@ const ApplyForLeaves = () => {
         <Divider />
 
         <Box component="form" sx={{ mt: 2 }} onSubmit={handleSubmit}>
-          
-          <TextField
-            name="startDate"
-            // label="Start Date"
-            type="date"
-            required
-            autoComplete="off"
-            value={leaveTypeDetails.startDate}
-            onChange={handleInputChange}
-            sx={{ mb: 2, mr: 2 }}
-          />
-
-          <TextField
-            name="endDate"
-            // label="End Date"
-            type="date"
-            required
-            autoComplete="off"
-            value={leaveTypeDetails.endDate}
-            onChange={handleInputChange}
-            sx={{ mb: 2 }}
-          />
-
-          <TextField
-            name="requestComments"
-            label="Request Comments"
-            required
-            fullWidth
-            multiline
-            rows={3}
-            autoComplete="off"
-            value={leaveTypeDetails.requestComments}
-            onChange={handleInputChange}
-            sx={{ mb: 2 }}
-          />
-
-          <TextField
-            name="totalDays"
-            label="Total Days"
-            required
-            fullWidth
-            autoComplete="off"
-            value={leaveTypeDetails.totalDays}
-            onChange={handleInputChange}
-            sx={{ mb: 2 }}
-          />
-
-          {/* <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">
-              Employee Id/Name
-            </InputLabel>
-            <Select
-              name="employeeId"
-              label="Employee Id/Name"
-              id="demo-simple-select"
-              fullWidth
-              sx={{ mb: 2 }}
-              value={leaveTypeDetails.employeeId}
-              onChange={handleInputChange}
-            >
-              {
-                //   clients.map((val: any) => (
-                //     <MenuItem key={val.id} value={val.id}>
-                //       {val.firstName} {val.lastName}
-                //     </MenuItem>
-                //   ))
-              }
-            </Select>
-          </FormControl> */}
+         
           <TextField
             name="employeeId"
             label="Employee Id/Name"
@@ -221,6 +152,52 @@ const ApplyForLeaves = () => {
               ))}
             </Select>
           </FormControl>
+
+          <TextField
+            name="startDate"
+            // label="Start Date"
+            type="date"
+            required
+            autoComplete="off"
+            value={leaveTypeDetails.startDate}
+            onChange={handleInputChange}
+            sx={{ mb: 2, mr: 2 }}
+          />
+
+          <TextField
+            name="endDate"
+            // label="End Date"
+            type="date"
+            required
+            autoComplete="off"
+            value={leaveTypeDetails.endDate}
+            onChange={handleInputChange}
+            sx={{ mb: 2 }}
+          />
+
+          <TextField
+            name="totalDays"
+            label="Total Days"
+            required
+            fullWidth
+            autoComplete="off"
+            value={leaveTypeDetails.totalDays}
+            onChange={handleInputChange}
+            sx={{ mb: 2 }}
+          />
+
+          <TextField
+            name="requestComments"
+            label="Request Comments"
+            required
+            fullWidth
+            multiline
+            rows={3}
+            autoComplete="off"
+            value={leaveTypeDetails.requestComments}
+            onChange={handleInputChange}
+            sx={{ mb: 2 }}
+          />
 
           {/* <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Status</InputLabel>

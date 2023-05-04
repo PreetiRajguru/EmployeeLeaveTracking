@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import './App.css';
 import Login from './components/Auth/Login';
@@ -12,6 +12,7 @@ import About from './components/About'
 import ErrorPage from './components/ErrorPage'
 import MyLeaveDetails from './components/Employee/MyLeaveDetails'
 import axios from 'axios'
+import { AppContext } from './config/https';
 
 function App() {
 
@@ -19,11 +20,16 @@ function App() {
     axios.defaults.baseURL = 'https://localhost:7033';
     })
 
+    const [loading] = useState(true);
+
   return (
+
+    <AppContext.Provider value={{ loading }}>
     <div>
       <BrowserRouter>
+      
       <Navigation />
-      {/* <NAppBar /> */}
+
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -34,11 +40,11 @@ function App() {
         <Route path="/applyforleaves" element={<ApplyForLeaves />} />
         <Route path="/leavedetails" element={<MyLeaveDetails />} />
         <Route path="/*" element={<ErrorPage />} />
-        {/* <Route path="/leavebalance" element={<LeaveBalance/>}/> */}
       </Routes>
       
       </BrowserRouter>
     </div>
+    </AppContext.Provider>
   );
 }
 

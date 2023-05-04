@@ -47,6 +47,7 @@ export default function CustomizedTables() {
   const navigate = useNavigate();
   const [data, setData] = useState<any>([]);
   const [leaveBalance, setLeaveBalance] = useState();
+  const [type, setType] = useState<any>([]);
 
   function BasicCard() {
     return (
@@ -77,8 +78,22 @@ export default function CustomizedTables() {
       try {
         const response = await axios.get(
           "/api/LeaveRequest/employee/8922e768-ed48-43ec-8740-9201c0fdae46"
+          // "/api/LeaveRequest/employee/leavetypes"
         );
         setData(response.data);
+        console.log(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+
+    const fetchLeaveTypesTotal = async () => {
+      try {
+        const response = await axios.get(
+          "/api/LeaveType/employee/leavetypes"
+        );
+        setType(response.data);
         console.log(data);
       } catch (error) {
         console.error(error);
@@ -96,6 +111,7 @@ export default function CustomizedTables() {
 
     fetchLeaveDetails();
     fetchLeaveBalances();
+    fetchLeaveTypesTotal();
   }, []);
 
   const carddetails = [

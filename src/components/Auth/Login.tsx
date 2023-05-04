@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
@@ -6,60 +6,68 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { FormControlLabel, Checkbox } from '@mui/material';
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+import Snackbar from '@mui/material/Snackbar';
 
 export default function Login() {
   const navigate = useNavigate();
   const [data, setData] = useState({
     username: "",
-    password: ""
-  })
-  
-  const handleSubmit = async(event: any) => {
+    password: "",
+  });
+  const [unAuthorized, setUnAuthorized] = useState(false);
+
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
-    
+
     const newData = {
       username: data.username,
       password: data.password,
-    }
+    };
 
     try {
       const response = await axios.post("/api/Auth/login", newData);
-      localStorage.setItem("token", JSON.stringify(response.data.token));
-      localStorage.setItem("role", JSON.stringify(response.data.role));
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("role", response.data.role);
 
-      if (response.data.role[0] == "Manager") {
+      if (response.data.role == "Manager") {
+        alert("Login Successfull");
         navigate(`/viewemployees`);
+      } else if (response.data.role == "Employee") {
         alert("Login Successfull");
-      }
-      else if (response.data.role[0] == "Employee") {
         navigate(`/applyforleaves`);
-        alert("Login Successfull");
-      } 
-      // response.data.role[0] == "Manager" ? navigate(`/addemployee`) : navigate(`/applyforleaves`);  
-    }
-    catch (error: any) {
-      // alert("User not Authorized " + error.response.data.message);
-      alert("User not Authorized ");
+      }
+
+      window.location.reload();
+      // response.data.role == "Manager" ? navigate(`/viewemployees`) : navigate(`/applyforleaves`);
+
+      if(response.status != 200){
+        setUnAuthorized(true);
+      }
+    } catch (error: any) {
+      console.log(error);
     }
     setData({
       username: "",
-      password: ""
-    })
+      password: "",
+    });
   };
 
-  
-  const handleInputChange = (
-    event: any
-  ) => {
+  const handleInputChange = (event: any) => {
     const { name, value } = event.target;
     setData((prevState: any) => ({
       ...prevState,
       [name]: value,
     }));
+    setUnAuthorized(false);
   };
+
+  const handleSnack = () => {
+    setUnAuthorized(false)
+  }
 
   return (
     <Container component="main" maxWidth="sm">
@@ -87,7 +95,7 @@ export default function Login() {
             label="Username"
             name="username"
             value={data.username}
-            autoComplete='off'
+            autoComplete="off"
             autoFocus
             onChange={handleInputChange}
           />
@@ -100,13 +108,12 @@ export default function Login() {
             label="Password"
             type="password"
             id="password"
-            autoComplete='off'
+            autoComplete="off"
             onChange={handleInputChange}
           />
-          {/* <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          /> */}
+          {unAuthorized && <span style={{ color: "red", fontSize: '12px' }}>
+            Please enter valid details :)
+          </span>}
           <Button
             type="submit"
             fullWidth
@@ -115,6 +122,21 @@ export default function Login() {
           >
             Sign In
           </Button>
+          {
+            unAuthorized && <Snackbar
+            open={unAuthorized}
+            autoHideDuration={4000}
+            message="Login Attempt Failed"
+            action={<IconButton
+              size="small"
+              aria-label="close"
+              color="inherit"
+              onClick={handleSnack}
+            >
+              <CloseIcon fontSize="small" />
+            </IconButton>}
+          />
+          }
           <Grid container>
             <Grid item>
               <Link href="/register" variant="body2">
