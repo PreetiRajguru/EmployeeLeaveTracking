@@ -23,6 +23,6 @@ namespace EmployeeLeaveTracking.Data.DTOs
 
         public string? StatusName { get; set; }
 
-        public string UserId { get; set; } 
+        public string? UserId { get; set; }
     }
 }

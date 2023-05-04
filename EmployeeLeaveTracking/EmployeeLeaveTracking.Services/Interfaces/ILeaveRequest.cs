@@ -16,7 +16,7 @@ namespace EmployeeLeaveTracking.Services.Interfaces
         bool Delete(int id);
 
 
-        List<UserLeaveRequestDTO> GetAllLeavesByEmployeeId(string employeeId);
+        List<UserLeaveRequestDTO> GetAllLeavesByEmployeeId(int limit, int offset);
 
         Task<List<LeaveRequestDTO>> GetAllLeavesByStatusIdAsync(int statusId);
 

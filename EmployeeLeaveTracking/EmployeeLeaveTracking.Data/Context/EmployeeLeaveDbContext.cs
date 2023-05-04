@@ -28,7 +28,7 @@ namespace EmployeeLeaveTracking.Data.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server = localhost; Database = EmployeeLeave; Trusted_Connection = True; TrustServerCertificate = True; MultipleActiveResultSets = True;");
+                optionsBuilder.UseSqlServer("ConnStr");
             }
         }
 
@@ -36,13 +36,7 @@ namespace EmployeeLeaveTracking.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            /*this.SeedUsers(modelBuilder);*/
             this.SeedRoles(modelBuilder);
-           /* this.SeedUserRoles(modelBuilder);*/
-
-
-            /* modelBuilder.ApplyConfiguration(new UserData());*/
-
 
             modelBuilder.Entity<LeaveRequest>()
            .HasOne(lb => lb.Manager)
@@ -69,28 +63,6 @@ namespace EmployeeLeaveTracking.Data.Context
           .HasForeignKey(lb => lb.StatusId);
         }
 
-
-        /*private void SeedUsers(ModelBuilder builder)
-        {
-            PasswordHasher<User> passwordHasher = new();
-
-            User user = new()
-            {
-                Id = "1",
-                FirstName = "Sarika",
-                LastName = "Bhosale",
-                UserName = "sarika", 
-                Email = "Sarika@gmail.com", 
-                LockoutEnabled = false, 
-                PhoneNumber = "1234567890"
-            };
-
-            user.PasswordHash = passwordHasher.HashPassword(user, "Sarika@123");
-            
-
-            builder.Entity<User>().HasData(user);
-        }
-*/
         private void SeedRoles(ModelBuilder builder)
         {
             builder.Entity<IdentityRole>().HasData(
@@ -98,12 +70,5 @@ namespace EmployeeLeaveTracking.Data.Context
                 new IdentityRole() { Id = "2", Name = "Employee", ConcurrencyStamp = "2", NormalizedName = "Employee" }
                 );
         }
-
-        /*private void SeedUserRoles(ModelBuilder builder)
-        {
-            builder.Entity<IdentityUserRole<string>>().HasData(
-                new IdentityUserRole<string>() { RoleId = "1", UserId = "1" }
-                );
-        }*/
     }
 }

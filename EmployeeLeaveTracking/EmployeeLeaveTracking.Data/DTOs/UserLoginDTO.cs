@@ -4,6 +4,7 @@ namespace EmployeeLeaveTracking.Data.DTOs
 {
     public class UserLoginDTO
     {
+
         [Required(ErrorMessage = "Username is required")]
         public string? UserName { get; init; }
 

@@ -15,9 +15,7 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
  
@@ -25,7 +23,6 @@ builder.Services.AddIdentity<User, IdentityRole>()
        .AddEntityFrameworkStores<EmployeeLeaveDbContext>()
        .AddDefaultTokenProviders().AddRoles<IdentityRole>(); ;
 
- 
 
 builder.Services.AddDbContext<EmployeeLeaveDbContext>(options =>
 
@@ -49,6 +46,7 @@ builder.Services.AddScoped<ILeaveRequest, LeaveRequestService>();
 builder.Services.AddScoped<ILeaveType, LeaveTypeService>();
 builder.Services.AddScoped<IStatusMaster, StatusMasterService>();
 builder.Services.AddScoped<IUser, UserService>();
+builder.Services.AddScoped<UserService>();
 
 builder.Services.AddCors(options =>
 {

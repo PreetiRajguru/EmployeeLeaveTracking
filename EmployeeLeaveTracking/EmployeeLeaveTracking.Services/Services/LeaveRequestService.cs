@@ -3,19 +3,25 @@ using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Data.Mappers;
 using EmployeeLeaveTracking.Data.Models;
 using EmployeeLeaveTracking.Services.Interfaces;
-using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
 namespace EmployeeLeaveTracking.Services.Services
 {
     public class LeaveRequestService : ILeaveRequest
     {
         private readonly EmployeeLeaveDbContext _dbContext;
-
-        public LeaveRequestService(EmployeeLeaveDbContext dbContext)
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly UserService _userService;
+        private readonly UserManager<User> _userManager;
+        private User? _user;
+        public LeaveRequestService(EmployeeLeaveDbContext dbContext, UserManager<User> userManager, IHttpContextAccessor httpContextAccessor, UserService userService)
         {
             _dbContext = dbContext;
+            _userManager = userManager;
+            _httpContextAccessor = httpContextAccessor;
+            _userService = userService;
         }
 
         public IEnumerable<LeaveRequestDTO> GetAll()
@@ -129,17 +135,23 @@ namespace EmployeeLeaveTracking.Services.Services
             return true;
         }
 
-        public List<UserLeaveRequestDTO> GetAllLeavesByEmployeeId(string employeeId)
+
+        public List<UserLeaveRequestDTO> GetAllLeavesByEmployeeId(int limit, int offset)
         {
+            var Id = _userService.GetCurrentUserById();
+
             IQueryable<LeaveRequest> leaveRequestByEmployeeId = _dbContext.LeaveRequests
-            .Include(m => m.Manager)
-            .Include(m => m.Employee)
-            .Include(m => m.LeaveType)
-            .Include(m => m.StatusMaster)
-            .Where(c => c.EmployeeId.Equals(employeeId));
+                .Include(m => m.Manager)
+                .Include(m => m.Employee)
+                .Include(m => m.LeaveType)
+                .Include(m => m.StatusMaster)
+                .Where(c => c.EmployeeId.Equals(Id))
+                .Skip(offset)
+                .Take(limit);
 
             return leaveRequestByEmployeeId.Select(c => new UserLeaveRequestMapper().Map(c)).ToList();
         }
+
 
         public async Task<List<LeaveRequestDTO>> GetAllLeavesByStatusIdAsync(int statusId)
         {
@@ -160,7 +172,6 @@ namespace EmployeeLeaveTracking.Services.Services
                 StatusId = lr.StatusId
             }).ToList();
         }
-
 
 
         public List<LeaveRequestDTO> GetLeaveRequestsByStatusAndManager(int statusId, string managerId)
@@ -188,7 +199,6 @@ namespace EmployeeLeaveTracking.Services.Services
         {
             return await _dbContext.LeaveRequests.FirstOrDefaultAsync(l => l.Id == id);
         }
-
 
 
         public async Task<int> UpdateLeaveRequestStatus(int id, int statusId)
@@ -222,9 +232,5 @@ namespace EmployeeLeaveTracking.Services.Services
 
             return balance;
         }
-
-
-
-       
     }
 }

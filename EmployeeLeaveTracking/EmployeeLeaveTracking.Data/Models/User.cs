@@ -4,8 +4,6 @@ namespace EmployeeLeaveTracking.Data.Models
 {
     public class User : IdentityUser
     {
-        /*public string? Id { get; set; }*/
-
         public string? FirstName { get; set; }
 
         public string? LastName { get; set; }
@@ -22,7 +20,6 @@ namespace EmployeeLeaveTracking.Data.Models
 
         public bool? IsDeleted { get; set; } = false;
 
-        /*public User Manager { get; set; }*/
 
         public List<LeaveRequest>? ManagerLeaveRequests { get; set; }
 

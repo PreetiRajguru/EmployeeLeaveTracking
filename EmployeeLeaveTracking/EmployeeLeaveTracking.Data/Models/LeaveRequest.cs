@@ -15,8 +15,6 @@ namespace EmployeeLeaveTracking.Data.Models
         public int TotalDays { get; set; }
 
 
-        /*public int YearMonth { get; set; }*/
-
         public DateTime? CreatedDate { get; set; }
 
         public int? CreatedBy { get; set; }

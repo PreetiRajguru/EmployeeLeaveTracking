@@ -4,7 +4,6 @@ using EmployeeLeaveTracking.Data.Models;
 using EmployeeLeaveTracking.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
-using System.Security.Claims;
 
 namespace EmployeeLeaveTracking.Services.Services
 {
@@ -14,12 +13,14 @@ namespace EmployeeLeaveTracking.Services.Services
         private readonly UserManager<User> _userManager;
         private User? _user;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly UserService _userService;
 
-        public LeaveTypeService(EmployeeLeaveDbContext dbContext, UserManager<User> userManager, IHttpContextAccessor httpContextAccessor)
+        public LeaveTypeService(EmployeeLeaveDbContext dbContext, UserManager<User> userManager, IHttpContextAccessor httpContextAccessor, UserService userService)
         {
             _dbContext = dbContext;
             _userManager = userManager;
             _httpContextAccessor = httpContextAccessor;
+            _userService = userService;
         }
 
         public IEnumerable<LeaveTypeDTO> GetAll()
@@ -92,12 +93,11 @@ namespace EmployeeLeaveTracking.Services.Services
         }
 
   
-
         public List<LeaveTypeWithTotalDaysDTO> GetLeaveTypesWithTotalDaysTaken()
         {
             StatusMaster? approvedLeaves = _dbContext.Status.Where(s => s.StatusType.ToLower() == "approved").FirstOrDefault();
 
-            var id = _httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.Sid);
+            var id = _userService.GetCurrentUserById();
 
             var leaveTypesWithTotalDays = _dbContext.LeaveTypes
                 .Select(lt => new LeaveTypeWithTotalDaysDTO
