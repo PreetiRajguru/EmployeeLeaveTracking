@@ -17,32 +17,32 @@ import {
 } from "@mui/material";
 import axios from "axios";
 
-function BasicCard() {
-  return (
-    <Card sx={{ minWidth: 275 }}>
-      <CardContent>
-        <Typography variant="h6" color="text.secondary" gutterBottom>
-          Employee Details
-        </Typography>
-        <Divider sx={{ mb: 1 }} />
-        <Typography component="div" sx={{ fontSize: 14, mb: 0.5 }}>
-          Preeti Rajguru
-        </Typography>
-        <Typography sx={{ mb: 1, fontSize: 14 }} color="text.secondary">
-          preeti.rajguru@ix.com
-        </Typography>
-        <Typography variant="body2" sx={{ mb: 1, fontSize: 14 }}>
-          Phone.No:7040647427
-          <br />
-          Vadgaon Sheri, Pune - 41
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
-  );
-}
+// function BasicCard() {
+//   return (
+//     <Card sx={{ minWidth: 275 }}>
+//       <CardContent>
+//         <Typography variant="h6" color="text.secondary" gutterBottom>
+//           Employee Details
+//         </Typography>
+//         <Divider sx={{ mb: 1 }} />
+//         <Typography component="div" sx={{ fontSize: 14, mb: 0.5 }}>
+//           Preeti Rajguru
+//         </Typography>
+//         <Typography sx={{ mb: 1, fontSize: 14 }} color="text.secondary">
+//           preeti.rajguru@ix.com
+//         </Typography>
+//         <Typography variant="body2" sx={{ mb: 1, fontSize: 14 }}>
+//           Phone.No:7040647427
+//           <br />
+//           Vadgaon Sheri, Pune - 41
+//         </Typography>
+//       </CardContent>
+//       <CardActions>
+//         <Button size="small">Learn More</Button>
+//       </CardActions>
+//     </Card>
+//   );
+// }
 
 const ApplyForLeaves = () => {
   const navigate = useNavigate();
@@ -53,10 +53,11 @@ const ApplyForLeaves = () => {
     requestComments: "",
     startDate: "",
     endDate: "",
-    totalDays: "",
+    totalDays: 0,
     leaveTypeId: undefined,
   });
   const [leaveTypeName, setLeaveTypeName] = useState<any>([]);
+  const empId = localStorage.getItem('id');
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -87,9 +88,10 @@ const ApplyForLeaves = () => {
       requestComments: "",
       startDate: "",
       endDate: "",
-      totalDays: "",
+      totalDays: 0,
       leaveTypeId: undefined,
     });
+    navigate('/leavedetails')
   };
 
   useEffect(() => {
@@ -106,11 +108,27 @@ const ApplyForLeaves = () => {
     console.log(role);
   }, []);
 
+  function getDateDifference(startDate: any, endDate: any) {
+    const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+    const diffDays = Math.round(Math.abs((startDate - endDate) / oneDay));
+    return diffDays + 1; // add 1 to include the start date as well
+  }
+
   const handleInputChange = (event: any) => {
     const { name, value } = event.target;
+    let totalDays = leaveTypeDetails.totalDays;
+    if (name === 'startDate') {
+      const endDate = new Date(leaveTypeDetails.endDate);
+      totalDays = getDateDifference(new Date(value), endDate);
+    } else if (name === 'endDate') {
+      const startDate = new Date(leaveTypeDetails.startDate);
+      totalDays = getDateDifference(startDate, new Date(value));
+    }
     setLeaveTypeDetails((prevState: any) => ({
       ...prevState,
       [name]: value,
+      totalDays: totalDays,
+      employeeId: empId
     }));
   };
 
@@ -131,7 +149,7 @@ const ApplyForLeaves = () => {
             required
             fullWidth
             autoComplete="off"
-            value={leaveTypeDetails.employeeId}
+            value={empId}
             onChange={handleInputChange}
             sx={{ mb: 2 }}
           />
@@ -155,7 +173,6 @@ const ApplyForLeaves = () => {
 
           <TextField
             name="startDate"
-            // label="Start Date"
             type="date"
             required
             autoComplete="off"
@@ -166,7 +183,6 @@ const ApplyForLeaves = () => {
 
           <TextField
             name="endDate"
-            // label="End Date"
             type="date"
             required
             autoComplete="off"
@@ -174,7 +190,7 @@ const ApplyForLeaves = () => {
             onChange={handleInputChange}
             sx={{ mb: 2 }}
           />
-
+          
           <TextField
             name="totalDays"
             label="Total Days"
@@ -199,28 +215,18 @@ const ApplyForLeaves = () => {
             sx={{ mb: 2 }}
           />
 
-          {/* <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Status</InputLabel>
-          <Select
-            name="statusId"
-            label="Status Id"
-            id="demo-simple-select"
-            fullWidth
-          >
-          </Select>
-        </FormControl> */}
-
           <Button
             type="submit"
             variant="contained"
             color="primary"
             sx={{ mt: 2, mr: 2 }}
+            onClick={() => navigate('/leavedetails')}
           >
             Save
           </Button>
           <Button
             variant="contained"
-            // onClick={handleBackButton}
+            onClick={() => navigate('/leavedetails')}
             sx={{ mt: 2 }}
           >
             Back

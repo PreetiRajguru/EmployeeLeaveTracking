@@ -67,6 +67,7 @@ export default function CustomizedTables() {
 
       <Typography component="h1" variant="h5" align="center">
         View All Employees
+        <br></br><br></br>
       </Typography>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
@@ -94,7 +95,7 @@ export default function CustomizedTables() {
                 {row.phoneNumber}
               </StyledTableCell>
               <StyledTableCell align="right">
-                <Button variant="outlined" onClick={() => navigate(`/viewempdetails/${row.id}`)}>View Details</Button>
+                <Button variant="outlined" onClick={() => navigate(`/viewempdetails/${row.id}`)}>Leave Details</Button>
               </StyledTableCell>
             </StyledTableRow>
           ))}

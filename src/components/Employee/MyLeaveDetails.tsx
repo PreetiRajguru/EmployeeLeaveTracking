@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
@@ -13,6 +13,9 @@ import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import { Divider, Card, CardActions, CardContent } from "@mui/material";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import TablePagination from '@mui/material/TablePagination';
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Switch from "@material-ui/core/Switch";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -41,6 +44,9 @@ const rows = [
     email: "preeti@gmail.com",
   },
 ];
+const DEFAULT_ORDER = 'asc';
+const DEFAULT_ORDER_BY = 'employeeName';
+const DEFAULT_ROWS_PER_PAGE = 5;
 
 export default function CustomizedTables() {
   // const { empId } = useParams();
@@ -48,6 +54,14 @@ export default function CustomizedTables() {
   const [data, setData] = useState<any>([]);
   const [leaveBalance, setLeaveBalance] = useState();
   const [type, setType] = useState<any>([]);
+  
+  const [page, setPage] = useState(0);
+  const [dense, setDense] = useState(false);
+  const [visibleRows, setVisibleRows] = useState(null);
+  const [rowsPerPage, setRowsPerPage] = useState(DEFAULT_ROWS_PER_PAGE);
+  
+  const empId = localStorage.getItem('id');
+  var colors = ['red', 'green', 'blue', 'orange', 'yellow', 'grey', 'brown'];
 
   function BasicCard() {
     return (
@@ -76,12 +90,8 @@ export default function CustomizedTables() {
   useEffect(() => {
     const fetchLeaveDetails = async () => {
       try {
-        const response = await axios.get(
-          "/api/LeaveRequest/employee/8922e768-ed48-43ec-8740-9201c0fdae46"
-          // "/api/LeaveRequest/employee/leavetypes"
-        );
+        const response = await axios.get(`/api/LeaveRequest/employee/${empId}`);
         setData(response.data);
-        console.log(data);
       } catch (error) {
         console.error(error);
       }
@@ -94,7 +104,6 @@ export default function CustomizedTables() {
           "/api/LeaveType/employee/leavetypes"
         );
         setType(response.data);
-        console.log(data);
       } catch (error) {
         console.error(error);
       }
@@ -102,8 +111,8 @@ export default function CustomizedTables() {
 
     const fetchLeaveBalances = async () => {
       try {
-        // const response = await axios.get(`/api/LeaveRequest/balance/${empId}`);
-        // setLeaveBalance(response.data);
+        const response = await axios.get(`/api/LeaveRequest/balance/${empId}`);
+        setLeaveBalance(response.data);
       } catch (error) {
         console.error(error);
       }
@@ -114,32 +123,74 @@ export default function CustomizedTables() {
     fetchLeaveTypesTotal();
   }, []);
 
-  const carddetails = [
-    {
-      header: "Paid Leaves",
-      color: "red",
+  // const carddetails1 = [
+  //   {
+  //     header: "Paid Leaves",
+  //     color: "red",
+  //   },
+  //   {
+  //     header: "Unpaid Leaves",
+  //     color: "grey",
+  //   },
+  //   {
+  //     header: "Sick Leaves",
+  //     color: "green",
+  //   },
+  //   {
+  //     header: "Personal Leave",
+  //     color: "purple",
+  //   },
+  //   {
+  //     header: "Study Leave",
+  //     color: "brown",
+  //   },
+  //   {
+  //     header: "Bereavement Leaves",
+  //     color: "lightblue",
+  //   },
+  // ];
+
+  const carddetails = type?.map((val: { leaveTypeName: any; totalDaysTaken: any; }): any => {return {
+    header: val.leaveTypeName,
+    totalDaysTaken: val.totalDaysTaken 
+  }})
+  
+
+  const handleChangePage = useCallback(
+    (event: unknown, newPage: number) => {
+      setPage(newPage);
+
+      const updatedRows = data.slice(
+        newPage * rowsPerPage,
+        newPage * rowsPerPage + rowsPerPage,
+      );
+      setVisibleRows(updatedRows);
+
+      // Avoid a layout jump when reaching the last page with empty rows.
+      const numEmptyRows =
+        newPage > 0 ? Math.max(0, (1 + newPage) * rowsPerPage - rows.length) : 0;
+
+      const newPaddingHeight = (dense ? 33 : 53) * numEmptyRows;
     },
-    {
-      header: "Unpaid Leaves",
-      color: "grey",
+    [ dense, rowsPerPage],
+  );
+
+  const handleChangeRowsPerPage = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const updatedRowsPerPage = parseInt(event.target.value, 10);
+      setRowsPerPage(updatedRowsPerPage);
+
+      setPage(0);
+
+      const updatedRows = data.slice(
+        0 * updatedRowsPerPage,
+        0 * updatedRowsPerPage + updatedRowsPerPage,
+      );
+      setVisibleRows(updatedRows);
+
     },
-    {
-      header: "Sick Leaves",
-      color: "green",
-    },
-    {
-      header: "Personal Leave",
-      color: "purple",
-    },
-    {
-      header: "Study Leave",
-      color: "brown",
-    },
-    {
-      header: "Bereavement Leaves",
-      color: "lightblue",
-    },
-  ];
+    [],
+  );
 
   return (
     <>
@@ -150,8 +201,9 @@ export default function CustomizedTables() {
         </Typography>
         <Divider />
 
+        <h2>Leave Balance: {leaveBalance} </h2>
         <div style={{ display: "flex" }}>
-          {carddetails.map((val) => (
+          {carddetails.map((val:any) => (
             <CardContent
               style={{
                 border: "1px solid lightgrey",
@@ -178,12 +230,11 @@ export default function CustomizedTables() {
               </Typography>
               <Typography variant="h5" component="div"></Typography>
               <CalendarMonthIcon
-                style={{ width: "60%", height: "60%", color: `${val.color}` }}
+                style={{ width: "60%", height: "60%", color: colors[Math.floor(Math.random() * colors.length)] }}
               />
-              <Typography variant="body2">
-                well meaning and kindly.
-                <br />
-                {'"a benevolent smile"'}
+              <Typography variant="body2" component="h1">
+                {val.totalDaysTaken}
+                {/* <br /> */}
               </Typography>
             </CardContent>
           ))}
@@ -191,12 +242,12 @@ export default function CustomizedTables() {
         
         <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center',  }}>
         <Typography component="h1" variant="h6" align="center" sx={{ mb: 3 }}>
-          Employee Leave Requests
+          Leave Requests
           <Button
             variant="outlined"
             onClick={() => navigate("/applyforleaves")}
             size="small"
-            sx={{ml: 110}}
+            sx={{ml: 120}}
           >
             Apply For Leaves
           </Button>
@@ -236,14 +287,20 @@ export default function CustomizedTables() {
                 <StyledTableCell align="right">
                   {row.statusName}
                 </StyledTableCell>
-                {/* <StyledTableCell align="right">
-                                    <Button variant="outlined" onClick={() => navigate("/viewempdetails")}>View Details</Button>
-                                </StyledTableCell> */}
               </StyledTableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
+      <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={rows.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
     </>
   );
 }

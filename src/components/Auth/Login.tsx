@@ -32,17 +32,17 @@ export default function Login() {
       const response = await axios.post("/api/Auth/login", newData);
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("role", response.data.role);
+      localStorage.setItem("id", response.data.id);
 
       if (response.data.role == "Manager") {
         alert("Login Successfull");
         navigate(`/viewemployees`);
       } else if (response.data.role == "Employee") {
         alert("Login Successfull");
-        navigate(`/applyforleaves`);
+        navigate(`/leavedetails`);
       }
 
       window.location.reload();
-      // response.data.role == "Manager" ? navigate(`/viewemployees`) : navigate(`/applyforleaves`);
 
       if(response.status != 200){
         setUnAuthorized(true);

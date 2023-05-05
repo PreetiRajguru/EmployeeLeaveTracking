@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import {
   Drawer,
   List,
@@ -7,13 +6,9 @@ import {
   ListItemText,
   IconButton,
   Toolbar,
-  Typography,
-  Menu,
-  MenuItem,
+  Typography
 } from "@mui/material";
-
-import ExpandLess from "@mui/icons-material/ExpandLess";
-import ExpandMore from "@mui/icons-material/ExpandMore";
+import PendingActionsIcon from "@mui/icons-material/PendingActions";
 import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
 import {
@@ -24,11 +19,8 @@ import {
 } from "@mui/icons-material";
 import ListSubheader from "@mui/material/ListSubheader";
 import ListItemButton from "@mui/material/ListItemButton";
-import Collapse from "@mui/material/Collapse";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import DraftsIcon from "@mui/icons-material/Drafts";
 import SendIcon from "@mui/icons-material/Send";
-import StarBorder from "@mui/icons-material/StarBorder";
 import { useNavigate } from "react-router-dom";
 import ViewListIcon from "@mui/icons-material/ViewList";
 
@@ -37,6 +29,7 @@ const Navigation = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [open, setOpen] = React.useState(true);
   const [isLogin, setIsLogin] = React.useState(false);
+  const [isManager, setIsManager] = React.useState(false);
 
   const handleClick1 = () => {
     setOpen(!open);
@@ -51,18 +44,33 @@ const Navigation = () => {
   };
 
   const getToken = () => {
-    setIsLogin(localStorage.getItem("token") && localStorage.getItem("token") != "" ? true : false);
+    setIsLogin(
+      localStorage.getItem("token") && localStorage.getItem("token") != ""
+        ? true
+        : false
+    );
+    setIsManager(
+      localStorage.getItem("role") && localStorage.getItem("role") == "Manager"
+        ? true
+        : false
+    );
   };
 
   const toggleDrawer = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("role");
+    localStorage.removeItem("id");
+    setIsLogin(false);
+    navigate("/");
+  };
+
   useEffect(() => {
-
-    getToken(); 
-  },[]);
-
+    getToken();
+  }, []);
 
   return (
     <>
@@ -87,41 +95,20 @@ const Navigation = () => {
           <Button color="inherit" onClick={() => navigate("/about")}>
             About
           </Button>
-          {/* { isLogin ? <Button color="inherit" onClick={() => navigate("/")}>
-            Logout
-          </Button> : <Button color="inherit" onClick={() => navigate("/")}>
-            Login
-          </Button> } */}
- 
- 
-          <Button color="inherit" onClick={() => navigate("/")}>
-            {isLogin ? "Logout" : "Login"}
-          </Button>
 
-          {/* <Button color="inherit" onClick={() => navigate("/")}>
-            Logout
-          </Button> */}
+
+          {isLogin ? (
+            <Button color="inherit" onClick={handleLogout}>
+              Logout
+            </Button>
+          ) : (
+            <Button color="inherit" onClick={() => navigate("/")}>
+              Login
+            </Button>
+          )}
+
         </Toolbar>
       </AppBar>
-      <Menu
-        id="customers-menu"
-        anchorEl={anchorEl}
-        open={Open}
-        onClose={handleClose}
-      >
-        <MenuItem component={Link} to="/customers/add" onClick={handleClose}>
-          <ListItemIcon>
-            <AddIcon />
-          </ListItemIcon>
-          <ListItemText primary="Add Customer" />
-        </MenuItem>
-        <MenuItem component={Link} to="/customers" onClick={handleClose}>
-          <ListItemIcon>
-            <PeopleIcon />
-          </ListItemIcon>
-          <ListItemText primary="View Customers" />
-        </MenuItem>
-      </Menu>
       <Drawer
         anchor="left"
         open={sidebarOpen}
@@ -145,69 +132,60 @@ const Navigation = () => {
             </ListSubheader>
           }
         >
-          <ListItemButton>
-            <ListItemIcon>
-              <SendIcon />
-            </ListItemIcon>
-            <ListItemText
-              primary="Apply For Leaves"
-              onClick={() => navigate("/applyforleaves")}
-            />
-          </ListItemButton>
-          <ListItemButton>
-            <ListItemIcon>
-              <DraftsIcon />
-            </ListItemIcon>
-            <ListItemText
-              primary="My Leave Details"
-              onClick={() => navigate("/leavedetails")}
-            />
-          </ListItemButton>
-          {/* if(localStorage.getItem("role") == "Manager") */}
-          {
-            <ListItemButton>
-              <ListItemIcon>
-                <AddIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="Add Employee"
-                onClick={() => navigate("/addemployee")}
-              />
-            </ListItemButton>
-          }
-          {/* <ListItemButton>
-        <ListItemIcon>
-          <AddIcon />
-        </ListItemIcon>
-        <ListItemText primary="Add Employee"  onClick={() => navigate("/addemployee")}/>
-      </ListItemButton> */}
-          <ListItemButton>
-            <ListItemIcon>
-              <ViewListIcon />
-            </ListItemIcon>
-            <ListItemText
-              primary="View All Employees"
-              onClick={() => navigate("/viewemployees")}
-            />
-          </ListItemButton>
-
-          <ListItemButton onClick={handleClick1}>
-            <ListItemIcon>
-              <InboxIcon />
-            </ListItemIcon>
-            <ListItemText primary="Inbox" />
-            {open ? <ExpandLess /> : <ExpandMore />}
-          </ListItemButton>
-          <Collapse in={open} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItemButton sx={{ pl: 4 }}>
+          {isManager ? (
+            <>
+              <ListItemButton>
                 <ListItemIcon>
-                  <StarBorder />
+                  <AddIcon />
                 </ListItemIcon>
-                <ListItemText primary="Starred" />
+                <ListItemText
+                  primary="Add Employee"
+                  onClick={() => navigate("/addemployee")}
+                />
               </ListItemButton>
-            </List>
-          </Collapse>
+
+              <ListItemButton>
+                <ListItemIcon>
+                  <ViewListIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="View All Employees"
+                  onClick={() => navigate("/viewemployees")}
+                />
+              </ListItemButton>
+
+              <ListItemButton>
+                <ListItemIcon>
+                  <PendingActionsIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="Pending Requests"
+                  onClick={() => navigate("/newrequests")}
+                />
+              </ListItemButton>
+            </>
+          ) : (
+            <>
+              <ListItemButton>
+                <ListItemIcon>
+                  <SendIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="Apply For Leaves"
+                  onClick={() => navigate("/applyforleaves")}
+                />
+              </ListItemButton>
+              <ListItemButton>
+                <ListItemIcon>
+                  <DraftsIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="My Leave Details"
+                  onClick={() => navigate("/leavedetails")}
+                />
+              </ListItemButton>
+            </>
+          )}
         </List>
       </Drawer>
     </>

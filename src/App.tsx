@@ -13,6 +13,8 @@ import ErrorPage from './components/ErrorPage'
 import MyLeaveDetails from './components/Employee/MyLeaveDetails'
 import axios from 'axios'
 import { AppContext } from './config/https';
+import NewRequests from './components/Manager/NewRequests';
+import EnhancedTable from './components/Employee/EnhancedTable';
 
 function App() {
 
@@ -39,6 +41,8 @@ function App() {
         <Route path="/viewempdetails/:empId" element={<ViewEmployeeDetails />} />
         <Route path="/applyforleaves" element={<ApplyForLeaves />} />
         <Route path="/leavedetails" element={<MyLeaveDetails />} />
+        <Route path="/newrequests" element={<NewRequests />} />
+        <Route path="/t" element={<EnhancedTable />} />
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
       
