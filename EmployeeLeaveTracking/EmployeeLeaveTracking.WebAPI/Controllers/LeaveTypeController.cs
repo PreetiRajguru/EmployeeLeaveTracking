@@ -126,9 +126,16 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         [HttpGet("employee/leavetypes")]
         public ActionResult<List<LeaveTypeWithTotalDaysDTO>> GetLeaveTypesWithTotalDays()
         {
-            var leaveTypesWithTotalDays = _leaveTypeService.GetLeaveTypesWithTotalDaysTaken();
+            try
+            {
+                var leaveTypesWithTotalDays = _leaveTypeService.GetLeaveTypesWithTotalDaysTaken();
 
-            return Ok(leaveTypesWithTotalDays);
+                return Ok(leaveTypesWithTotalDays);
+            }
+            catch(Exception ex) { }
+            {
+                return NoContent();
+            }
         }
 
     }

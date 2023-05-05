@@ -44,5 +44,9 @@ namespace EmployeeLeaveTracking.Data.DTOs
 
         [Required(ErrorMessage = "Status ID is a required field.")]
         public int StatusId { get; set; }
+
+        public string? EmployeeFirstName { get; set; }
+
+        public string? EmployeeLastName { get; set; }
     }
 }

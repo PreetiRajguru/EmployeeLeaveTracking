@@ -19,8 +19,15 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         [Route("employees/{managerId}")]
         public  ActionResult<IEnumerable<UserRegistrationDTO>> GetUsersByManagerId(string managerId)
         {
-            var users =  _userService.GetUsersByManagerId(managerId);
-            return Ok(users);
+            try
+            {
+                var users = _userService.GetUsersByManagerId(managerId);
+                return Ok(users);
+            }
+            catch (Exception ex) 
+            {
+                return BadRequest();
+            }
         }
 
 
@@ -28,8 +35,15 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         [Route("employee/{employeeId}")]
         public ActionResult<IEnumerable<UserRegistrationDTO>> GetUserDetails(string employeeId)
         {
-            var user = _userService.GetUserDetails(employeeId);
-            return Ok(user);
+            try
+            {
+                var user = _userService.GetUserDetails(employeeId);
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
         }
     }
 }

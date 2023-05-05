@@ -9,10 +9,12 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
     public class LeaveRequestController : ControllerBase
     {
         private readonly ILeaveRequest _leaveRequestService;
+        protected readonly Services.Interfaces.ILogger _logger;
 
-        public LeaveRequestController(ILeaveRequest leaveRequestService)
+        public LeaveRequestController(ILeaveRequest leaveRequestService, Services.Interfaces.ILogger logger)
         {
             _leaveRequestService = leaveRequestService;
+            _logger = logger;
         }
 
         [HttpGet]
@@ -126,45 +128,53 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
 
-        /*   [HttpGet("employeeId")]
-           public IActionResult GetAllLeavesByEmployeeId()
-           {
-               try
-               {
-                   List<UserLeaveRequestDTO> leaves = _leaveRequestService.GetAllLeavesByEmployeeId();
-
-                   if (leaves == null)
-                   {
-                       return NotFound();
-                   }
-
-                   return Ok(leaves);
-               }
-               catch (Exception ex)
-               {
-                   return StatusCode(500, ex.Message);
-               }
-           }*/
-
-
         [HttpGet("employeeId/{limit}/{offset}")]
         public IActionResult GetAllLeavesByEmployeeId(int limit , int offset)
         {
-            var leaves = _leaveRequestService.GetAllLeavesByEmployeeId(limit, offset);
+            try
+            {
+                var leaves = _leaveRequestService.GetAllLeavesByEmployeeId(limit, offset);
 
-            return Ok(leaves);
+                return Ok(leaves);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
 
 
 
+        [HttpGet("employee/{employeeId}")]
+        public IActionResult LeavesByEmployeeId(string employeeId)
+        {
+            try
+            {
+                var leaves = _leaveRequestService.LeavesByEmployeeId(employeeId);
+
+                return Ok(leaves);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
 
         [HttpGet("status/{statusId}")]
         public async Task<ActionResult<List<LeaveRequestDTO>>> GetAllLeavesByStatusId(int statusId)
         {
-            var leaveRequests = await _leaveRequestService.GetAllLeavesByStatusIdAsync(statusId);
+            try
+            {
+                var leaveRequests = await _leaveRequestService.GetAllLeavesByStatusIdAsync(statusId);
 
-            return Ok(leaveRequests);
+                return Ok(leaveRequests);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
 
@@ -172,34 +182,50 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         [HttpGet("leaves/{statusId}/{managerId}")]
         public ActionResult<IEnumerable<LeaveRequestDTO>> GetLeavesByStatusAndManager(int statusId, string managerId)
         {
-            var leaves = _leaveRequestService.GetLeaveRequestsByStatusAndManager(statusId, managerId);
-            return Ok(leaves);
+            try
+            {
+                var leaves = _leaveRequestService.GetLeaveRequestsByStatusAndManager(statusId, managerId);
+                return Ok(leaves);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
 
         [HttpPut("{id}/status/{statusId}")]
         public async Task<int> UpdateLeaveRequestStatus(int id, int statusId)
         {
-            int result = await _leaveRequestService.UpdateLeaveRequestStatus(id, statusId);
+            try
+            {
+                int result = await _leaveRequestService.UpdateLeaveRequestStatus(id, statusId);
 
-            /* if (result)
-             {
-                 return NoContent();
-             }
- */
-            return result;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("An error occurred while updating the leave request status.");
+
+                throw;
+            }
         }
-
-
 
 
         [HttpGet("balance/{employeeId}")]
         public IActionResult LeaveBalance(string employeeId)
         {
-            double balance = _leaveRequestService
-                .LeaveBalance(employeeId);
+            try
+            {
+                double balance = _leaveRequestService
+                    .LeaveBalance(employeeId);
 
-            return Ok(balance);
+                return Ok(balance);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
     }
 }
