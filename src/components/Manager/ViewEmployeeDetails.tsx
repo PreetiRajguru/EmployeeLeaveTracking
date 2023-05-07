@@ -61,8 +61,7 @@ const ViewEmployeeDetails = () => {
       .catch((error) => console.log(error));
   };
 
-//   const headers = ['Paid Leaves','Unpaid Leaves','Sick Leaves','Bereavement Leaves','Personal Leave','Study Leave']
-  
+  //   const headers = ['Paid Leaves','Unpaid Leaves','Sick Leaves','Bereavement Leaves','Personal Leave','Study Leave']
 
   return (
     <div>
@@ -75,9 +74,10 @@ const ViewEmployeeDetails = () => {
           <TableHead>
             <TableRow>
               <StyledTableCell>Employee Name</StyledTableCell>
+              <StyledTableCell align="right">Leave Type</StyledTableCell>
+              <StyledTableCell align="right">Comments</StyledTableCell>
               <StyledTableCell align="right">Start Date</StyledTableCell>
               <StyledTableCell align="right">End Date</StyledTableCell>
-              <StyledTableCell align="right">Leave Type</StyledTableCell>
               <StyledTableCell align="right">Total Days</StyledTableCell>
               <StyledTableCell align="right">Status</StyledTableCell>
             </TableRow>
@@ -89,13 +89,16 @@ const ViewEmployeeDetails = () => {
                   {row.employeeName}
                 </StyledTableCell>
                 <StyledTableCell align="right">
+                  {row.leaveTypeName}
+                </StyledTableCell>
+                <StyledTableCell align="right">
+                  {row.requestComments}
+                </StyledTableCell>
+                <StyledTableCell align="right">
                   {new Date(row.startDate).toLocaleDateString()}
                 </StyledTableCell>
                 <StyledTableCell align="right">
                   {new Date(row.endDate).toLocaleDateString()}
-                </StyledTableCell>
-                <StyledTableCell align="right">
-                  {row.leaveTypeName}
                 </StyledTableCell>
                 <StyledTableCell align="right">{row.totalDays}</StyledTableCell>
                 <StyledTableCell align="right">
@@ -154,7 +157,20 @@ const ViewEmployeeDetails = () => {
         </Table>
       </TableContainer>
 
-      <Button variant="contained" onClick={() => navigate("/viewemployees")} sx={{mt: 1}}>
+      {/* <Button variant="contained" onClick={() => navigate("/viewemployees")} sx={{mt: 1}}>
+        Back to Employee List
+      </Button> */}
+
+      <Button
+        variant="contained"
+        onClick={() => navigate("/viewemployees")}
+        sx={{
+          position: "fixed",
+          bottom: "20px",
+          right: "20px",
+          mt: 1,
+        }}
+      >
         Back to Employee List
       </Button>
     </div>

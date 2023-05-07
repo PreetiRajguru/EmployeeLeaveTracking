@@ -41,6 +41,7 @@ export interface Employee {
   managerId: number;
   id: string;
   designationId:number;
+  designationName: ReactNode;
   }
 
 
@@ -79,7 +80,7 @@ export default function CustomizedTables() {
             <StyledTableCell>Username</StyledTableCell>
             <StyledTableCell>Email</StyledTableCell>
             <StyledTableCell>Phone Number</StyledTableCell>
-            <StyledTableCell>Designation Id</StyledTableCell>
+            <StyledTableCell>Designation Name</StyledTableCell>
             <StyledTableCell align="right">Actions</StyledTableCell>
           </TableRow>
         </TableHead>
@@ -99,7 +100,7 @@ export default function CustomizedTables() {
                 {row.phoneNumber}
               </StyledTableCell>
               <StyledTableCell component="th" scope="row">
-                {row.designationId}
+                {row.designationName}
               </StyledTableCell>
               <StyledTableCell align="right">
                 <Button variant="outlined" onClick={() => navigate(`/viewempdetails/${row.id}`)}>Leave Details</Button>

@@ -89,6 +89,11 @@ const ApplyForLeaves = () => {
       leaveTypeId: leaveTypeDetails.leaveTypeId,
     };
 
+    // if (newLeaveTypeDetails.totalDays > leaveBalance) {
+    //   alert("Total days requested should be less than or equal to leave balance.");
+    //   return;
+    // }
+
     try {
       axios
         .post("/api/LeaveRequest", newLeaveTypeDetails)
