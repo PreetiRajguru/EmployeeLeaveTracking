@@ -2,7 +2,7 @@
 using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
-
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace EmployeeLeaveTracking.Services.Services
@@ -18,6 +18,32 @@ namespace EmployeeLeaveTracking.Services.Services
             _httpContextAccessor = httpContextAccessor;
         }
 
+        /*        public IEnumerable<UserRegistrationDTO> GetUsersByManagerId(string managerId)
+                {
+                    if (string.IsNullOrEmpty(managerId))
+                    {
+                        throw new ArgumentException("Manager Id cannot be null or empty");
+                    }
+
+                    var users = _dbContext.Users
+                           .Where(u => u.ManagerId.Equals(managerId))
+                           .Select(u => new UserRegistrationDTO
+                           {
+                               Id = u.Id,
+                               FirstName = u.FirstName,
+                               LastName = u.LastName,
+                               UserName = u.UserName,
+                               Email = u.Email,
+                               PhoneNumber = u.PhoneNumber,
+                               ManagerId = u.ManagerId,
+                               DesignationId = u.DesignationId
+                           });
+
+                    return users;
+                }*/
+
+
+
         public IEnumerable<UserRegistrationDTO> GetUsersByManagerId(string managerId)
         {
             if (string.IsNullOrEmpty(managerId))
@@ -27,6 +53,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
             var users = _dbContext.Users
                    .Where(u => u.ManagerId.Equals(managerId))
+                   .Include(lr => lr.Designation)
                    .Select(u => new UserRegistrationDTO
                    {
                        Id = u.Id,
@@ -36,11 +63,20 @@ namespace EmployeeLeaveTracking.Services.Services
                        Email = u.Email,
                        PhoneNumber = u.PhoneNumber,
                        ManagerId = u.ManagerId,
-                       DesignationId = u.DesignationId
+                       DesignationName = u.Designation.DesignationName
                    });
 
             return users;
         }
+
+
+
+
+
+
+
+
+
 
 
         public IEnumerable<UserRegistrationDTO> GetUserDetails(string employeeId)

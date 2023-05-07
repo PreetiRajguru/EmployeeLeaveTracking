@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace EmployeeLeaveTracking.Data.DTOs
@@ -24,5 +25,7 @@ namespace EmployeeLeaveTracking.Data.DTOs
         public string? StatusName { get; set; }
 
         public string? UserId { get; set; }
+
+        public string? Comments { get; set; }
     }
 }

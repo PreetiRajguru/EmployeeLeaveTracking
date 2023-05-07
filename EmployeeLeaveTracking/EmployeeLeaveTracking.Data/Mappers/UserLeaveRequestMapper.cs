@@ -15,6 +15,7 @@ namespace EmployeeLeaveTracking.Data.Mappers
                 StartDate = (DateTime)entity.StartDate,
                 EndDate = (DateTime)entity.EndDate,
                 TotalDays = entity.TotalDays,
+                Comments = entity.RequestComments,
                 ManagerName = entity.Manager.FirstName,
                 EmployeeName = entity.Employee.FirstName,
                 LeaveTypeName = entity.LeaveType.LeaveTypeName,
