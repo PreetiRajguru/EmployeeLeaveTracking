@@ -16,6 +16,7 @@ import {
   CardContent,
 } from "@mui/material";
 import axios from "axios";
+import useReadLocalStorage from "../useReadLocalStorage";
 
 // function BasicCard() {
 //   return (
@@ -44,22 +45,37 @@ import axios from "axios";
 //   );
 // }
 
+//manager id
+
 const ApplyForLeaves = () => {
   const navigate = useNavigate();
+  const empId = useReadLocalStorage('id')
+  console.log(empId)
+  const [leaveBalance, setLeaveBalance] = useState();
   const [leaveTypeDetails, setLeaveTypeDetails] = useState({
-    managerId: "7f8c62e3-c231-41b7-b401-c7915e8fb705",
-    statusId: 1,
-    employeeId: "",
+    // managerId: "c5a5157b-c95a-4bf8-a659-e3d303ca2e3c",
+    // statusId: 1,
+    // employeeId: "",
+    // requestComments: "",
+    // startDate: "",
+    // endDate: "",
+    // totalDays: 0,
+    // leaveTypeId: undefined,
+
     requestComments: "",
     startDate: "",
     endDate: "",
     totalDays: 0,
+    managerId: "47a00fa0-e3e4-44d7-ade6-b563d5914a3f",
+    employeeId: "",
     leaveTypeId: undefined,
+    statusId: 1,
   });
   const [leaveTypeName, setLeaveTypeName] = useState<any>([]);
-  const empId = localStorage.getItem('id');
+  const [username, setUsername] = useState<string>();
+  // const empId = localStorage.getItem("id");
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
 
     const newLeaveTypeDetails = {
@@ -69,29 +85,33 @@ const ApplyForLeaves = () => {
       endDate: leaveTypeDetails.endDate,
       totalDays: leaveTypeDetails.totalDays,
       requestComments: leaveTypeDetails.requestComments,
-      employeeId: leaveTypeDetails.employeeId,
+      employeeId: empId,
       leaveTypeId: leaveTypeDetails.leaveTypeId,
     };
 
     try {
-      axios.post("/api/LeaveRequest", newLeaveTypeDetails).then((response) => {
-        console.log(response.data);
-        alert("Leave Request Sent Succesfully");
-      });
+      axios
+        .post("/api/LeaveRequest", newLeaveTypeDetails)
+        .then((response) => {
+          // console.log(response.data);
+          alert("Leave Request Sent Succesfully");
+
+          navigate("/leavedetails");
+        });
     } catch (error: any) {
       alert(error.response.data.message);
+
+      setLeaveTypeDetails({
+        managerId: "47a00fa0-e3e4-44d7-ade6-b563d5914a3f",
+        statusId: 1,
+        employeeId: "",
+        requestComments: "",
+        startDate: "",
+        endDate: "",
+        totalDays: 0,
+        leaveTypeId: undefined,
+      });
     }
-    setLeaveTypeDetails({
-      managerId: "7f8c62e3-c231-41b7-b401-c7915e8fb705",
-      statusId: 1,
-      employeeId: "",
-      requestComments: "",
-      startDate: "",
-      endDate: "",
-      totalDays: 0,
-      leaveTypeId: undefined,
-    });
-    navigate('/leavedetails')
   };
 
   useEffect(() => {
@@ -99,14 +119,43 @@ const ApplyForLeaves = () => {
       axios
         .get("/api/LeaveType")
         .then((response) => setLeaveTypeName(response.data))
-        .catch((error) => console.log(error));
+        // .catch((error) => console.log(error));
     };
 
     fetchLeaveTypes();
 
-    const role = localStorage.getItem("role");
-    console.log(role);
+    // const role = localStorage.getItem("role");
+    // console.log(role);
+    const fetchLeaveBalances = async () => {
+      try {
+        const response = await axios.get(`/api/LeaveRequest/balance/${empId}`);
+        setLeaveBalance(response.data);
+      } catch (error) {
+        // console.error(error);
+      }
+    };
+    fetchLeaveBalances();
   }, []);
+
+  useEffect(() => {
+    
+  // const empId = localStorage.getItem("id");
+    if (!empId || username) {
+      return;
+    }
+
+    const fetchUsername = async () => {
+      try {
+        const response = await axios.get(`/api/User/currentuser/${empId}`);
+        setUsername(`${response.data.firstName} ${response.data.lastName}`);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchUsername();
+  }, [empId]);
+
+  // console.log(username)
 
   function getDateDifference(startDate: any, endDate: any) {
     const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
@@ -117,10 +166,10 @@ const ApplyForLeaves = () => {
   const handleInputChange = (event: any) => {
     const { name, value } = event.target;
     let totalDays = leaveTypeDetails.totalDays;
-    if (name === 'startDate') {
+    if (name === "startDate") {
       const endDate = new Date(leaveTypeDetails.endDate);
       totalDays = getDateDifference(new Date(value), endDate);
-    } else if (name === 'endDate') {
+    } else if (name === "endDate") {
       const startDate = new Date(leaveTypeDetails.startDate);
       totalDays = getDateDifference(startDate, new Date(value));
     }
@@ -128,7 +177,8 @@ const ApplyForLeaves = () => {
       ...prevState,
       [name]: value,
       totalDays: totalDays,
-      employeeId: empId
+      employeeId: { empId },
+      managerId: "47a00fa0-e3e4-44d7-ade6-b563d5914a3f",
     }));
   };
 
@@ -139,19 +189,20 @@ const ApplyForLeaves = () => {
         <Typography variant="h4" align="left">
           Apply For Leaves
         </Typography>
+        <h2>Leave Balance: {leaveBalance} </h2>
         <Divider />
 
         <Box component="form" sx={{ mt: 2 }} onSubmit={handleSubmit}>
-         
           <TextField
             name="employeeId"
-            label="Employee Id/Name"
+            label="Employee Id"
             required
             fullWidth
             autoComplete="off"
             value={empId}
             onChange={handleInputChange}
             sx={{ mb: 2 }}
+            style={{ display: "none" }}
           />
 
           <FormControl fullWidth>
@@ -190,7 +241,7 @@ const ApplyForLeaves = () => {
             onChange={handleInputChange}
             sx={{ mb: 2 }}
           />
-          
+
           <TextField
             name="totalDays"
             label="Total Days"
@@ -220,13 +271,13 @@ const ApplyForLeaves = () => {
             variant="contained"
             color="primary"
             sx={{ mt: 2, mr: 2 }}
-            onClick={() => navigate('/leavedetails')}
+            onClick={handleSubmit}
           >
             Save
           </Button>
           <Button
             variant="contained"
-            onClick={() => navigate('/leavedetails')}
+            onClick={() => navigate("/leavedetails")}
             sx={{ mt: 2 }}
           >
             Back

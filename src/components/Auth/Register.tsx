@@ -21,6 +21,7 @@ export default function Register() {
     password: "",
     phonenumber: "",
     managerId: "",
+    designationId:""
   });
 
   const [errors, setErrors] = useState({
@@ -31,6 +32,7 @@ export default function Register() {
     password: "",
     phonenumber: "",
     managerId: "",
+    designationId:""
   });
 
   const handleSubmit = async (event: any) => {
@@ -44,11 +46,13 @@ export default function Register() {
       password: data.password,
       phonenumber: data.phonenumber,
       managerId: data.managerId,
+      designationId: data.designationId
     };
 
     try {
       axios.post("/api/Auth/register", newData).then((response) => {
         console.log(response.data);
+        alert("User Registered Successfully");
       });
     } catch (error: any) {
       setRegistrationError(true);
@@ -62,6 +66,7 @@ export default function Register() {
       password: "",
       phonenumber: "",
       managerId: "",
+      designationId:""
     });
   };
 
@@ -260,6 +265,17 @@ export default function Register() {
             label="Manager Id"
             id="managerId"
             autoComplete="managerId"
+            onChange={handleInputChange}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="designationId"
+            value={data.designationId}
+            label="Designation Id"
+            id="designationId"
+            autoComplete="designationId"
             onChange={handleInputChange}
           />
           {/* <FormControlLabel

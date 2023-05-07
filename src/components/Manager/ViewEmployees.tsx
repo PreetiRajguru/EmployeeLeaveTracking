@@ -40,7 +40,9 @@ export interface Employee {
   phoneNumber: ReactNode;
   managerId: number;
   id: string;
+  designationId:number;
   }
+
 
 
 
@@ -49,9 +51,10 @@ export default function CustomizedTables() {
   const [data, setData] = useState<Employee[]>([]);
 
   useEffect(() => {
+    const managerId = localStorage.getItem("id");
     const fetchAllEmployeesForManager = async () => {
       try {
-        const response = await axios.get("/User/employees/7f8c62e3-c231-41b7-b401-c7915e8fb705");
+        const response = await axios.get(`/User/employees/${managerId}`);
         console.log(response)
         setData(response.data);
       } catch (error) {
@@ -76,6 +79,7 @@ export default function CustomizedTables() {
             <StyledTableCell>Username</StyledTableCell>
             <StyledTableCell>Email</StyledTableCell>
             <StyledTableCell>Phone Number</StyledTableCell>
+            <StyledTableCell>Designation Id</StyledTableCell>
             <StyledTableCell align="right">Actions</StyledTableCell>
           </TableRow>
         </TableHead>
@@ -93,6 +97,9 @@ export default function CustomizedTables() {
               </StyledTableCell>
               <StyledTableCell component="th" scope="row">
                 {row.phoneNumber}
+              </StyledTableCell>
+              <StyledTableCell component="th" scope="row">
+                {row.designationId}
               </StyledTableCell>
               <StyledTableCell align="right">
                 <Button variant="outlined" onClick={() => navigate(`/viewempdetails/${row.id}`)}>Leave Details</Button>

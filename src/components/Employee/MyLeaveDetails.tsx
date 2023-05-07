@@ -55,13 +55,13 @@ export default function CustomizedTables() {
   const [leaveBalance, setLeaveBalance] = useState();
   const [type, setType] = useState<any>([]);
   
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [dense, setDense] = useState(false);
   const [visibleRows, setVisibleRows] = useState(null);
   const [rowsPerPage, setRowsPerPage] = useState(DEFAULT_ROWS_PER_PAGE);
   
   const empId = localStorage.getItem('id');
-  var colors = ['red', 'green', 'blue', 'orange', 'yellow', 'grey', 'brown'];
+  var colors = ['red', 'green', 'blue', 'orange', 'yellow', 'grey', 'brown','black','violet','indigo'];
 
   function BasicCard() {
     return (
@@ -104,6 +104,7 @@ export default function CustomizedTables() {
           "/api/LeaveType/employee/leavetypes"
         );
         setType(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error(error);
       }
@@ -149,48 +150,58 @@ export default function CustomizedTables() {
   //     color: "lightblue",
   //   },
   // ];
-
-  const carddetails = type?.map((val: { leaveTypeName: any; totalDaysTaken: any; }): any => {return {
+console.log(type)
+  const carddetails = type.length > 0 ? type.map((val: { leaveTypeName: any; totalDaysTaken: any; }): any => {return {
     header: val.leaveTypeName,
     totalDaysTaken: val.totalDaysTaken 
-  }})
+  }}) : []
   
 
   const handleChangePage = useCallback(
     (event: unknown, newPage: number) => {
       setPage(newPage);
 
-      const updatedRows = data.slice(
-        newPage * rowsPerPage,
-        newPage * rowsPerPage + rowsPerPage,
-      );
-      setVisibleRows(updatedRows);
+      
+      const fetchLeaveDetails = async () => {
+        try {
+          const response = await axios.get(`/api/LeaveRequest/employeeId/${rowsPerPage}/${rowsPerPage * newPage}`);
+          setData(response.data);
+        } catch (error) {
+          console.error(error);
+        }
+      };
 
-      // Avoid a layout jump when reaching the last page with empty rows.
-      const numEmptyRows =
-        newPage > 0 ? Math.max(0, (1 + newPage) * rowsPerPage - rows.length) : 0;
+      // const updatedRows = data.slice(
+      //   newPage * rowsPerPage,
+      //   newPage * rowsPerPage + rowsPerPage,
+      // );
+      // setVisibleRows(updatedRows);
 
-      const newPaddingHeight = (dense ? 33 : 53) * numEmptyRows;
+      // // Avoid a layout jump when reaching the last page with empty rows.
+      // const numEmptyRows =
+      //   newPage > 0 ? Math.max(0, (1 + newPage) * rowsPerPage - rows.length) : 0;
+
+      // const newPaddingHeight = (dense ? 33 : 53) * numEmptyRows;
     },
     [ dense, rowsPerPage],
   );
 
-  const handleChangeRowsPerPage = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      const updatedRowsPerPage = parseInt(event.target.value, 10);
-      setRowsPerPage(updatedRowsPerPage);
+  // const handleChangeRowsPerPage = useCallback(
+  //   (event: React.ChangeEvent<HTMLInputElement>) => {
+  //     const updatedRowsPerPage = parseInt(event.target.value, 10);
+  //     setRowsPerPage(updatedRowsPerPage);
 
-      setPage(0);
+  //     setPage(0);
 
-      const updatedRows = data.slice(
-        0 * updatedRowsPerPage,
-        0 * updatedRowsPerPage + updatedRowsPerPage,
-      );
-      setVisibleRows(updatedRows);
+  //     const updatedRows = data.slice(
+  //       0 * updatedRowsPerPage,
+  //       0 * updatedRowsPerPage + updatedRowsPerPage,
+  //     );
+  //     setVisibleRows(updatedRows);
 
-    },
-    [],
-  );
+  //   },
+  //   [],
+  // );
 
   return (
     <>
@@ -246,7 +257,7 @@ export default function CustomizedTables() {
           <Button
             variant="outlined"
             onClick={() => navigate("/applyforleaves")}
-            size="small"
+            size="medium"
             sx={{ml: 120}}
           >
             Apply For Leaves
@@ -299,7 +310,7 @@ export default function CustomizedTables() {
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
+          // onRowsPerPageChange={handleChangeRowsPerPage}
         />
     </>
   );

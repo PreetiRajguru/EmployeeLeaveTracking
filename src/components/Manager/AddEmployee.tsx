@@ -19,6 +19,7 @@ export default function AddEmployee() {
     password: "",
     phonenumber: "",
     managerId: "",
+    designationId: "",
   });
 
   const handleSubmit = async (event: any) => {
@@ -32,6 +33,7 @@ export default function AddEmployee() {
       password: data.password,
       phonenumber: data.phonenumber,
       managerId: data.managerId,
+      designationId: data.designationId,
     };
 
     try {
@@ -50,6 +52,7 @@ export default function AddEmployee() {
       password: "",
       phonenumber: "",
       managerId: "",
+      designationId: "",
     });
   };
 
@@ -66,8 +69,6 @@ export default function AddEmployee() {
   };
 
   return (
-    // <Container component="main" maxWidth="md">
-
     <Container component="main" maxWidth="sm">
       <Box
         sx={{
@@ -166,7 +167,20 @@ export default function AddEmployee() {
             onChange={handleInputChange}
           />
 
-          <br></br><br></br>
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="designationId"
+            value={data.designationId}
+            label="Designation Id"
+            id="designationId"
+            autoComplete="designationId"
+            onChange={handleInputChange}
+          />
+
+          <br></br>
+          <br></br>
           <div>
             <Button
               variant="contained"
@@ -180,7 +194,7 @@ export default function AddEmployee() {
               type="submit"
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              style ={{marginLeft: '300px'}}
+              style={{ marginLeft: "300px" }}
             >
               Create
             </Button>
