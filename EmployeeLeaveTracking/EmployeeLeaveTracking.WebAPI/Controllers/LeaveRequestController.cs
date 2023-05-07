@@ -77,6 +77,26 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
             }
         }
 
+        [HttpPost("/new")]
+        public ActionResult<NewLeaveRequestDTO> PostNewLeave(NewLeaveRequestDTO leaveRequest)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                var newLeaveRequest = _leaveRequestService.CreateNewLeaveRequest(leaveRequest);
+
+                return CreatedAtAction(nameof(GetById), new { id = newLeaveRequest.Id }, newLeaveRequest);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpPut("{id}")]
         public ActionResult<LeaveRequestDTO> Put(int id, LeaveRequestDTO leaveRequest)
         {

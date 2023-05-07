@@ -13,6 +13,8 @@ namespace EmployeeLeaveTracking.Data.Context
 
         public DbSet<StatusMaster> Status { get; set; }
 
+        public DbSet<DesignationMaster> Designations { get; set; }
+
         public EmployeeLeaveDbContext()
         {
 
@@ -28,7 +30,9 @@ namespace EmployeeLeaveTracking.Data.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("ConnStr");
+               /*optionsBuilder.UseSqlServer("ConnStr");*/
+                optionsBuilder.UseSqlServer("Server=localhost;Database=EmployeeLeave;Trusted_Connection=True;TrustServerCertificate=True;" +
+                    "MultipleActiveResultSets=True;");
             }
         }
 
@@ -61,6 +65,12 @@ namespace EmployeeLeaveTracking.Data.Context
           .HasOne(lb => lb.StatusMaster)
           .WithMany(lt => lt.LeaveRequests)
           .HasForeignKey(lb => lb.StatusId);
+
+
+            modelBuilder.Entity<User>()
+          .HasOne(lb => lb.Designation)
+          .WithMany(lt => lt.Users)
+          .HasForeignKey(lb => lb.DesignationId);
         }
 
         private void SeedRoles(ModelBuilder builder)

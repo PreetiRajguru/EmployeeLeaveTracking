@@ -109,7 +109,10 @@ namespace EmployeeLeaveTracking.Services.Services
                         .Sum(lr => lr.TotalDays)
                 })
                 .ToList();
-
+            if (leaveTypesWithTotalDays == null)
+            {
+                return null;
+            }
             return leaveTypesWithTotalDays;
         }
     }

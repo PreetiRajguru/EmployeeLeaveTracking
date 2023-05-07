@@ -19,6 +19,36 @@ namespace EmployeeLeaveTracking.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.14")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("EmployeeLeaveTracking.Data.Models.DesignationMaster", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CreatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DesignationName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("ModifiedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Designations");
+                });
+
             modelBuilder.Entity("EmployeeLeaveTracking.Data.Models.LeaveRequest", b =>
                 {
                     b.Property<int>("Id")
@@ -156,6 +186,9 @@ namespace EmployeeLeaveTracking.Data.Migrations
                     b.Property<DateTime?>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("DesignationId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -216,6 +249,8 @@ namespace EmployeeLeaveTracking.Data.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DesignationId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -408,6 +443,17 @@ namespace EmployeeLeaveTracking.Data.Migrations
                     b.Navigation("StatusMaster");
                 });
 
+            modelBuilder.Entity("EmployeeLeaveTracking.Data.Models.User", b =>
+                {
+                    b.HasOne("EmployeeLeaveTracking.Data.Models.DesignationMaster", "Designation")
+                        .WithMany("Users")
+                        .HasForeignKey("DesignationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Designation");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -457,6 +503,11 @@ namespace EmployeeLeaveTracking.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("EmployeeLeaveTracking.Data.Models.DesignationMaster", b =>
+                {
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("EmployeeLeaveTracking.Data.Models.LeaveType", b =>

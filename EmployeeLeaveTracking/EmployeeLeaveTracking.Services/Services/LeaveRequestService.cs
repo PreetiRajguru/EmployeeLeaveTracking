@@ -82,41 +82,6 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public LeaveRequestDTO Create(LeaveRequestDTO leaveRequest)
         {
-            if (leaveRequest == null)
-            {
-                throw new ArgumentNullException(nameof(leaveRequest));
-            }
-
-            if (string.IsNullOrWhiteSpace(leaveRequest.RequestComments))
-            {
-                throw new ArgumentException("Request comments are required.", nameof(leaveRequest.RequestComments));
-            }
-
-            if (string.IsNullOrWhiteSpace(leaveRequest.EmployeeId))
-            {
-                throw new ArgumentException("Employee ID is required.", nameof(leaveRequest.EmployeeId));
-            }
-
-            if (string.IsNullOrWhiteSpace(leaveRequest.ManagerId))
-            {
-                throw new ArgumentException("Manager ID is required.", nameof(leaveRequest.ManagerId));
-            }
-
-            if (leaveRequest.LeaveTypeId <= 0)
-            {
-                throw new ArgumentException("Leave type ID must be a positive integer.", nameof(leaveRequest.LeaveTypeId));
-            }
-
-            if (leaveRequest.StartDate == null || leaveRequest.EndDate == null || leaveRequest.StartDate > leaveRequest.EndDate)
-            {
-                throw new ArgumentException("Invalid date range.", nameof(leaveRequest));
-            }
-
-            if (leaveRequest.TotalDays <= 0)
-            {
-                throw new ArgumentException("Total days must be a positive number.", nameof(leaveRequest.TotalDays));
-            }
-
             var newLeaveRequest = new LeaveRequest
             {
                 RequestComments = leaveRequest.RequestComments,
@@ -137,7 +102,27 @@ namespace EmployeeLeaveTracking.Services.Services
             return leaveRequest;
         }
 
+       public NewLeaveRequestDTO CreateNewLeaveRequest(NewLeaveRequestDTO leaveRequest)
+        {
+            var newLeaveRequest = new LeaveRequest
+            {
+                RequestComments = leaveRequest.RequestComments,
+                EmployeeId = leaveRequest.EmployeeId,
+                ManagerId = leaveRequest.ManagerId,
+                LeaveTypeId = leaveRequest.LeaveTypeId,
+                StartDate = leaveRequest.StartDate,
+                EndDate = leaveRequest.EndDate,
+                TotalDays = leaveRequest.TotalDays,
+                StatusId = leaveRequest.StatusId
+            };
 
+            _dbContext.LeaveRequests.Add(newLeaveRequest);
+            _dbContext.SaveChanges();
+
+            leaveRequest.Id = newLeaveRequest.Id;
+
+            return leaveRequest;
+        }
         public LeaveRequestDTO Update(LeaveRequestDTO leaveRequest)
         {
             var existingLeaveRequest = _dbContext.LeaveRequests

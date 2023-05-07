@@ -1,11 +1,13 @@
 ﻿using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Services.Interfaces;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeLeaveTracking.WebAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+
     public class UserController : ControllerBase
     {
         private readonly IUser _userService;
@@ -43,6 +45,26 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
             catch (Exception ex)
             {
                 return BadRequest();
+            }
+        }
+
+
+        [HttpGet("currentuser/{employeeId}")]
+        public ActionResult<CurrentUserDTO> GetUserBasicInfo(string employeeId)
+        {
+            try
+            {
+                var userBasicInfo = _userService.GetCurrentUser(employeeId);
+                if (userBasicInfo == null)
+                {
+                    return NotFound();
+                }
+                return Ok(userBasicInfo);
+            }
+            catch (Exception ex)
+            {
+                // log error
+                return StatusCode(500, ex.Message);
             }
         }
     }

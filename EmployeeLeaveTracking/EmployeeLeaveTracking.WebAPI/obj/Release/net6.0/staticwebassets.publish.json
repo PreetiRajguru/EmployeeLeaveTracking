@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "5W1qMfQ3oV/oTOL6kWWsQ0dUPrWWJVMVAPhEZK/PlP8=",
+  "Source": "EmployeeLeaveTracking.WebAPI",
+  "BasePath": "_content/EmployeeLeaveTracking.WebAPI",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

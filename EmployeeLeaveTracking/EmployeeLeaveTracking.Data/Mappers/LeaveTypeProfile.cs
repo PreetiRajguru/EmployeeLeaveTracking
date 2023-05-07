@@ -4,7 +4,6 @@ using EmployeeLeaveTracking.Data.Models;
 
 namespace EmployeeLeaveTracking.Data.Mappers
 {
-
     public class LeaveTypeProfile : Profile
     {
         public LeaveTypeProfile()

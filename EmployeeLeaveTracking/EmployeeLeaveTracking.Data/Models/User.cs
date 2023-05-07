@@ -10,6 +10,8 @@ namespace EmployeeLeaveTracking.Data.Models
 
         public string ManagerId { get; set; }
 
+        public int DesignationId { get; set; }
+
         public DateTime? CreatedDate { get; set; }
 
         public int? CreatedBy { get; set; }
@@ -20,6 +22,8 @@ namespace EmployeeLeaveTracking.Data.Models
 
         public bool? IsDeleted { get; set; } = false;
 
+
+        public DesignationMaster Designation { get; set; } = null!;
 
         public List<LeaveRequest>? ManagerLeaveRequests { get; set; }
 

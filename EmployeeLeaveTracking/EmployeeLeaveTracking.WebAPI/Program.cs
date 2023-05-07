@@ -13,11 +13,13 @@ using Microsoft.OpenApi.Models;
 using StudentTeacher.Service.Services;
 using System.Text;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
  
 builder.Services.AddIdentity<User, IdentityRole>()
        .AddEntityFrameworkStores<EmployeeLeaveDbContext>()
@@ -27,6 +29,7 @@ builder.Services.AddIdentity<User, IdentityRole>()
 builder.Services.AddDbContext<EmployeeLeaveDbContext>(options =>
 
 options.UseSqlServer(builder.Configuration.GetConnectionString("ConnStr")));
+
 
 builder.Services.Configure<ApiBehaviorOptions>(options => { options.SuppressModelStateInvalidFilter = true; });
 var mapperConfig = new MapperConfiguration(map =>
@@ -47,6 +50,8 @@ builder.Services.AddScoped<ILeaveType, LeaveTypeService>();
 builder.Services.AddScoped<IStatusMaster, StatusMasterService>();
 builder.Services.AddScoped<IUser, UserService>();
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<IDesignationMaster, DesignationMasterService>();
+
 
 builder.Services.AddCors(options =>
 {
@@ -82,6 +87,7 @@ builder.Services.AddAuthentication(opt =>
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
     };
 });
+
 
 builder.Services.AddSwaggerGen(c =>
 {
@@ -125,6 +131,7 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 app.UseCors("AllowAll");
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

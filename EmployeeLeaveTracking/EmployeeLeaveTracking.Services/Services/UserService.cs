@@ -22,7 +22,7 @@ namespace EmployeeLeaveTracking.Services.Services
         {
             if (string.IsNullOrEmpty(managerId))
             {
-                throw new ArgumentException("Manager ID cannot be null or empty");
+                throw new ArgumentException("Manager Id cannot be null or empty");
             }
 
             var users = _dbContext.Users
@@ -35,7 +35,8 @@ namespace EmployeeLeaveTracking.Services.Services
                        UserName = u.UserName,
                        Email = u.Email,
                        PhoneNumber = u.PhoneNumber,
-                       ManagerId = u.ManagerId
+                       ManagerId = u.ManagerId,
+                       DesignationId = u.DesignationId
                    });
 
             return users;
@@ -46,7 +47,7 @@ namespace EmployeeLeaveTracking.Services.Services
         {
             if (string.IsNullOrWhiteSpace(employeeId))
             {
-                throw new ArgumentException("Employee ID cannot be null or whitespace.", nameof(employeeId));
+                throw new ArgumentException("Employee Id cannot be null or whitespace.", nameof(employeeId));
             }
             var user = _dbContext.Users
                 .Where(u => u.Id.Equals(employeeId))
@@ -57,7 +58,8 @@ namespace EmployeeLeaveTracking.Services.Services
                     UserName = u.UserName,
                     Email = u.Email,
                     PhoneNumber = u.PhoneNumber,
-                    ManagerId = u.ManagerId
+                    ManagerId = u.ManagerId,
+                    DesignationId = u.DesignationId
                 });
             if (!user.Any())
             {
@@ -78,5 +80,29 @@ namespace EmployeeLeaveTracking.Services.Services
 
             return userId;
         }
+
+
+        public CurrentUserDTO GetCurrentUser(string employeeId)
+        {
+            if (string.IsNullOrWhiteSpace(employeeId))
+            {
+                throw new ArgumentException("Employee Id cannot be null or whitespace.", nameof(employeeId));
+            }
+
+            var user = _dbContext.Users
+                .FirstOrDefault(u => u.Id == employeeId);
+
+            if (user == null)
+            {
+                throw new ArgumentException($"User with ID {employeeId} not found.");
+            }
+
+            return new CurrentUserDTO
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName
+            };
+        }
+
     }
 }

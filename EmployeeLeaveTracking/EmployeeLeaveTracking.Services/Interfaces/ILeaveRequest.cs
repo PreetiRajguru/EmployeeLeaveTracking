@@ -11,6 +11,8 @@ namespace EmployeeLeaveTracking.Services.Interfaces
 
         LeaveRequestDTO Create(LeaveRequestDTO leaveRequest);
 
+        public NewLeaveRequestDTO CreateNewLeaveRequest(NewLeaveRequestDTO leaveRequest);
+
         LeaveRequestDTO Update(LeaveRequestDTO leaveRequest);
 
         bool Delete(int id);
