@@ -123,32 +123,6 @@ export default function CustomizedTables() {
     fetchLeaveTypesTotal();
   }, []);
 
-  // const carddetails1 = [
-  //   {
-  //     header: "Paid Leaves",
-  //     color: "red",
-  //   },
-  //   {
-  //     header: "Unpaid Leaves",
-  //     color: "grey",
-  //   },
-  //   {
-  //     header: "Sick Leaves",
-  //     color: "green",
-  //   },
-  //   {
-  //     header: "Personal Leave",
-  //     color: "purple",
-  //   },
-  //   {
-  //     header: "Study Leave",
-  //     color: "brown",
-  //   },
-  //   {
-  //     header: "Bereavement Leaves",
-  //     color: "lightblue",
-  //   },
-  // ];
 console.log(type)
   const carddetails = type.length > 0 ? type.map((val: { leaveTypeName: any; totalDaysTaken: any; }): any => {return {
     header: val.leaveTypeName,
@@ -169,42 +143,12 @@ console.log(type)
           console.error(error);
         }
       };
-
-      // const updatedRows = data.slice(
-      //   newPage * rowsPerPage,
-      //   newPage * rowsPerPage + rowsPerPage,
-      // );
-      // setVisibleRows(updatedRows);
-
-      // // Avoid a layout jump when reaching the last page with empty rows.
-      // const numEmptyRows =
-      //   newPage > 0 ? Math.max(0, (1 + newPage) * rowsPerPage - rows.length) : 0;
-
-      // const newPaddingHeight = (dense ? 33 : 53) * numEmptyRows;
     },
     [ dense, rowsPerPage],
   );
 
-  // const handleChangeRowsPerPage = useCallback(
-  //   (event: React.ChangeEvent<HTMLInputElement>) => {
-  //     const updatedRowsPerPage = parseInt(event.target.value, 10);
-  //     setRowsPerPage(updatedRowsPerPage);
-
-  //     setPage(0);
-
-  //     const updatedRows = data.slice(
-  //       0 * updatedRowsPerPage,
-  //       0 * updatedRowsPerPage + updatedRowsPerPage,
-  //     );
-  //     setVisibleRows(updatedRows);
-
-  //   },
-  //   [],
-  // );
-
   return (
     <>
-      {/* <BasicCard /> */}
       <TableContainer component={Paper}>
         <Typography component="h1" variant="h5" align="center" sx={{ mb: 3 }}>
           My Leave Details
@@ -263,19 +207,15 @@ console.log(type)
           </Button>
         </Typography>
         </div>
-        {/* <Table sx={{ minWidth: 700 }} aria-label="simple table"> */}
         <Box sx={{ margin: '0 16px' }}>
         <Table sx={{ minWidth: 700, border: '1px solid #ddd' }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              {/* <StyledTableCell>Employee Name</StyledTableCell> */}
               <StyledTableCell align="left">Leave Type</StyledTableCell>
               <StyledTableCell align="center">Comments</StyledTableCell>
               <StyledTableCell align="right">Start Date</StyledTableCell>
               <StyledTableCell align="right">End Date</StyledTableCell>
-            
               <StyledTableCell align="right">Total Days</StyledTableCell>
-              {/* <StyledTableCell align="right">Manager Name</StyledTableCell> */}
               <StyledTableCell align="right">Status</StyledTableCell>
             </TableRow>
           </TableHead>
@@ -288,11 +228,7 @@ console.log(type)
                 </StyledTableCell>
                 <StyledTableCell component="th" scope="row">
                   {row.requestComments}
-                </StyledTableCell>
-                {/* <StyledTableCell component="th" scope="row">
-                  {row.employeeName}
-                </StyledTableCell> */}
-                
+                </StyledTableCell>             
                 <StyledTableCell align="right">
                   {new Date(row.startDate).toLocaleDateString()}
                 </StyledTableCell>
@@ -301,9 +237,6 @@ console.log(type)
                 </StyledTableCell>
                 
                 <StyledTableCell align="right">{row.totalDays}</StyledTableCell>
-                {/* <StyledTableCell align="right">
-                  {row.managerName}
-                </StyledTableCell> */}
                 <StyledTableCell align="right">
                   {row.statusName}
                 </StyledTableCell>
@@ -313,15 +246,6 @@ console.log(type)
         </Table>
         </Box>
       </TableContainer>
-      {/* <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
-          component="div"
-          count={rows.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          // onRowsPerPageChange={handleChangeRowsPerPage}
-        /> */}
     </>
   );
 }

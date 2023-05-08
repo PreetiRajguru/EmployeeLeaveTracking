@@ -12,7 +12,6 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import axios from "axios";
-// import { brown, green, pink, purple, red, yellow } from "@mui/material/colors";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -43,7 +42,6 @@ const ViewEmployeeDetails = () => {
     const fetchLeaveDetails = async () => {
       try {
         const response = await axios.get(`/api/LeaveRequest/employee/${empId}`);
-        // const response = await axios.get(`/api/LeaveRequest/employee/8922e768-ed48-43ec-8740-9201c0fdae46`);
         setData(response.data);
         console.log(data);
       } catch (error) {
@@ -59,9 +57,9 @@ const ViewEmployeeDetails = () => {
       .put(`/api/LeaveRequest/${rowId}/status/${param}`)
       .then((response) => setStatusId(response.data))
       .catch((error) => console.log(error));
-  };
 
-  //   const headers = ['Paid Leaves','Unpaid Leaves','Sick Leaves','Bereavement Leaves','Personal Leave','Study Leave']
+      window.location.reload()
+  };
 
   return (
     <div>
@@ -149,18 +147,11 @@ const ViewEmployeeDetails = () => {
                     </div>
                   )}
                 </StyledTableCell>
-                {/* <StyledTableCell align="right">
-                            <Button variant="outlined" onClick={() => navigate("/viewempdetails")}>View Details</Button>
-                        </StyledTableCell> */}
               </StyledTableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
-
-      {/* <Button variant="contained" onClick={() => navigate("/viewemployees")} sx={{mt: 1}}>
-        Back to Employee List
-      </Button> */}
 
       <Button
         variant="contained"

@@ -130,12 +130,6 @@ export default function Register() {
         //   newErrors.password = "";
         // }
         // break;
-      // case "managerId":
-      //   // Check if field contains only numbers
-      //   if (!/^[0-9]*$/.test(value)) {
-      //     errorMsg = "Only numbers are allowed";
-      //   }
-      //   break;
       default:
         break;
     }
@@ -268,51 +262,6 @@ export default function Register() {
             // error={errors.phonenumber !== ""}
             // helperText={errors.phonenumber}
           />
-          
-          {/* <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="managerId"
-            value={data.managerId}
-            label="Manager Id"
-            id="managerId"
-            autoComplete="managerId"
-            onChange={handleInputChange}
-            sx={{ mb: 2 }}
-          /> */}
-          {/* <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="designationId"
-            value={data.designationId}
-            label="Designation Id"
-            id="designationId"
-            autoComplete="designationId"
-            onChange={handleInputChange}
-          /> */}
-          {/* <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Designation Type</InputLabel>
-            <Select
-              name="designationId"
-              label="Designation Name"
-              id="demo-simple-select"
-              fullWidth
-              sx={{ mb: 2 }}
-              value={data.designationId}
-              onChange={handleInputChange}
-            >
-              {designation?.map((option: any) => (
-                <MenuItem value={option.id}>{option.designationName}</MenuItem>
-              ))}
-            </Select>
-          </FormControl> */}
-          
-          {/* <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          /> */}
           
           <Button
             type="submit"

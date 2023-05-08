@@ -43,7 +43,6 @@ const NewRequests = () => {
     const fetchLeaveDetails = async () => {
       try {
         const response = await axios.get(`api/LeaveRequest/status/1`);
-        // const response = await axios.get(`/api/LeaveRequest/employee/8922e768-ed48-43ec-8740-9201c0fdae46`);
         setData(response.data);
         console.log(data);
       } catch (error) {
@@ -59,10 +58,9 @@ const NewRequests = () => {
       .put(`/api/LeaveRequest/${rowId}/status/${param}`)
       .then((response) => setStatusId(response.data))
       .catch((error) => console.log(error));
-  };
 
-//   const headers = ['Paid Leaves','Unpaid Leaves','Sick Leaves','Bereavement Leaves','Personal Leave','Study Leave']
-  
+      window.location.reload()
+  };
 
   return (
     <div>
@@ -77,7 +75,7 @@ const NewRequests = () => {
               <StyledTableCell>Employee Name</StyledTableCell>
               <StyledTableCell align="right">Start Date</StyledTableCell>
               <StyledTableCell align="right">End Date</StyledTableCell>
-              <StyledTableCell align="right">Leave Type</StyledTableCell>
+              <StyledTableCell align="right">Comments</StyledTableCell>
               <StyledTableCell align="right">Total Days</StyledTableCell>
               <StyledTableCell align="right">Status</StyledTableCell>
             </TableRow>
@@ -95,7 +93,7 @@ const NewRequests = () => {
                   {new Date(row.endDate).toLocaleDateString()}
                 </StyledTableCell>
                 <StyledTableCell align="right">
-                  {row.leaveTypeName}
+                  {row.requestComments}
                 </StyledTableCell>
                 <StyledTableCell align="right">{row.totalDays}</StyledTableCell>
                 <StyledTableCell align="right">
@@ -145,9 +143,6 @@ const NewRequests = () => {
                     </div>
                   )}
                 </StyledTableCell>
-                {/* <StyledTableCell align="right">
-                            <Button variant="outlined" onClick={() => navigate("/viewempdetails")}>View Details</Button>
-                        </StyledTableCell> */}
               </StyledTableRow>
             ))}
           </TableBody>

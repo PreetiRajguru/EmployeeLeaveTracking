@@ -15,35 +15,6 @@ import {
 import axios from "axios";
 import useReadLocalStorage from "../useReadLocalStorage";
 
-// function BasicCard() {
-//   return (
-//     <Card sx={{ minWidth: 275 }}>
-//       <CardContent>
-//         <Typography variant="h6" color="text.secondary" gutterBottom>
-//           Employee Details
-//         </Typography>
-//         <Divider sx={{ mb: 1 }} />
-//         <Typography component="div" sx={{ fontSize: 14, mb: 0.5 }}>
-//           Preeti Rajguru
-//         </Typography>
-//         <Typography sx={{ mb: 1, fontSize: 14 }} color="text.secondary">
-//           preeti.rajguru@ix.com
-//         </Typography>
-//         <Typography variant="body2" sx={{ mb: 1, fontSize: 14 }}>
-//           Phone.No:7040647427
-//           <br />
-//           Vadgaon Sheri, Pune - 41
-//         </Typography>
-//       </CardContent>
-//       <CardActions>
-//         <Button size="small">Learn More</Button>
-//       </CardActions>
-//     </Card>
-//   );
-// }
-
-//manager id
-
 const ApplyForLeaves = () => {
   const navigate = useNavigate();
   const empId = useReadLocalStorage("id");
@@ -177,7 +148,6 @@ const ApplyForLeaves = () => {
       totalDays: totalDays,
       employeeId: { empId },
       empManager:{empManager}
-      // managerId: {empManager},
     }));
   };
 
@@ -193,18 +163,6 @@ const ApplyForLeaves = () => {
         <Divider />
 
         <Box component="form" sx={{ mt: 2 }} onSubmit={handleSubmit}>
-       
-          {/* <TextField
-            name="employeeId"
-            label="Employee Id"
-            required
-            fullWidth
-            autoComplete="on"
-            value={empId}
-            onChange={handleInputChange}
-            sx={{ mb: 2 }}
-            // style={{ display: "none" }}
-          /> */}
 
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Leave Type</InputLabel>
@@ -266,18 +224,6 @@ const ApplyForLeaves = () => {
             onChange={handleInputChange}
             sx={{ mb: 2 }}
           />
-
-          {/* <TextField
-            name="managerId"
-            label="Manager Id"
-            required
-            fullWidth
-            autoComplete="off"
-            value={empManager}
-            onChange={handleInputChange}
-            sx={{ mb: 2 }}
-            // style={{ display: "none" }}
-          /> */}
 
           <Button
             type="submit"

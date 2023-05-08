@@ -15,7 +15,6 @@ import MyLeaveDetails from './components/Employee/MyLeaveDetails'
 import axios from 'axios'
 import { AppContext } from './config/https';
 import NewRequests from './components/Manager/NewRequests';
-import EnhancedTable from './components/Employee/EnhancedTable';
 import React from 'react';
 
 function App() {
@@ -42,8 +41,7 @@ function App() {
     <AppContext.Provider value={{ loading }}>
     <div>
       <BrowserRouter>
-      
-
+    
       {/* {isLogin ? (
             <Login />
           ) : (
@@ -64,7 +62,6 @@ function App() {
         <Route path="/leavedetails" element={<MyLeaveDetails />} />
         <Route path="/newrequests" element={<NewRequests />} />
         <Route path="/myprofile" element={<MyProfile />} />
-        <Route path="/t" element={<EnhancedTable />} />
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
       

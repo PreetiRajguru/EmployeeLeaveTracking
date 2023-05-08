@@ -136,14 +136,6 @@ export default function AddEmployee() {
       //     newErrors.password = "";
       //   }
       //   break;
-
-
-      // case "managerId":
-      //   // Check if field contains only numbers
-      //   if (!/^[0-9]*$/.test(value)) {
-      //     errorMsg = "Only numbers are allowed";
-      //   }
-      //   break;
       default:
         break;
     }
@@ -270,21 +262,7 @@ export default function AddEmployee() {
             error={errors.phonenumber !== ""}
             helperText={errors.phonenumber}
           />
-          {/* <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="managerId"
-            value={managerId}
-            label="Manager Id"
-            id="managerId"
-            autoComplete="managerId"
-            onChange={handleInputChange}
-            sx={{mb: 2}}
-            error={errors.managerId !== ""}
-            helperText={errors.managerId}
-          /> */}
-
+  
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label"> Designation Type </InputLabel>
             <Select

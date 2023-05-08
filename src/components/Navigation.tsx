@@ -124,8 +124,6 @@ const Navigation = () => {
         }}
       >
 
-
-        
         <List
           sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
           component="nav"
@@ -188,9 +186,6 @@ const Navigation = () => {
                   onClick={() => navigate("/leavedetails")}
                 />
               </ListItemButton>
-
-
-
 
               <ListItemButton>
                 <ListItemIcon>
