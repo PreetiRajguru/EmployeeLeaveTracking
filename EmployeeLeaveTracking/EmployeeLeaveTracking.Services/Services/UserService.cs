@@ -140,5 +140,19 @@ namespace EmployeeLeaveTracking.Services.Services
             };
         }
 
+
+
+        public async Task<string> GetManagerIdAsync(string employeeId)
+        {
+            var employee = await _dbContext.Users
+                .FirstOrDefaultAsync(e => e.Id == employeeId);
+
+            if (employee == null)
+            {
+                throw new ArgumentException("Invalid employee ID");
+            }
+
+            return employee.ManagerId;
+        }
     }
 }

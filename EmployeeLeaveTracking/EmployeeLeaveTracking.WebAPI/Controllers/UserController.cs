@@ -1,12 +1,11 @@
 ﻿using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Services.Interfaces;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeLeaveTracking.WebAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
 
     public class UserController : ControllerBase
     {
@@ -92,6 +91,26 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
             {
                 // log error
                 return StatusCode(500, ex.Message);
+            }
+        }
+
+
+
+        [HttpGet("{employeeId}/manager")]
+        public async Task<ActionResult<string>> GetManagerId(string employeeId)
+        {
+            try
+            {
+                var managerId = await _userService.GetManagerIdAsync(employeeId);
+                return Ok(managerId);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
     }

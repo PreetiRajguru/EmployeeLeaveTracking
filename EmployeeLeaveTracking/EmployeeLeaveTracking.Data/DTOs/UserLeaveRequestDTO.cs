@@ -16,7 +16,7 @@ namespace EmployeeLeaveTracking.Data.DTOs
 
         public int TotalDays { get; set; }
 
-        public string? ManagerName { get; set; }
+        /*public string? ManagerName { get; set; }*/
 
         public string? EmployeeName { get; set; }
 

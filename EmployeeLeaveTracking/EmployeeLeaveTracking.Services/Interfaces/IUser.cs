@@ -13,5 +13,7 @@ namespace EmployeeLeaveTracking.Services.Interfaces
         IEnumerable<UserRegistrationDTO> GetUserDetails(string employeeId);
 
         public CurrentUserDTO GetCurrentUser(string employeeId);
+
+        Task<string> GetManagerIdAsync(string employeeId);
     }
 }

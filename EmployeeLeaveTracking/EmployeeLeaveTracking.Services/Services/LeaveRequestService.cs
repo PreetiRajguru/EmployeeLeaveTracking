@@ -327,11 +327,13 @@ namespace EmployeeLeaveTracking.Services.Services
         public List<UserLeaveRequestDTO> LeavesByEmployeeId(string employeeId)
         {
             IQueryable<LeaveRequest> leaveRequestByEmployeeId = _dbContext.LeaveRequests
-            .Include(m => m.Manager)
+            
             .Include(m => m.Employee)
+            /*.Include(m => m.Manager)*/
             .Include(m => m.LeaveType)
             .Include(m => m.StatusMaster)
-            .Where(c => c.EmployeeId.Equals(employeeId));
+            .Where(c => c.EmployeeId.Equals(employeeId)); 
+
             return leaveRequestByEmployeeId.Select(c => new UserLeaveRequestMapper().Map(c)).ToList();
         }
     }
