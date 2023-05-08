@@ -10,7 +10,6 @@ import axios from "axios";
 import CloseIcon from '@mui/icons-material/Close';
 import Snackbar from '@mui/material/Snackbar';
 import IconButton from "@mui/material/IconButton";
-import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
 export default function Register() {
   const [registrationError, setRegistrationError] = useState(false);
@@ -63,7 +62,6 @@ export default function Register() {
       setData(newData);
       console.log(error.response.data.message);
     }
-   
   };
 
   const handleInputChange = (event: any) => {
@@ -71,7 +69,6 @@ export default function Register() {
     let isValid = true;
     const newErrors = { ...errors };
 
-    // Add validations for each field
     switch (name) {
       case "firstname":
         // Check if field contains only alphabets
@@ -126,13 +123,13 @@ export default function Register() {
         break;
       case "phonenumber":
         // Check if phone number is valid
-        if (!/^[0-9]{10}$/.test(value)) {
-          newErrors.phonenumber = "Enter a valid 10 digit phone number";
-          isValid = false;
-        } else {
-          newErrors.password = "";
-        }
-        break;
+        // if (!/^[0-9]{10}$/.test(value)) {
+        //   newErrors.phonenumber = "Enter a valid 10 digit phone number";
+        //   isValid = false;
+        // } else {
+        //   newErrors.password = "";
+        // }
+        // break;
       // case "managerId":
       //   // Check if field contains only numbers
       //   if (!/^[0-9]*$/.test(value)) {
@@ -182,7 +179,9 @@ export default function Register() {
         <Typography component="h1" variant="h5">
           Register
         </Typography>
+
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          
           <TextField
             margin="normal"
             required
@@ -197,6 +196,7 @@ export default function Register() {
             error={errors.firstname !== ""}
             helperText={errors.firstname}
           />
+          
           <TextField
             margin="normal"
             required
@@ -210,6 +210,7 @@ export default function Register() {
             error={errors.lastname !== ""}
             helperText={errors.lastname}
           />
+          
           <TextField
             margin="normal"
             required
@@ -223,6 +224,7 @@ export default function Register() {
             error={errors.username !== ""}
             helperText={errors.username}
           />
+          
           <TextField
             margin="normal"
             required
@@ -236,6 +238,7 @@ export default function Register() {
             error={errors.email !== ""}
             helperText={errors.email}
           />
+          
           <TextField
             margin="normal"
             required
@@ -250,6 +253,7 @@ export default function Register() {
             error={errors.password !== ""}
             helperText={errors.password}
           />
+          
           <TextField
             margin="normal"
             required
@@ -264,6 +268,7 @@ export default function Register() {
             // error={errors.phonenumber !== ""}
             // helperText={errors.phonenumber}
           />
+          
           {/* <TextField
             margin="normal"
             required
@@ -308,6 +313,7 @@ export default function Register() {
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           /> */}
+          
           <Button
             type="submit"
             fullWidth
@@ -331,6 +337,7 @@ export default function Register() {
             </IconButton>}
           />
           }
+         
           <Grid container>
             <Grid item>
               <Link href="/" variant="body2">
@@ -338,6 +345,7 @@ export default function Register() {
               </Link>
             </Grid>
           </Grid>
+        
         </Box>
       </Box>
     </Container>

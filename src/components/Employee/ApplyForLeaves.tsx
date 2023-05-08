@@ -62,13 +62,12 @@ const ApplyForLeaves = () => {
   });
   const [leaveTypeName, setLeaveTypeName] = useState<any>([]);
   const [username, setUsername] = useState<string>();
-  // const empId = localStorage.getItem("id");
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
 
     const newLeaveTypeDetails = {
-      managerId: leaveTypeDetails.managerId,
+      managerId: empManager,
       statusId: leaveTypeDetails.statusId,
       startDate: leaveTypeDetails.startDate,
       endDate: leaveTypeDetails.endDate,
@@ -85,7 +84,6 @@ const ApplyForLeaves = () => {
 
     try {
       axios.post("/api/LeaveRequest", newLeaveTypeDetails).then((response) => {
-        // console.log(response.data);
         alert("Leave Request Sent Succesfully");
 
         navigate("/leavedetails");
@@ -113,7 +111,6 @@ const ApplyForLeaves = () => {
         setLeaveTypeName(response.data);
         console.log(response.data);
       } catch (error) {}
-      // .catch((error) => console.log(error));
     };
 
     fetchLeaveTypes();
@@ -126,7 +123,6 @@ const ApplyForLeaves = () => {
         setLeaveBalance(response.data);
         console.log(response.data);
       } catch (error) {
-        // console.error(error);
       }
     };
     fetchLeaveBalances();
@@ -137,16 +133,13 @@ const ApplyForLeaves = () => {
         setEmpManager(response.data);
         console.log(response.data);
       }
-        catch(error){
-
-        }
+        catch(error){  }
     };
 
     fetchEmpManager();
   }, []);
 
   useEffect(() => {
-    // const empId = localStorage.getItem("id");
     if (!empId || username) {
       return;
     }
@@ -195,7 +188,6 @@ const ApplyForLeaves = () => {
         <Typography variant="h4" align="left">
           Apply For Leaves
         </Typography>
-        {/* <h2 style={{ float: "right" }}>Leave Balance: {leaveBalance} </h2> */}
 
         <h2 style = {{ float: "right" , backgroundColor: '#bcdbf3', display: 'inline-block', padding: '5px 10px'}}>Leave Balance: {leaveBalance} </h2>
         <Divider />
@@ -275,7 +267,7 @@ const ApplyForLeaves = () => {
             sx={{ mb: 2 }}
           />
 
-          <TextField
+          {/* <TextField
             name="managerId"
             label="Manager Id"
             required
@@ -285,7 +277,7 @@ const ApplyForLeaves = () => {
             onChange={handleInputChange}
             sx={{ mb: 2 }}
             // style={{ display: "none" }}
-          />
+          /> */}
 
           <Button
             type="submit"

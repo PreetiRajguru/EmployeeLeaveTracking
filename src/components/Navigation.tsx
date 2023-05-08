@@ -22,6 +22,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import DraftsIcon from "@mui/icons-material/Drafts";
 import SendIcon from "@mui/icons-material/Send";
 import { useNavigate } from "react-router-dom";
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import ViewListIcon from "@mui/icons-material/ViewList";
 
 const Navigation = () => {
@@ -185,6 +186,19 @@ const Navigation = () => {
                 <ListItemText
                   primary="My Leave Details"
                   onClick={() => navigate("/leavedetails")}
+                />
+              </ListItemButton>
+
+
+
+
+              <ListItemButton>
+                <ListItemIcon>
+                  <AccountBoxIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="My Profile"
+                  onClick={() => navigate("/myprofile")}
                 />
               </ListItemButton>
             </>

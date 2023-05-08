@@ -10,16 +10,29 @@ import AddEmployee from './components/Manager/AddEmployee';
 import ApplyForLeaves from './components/Employee/ApplyForLeaves';
 import About from './components/About'
 import ErrorPage from './components/ErrorPage'
+import MyProfile from './components/MyProfile'
 import MyLeaveDetails from './components/Employee/MyLeaveDetails'
 import axios from 'axios'
 import { AppContext } from './config/https';
 import NewRequests from './components/Manager/NewRequests';
 import EnhancedTable from './components/Employee/EnhancedTable';
+import React from 'react';
 
 function App() {
 
+  const [isLogin, setIsLogin] = React.useState(false);
+  
+  const getToken = () => {
+    setIsLogin(
+      localStorage.getItem("token") && localStorage.getItem("token") != ""
+        ? true
+        : false
+    );
+  };
+
   useEffect(() => {
     axios.defaults.baseURL = 'https://localhost:7033';
+    getToken()
     })
 
     const [loading] = useState(true);
@@ -30,6 +43,14 @@ function App() {
     <div>
       <BrowserRouter>
       
+
+      {/* {isLogin ? (
+            <Login />
+          ) : (
+            
+            <Navigation />
+          )} */}
+
       <Navigation />
 
       <Routes>
@@ -42,6 +63,7 @@ function App() {
         <Route path="/applyforleaves" element={<ApplyForLeaves />} />
         <Route path="/leavedetails" element={<MyLeaveDetails />} />
         <Route path="/newrequests" element={<NewRequests />} />
+        <Route path="/myprofile" element={<MyProfile />} />
         <Route path="/t" element={<EnhancedTable />} />
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
