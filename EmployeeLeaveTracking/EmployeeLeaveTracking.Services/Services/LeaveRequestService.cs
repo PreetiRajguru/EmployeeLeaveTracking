@@ -198,33 +198,6 @@ namespace EmployeeLeaveTracking.Services.Services
         }
 
 
-        /* public async Task<List<LeaveRequestDTO>> GetAllLeavesByStatusIdAsync(int statusId)
-         {
-             if (statusId <= 0)
-             {
-                 throw new ArgumentException("Invalid status ID");
-             }
-
-             var leaveRequests = await _dbContext.LeaveRequests
-                 .Where(lr => lr.StatusId == statusId)
-                 .ToListAsync();
-
-             return leaveRequests.Select(lr => new LeaveRequestDTO
-             {
-                 Id = lr.Id,
-                 RequestComments = lr.RequestComments,
-                 StartDate = (DateTime)lr.StartDate,
-                 EndDate = (DateTime)lr.EndDate,
-                 TotalDays = lr.TotalDays,
-                 ManagerId = lr.ManagerId,
-                 EmployeeId = lr.EmployeeId,
-                 LeaveTypeId = lr.LeaveTypeId,
-                 StatusId = lr.StatusId
-             }).ToList();
-         }*/
-
-
-
         public async Task<List<LeaveRequestDTO>> GetAllLeavesByStatusIdAsync(int statusId)
         {
             if (statusId <= 0)
@@ -252,7 +225,6 @@ namespace EmployeeLeaveTracking.Services.Services
                 StatusId = lr.StatusId
             }).ToList();
         }
-
 
 
         public List<LeaveRequestDTO> GetLeaveRequestsByStatusAndManager(int statusId, string managerId)

@@ -16,25 +16,6 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
             _userService = userService;
         }
 
-        /*        [HttpGet]
-                [Route("employees/{managerId}")]
-                public  ActionResult<IEnumerable<UserRegistrationDTO>> GetUsersByManagerId(string managerId)
-                {
-                    try
-                    {
-                        var users = _userService.GetUsersByManagerId(managerId);
-                        return Ok(users);
-                    }
-                    catch (Exception ex) 
-                    {
-                        return BadRequest();
-                    }
-                }*/
-
-
-
-
-
         [HttpGet]
         [Route("employees/{managerId}")]
         public ActionResult<IEnumerable<UserRegistrationDTO>> GetUsersByManagerId(string managerId)
@@ -49,14 +30,6 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
                 return BadRequest();
             }
         }
-
-
-
-
-
-
-
-
 
 
         [HttpGet]
@@ -111,6 +84,49 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
             catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+
+
+
+
+
+
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(string id, [FromBody] UserRegistrationDTO user)
+        {
+            if (user == null)
+            {
+                return BadRequest("User object is null");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("Invalid model object");
+            }
+
+            if (string.IsNullOrEmpty(id))
+            {
+                return BadRequest("User id is null or empty");
+            }
+
+            user.Id = id;
+
+            try
+            {
+                var updatedUser = await _userService.UpdateUser(user);
+
+                return Ok(updatedUser);
+            }
+            catch (ArgumentException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
             }
         }
     }

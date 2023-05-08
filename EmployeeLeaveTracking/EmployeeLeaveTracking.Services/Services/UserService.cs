@@ -1,5 +1,7 @@
 ﻿using EmployeeLeaveTracking.Data.Context;
 using EmployeeLeaveTracking.Data.DTOs;
+using EmployeeLeaveTracking.Data.Mappers;
+using EmployeeLeaveTracking.Data.Models;
 using EmployeeLeaveTracking.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -17,31 +19,6 @@ namespace EmployeeLeaveTracking.Services.Services
             _dbContext = dbContext;
             _httpContextAccessor = httpContextAccessor;
         }
-
-        /*        public IEnumerable<UserRegistrationDTO> GetUsersByManagerId(string managerId)
-                {
-                    if (string.IsNullOrEmpty(managerId))
-                    {
-                        throw new ArgumentException("Manager Id cannot be null or empty");
-                    }
-
-                    var users = _dbContext.Users
-                           .Where(u => u.ManagerId.Equals(managerId))
-                           .Select(u => new UserRegistrationDTO
-                           {
-                               Id = u.Id,
-                               FirstName = u.FirstName,
-                               LastName = u.LastName,
-                               UserName = u.UserName,
-                               Email = u.Email,
-                               PhoneNumber = u.PhoneNumber,
-                               ManagerId = u.ManagerId,
-                               DesignationId = u.DesignationId
-                           });
-
-                    return users;
-                }*/
-
 
 
         public IEnumerable<UserRegistrationDTO> GetUsersByManagerId(string managerId)
@@ -68,15 +45,6 @@ namespace EmployeeLeaveTracking.Services.Services
 
             return users;
         }
-
-
-
-
-
-
-
-
-
 
 
         public IEnumerable<UserRegistrationDTO> GetUserDetails(string employeeId)
@@ -153,6 +121,47 @@ namespace EmployeeLeaveTracking.Services.Services
             }
 
             return employee.ManagerId;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        public async Task<UserRegistrationDTO> UpdateUser(UserRegistrationDTO user)
+        {
+            var existingUser = await _dbContext.Users.FindAsync(user.Id);
+
+            if (existingUser == null)
+            {
+                throw new ArgumentException($"User with id {user.Id} does not exist");
+            }
+
+            existingUser.FirstName = user.FirstName;
+            existingUser.LastName = user.LastName;
+            existingUser.UserName = user.UserName;
+            existingUser.Email = user.Email;
+            existingUser.PhoneNumber = user.PhoneNumber;
+            existingUser.ManagerId = user.ManagerId;
+            existingUser.DesignationId = user.DesignationId;
+
+            await _dbContext.SaveChangesAsync();
+
+            return user;
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace EmployeeLeaveTracking.Data.Models
+﻿namespace EmployeeLeaveTracking.Data.Models
 {
     public class LeaveType
     {

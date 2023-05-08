@@ -1,8 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using System.Runtime.CompilerServices;
-using System.Text;
-
-namespace EmployeeLeaveTracking.Data.DTOs
+﻿namespace EmployeeLeaveTracking.Data.DTOs
 {
     public class UserLeaveRequestDTO
     {

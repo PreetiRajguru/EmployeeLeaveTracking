@@ -31,6 +31,9 @@ public sealed class UserAuthenticationService : IUserAuthentication
     {
         var user = _mapper.Map<User>(userRegistration);
 
+       /* await _userManager.ChangePasswordAsync()*/
+
+
         var result = await _userManager.CreateAsync(user, userRegistration.Password);
 
         if (result.Succeeded)
