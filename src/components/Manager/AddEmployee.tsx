@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
@@ -6,11 +6,13 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
 const managerId = localStorage.getItem("id");
 
 export default function AddEmployee() {
   const navigate = useNavigate();
+  const [designation, setDesignation] = useState<any>([]);
   const [data, setData] = useState({
     firstname: "",
     lastname: "",
@@ -20,6 +22,17 @@ export default function AddEmployee() {
     phonenumber: "",
     managerId: "",
     designationId: "",
+  });
+  
+  const [errors, setErrors] = useState({
+    firstname: "",
+    lastname: "",
+    username: "",
+    email: "",
+    password: "",
+    phonenumber: "",
+    managerId: "",
+    designationId:""
   });
 
   const handleSubmit = async (event: any) => {
@@ -32,8 +45,8 @@ export default function AddEmployee() {
       email: data.email,
       password: data.password,
       phonenumber: data.phonenumber,
-      managerId: data.managerId,
-      designationId: data.designationId,
+      managerId: managerId,
+      designationId: data.designationId.toString(),
     };
 
     try {
@@ -58,6 +71,83 @@ export default function AddEmployee() {
 
   const handleInputChange = (event: any) => {
     const { name, value } = event.target;
+    let isValid = true;
+    const newErrors = { ...errors };
+
+    // Add validations for each field
+    switch (name) {
+      case "firstname":
+        // Check if field contains only alphabets
+        if (!/^[a-zA-Z ]*$/.test(value)) {
+          newErrors.firstname = "Only alphabets are allowed";
+          isValid = false;
+        } else {
+          newErrors.firstname = "";
+        }
+        break;
+      case "lastname": 
+        // Check if field contains only alphabets
+        if (!/^[a-zA-Z ]*$/.test(value)) {
+          newErrors.lastname = "Only alphabets are allowed";
+          isValid = false;
+        } else {
+          newErrors.lastname = "";
+        }
+        break;
+      case "username":
+        // Check if field contains only alphanumeric characters and underscore
+        if (!/^[a-zA-Z0-9_]*$/.test(value)) {
+          newErrors.username =
+            "Only alphanumeric characters and underscore are allowed";
+          isValid = false;
+        } else {
+          newErrors.username = "";
+        }
+        break;
+      case "email":
+        // Check if email is valid
+        if (!/\S+@\S+\.\S+/.test(value)) {
+          newErrors.email = "Enter a valid email address";
+          isValid = false;
+        } else {
+          newErrors.email = "";
+        }
+        break;
+      case "password":
+        // Check if password is strong
+        if (
+          !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
+            value
+          )
+        ) {
+          newErrors.password =
+            "Password should contain at least 8 characters, one uppercase letter, one lowercase letter, one number, and one special character";
+          isValid = false;
+        } else {
+          newErrors.password = "";
+        }
+        break;
+      // case "phonenumber":
+      //   // Check if phone number is valid
+      //   if (!/^[0-9]{10}$/.test(value)) {
+      //     newErrors.phonenumber = "Enter a valid 10 digit phone number";
+      //     isValid = false;
+      //   } else {
+      //     newErrors.password = "";
+      //   }
+      //   break;
+
+
+      // case "managerId":
+      //   // Check if field contains only numbers
+      //   if (!/^[0-9]*$/.test(value)) {
+      //     errorMsg = "Only numbers are allowed";
+      //   }
+      //   break;
+      default:
+        break;
+    }
+    setErrors(newErrors);
     setData((prevState: any) => ({
       ...prevState,
       [name]: value,
@@ -67,6 +157,18 @@ export default function AddEmployee() {
   const handleBackButton = () => {
     navigate("/");
   };
+
+  useEffect(() => {
+    const fetchDesignations = async () => {
+      try {
+        const response = await axios.get("/api/DesignationMaster");
+        setDesignation(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchDesignations();
+  }, []);
 
   return (
     <Container component="main" maxWidth="sm">
@@ -97,6 +199,8 @@ export default function AddEmployee() {
             autoComplete="firstname"
             autoFocus
             onChange={handleInputChange}
+            error={errors.firstname !== ""}
+            helperText={errors.firstname}
           />
           <TextField
             margin="normal"
@@ -108,6 +212,8 @@ export default function AddEmployee() {
             value={data.lastname}
             autoComplete="lastname"
             onChange={handleInputChange}
+            error={errors.lastname !== ""}
+            helperText={errors.lastname}
           />
           <TextField
             margin="normal"
@@ -119,6 +225,8 @@ export default function AddEmployee() {
             value={data.username}
             autoComplete="username"
             onChange={handleInputChange}
+            error={errors.username !== ""}
+            helperText={errors.username}
           />
           <TextField
             margin="normal"
@@ -130,6 +238,8 @@ export default function AddEmployee() {
             value={data.email}
             autoComplete="email"
             onChange={handleInputChange}
+            error={errors.email !== ""}
+            helperText={errors.email}
           />
           <TextField
             margin="normal"
@@ -142,6 +252,8 @@ export default function AddEmployee() {
             id="password"
             autoComplete="current-password"
             onChange={handleInputChange}
+            error={errors.password !== ""}
+            helperText={errors.password}
           />
           <TextField
             margin="normal"
@@ -152,10 +264,13 @@ export default function AddEmployee() {
             label="Mobile Number"
             type="number"
             id="phonenumber"
+            sx={{ mb: 2 }}
             autoComplete="phonenumber"
             onChange={handleInputChange}
+            error={errors.phonenumber !== ""}
+            helperText={errors.phonenumber}
           />
-          <TextField
+          {/* <TextField
             margin="normal"
             required
             fullWidth
@@ -165,19 +280,27 @@ export default function AddEmployee() {
             id="managerId"
             autoComplete="managerId"
             onChange={handleInputChange}
-          />
+            sx={{mb: 2}}
+            error={errors.managerId !== ""}
+            helperText={errors.managerId}
+          /> */}
 
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="designationId"
-            value={data.designationId}
-            label="Designation Id"
-            id="designationId"
-            autoComplete="designationId"
-            onChange={handleInputChange}
-          />
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label"> Designation Type </InputLabel>
+            <Select
+              name="designationId"
+              label="Designation Name"
+              id="demo-simple-select"
+              fullWidth
+              sx={{ mb: 2 }}
+              value={data.designationId}
+              onChange={handleInputChange}
+            >
+              {designation?.map((option: any) => (
+                <MenuItem value={option.id}>{option.designationName}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
 
           <br></br>
           <br></br>

@@ -154,7 +154,16 @@ const NewRequests = () => {
         </Table>
       </TableContainer>
 
-      <Button variant="contained" onClick={() => navigate("/viewemployees")} sx={{mt: 1}}>
+      <Button
+        variant="contained"
+        onClick={() => navigate("/viewemployees")}
+        sx={{
+          position: "fixed",
+          bottom: "20px",
+          right: "20px",
+          mt: 1,
+        }}
+      >
         Back to Employee List
       </Button>
     </div>

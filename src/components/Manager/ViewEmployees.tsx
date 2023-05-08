@@ -55,7 +55,7 @@ export default function CustomizedTables() {
     const managerId = localStorage.getItem("id");
     const fetchAllEmployeesForManager = async () => {
       try {
-        const response = await axios.get(`/User/employees/${managerId}`);
+        const response = await axios.get(`api/User/employees/${managerId}`);
         console.log(response)
         setData(response.data);
       } catch (error) {

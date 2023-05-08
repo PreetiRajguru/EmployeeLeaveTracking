@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
@@ -10,9 +10,11 @@ import axios from "axios";
 import CloseIcon from '@mui/icons-material/Close';
 import Snackbar from '@mui/material/Snackbar';
 import IconButton from "@mui/material/IconButton";
+import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 
 export default function Register() {
   const [registrationError, setRegistrationError] = useState(false);
+  const [designation, setDesignation] = useState<any>([]);
   const [data, setData] = useState({
     firstname: "",
     lastname: "",
@@ -45,29 +47,23 @@ export default function Register() {
       email: data.email,
       password: data.password,
       phonenumber: data.phonenumber,
-      managerId: data.managerId,
-      designationId: data.designationId
+      managerId: "",
+      designationId: "4"
     };
 
     try {
+      console.log(newData);
+      
       axios.post("/api/Auth/register", newData).then((response) => {
         console.log(response.data);
         alert("User Registered Successfully");
       });
     } catch (error: any) {
       setRegistrationError(true);
+      setData(newData);
       console.log(error.response.data.message);
     }
-    setData({
-      firstname: "",
-      lastname: "",
-      username: "",
-      email: "",
-      password: "",
-      phonenumber: "",
-      managerId: "",
-      designationId:""
-    });
+   
   };
 
   const handleInputChange = (event: any) => {
@@ -156,6 +152,18 @@ export default function Register() {
   const handleSnack = () => {
     setRegistrationError(false)
   }
+
+  useEffect(() => {
+    const fetchDesignations = async() => {
+      try {
+        const response = await axios.get('/api/DesignationMaster')
+        setDesignation(response.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchDesignations();
+  },[])
 
   return (
     <Container component="main" maxWidth="sm">
@@ -256,7 +264,7 @@ export default function Register() {
             // error={errors.phonenumber !== ""}
             // helperText={errors.phonenumber}
           />
-          <TextField
+          {/* <TextField
             margin="normal"
             required
             fullWidth
@@ -266,8 +274,9 @@ export default function Register() {
             id="managerId"
             autoComplete="managerId"
             onChange={handleInputChange}
-          />
-          <TextField
+            sx={{ mb: 2 }}
+          /> */}
+          {/* <TextField
             margin="normal"
             required
             fullWidth
@@ -277,7 +286,24 @@ export default function Register() {
             id="designationId"
             autoComplete="designationId"
             onChange={handleInputChange}
-          />
+          /> */}
+          {/* <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Designation Type</InputLabel>
+            <Select
+              name="designationId"
+              label="Designation Name"
+              id="demo-simple-select"
+              fullWidth
+              sx={{ mb: 2 }}
+              value={data.designationId}
+              onChange={handleInputChange}
+            >
+              {designation?.map((option: any) => (
+                <MenuItem value={option.id}>{option.designationName}</MenuItem>
+              ))}
+            </Select>
+          </FormControl> */}
+          
           {/* <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"

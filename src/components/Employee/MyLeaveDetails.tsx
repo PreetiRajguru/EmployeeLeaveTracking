@@ -11,11 +11,9 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
-import { Divider, Card, CardActions, CardContent } from "@mui/material";
+import { Divider, Card, CardActions, CardContent, Box } from "@mui/material";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import TablePagination from '@mui/material/TablePagination';
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Switch from "@material-ui/core/Switch";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -61,7 +59,8 @@ export default function CustomizedTables() {
   const [rowsPerPage, setRowsPerPage] = useState(DEFAULT_ROWS_PER_PAGE);
   
   const empId = localStorage.getItem('id');
-  var colors = ['red', 'green', 'blue', 'orange', 'yellow', 'grey', 'brown','black','violet','indigo'];
+  // var colors = ['red', 'green', 'blue', 'orange', 'yellow', 'grey', 'brown','black','violet','indigo'];
+  var colors = ['#afd6d0','#d3afd6', '#edbcbc', '#c7ebba', '#e8e4a6', '#f0c7f4','#f7d2a7','#e3aff4'];
 
   function BasicCard() {
     return (
@@ -212,7 +211,7 @@ console.log(type)
         </Typography>
         <Divider />
 
-        <h2>Leave Balance: {leaveBalance} </h2>
+        <h2 style = {{marginLeft: '30px', backgroundColor: '#bcdbf3', display: 'inline-block', padding: '5px 10px'}}>Leave Balance: {leaveBalance} </h2>
         <div style={{ display: "flex" }}>
           {carddetails.map((val:any) => (
             <CardContent
@@ -220,7 +219,7 @@ console.log(type)
                 border: "1px solid lightgrey",
                 borderRadius: "15px",
                 width: "230px",
-                height: "270px",
+                height: "220px",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
@@ -233,7 +232,7 @@ console.log(type)
               }}
             >
               <Typography
-                sx={{ fontSize: 20 }}
+                sx={{ fontSize: 22 }}
                 color="text.secondary"
                 gutterBottom
               >
@@ -241,9 +240,9 @@ console.log(type)
               </Typography>
               <Typography variant="h5" component="div"></Typography>
               <CalendarMonthIcon
-                style={{ width: "60%", height: "60%", color: colors[Math.floor(Math.random() * colors.length)] }}
+                style={{ width: "50%", height: "50%", color: colors[Math.floor(Math.random() * colors.length)] }}
               />
-              <Typography variant="body2" component="h1">
+              <Typography sx={{ fontSize: 25 }} variant="body2" component="h1">
                 {val.totalDaysTaken}
                 {/* <br /> */}
               </Typography>
@@ -264,37 +263,47 @@ console.log(type)
           </Button>
         </Typography>
         </div>
-        <Table sx={{ minWidth: 700 }} aria-label="simple table">
+        {/* <Table sx={{ minWidth: 700 }} aria-label="simple table"> */}
+        <Box sx={{ margin: '0 16px' }}>
+        <Table sx={{ minWidth: 700, border: '1px solid #ddd' }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <StyledTableCell>Employee Name</StyledTableCell>
+              {/* <StyledTableCell>Employee Name</StyledTableCell> */}
+              <StyledTableCell align="left">Leave Type</StyledTableCell>
+              <StyledTableCell align="center">Comments</StyledTableCell>
               <StyledTableCell align="right">Start Date</StyledTableCell>
               <StyledTableCell align="right">End Date</StyledTableCell>
-              <StyledTableCell align="right">Leave Type</StyledTableCell>
+            
               <StyledTableCell align="right">Total Days</StyledTableCell>
-              <StyledTableCell align="right">Manager Name</StyledTableCell>
+              {/* <StyledTableCell align="right">Manager Name</StyledTableCell> */}
               <StyledTableCell align="right">Status</StyledTableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {data?.map((row: any) => (
+              
               <StyledTableRow key={row.employeeName}>
-                <StyledTableCell component="th" scope="row">
-                  {row.employeeName}
+                <StyledTableCell align="left">
+                  {row.leaveTypeName}
                 </StyledTableCell>
+                <StyledTableCell component="th" scope="row">
+                  {row.requestComments}
+                </StyledTableCell>
+                {/* <StyledTableCell component="th" scope="row">
+                  {row.employeeName}
+                </StyledTableCell> */}
+                
                 <StyledTableCell align="right">
                   {new Date(row.startDate).toLocaleDateString()}
                 </StyledTableCell>
                 <StyledTableCell align="right">
                   {new Date(row.endDate).toLocaleDateString()}
                 </StyledTableCell>
-                <StyledTableCell align="right">
-                  {row.leaveTypeName}
-                </StyledTableCell>
+                
                 <StyledTableCell align="right">{row.totalDays}</StyledTableCell>
-                <StyledTableCell align="right">
+                {/* <StyledTableCell align="right">
                   {row.managerName}
-                </StyledTableCell>
+                </StyledTableCell> */}
                 <StyledTableCell align="right">
                   {row.statusName}
                 </StyledTableCell>
@@ -302,8 +311,9 @@ console.log(type)
             ))}
           </TableBody>
         </Table>
+        </Box>
       </TableContainer>
-      <TablePagination
+      {/* <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
           count={rows.length}
@@ -311,7 +321,7 @@ console.log(type)
           page={page}
           onPageChange={handleChangePage}
           // onRowsPerPageChange={handleChangeRowsPerPage}
-        />
+        /> */}
     </>
   );
 }

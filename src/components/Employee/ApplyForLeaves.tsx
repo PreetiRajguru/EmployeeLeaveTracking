@@ -11,9 +11,6 @@ import {
   InputLabel,
   FormControl,
   Divider,
-  Card,
-  CardActions,
-  CardContent,
 } from "@mui/material";
 import axios from "axios";
 import useReadLocalStorage from "../useReadLocalStorage";
@@ -49,25 +46,17 @@ import useReadLocalStorage from "../useReadLocalStorage";
 
 const ApplyForLeaves = () => {
   const navigate = useNavigate();
-  const empId = useReadLocalStorage('id')
-  console.log(empId)
+  const empId = useReadLocalStorage("id");
+  console.log(empId);
   const [leaveBalance, setLeaveBalance] = useState();
+  const [empManager, setEmpManager] = useState("");
   const [leaveTypeDetails, setLeaveTypeDetails] = useState({
-    // managerId: "c5a5157b-c95a-4bf8-a659-e3d303ca2e3c",
-    // statusId: 1,
-    // employeeId: "",
-    // requestComments: "",
-    // startDate: "",
-    // endDate: "",
-    // totalDays: 0,
-    // leaveTypeId: undefined,
-
     requestComments: "",
     startDate: "",
     endDate: "",
     totalDays: 0,
-    managerId: "47a00fa0-e3e4-44d7-ade6-b563d5914a3f",
-    employeeId: "",
+    managerId: empManager,
+    employeeId: empId,
     leaveTypeId: undefined,
     statusId: 1,
   });
@@ -89,25 +78,23 @@ const ApplyForLeaves = () => {
       leaveTypeId: leaveTypeDetails.leaveTypeId,
     };
 
-    // if (newLeaveTypeDetails.totalDays > leaveBalance) {
-    //   alert("Total days requested should be less than or equal to leave balance.");
-    //   return;
-    // }
+    if (leaveBalance && newLeaveTypeDetails.totalDays > +leaveBalance) {
+      alert("Total days requested should be less than or equal to leave balance.");
+      return;
+    }
 
     try {
-      axios
-        .post("/api/LeaveRequest", newLeaveTypeDetails)
-        .then((response) => {
-          // console.log(response.data);
-          alert("Leave Request Sent Succesfully");
+      axios.post("/api/LeaveRequest", newLeaveTypeDetails).then((response) => {
+        // console.log(response.data);
+        alert("Leave Request Sent Succesfully");
 
-          navigate("/leavedetails");
-        });
+        navigate("/leavedetails");
+      });
     } catch (error: any) {
       alert(error.response.data.message);
 
       setLeaveTypeDetails({
-        managerId: "47a00fa0-e3e4-44d7-ade6-b563d5914a3f",
+        managerId: "",
         statusId: 1,
         employeeId: "",
         requestComments: "",
@@ -120,11 +107,13 @@ const ApplyForLeaves = () => {
   };
 
   useEffect(() => {
-    const fetchLeaveTypes = () => {
-      axios
-        .get("/api/LeaveType")
-        .then((response) => setLeaveTypeName(response.data))
-        // .catch((error) => console.log(error));
+    const fetchLeaveTypes = async () => {
+      try {
+        const response = await axios.get("/api/LeaveType");
+        setLeaveTypeName(response.data);
+        console.log(response.data);
+      } catch (error) {}
+      // .catch((error) => console.log(error));
     };
 
     fetchLeaveTypes();
@@ -135,16 +124,29 @@ const ApplyForLeaves = () => {
       try {
         const response = await axios.get(`/api/LeaveRequest/balance/${empId}`);
         setLeaveBalance(response.data);
+        console.log(response.data);
       } catch (error) {
         // console.error(error);
       }
     };
     fetchLeaveBalances();
+
+    const fetchEmpManager = async () => {
+      try{
+        const response = await axios.get(`/api/User/${empId}/manager`)
+        setEmpManager(response.data);
+        console.log(response.data);
+      }
+        catch(error){
+
+        }
+    };
+
+    fetchEmpManager();
   }, []);
 
   useEffect(() => {
-    
-  // const empId = localStorage.getItem("id");
+    // const empId = localStorage.getItem("id");
     if (!empId || username) {
       return;
     }
@@ -160,12 +162,10 @@ const ApplyForLeaves = () => {
     fetchUsername();
   }, [empId]);
 
-  // console.log(username)
-
   function getDateDifference(startDate: any, endDate: any) {
-    const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+    const oneDay = 24 * 60 * 60 * 1000; 
     const diffDays = Math.round(Math.abs((startDate - endDate) / oneDay));
-    return diffDays + 1; // add 1 to include the start date as well
+    return diffDays + 1; 
   }
 
   const handleInputChange = (event: any) => {
@@ -183,7 +183,8 @@ const ApplyForLeaves = () => {
       [name]: value,
       totalDays: totalDays,
       employeeId: { empId },
-      managerId: "47a00fa0-e3e4-44d7-ade6-b563d5914a3f",
+      empManager:{empManager}
+      // managerId: {empManager},
     }));
   };
 
@@ -194,21 +195,24 @@ const ApplyForLeaves = () => {
         <Typography variant="h4" align="left">
           Apply For Leaves
         </Typography>
-        <h2>Leave Balance: {leaveBalance} </h2>
+        {/* <h2 style={{ float: "right" }}>Leave Balance: {leaveBalance} </h2> */}
+
+        <h2 style = {{ float: "right" , backgroundColor: '#bcdbf3', display: 'inline-block', padding: '5px 10px'}}>Leave Balance: {leaveBalance} </h2>
         <Divider />
 
         <Box component="form" sx={{ mt: 2 }} onSubmit={handleSubmit}>
-          <TextField
+       
+          {/* <TextField
             name="employeeId"
             label="Employee Id"
             required
             fullWidth
-            autoComplete="off"
+            autoComplete="on"
             value={empId}
             onChange={handleInputChange}
             sx={{ mb: 2 }}
-            style={{ display: "none" }}
-          />
+            // style={{ display: "none" }}
+          /> */}
 
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Leave Type</InputLabel>
@@ -271,6 +275,18 @@ const ApplyForLeaves = () => {
             sx={{ mb: 2 }}
           />
 
+          <TextField
+            name="managerId"
+            label="Manager Id"
+            required
+            fullWidth
+            autoComplete="off"
+            value={empManager}
+            onChange={handleInputChange}
+            sx={{ mb: 2 }}
+            // style={{ display: "none" }}
+          />
+
           <Button
             type="submit"
             variant="contained"
@@ -292,4 +308,5 @@ const ApplyForLeaves = () => {
     </Box>
   );
 };
+
 export default ApplyForLeaves;

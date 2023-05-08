@@ -12,7 +12,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import axios from "axios";
-import { brown, green, pink, purple, red, yellow } from "@mui/material/colors";
+// import { brown, green, pink, purple, red, yellow } from "@mui/material/colors";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -70,6 +70,7 @@ const ViewEmployeeDetails = () => {
           Employee Leave Details
         </Typography>
         <Divider />
+        {/* simple table , customized table*/}
         <Table sx={{ minWidth: 700 }} aria-label="simple table">
           <TableHead>
             <TableRow>
