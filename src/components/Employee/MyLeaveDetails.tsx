@@ -212,7 +212,7 @@ console.log(type)
           <TableHead>
             <TableRow>
               <StyledTableCell align="left">Leave Type</StyledTableCell>
-              <StyledTableCell align="center">Comments</StyledTableCell>
+              <StyledTableCell align="left">Comments</StyledTableCell>
               <StyledTableCell align="right">Start Date</StyledTableCell>
               <StyledTableCell align="right">End Date</StyledTableCell>
               <StyledTableCell align="right">Total Days</StyledTableCell>

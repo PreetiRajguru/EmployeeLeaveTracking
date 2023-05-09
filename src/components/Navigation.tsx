@@ -77,7 +77,7 @@ const Navigation = () => {
     <>
       <AppBar position="static" color="transparent" style={{ width: "100%" }}>
         <Toolbar>
-          <IconButton
+          {isLogin? <IconButton
             size="large"
             edge="start"
             color="inherit"
@@ -86,7 +86,7 @@ const Navigation = () => {
             onClick={toggleDrawer}
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton>: null}
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Employee Leave Tracking
           </Typography>
