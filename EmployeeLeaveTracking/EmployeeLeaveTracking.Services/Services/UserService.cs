@@ -123,25 +123,6 @@ namespace EmployeeLeaveTracking.Services.Services
             return employee.ManagerId;
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         public async Task<UserRegistrationDTO> UpdateUser(UserRegistrationDTO user)
         {
             var existingUser = await _dbContext.Users.FindAsync(user.Id);
