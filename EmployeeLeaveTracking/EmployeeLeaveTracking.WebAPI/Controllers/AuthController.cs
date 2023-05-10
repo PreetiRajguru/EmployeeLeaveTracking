@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
 using EmployeeLeaveTracking.Data.DTOs;
-using EmployeeLeaveTracking.Data.Models;
 using EmployeeLeaveTracking.Services.Interfaces;
 using EmployeeLeaveTracking.WebAPI.Controllers;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace StudentTeacher.Controllers

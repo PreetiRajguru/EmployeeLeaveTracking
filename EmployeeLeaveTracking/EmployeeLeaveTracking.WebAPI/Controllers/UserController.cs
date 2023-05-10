@@ -88,12 +88,6 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
 
-
-
-
-
-
-
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(string id, [FromBody] UserRegistrationDTO user)
         {
@@ -129,5 +123,20 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

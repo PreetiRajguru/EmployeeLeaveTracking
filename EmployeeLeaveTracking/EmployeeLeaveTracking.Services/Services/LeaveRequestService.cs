@@ -57,27 +57,41 @@ namespace EmployeeLeaveTracking.Services.Services
         }
 
 
-        public LeaveRequestDTO GetById(int id)
+        public LeaveRequestDTO? GetById(int id)
         {
-            var leaveRequest = _dbContext.LeaveRequests
-                .SingleOrDefault(lr => lr.Id == id && lr.IsDeleted == (false));
+            //var leaveRequest = _dbContext.LeaveRequests
+            //    .SingleOrDefault(lr => lr.Id == id && lr.IsDeleted == (false));
 
-            if (leaveRequest == null)
-            {
-                return null;
-            }
+            //if (leaveRequest == null)
+            //{
+            //    return null;
+            //}
 
-            return new LeaveRequestDTO
-            {
-                Id = leaveRequest.Id,
-                RequestComments = leaveRequest.RequestComments,
-                EmployeeId = leaveRequest.EmployeeId,
-                LeaveTypeId = leaveRequest.LeaveTypeId,
-                StartDate = (DateTime)leaveRequest.StartDate,
-                EndDate = (DateTime)leaveRequest.EndDate,
-                TotalDays = leaveRequest.TotalDays,
-                StatusId = leaveRequest.StatusId
-            };
+            //return new LeaveRequestDTO
+            //{
+            //    Id = leaveRequest.Id,
+            //    RequestComments = leaveRequest.RequestComments,
+            //    EmployeeId = leaveRequest.EmployeeId,
+            //    LeaveTypeId = leaveRequest.LeaveTypeId,
+            //    StartDate = (DateTime)leaveRequest.StartDate,
+            //    EndDate = (DateTime)leaveRequest.EndDate,
+            //    TotalDays = leaveRequest.TotalDays,
+            //    StatusId = leaveRequest.StatusId
+            //};
+
+            return _dbContext.LeaveRequests
+                .Where(lr => lr.Id == id && lr.IsDeleted == (false))
+                .Select(leaveRequest => new LeaveRequestDTO
+                {
+                    Id = leaveRequest.Id,
+                    RequestComments = leaveRequest.RequestComments,
+                    EmployeeId = leaveRequest.EmployeeId,
+                    LeaveTypeId = leaveRequest.LeaveTypeId,
+                    StartDate = (DateTime)leaveRequest.StartDate,
+                    EndDate = (DateTime)leaveRequest.EndDate,
+                    TotalDays = leaveRequest.TotalDays,
+                    StatusId = leaveRequest.StatusId
+                }).SingleOrDefault();
         }
 
         public LeaveRequestDTO Create(LeaveRequestDTO leaveRequest)
@@ -206,7 +220,7 @@ namespace EmployeeLeaveTracking.Services.Services
             }
 
             var leaveRequests = await _dbContext.LeaveRequests
-                .Include(lr => lr.Employee) // Include the Employees table to perform join
+                .Include(lr => lr.Employee) 
                 .Where(lr => lr.StatusId == statusId)
                 .ToListAsync();
 
@@ -301,7 +315,6 @@ namespace EmployeeLeaveTracking.Services.Services
             IQueryable<LeaveRequest> leaveRequestByEmployeeId = _dbContext.LeaveRequests
             
             .Include(m => m.Employee)
-            /*.Include(m => m.Manager)*/
             .Include(m => m.LeaveType)
             .Include(m => m.StatusMaster)
             .Where(c => c.EmployeeId.Equals(employeeId)); 
