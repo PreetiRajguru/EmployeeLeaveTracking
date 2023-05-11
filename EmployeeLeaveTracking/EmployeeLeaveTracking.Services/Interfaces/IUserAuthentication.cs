@@ -15,7 +15,3 @@ public interface IUserAuthentication
 
     public string GetUserId();
 }
-
-
-
-

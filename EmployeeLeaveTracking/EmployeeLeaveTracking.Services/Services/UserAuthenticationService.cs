@@ -29,24 +29,24 @@ public sealed class UserAuthenticationService : IUserAuthentication
 
     public async Task<IdentityResult> RegisterUserAsync(NewUserDTO userRegistration)
     {
-        var user = _mapper.Map<User>(userRegistration);
+        User user = _mapper.Map<User>(userRegistration);
 
-       /* await _userManager.ChangePasswordAsync()*/
+        /* await _userManager.ChangePasswordAsync()*/
 
 
-        var result = await _userManager.CreateAsync(user, userRegistration.Password);
+        IdentityResult result = await _userManager.CreateAsync(user, userRegistration.Password);
 
         if (result.Succeeded)
         {
             if (!await _roleManager.RoleExistsAsync("Manager"))
             {
-                var managerRole = new IdentityRole("Manager");
+                IdentityRole managerRole = new IdentityRole("Manager");
                 await _roleManager.CreateAsync(managerRole);
             }
 
             if (!await _roleManager.RoleExistsAsync("Employee"))
             {
-                var employeeRole = new IdentityRole("Employee");
+                IdentityRole employeeRole = new IdentityRole("Employee");
                 await _roleManager.CreateAsync(employeeRole);
             }
 
@@ -72,28 +72,28 @@ public sealed class UserAuthenticationService : IUserAuthentication
 
     public async Task<string> CreateTokenAsync()
     {
-        var signingCredentials = GetSigningCredentials();
-        var claims = await GetClaims();
-        var tokenOptions = GenerateTokenOptions(signingCredentials, claims);
+        SigningCredentials signingCredentials = GetSigningCredentials();
+        List<Claim> claims = await GetClaims();
+        JwtSecurityToken tokenOptions = GenerateTokenOptions(signingCredentials, claims);
         return new JwtSecurityTokenHandler().WriteToken(tokenOptions);
     }
 
     private SigningCredentials GetSigningCredentials()
     {
-        var jwtConfig = _configuration.GetSection("JwtConfig");
-        var key = Encoding.UTF8.GetBytes(jwtConfig["secret"]);
-        var secret = new SymmetricSecurityKey(key);
+        IConfigurationSection jwtConfig = _configuration.GetSection("JwtConfig");
+        byte[] key = Encoding.UTF8.GetBytes(jwtConfig["secret"]);
+        SymmetricSecurityKey secret = new SymmetricSecurityKey(key);
         return new SigningCredentials(secret, SecurityAlgorithms.HmacSha256);
     }
 
     private async Task<List<Claim>> GetClaims()
     {
-        var claims = new List<Claim>
+        List<Claim> claims = new List<Claim>
         {
             new Claim(ClaimTypes.Name, _user.UserName),
             new Claim(ClaimTypes.Sid, _user.Id)
         };
-        var roles = await _userManager.GetRolesAsync(_user);
+        IList<string> roles = await _userManager.GetRolesAsync(_user);
         foreach (var role in roles)
         {
             claims.Add(new Claim(ClaimTypes.Role, role));
@@ -105,14 +105,16 @@ public sealed class UserAuthenticationService : IUserAuthentication
     {
         return _userManager.GetRolesAsync(_user);
     }
+
     public string GetUserId()
     {
         return _user.Id;
     }
+
     private JwtSecurityToken GenerateTokenOptions(SigningCredentials signingCredentials, List<Claim> claims)
     {
-        var jwtSettings = _configuration.GetSection("JwtConfig");
-        var tokenOptions = new JwtSecurityToken
+        IConfigurationSection jwtSettings = _configuration.GetSection("JwtConfig");
+        JwtSecurityToken tokenOptions = new JwtSecurityToken
         (
         issuer: jwtSettings["validIssuer"],
         audience: jwtSettings["validAudience"],

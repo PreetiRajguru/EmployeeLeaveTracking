@@ -51,6 +51,7 @@ builder.Services.AddScoped<IStatusMaster, StatusMasterService>();
 builder.Services.AddScoped<IUser, UserService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<IDesignationMaster, DesignationMasterService>();
+builder.Services.AddScoped<IProfileImage, ProfileImageService>();
 
 
 builder.Services.AddCors(options =>

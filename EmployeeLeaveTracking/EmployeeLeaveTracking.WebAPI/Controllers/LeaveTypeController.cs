@@ -21,7 +21,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         {
             try
             {
-                var leaveTypes = _leaveTypeService.GetAll();
+                IEnumerable<LeaveTypeDTO> leaveTypes = _leaveTypeService.GetAll();
                 return Ok(leaveTypes);
             }
             catch (Exception ex)
@@ -35,7 +35,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         {
             try
             {
-                var leaveType = _leaveTypeService.GetById(id);
+                LeaveTypeDTO leaveType = _leaveTypeService.GetById(id);
                 if (leaveType == null)
                 {
                     return NotFound();
@@ -64,7 +64,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
                     return BadRequest(ModelState);
                 }
 
-                var addedLeaveType = _leaveTypeService.Create(leaveType);
+                LeaveTypeDTO addedLeaveType = _leaveTypeService.Create(leaveType);
                 return CreatedAtAction(nameof(GetById), new { id = addedLeaveType.Id }, addedLeaveType);
 
             }
@@ -89,7 +89,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
                         return BadRequest(ModelState);
                     }
 
-                    var updatedLeaveType = _leaveTypeService.Update(leaveType);
+                LeaveTypeDTO updatedLeaveType = _leaveTypeService.Update(leaveType);
                     if (updatedLeaveType == null)
                     {
                         return NotFound();
@@ -107,7 +107,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         {
             try
             {
-                var deleted = _leaveTypeService.Delete(id);
+                bool deleted = _leaveTypeService.Delete(id);
                 if (deleted)
                 {
                     return NoContent();
@@ -126,7 +126,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         {
             try
             {
-                var leaveTypesWithTotalDays = _leaveTypeService.GetLeaveTypesWithTotalDaysTaken();
+                List<LeaveTypeWithTotalDaysDTO> leaveTypesWithTotalDays = _leaveTypeService.GetLeaveTypesWithTotalDaysTaken();
 
                 return Ok(leaveTypesWithTotalDays);
             }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace EmployeeLeaveTracking.Data.DTOs
 {
@@ -23,8 +18,8 @@ namespace EmployeeLeaveTracking.Data.DTOs
 
         public string? PhoneNumber { get; init; }
 
-        public string ManagerId { get; init; }
+        public string? ManagerId { get; init; }
 
-        public string DesignationId { get; init; }
+        public string? DesignationId { get; init; }
     }
 }

@@ -28,7 +28,7 @@ namespace EmployeeLeaveTracking.Services.Services
         {
             try
             {
-                var leaveRequests = _dbContext.LeaveRequests
+                List<LeaveRequestDTO> leaveRequests = _dbContext.LeaveRequests
                     .Where(lr => lr.IsDeleted == (false))
                     .Select(lr => new LeaveRequestDTO
                     {
@@ -36,8 +36,8 @@ namespace EmployeeLeaveTracking.Services.Services
                         RequestComments = lr.RequestComments,
                         EmployeeId = lr.EmployeeId,
                         LeaveTypeId = lr.LeaveTypeId,
-                        StartDate = (DateTime)lr.StartDate,
-                        EndDate = (DateTime)lr.EndDate,
+                        StartDate = lr.StartDate,
+                        EndDate = lr.EndDate,
                         TotalDays = lr.TotalDays,
                         StatusId = lr.StatusId
                     })
@@ -87,8 +87,8 @@ namespace EmployeeLeaveTracking.Services.Services
                     RequestComments = leaveRequest.RequestComments,
                     EmployeeId = leaveRequest.EmployeeId,
                     LeaveTypeId = leaveRequest.LeaveTypeId,
-                    StartDate = (DateTime)leaveRequest.StartDate,
-                    EndDate = (DateTime)leaveRequest.EndDate,
+                    StartDate = leaveRequest.StartDate,
+                    EndDate = leaveRequest.EndDate,
                     TotalDays = leaveRequest.TotalDays,
                     StatusId = leaveRequest.StatusId
                 }).SingleOrDefault();
@@ -96,7 +96,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public LeaveRequestDTO Create(LeaveRequestDTO leaveRequest)
         {
-            var newLeaveRequest = new LeaveRequest
+            LeaveRequest newLeaveRequest = new LeaveRequest
             {
                 RequestComments = leaveRequest.RequestComments,
                 EmployeeId = leaveRequest.EmployeeId,
@@ -118,7 +118,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
        public NewLeaveRequestDTO CreateNewLeaveRequest(NewLeaveRequestDTO leaveRequest)
         {
-            var newLeaveRequest = new LeaveRequest
+            LeaveRequest newLeaveRequest = new LeaveRequest
             {
                 RequestComments = leaveRequest.RequestComments,
                 EmployeeId = leaveRequest.EmployeeId,
@@ -139,8 +139,8 @@ namespace EmployeeLeaveTracking.Services.Services
         }
         public LeaveRequestDTO Update(LeaveRequestDTO leaveRequest)
         {
-            var existingLeaveRequest = _dbContext.LeaveRequests
-                .SingleOrDefault(lr => lr.Id == leaveRequest.Id && lr.IsDeleted == (false));
+            LeaveRequest? existingLeaveRequest = _dbContext.LeaveRequests
+                .SingleOrDefault(lr => lr.Id == leaveRequest.Id && lr.IsDeleted == false);
 
             if (existingLeaveRequest == null)
             {
@@ -152,7 +152,7 @@ namespace EmployeeLeaveTracking.Services.Services
                 throw new ArgumentException("The start date cannot be later than the end date.");
             }
 
-            var totalDays = (int)(leaveRequest.EndDate - leaveRequest.StartDate).TotalDays + 1;
+            int totalDays = (int)(leaveRequest.EndDate - leaveRequest.StartDate).TotalDays + 1;
             if (totalDays != leaveRequest.TotalDays)
             {
                 throw new ArgumentException("The total days must be equal to the number of days between start date and end date.");
@@ -192,7 +192,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public List<UserLeaveRequestDTO> GetAllLeavesByEmployeeId(int limit, int offset)
         {
-            var Id = _userService.GetCurrentUserById();
+            string Id = _userService.GetCurrentUserById();
 
             if (string.IsNullOrEmpty(Id))
             {
@@ -219,7 +219,7 @@ namespace EmployeeLeaveTracking.Services.Services
                 throw new ArgumentException("Invalid status ID");
             }
 
-            var leaveRequests = await _dbContext.LeaveRequests
+            List<LeaveRequest> leaveRequests = await _dbContext.LeaveRequests
                 .Include(lr => lr.Employee) 
                 .Where(lr => lr.StatusId == statusId)
                 .ToListAsync();
@@ -247,14 +247,14 @@ namespace EmployeeLeaveTracking.Services.Services
             {
                 throw new ArgumentNullException(nameof(managerId));
             }
-            var leaveRequests = _dbContext.LeaveRequests
+            List<LeaveRequestDTO> leaveRequests = _dbContext.LeaveRequests
                 .Where(lr => lr.StatusId == statusId && lr.ManagerId == managerId)
                 .Select(lr => new LeaveRequestDTO
                 {
                     Id = lr.Id,
                     RequestComments = lr.RequestComments,
-                    StartDate = (DateTime)lr.StartDate,
-                    EndDate = (DateTime)lr.EndDate,
+                    StartDate = lr.StartDate,
+                    EndDate = lr.EndDate,
                     TotalDays = lr.TotalDays,
                     ManagerId = lr.ManagerId,
                     EmployeeId = lr.EmployeeId,
@@ -279,7 +279,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public async Task<int> UpdateLeaveRequestStatus(int id, int statusId)
         {
-            var leaveRequest = await GetLeaveById(id);
+            LeaveRequest leaveRequest = await GetLeaveById(id);
 
             if (leaveRequest == null)
             {

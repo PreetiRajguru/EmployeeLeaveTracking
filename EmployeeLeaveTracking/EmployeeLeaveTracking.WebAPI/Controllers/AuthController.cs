@@ -2,6 +2,7 @@
 using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Services.Interfaces;
 using EmployeeLeaveTracking.WebAPI.Controllers;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace StudentTeacher.Controllers
@@ -25,7 +26,7 @@ namespace StudentTeacher.Controllers
                     return BadRequest(ModelState);
                 }
 
-                var userResult = await _repository.UserAuthentication.RegisterUserAsync(userRegistration);
+                IdentityResult userResult = await _repository.UserAuthentication.RegisterUserAsync(userRegistration);
                 return !userResult.Succeeded ? new BadRequestObjectResult(userResult) : StatusCode(201);
             }
             catch (Exception ex)
@@ -36,7 +37,6 @@ namespace StudentTeacher.Controllers
         }
 
 
-       /* [Authorize]*/
         [HttpPost("login")]
         public async Task<IActionResult> Authenticate([FromBody] UserLoginDTO user)
         {
@@ -47,7 +47,7 @@ namespace StudentTeacher.Controllers
                     return BadRequest(ModelState);
                 }
 
-                var validate = await _repository.UserAuthentication.ValidateUserAsync(user);
+                bool validate = await _repository.UserAuthentication.ValidateUserAsync(user);
                 return !validate
                     ? Unauthorized()
                     : Ok(new { Token = await _repository.UserAuthentication.CreateTokenAsync() , Role = _repository.UserAuthentication.GetRoles().Result[0] , Id = _repository.UserAuthentication.GetUserId() });

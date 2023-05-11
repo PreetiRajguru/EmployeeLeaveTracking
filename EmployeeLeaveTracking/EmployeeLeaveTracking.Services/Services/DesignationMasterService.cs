@@ -16,7 +16,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public IEnumerable<DesignationMasterDTO> GetAll()
         {
-            var designationMasters = _dbContext.Designations.Where(s => s.IsDeleted == (false)).ToList();
+            List<DesignationMaster> designationMasters = _dbContext.Designations.Where(s => s.IsDeleted == false).ToList();
             return designationMasters.Select(s => new DesignationMasterDTO
             {
                 Id = s.Id,
@@ -26,7 +26,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public DesignationMasterDTO? GetById(int id)
         {
-            var designationMasters = _dbContext.Designations.FirstOrDefault(s => s.Id == id && s.IsDeleted == (false));
+            DesignationMaster? designationMasters = _dbContext.Designations.FirstOrDefault(s => s.Id == id && s.IsDeleted == false);
             return designationMasters != null ? new DesignationMasterDTO
             {
                 Id = designationMasters.Id,
@@ -36,7 +36,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public DesignationMasterDTO Create(DesignationMasterDTO designationName)
         {
-            var newDesignationMaster = new DesignationMaster
+            DesignationMaster newDesignationMaster = new()
             {
                 DesignationName = designationName.DesignationName
             };
@@ -48,9 +48,9 @@ namespace EmployeeLeaveTracking.Services.Services
             return designationName;
         }
 
-        public DesignationMasterDTO Update(int id, DesignationMasterDTO designationName)
+        public DesignationMasterDTO? Update(int id, DesignationMasterDTO designationName)
         {
-            var existingDesignationMaster = _dbContext.Designations.FirstOrDefault(s => s.Id == id && s.IsDeleted == (false));
+            DesignationMaster? existingDesignationMaster = _dbContext.Designations.FirstOrDefault(s => s.Id == id && s.IsDeleted == false);
 
             if (existingDesignationMaster == null)
             {
@@ -70,7 +70,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public bool Delete(int id)
         {
-            var existingDesignationMaster = _dbContext.Designations.FirstOrDefault(s => s.Id == id && s.IsDeleted == (false));
+            DesignationMaster? existingDesignationMaster = _dbContext.Designations.FirstOrDefault(s => s.Id == id && s.IsDeleted == (false));
 
             if (existingDesignationMaster == null)
             {

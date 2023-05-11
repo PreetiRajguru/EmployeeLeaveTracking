@@ -21,7 +21,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         {
             try
             {
-                var statusMasters = _statusMasterService.GetAll();
+                IEnumerable<StatusMasterDTO> statusMasters = _statusMasterService.GetAll();
                 return Ok(statusMasters);
             }
             catch (Exception ex)
@@ -35,7 +35,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         {
             try
             {
-                var statusMaster = _statusMasterService.GetById(id);
+                StatusMasterDTO statusMaster = _statusMasterService.GetById(id);
                 if (statusMaster == null)
                 {
                     return NotFound();
@@ -58,7 +58,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
                     return BadRequest(ModelState);
                 }
 
-                var newStatusMaster = _statusMasterService.Create(statusMaster);
+                StatusMasterDTO newStatusMaster = _statusMasterService.Create(statusMaster);
 
                 return CreatedAtAction(nameof(GetById), new { id = newStatusMaster.Id }, newStatusMaster);
             }
@@ -78,7 +78,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
                     return BadRequest(ModelState);
                 }
 
-                var updatedStatusMaster = _statusMasterService.Update(id, statusMaster);
+                StatusMasterDTO updatedStatusMaster = _statusMasterService.Update(id, statusMaster);
 
                 if (updatedStatusMaster == null)
                 {
@@ -98,7 +98,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         {
             try
             {
-                var deleted = _statusMasterService.Delete(id);
+                bool deleted = _statusMasterService.Delete(id);
 
                 if (!deleted)
                 {

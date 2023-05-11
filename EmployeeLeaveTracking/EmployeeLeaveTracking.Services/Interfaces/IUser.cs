@@ -14,8 +14,6 @@ namespace EmployeeLeaveTracking.Services.Interfaces
 
 
 
-
-
         Task<UserRegistrationDTO> UpdateUser(UserRegistrationDTO user);
     }
 }

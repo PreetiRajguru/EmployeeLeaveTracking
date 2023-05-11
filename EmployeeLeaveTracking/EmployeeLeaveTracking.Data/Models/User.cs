@@ -29,6 +29,10 @@ namespace EmployeeLeaveTracking.Data.Models
 
         public List<LeaveRequest> EmployeeLeaveRequests { get; set; }
 
+
+        public string? ProfilePictureUrl { get; set; }
+        public ProfileImage ProfileImages { get; set; }
+
         public User()
         {
             CreatedDate = DateTime.UtcNow;

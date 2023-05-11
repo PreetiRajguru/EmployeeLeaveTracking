@@ -25,7 +25,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public IEnumerable<LeaveTypeDTO> GetAll()
         {
-            var leaveTypes = _dbContext.LeaveTypes.Where(lt => lt.IsDeleted == (false)).Select(lt => new LeaveTypeDTO
+            IQueryable<LeaveTypeDTO> leaveTypes = _dbContext.LeaveTypes.Where(lt => lt.IsDeleted == false).Select(lt => new LeaveTypeDTO
             {
                 Id = lt.Id,
                 LeaveTypeName = lt.LeaveTypeName
@@ -36,7 +36,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public LeaveTypeDTO GetById(int id)
         {
-            var leaveType = _dbContext.LeaveTypes.Where(lt => lt.IsDeleted == (false) && lt.Id == id).Select(lt => new LeaveTypeDTO
+            LeaveTypeDTO? leaveType = _dbContext.LeaveTypes.Where(lt => lt.IsDeleted == false && lt.Id == id).Select(lt => new LeaveTypeDTO
             {
                 Id = lt.Id,
                 LeaveTypeName = lt.LeaveTypeName
@@ -47,7 +47,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public LeaveTypeDTO Create(LeaveTypeDTO leaveType)
         {
-            var newLeaveType = new LeaveType
+            LeaveType newLeaveType = new LeaveType
             {
                 LeaveTypeName = leaveType.LeaveTypeName
             };
@@ -62,7 +62,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public LeaveTypeDTO Update(LeaveTypeDTO leaveType)
         {
-            var existingLeaveType = _dbContext.LeaveTypes.Find(leaveType.Id);
+            LeaveType existingLeaveType = _dbContext.LeaveTypes.Find(leaveType.Id);
 
             if (existingLeaveType == null || existingLeaveType.IsDeleted == (true))
             {
@@ -78,9 +78,9 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public bool Delete(int id)
         {
-            var existingLeaveType = _dbContext.LeaveTypes.Find(id);
+            LeaveType existingLeaveType = _dbContext.LeaveTypes.Find(id);
 
-            if (existingLeaveType == null || existingLeaveType.IsDeleted == (true))
+            if (existingLeaveType == null || existingLeaveType.IsDeleted == true)
             {
                 return false;
             }
@@ -97,9 +97,9 @@ namespace EmployeeLeaveTracking.Services.Services
         {
             StatusMaster? approvedLeaves = _dbContext.Status.Where(s => s.StatusType.ToLower() == "approved").FirstOrDefault();
 
-            var id = _userService.GetCurrentUserById();
+            string id = _userService.GetCurrentUserById();
 
-            var leaveTypesWithTotalDays = _dbContext.LeaveTypes
+            List<LeaveTypeWithTotalDaysDTO> leaveTypesWithTotalDays = _dbContext.LeaveTypes
                 .Select(lt => new LeaveTypeWithTotalDaysDTO
                 {
                     LeaveTypeId = lt.Id,

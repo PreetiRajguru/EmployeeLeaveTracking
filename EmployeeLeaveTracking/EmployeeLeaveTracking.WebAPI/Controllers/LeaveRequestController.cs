@@ -1,11 +1,13 @@
 ﻿using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeLeaveTracking.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class LeaveRequestController : ControllerBase
     {
         private readonly ILeaveRequest _leaveRequestService;
@@ -18,11 +20,12 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Manager")]
         public ActionResult<IEnumerable<LeaveRequestDTO>> Get()
         {
             try
             {
-                var leaveRequests = _leaveRequestService.GetAll();
+                IEnumerable<LeaveRequestDTO> leaveRequests = _leaveRequestService.GetAll();
 
                 if (leaveRequests == null || leaveRequests.Count() == 0)
                 {
@@ -42,7 +45,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         {
             try
             {
-                var leaveRequest = _leaveRequestService.GetById(id);
+                LeaveRequestDTO leaveRequest = _leaveRequestService.GetById(id);
 
                 if (leaveRequest == null)
                 {
@@ -67,7 +70,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
                     return BadRequest(ModelState);
                 }
 
-                var newLeaveRequest = _leaveRequestService.Create(leaveRequest);
+                LeaveRequestDTO newLeaveRequest = _leaveRequestService.Create(leaveRequest);
 
                 return CreatedAtAction(nameof(GetById), new { id = newLeaveRequest.Id }, newLeaveRequest);
             }
@@ -87,7 +90,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
                     return BadRequest(ModelState);
                 }
 
-                var newLeaveRequest = _leaveRequestService.CreateNewLeaveRequest(leaveRequest);
+                NewLeaveRequestDTO newLeaveRequest = _leaveRequestService.CreateNewLeaveRequest(leaveRequest);
 
                 return CreatedAtAction(nameof(GetById), new { id = newLeaveRequest.Id }, newLeaveRequest);
             }
@@ -112,7 +115,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
                     return BadRequest(ModelState);
                 }
 
-                var updatedLeaveRequest = _leaveRequestService.Update(leaveRequest);
+                LeaveRequestDTO updatedLeaveRequest = _leaveRequestService.Update(leaveRequest);
 
                 if (updatedLeaveRequest == null)
                 {
@@ -132,7 +135,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         {
             try
             {
-                var isDeleted = _leaveRequestService.Delete(id);
+                bool isDeleted = _leaveRequestService.Delete(id);
 
                 if (!isDeleted)
                 {
@@ -153,7 +156,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         {
             try
             {
-                var leaves = _leaveRequestService.GetAllLeavesByEmployeeId(limit, offset);
+                List<UserLeaveRequestDTO> leaves = _leaveRequestService.GetAllLeavesByEmployeeId(limit, offset);
 
                 return Ok(leaves);
             }
@@ -171,7 +174,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         {
             try
             {
-                var leaves = _leaveRequestService.LeavesByEmployeeId(employeeId);
+                List<UserLeaveRequestDTO> leaves = _leaveRequestService.LeavesByEmployeeId(employeeId);
 
                 return Ok(leaves);
             }
@@ -187,7 +190,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         {
             try
             {
-                var leaveRequests = await _leaveRequestService.GetAllLeavesByStatusIdAsync(statusId);
+                List<LeaveRequestDTO> leaveRequests = await _leaveRequestService.GetAllLeavesByStatusIdAsync(statusId);
 
                 return Ok(leaveRequests);
             }
@@ -204,7 +207,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         {
             try
             {
-                var leaves = _leaveRequestService.GetLeaveRequestsByStatusAndManager(statusId, managerId);
+                List<LeaveRequestDTO> leaves = _leaveRequestService.GetLeaveRequestsByStatusAndManager(statusId, managerId);
                 return Ok(leaves);
             }
             catch (Exception ex)

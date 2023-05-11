@@ -16,7 +16,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public IEnumerable<StatusMasterDTO> GetAll()
         {
-            var statusMasters = _dbContext.Status.Where(s => s.IsDeleted == (false)).ToList();
+            List<StatusMaster> statusMasters = _dbContext.Status.Where(s => s.IsDeleted == false).ToList();
             return statusMasters.Select(s => new StatusMasterDTO
             {
                 Id = s.Id,
@@ -26,7 +26,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public StatusMasterDTO? GetById(int id)
         {
-            var statusMaster = _dbContext.Status.FirstOrDefault(s => s.Id == id && s.IsDeleted == (false));
+            StatusMaster? statusMaster = _dbContext.Status.FirstOrDefault(s => s.Id == id && s.IsDeleted == false);
             return statusMaster != null ? new StatusMasterDTO
             {
                 Id = statusMaster.Id,
@@ -36,7 +36,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public StatusMasterDTO Create(StatusMasterDTO statusMaster)
         {
-            var newStatusMaster = new StatusMaster
+            StatusMaster newStatusMaster = new StatusMaster
             {
                 StatusType = statusMaster.StatusType
             };
@@ -50,7 +50,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public StatusMasterDTO Update(int id, StatusMasterDTO statusMaster)
         {
-            var existingStatusMaster = _dbContext.Status.FirstOrDefault(s => s.Id == id && s.IsDeleted == (false));
+            StatusMaster? existingStatusMaster = _dbContext.Status.FirstOrDefault(s => s.Id == id && s.IsDeleted == false);
 
             if (existingStatusMaster == null)
             {
@@ -70,7 +70,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public bool Delete(int id)
         {
-            var existingStatusMaster = _dbContext.Status.FirstOrDefault(s => s.Id == id && s.IsDeleted == (false));
+            StatusMaster? existingStatusMaster = _dbContext.Status.FirstOrDefault(s => s.Id == id && s.IsDeleted == false);
 
             if (existingStatusMaster == null)
             {

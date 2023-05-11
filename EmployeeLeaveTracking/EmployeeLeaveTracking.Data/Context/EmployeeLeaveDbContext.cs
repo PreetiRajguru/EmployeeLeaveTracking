@@ -15,6 +15,8 @@ namespace EmployeeLeaveTracking.Data.Context
 
         public DbSet<DesignationMaster> Designations { get; set; }
 
+        public DbSet<ProfileImage> ProfileImages { get; set; }
+
         public EmployeeLeaveDbContext()
         {
 
@@ -31,7 +33,7 @@ namespace EmployeeLeaveTracking.Data.Context
             if (!optionsBuilder.IsConfigured)
             {
                /*optionsBuilder.UseSqlServer("ConnStr");*/
-                optionsBuilder.UseSqlServer("Server=localhost;Database=EmployeeLeave;Trusted_Connection=True;TrustServerCertificate=True;" +
+                optionsBuilder.UseSqlServer("Server=localhost;Database=EmployeeLeaveAdditions;Trusted_Connection=True;TrustServerCertificate=True;" +
                     "MultipleActiveResultSets=True;");
             }
         }
@@ -55,6 +57,7 @@ namespace EmployeeLeaveTracking.Data.Context
            .HasForeignKey(lb => lb.EmployeeId)
            .OnDelete(DeleteBehavior.NoAction);
 
+
             modelBuilder.Entity<LeaveRequest>()
            .HasOne(lb => lb.LeaveType)
            .WithMany(lt => lt.LeaveRequests)
@@ -71,6 +74,11 @@ namespace EmployeeLeaveTracking.Data.Context
           .HasOne(lb => lb.Designation)
           .WithMany(lt => lt.Users)
           .HasForeignKey(lb => lb.DesignationId);
+
+
+            modelBuilder.Entity<ProfileImage>()
+            .HasOne(p => p.User)
+            .WithOne(p => p.ProfileImages);
         }
 
         private void SeedRoles(ModelBuilder builder)

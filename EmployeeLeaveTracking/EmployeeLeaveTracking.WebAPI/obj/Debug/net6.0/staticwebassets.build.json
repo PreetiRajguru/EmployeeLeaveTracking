@@ -1,11 +1,37 @@
 {
   "Version": 1,
-  "Hash": "EEwBLpBHFmWns2ViQ+0EsPeooSj0PQ8CRR1dphUtPrg=",
+  "Hash": "BmNUgReHW9kS4Wif0Y/WLxUmQWZD1HkAPzpBYz7XSJY=",
   "Source": "EmployeeLeaveTracking.WebAPI",
   "BasePath": "_content/EmployeeLeaveTracking.WebAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "EmployeeLeaveTracking.WebAPI\\wwwroot",
+      "Source": "EmployeeLeaveTracking.WebAPI",
+      "ContentRoot": "D:\\ProjectAdditions\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\",
+      "BasePath": "_content/EmployeeLeaveTracking.WebAPI",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\ProjectAdditions\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\0fd3cc66-e84f-4bd5-bb32-e88a85370e34light-bulbs-5488573_1920.jpg",
+      "SourceId": "EmployeeLeaveTracking.WebAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\ProjectAdditions\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\",
+      "BasePath": "_content/EmployeeLeaveTracking.WebAPI",
+      "RelativePath": "Images/0fd3cc66-e84f-4bd5-bb32-e88a85370e34light-bulbs-5488573_1920.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\0fd3cc66-e84f-4bd5-bb32-e88a85370e34light-bulbs-5488573_1920.jpg"
+    }
+  ]
 }

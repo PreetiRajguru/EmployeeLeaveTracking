@@ -22,7 +22,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         {
             try
             {
-                var users = _userService.GetUsersByManagerId(managerId);
+                IEnumerable<UserRegistrationDTO> users = _userService.GetUsersByManagerId(managerId);
                 return Ok(users);
             }
             catch (Exception ex)
@@ -38,7 +38,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         {
             try
             {
-                var user = _userService.GetUserDetails(employeeId);
+                IEnumerable<UserRegistrationDTO> user = _userService.GetUserDetails(employeeId);
                 return Ok(user);
             }
             catch (Exception ex)
@@ -53,7 +53,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         {
             try
             {
-                var userBasicInfo = _userService.GetCurrentUser(employeeId);
+                CurrentUserDTO userBasicInfo = _userService.GetCurrentUser(employeeId);
                 if (userBasicInfo == null)
                 {
                     return NotFound();
@@ -74,7 +74,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         {
             try
             {
-                var managerId = await _userService.GetManagerIdAsync(employeeId);
+                string managerId = await _userService.GetManagerIdAsync(employeeId);
                 return Ok(managerId);
             }
             catch (ArgumentException ex)
@@ -110,7 +110,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 
             try
             {
-                var updatedUser = await _userService.UpdateUser(user);
+                UserRegistrationDTO updatedUser = await _userService.UpdateUser(user);
 
                 return Ok(updatedUser);
             }
@@ -123,20 +123,5 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

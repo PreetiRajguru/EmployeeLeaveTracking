@@ -25,5 +25,8 @@ namespace EmployeeLeaveTracking.Data.DTOs
         public int DesignationId { get; init; }
 
         public string? DesignationName { get; init; }
+
+
+        public string? ProfilePictureUrl { get; set; }
     }
 }

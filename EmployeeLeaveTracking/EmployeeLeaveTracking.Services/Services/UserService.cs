@@ -1,7 +1,5 @@
 ﻿using EmployeeLeaveTracking.Data.Context;
 using EmployeeLeaveTracking.Data.DTOs;
-using EmployeeLeaveTracking.Data.Mappers;
-using EmployeeLeaveTracking.Data.Models;
 using EmployeeLeaveTracking.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -28,7 +26,7 @@ namespace EmployeeLeaveTracking.Services.Services
                 throw new ArgumentException("Manager Id cannot be null or empty");
             }
 
-            var users = _dbContext.Users
+            IQueryable<UserRegistrationDTO> users = _dbContext.Users
                    .Where(u => u.ManagerId.Equals(managerId))
                    .Include(lr => lr.Designation)
                    .Select(u => new UserRegistrationDTO
@@ -53,7 +51,7 @@ namespace EmployeeLeaveTracking.Services.Services
             {
                 throw new ArgumentException("Employee Id cannot be null or whitespace.", nameof(employeeId));
             }
-            var user = _dbContext.Users
+            IQueryable<UserRegistrationDTO> user = _dbContext.Users
                 .Where(u => u.Id.Equals(employeeId))
                 .Select(u => new UserRegistrationDTO
                 {
@@ -75,7 +73,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public string GetCurrentUserById()
         {
-            var userId = _httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.Sid);
+            string? userId = _httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.Sid);
 
             if (string.IsNullOrEmpty(userId))
             {
@@ -93,7 +91,7 @@ namespace EmployeeLeaveTracking.Services.Services
                 throw new ArgumentException("Employee Id cannot be null or whitespace.", nameof(employeeId));
             }
 
-            var user = _dbContext.Users
+            Data.Models.User? user = _dbContext.Users
                 .FirstOrDefault(u => u.Id == employeeId);
 
             if (user == null)
@@ -112,7 +110,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public async Task<string> GetManagerIdAsync(string employeeId)
         {
-            var employee = await _dbContext.Users
+            Data.Models.User employee = await _dbContext.Users
                 .FirstOrDefaultAsync(e => e.Id == employeeId);
 
             if (employee == null)
@@ -125,7 +123,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public async Task<UserRegistrationDTO> UpdateUser(UserRegistrationDTO user)
         {
-            var existingUser = await _dbContext.Users.FindAsync(user.Id);
+            Data.Models.User existingUser = await _dbContext.Users.FindAsync(user.Id);
 
             if (existingUser == null)
             {

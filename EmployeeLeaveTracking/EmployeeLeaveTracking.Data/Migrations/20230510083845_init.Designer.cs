@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EmployeeLeaveTracking.Data.Migrations
 {
     [DbContext(typeof(EmployeeLeaveDbContext))]
-    [Migration("20230508093526_init")]
+    [Migration("20230510083845_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -140,6 +140,20 @@ namespace EmployeeLeaveTracking.Data.Migrations
                     b.ToTable("LeaveTypes");
                 });
 
+            modelBuilder.Entity("EmployeeLeaveTracking.Data.Models.ProfileImage", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ImagePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("ProfileImages");
+                });
+
             modelBuilder.Entity("EmployeeLeaveTracking.Data.Models.StatusMaster", b =>
                 {
                     b.Property<int>("Id")
@@ -239,6 +253,9 @@ namespace EmployeeLeaveTracking.Data.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("ProfilePictureUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -445,6 +462,17 @@ namespace EmployeeLeaveTracking.Data.Migrations
                     b.Navigation("StatusMaster");
                 });
 
+            modelBuilder.Entity("EmployeeLeaveTracking.Data.Models.ProfileImage", b =>
+                {
+                    b.HasOne("EmployeeLeaveTracking.Data.Models.User", "User")
+                        .WithOne("ProfileImages")
+                        .HasForeignKey("EmployeeLeaveTracking.Data.Models.ProfileImage", "UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("EmployeeLeaveTracking.Data.Models.User", b =>
                 {
                     b.HasOne("EmployeeLeaveTracking.Data.Models.DesignationMaster", "Designation")
@@ -527,6 +555,9 @@ namespace EmployeeLeaveTracking.Data.Migrations
                     b.Navigation("EmployeeLeaveRequests");
 
                     b.Navigation("ManagerLeaveRequests");
+
+                    b.Navigation("ProfileImages")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
