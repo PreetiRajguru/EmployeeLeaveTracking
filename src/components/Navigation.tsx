@@ -196,6 +196,16 @@ const Navigation = () => {
                   onClick={() => navigate("/myprofile")}
                 />
               </ListItemButton>
+
+              <ListItemButton>
+                <ListItemIcon>
+                  <AccountBoxIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="Profile Image"
+                  onClick={() => navigate("/profileimage")}
+                />
+              </ListItemButton>
             </>
           )}
         </List>

@@ -11,6 +11,7 @@ import ApplyForLeaves from './components/Employee/ApplyForLeaves';
 import About from './components/About'
 import ErrorPage from './components/ErrorPage'
 import MyProfile from './components/MyProfile'
+import ProfileImage from './components/ProfileImage'
 import MyLeaveDetails from './components/Employee/MyLeaveDetails'
 import axios from 'axios'
 import { AppContext } from './config/https';
@@ -41,24 +42,18 @@ function App() {
     <AppContext.Provider value={{ loading }}>
     <div>
       <BrowserRouter>
-    
-      {/* {isLogin ? (
-            <Login />
-          ) : (
-            
-            <Navigation />
-          )} */}
 
       <Navigation />
 
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/register" element={<Register />} />
         <Route path="/about" element={<About />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/addemployee" element={<AddEmployee />} />
         <Route path="/viewemployees" element={<ViewEmployess />} />
         <Route path="/viewempdetails/:empId" element={<ViewEmployeeDetails />} />
         <Route path="/applyforleaves" element={<ApplyForLeaves />} />
+        <Route path="/profileimage" element={<ProfileImage />} />
         <Route path="/leavedetails" element={<MyLeaveDetails />} />
         <Route path="/newrequests" element={<NewRequests />} />
         <Route path="/myprofile" element={<MyProfile />} />

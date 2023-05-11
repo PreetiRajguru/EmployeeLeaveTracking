@@ -59,7 +59,6 @@ export default function CustomizedTables() {
   const [rowsPerPage, setRowsPerPage] = useState(DEFAULT_ROWS_PER_PAGE);
   
   const empId = localStorage.getItem('id');
-  // var colors = ['red', 'green', 'blue', 'orange', 'yellow', 'grey', 'brown','black','violet','indigo'];
   var colors = ['#afd6d0','#d3afd6', '#edbcbc', '#c7ebba', '#e8e4a6', '#f0c7f4','#f7d2a7','#e3aff4'];
 
   function BasicCard() {
