@@ -7,7 +7,6 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class LeaveRequestController : ControllerBase
     {
         private readonly ILeaveRequest _leaveRequestService;
@@ -41,6 +40,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "Manager,Employee")]
         public ActionResult<LeaveRequestDTO> GetById(int id)
         {
             try
@@ -61,6 +61,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Manager,Employee")]
         public ActionResult<LeaveRequestDTO> Post(LeaveRequestDTO leaveRequest)
         {
             try
@@ -81,6 +82,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpPost("/new")]
+        [Authorize(Roles = "Manager,Employee")]
         public ActionResult<NewLeaveRequestDTO> PostNewLeave(NewLeaveRequestDTO leaveRequest)
         {
             try
@@ -101,6 +103,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Manager,Employee")]
         public ActionResult<LeaveRequestDTO> Put(int id, LeaveRequestDTO leaveRequest)
         {
             try
@@ -131,6 +134,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Manager,Employee")]
         public ActionResult<bool> Delete(int id)
         {
             try
@@ -152,6 +156,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 
 
         [HttpGet("employeeId/{limit}/{offset}")]
+        [Authorize(Roles = "Manager,Employee")]
         public IActionResult GetAllLeavesByEmployeeId(int limit , int offset)
         {
             try
@@ -170,6 +175,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 
 
         [HttpGet("employee/{employeeId}")]
+        [Authorize(Roles = "Manager,Employee")]
         public IActionResult LeavesByEmployeeId(string employeeId)
         {
             try
@@ -186,6 +192,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 
 
         [HttpGet("status/{statusId}")]
+        [Authorize(Roles = "Manager,Employee")]
         public async Task<ActionResult<List<LeaveRequestDTO>>> GetAllLeavesByStatusId(int statusId)
         {
             try
@@ -203,6 +210,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 
 
         [HttpGet("leaves/{statusId}/{managerId}")]
+        [Authorize(Roles = "Manager,Employee")]
         public ActionResult<IEnumerable<LeaveRequestDTO>> GetLeavesByStatusAndManager(int statusId, string managerId)
         {
             try
@@ -218,6 +226,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 
 
         [HttpPut("{id}/status/{statusId}")]
+        [Authorize(Roles = "Manager,Employee")]
         public async Task<int> UpdateLeaveRequestStatus(int id, int statusId)
         {
             try
@@ -236,6 +245,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 
 
         [HttpGet("balance/{employeeId}")]
+        [Authorize(Roles = "Manager,Employee")]
         public IActionResult LeaveBalance(string employeeId)
         {
             try

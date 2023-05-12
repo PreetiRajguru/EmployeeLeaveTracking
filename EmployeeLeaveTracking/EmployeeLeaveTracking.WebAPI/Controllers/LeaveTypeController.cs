@@ -1,11 +1,11 @@
 ﻿using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeLeaveTracking.WebAPI.Controllers
 {
     [ApiController]
-    /*[Authorize]*/
     [Route("api/[controller]")]
     public class LeaveTypeController : ControllerBase
     {
@@ -17,6 +17,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Manager,Employee")]
         public IActionResult GetAll()
         {
             try
@@ -31,6 +32,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "Manager,Employee")]
         public IActionResult GetById(int id)
         {
             try
@@ -75,6 +77,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Manager")]
         public IActionResult Update(int id, [FromBody] LeaveTypeDTO leaveType)
         {
                 try
@@ -103,6 +106,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Manager")]
         public IActionResult Delete(int id)
         {
             try
@@ -122,6 +126,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 
 
         [HttpGet("employee/leavetypes")]
+        [Authorize(Roles = "Manager,Employee")]
         public ActionResult<List<LeaveTypeWithTotalDaysDTO>> GetLeaveTypesWithTotalDays()
         {
             try

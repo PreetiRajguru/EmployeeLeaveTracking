@@ -23,13 +23,30 @@ namespace EmployeeLeaveTracking.Services.Services
             _userService = userService;
         }
 
+        /* public IEnumerable<LeaveTypeDTO> GetAll()
+         {
+             IQueryable<LeaveTypeDTO> leaveTypes = _dbContext.LeaveTypes.Where(lt => lt.IsDeleted == false).Select(lt => new LeaveTypeDTO
+             {
+                 Id = lt.Id,
+                 LeaveTypeName = lt.LeaveTypeName
+             });
+
+             return leaveTypes;
+         }
+ */
+
+
+
+
         public IEnumerable<LeaveTypeDTO> GetAll()
         {
-            IQueryable<LeaveTypeDTO> leaveTypes = _dbContext.LeaveTypes.Where(lt => lt.IsDeleted == false).Select(lt => new LeaveTypeDTO
-            {
-                Id = lt.Id,
-                LeaveTypeName = lt.LeaveTypeName
-            });
+            IQueryable<LeaveTypeDTO> leaveTypes = _dbContext.LeaveTypes
+                .Where(lt => lt.IsDeleted == false && lt.LeaveTypeName != "Compensatory Off" && lt.LeaveTypeName != "On Duty")
+                .Select(lt => new LeaveTypeDTO
+                {
+                    Id = lt.Id,
+                    LeaveTypeName = lt.LeaveTypeName
+                });
 
             return leaveTypes;
         }

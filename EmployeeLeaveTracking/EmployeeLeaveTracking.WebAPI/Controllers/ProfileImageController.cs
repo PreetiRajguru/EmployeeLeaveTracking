@@ -17,7 +17,9 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
             _environment = environment;
             _profileImageService = profileImageService;
         }
+
         [HttpPost]
+        [Authorize(Roles = "Manager,Employee")]
         public async Task<IActionResult> Post([FromForm] ProfileImageUploadDTO model)
         {
             try
@@ -35,9 +37,10 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
             {
                 return StatusCode(500, $"An error occurred : {ex.Message}");
             }
-
         }
+
         [HttpGet]
+        [Authorize(Roles = "Manager,Employee")]
         public IActionResult Get(string id)
         {
             try

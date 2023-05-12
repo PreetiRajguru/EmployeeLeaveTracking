@@ -1,6 +1,8 @@
 ﻿using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace EmployeeLeaveTracking.WebAPI.Controllers
 {
@@ -17,6 +19,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Manager,Employee")]
         public IActionResult GetAll()
         {
             try
@@ -31,6 +34,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize(Roles = "Manager,Employee")]
         public IActionResult GetById(int id)
         {
             try
@@ -69,6 +73,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "Manager")]
         public IActionResult Update(int id, [FromBody] StatusMasterDTO statusMaster)
         {
             try
@@ -94,6 +99,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Manager")]
         public IActionResult Delete(int id)
         {
             try
