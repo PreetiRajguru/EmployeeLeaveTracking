@@ -16,8 +16,10 @@ public class RepositoryManagerService : IRepository
     private IMapper _mapper;
     private IConfiguration _configuration;
     private readonly RoleManager<IdentityRole> _roleManager;
+    private readonly EmployeeLeaveDbContext _context;
 
-    public RepositoryManagerService(EmployeeLeaveDbContext repositoryContext, UserManager<User> userManager, IMapper mapper, IConfiguration configuration, RoleManager<IdentityRole> roleManager)
+    public RepositoryManagerService(EmployeeLeaveDbContext repositoryContext, UserManager<User> userManager, IMapper mapper, IConfiguration configuration, 
+        RoleManager<IdentityRole> roleManager, EmployeeLeaveDbContext context)
     {
         {
             _repositoryContext = repositoryContext;
@@ -25,6 +27,7 @@ public class RepositoryManagerService : IRepository
             _mapper = mapper;
             _configuration = configuration;
             _roleManager = roleManager;
+            _context = context;
         }
     }
 
@@ -33,7 +36,7 @@ public class RepositoryManagerService : IRepository
         get
         {
             if (_userAuthenticationRepository is null)
-                _userAuthenticationRepository = new UserAuthenticationService(_userManager, _configuration, _mapper, _roleManager);
+                _userAuthenticationRepository = new UserAuthenticationService(_userManager, _configuration, _mapper, _roleManager,_context);
             return _userAuthenticationRepository;
         }
     }

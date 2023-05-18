@@ -3,6 +3,7 @@ using EmployeeLeaveTracking.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace EmployeeLeaveTracking.WebAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -259,6 +260,21 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
             {
                 return StatusCode(500, ex.Message);
             }
+        }
+
+        
+        //new method
+        [HttpPost("newleaverequest")]
+        public IActionResult NewCreateNewLeaveRequest(NewLeaveRequestDTO leaveRequest)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var createdLeaveRequest = _leaveRequestService.NewCreateNewLeaveRequest(leaveRequest);
+
+            return CreatedAtRoute(new { id = createdLeaveRequest.Id }, createdLeaveRequest);
         }
     }
 }

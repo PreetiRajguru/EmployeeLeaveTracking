@@ -16,8 +16,7 @@
 
         public bool? IsDeleted { get; set; } = false;
 
-
-
+        public List<LeaveBalance>? LeaveBalances { get; set; }
         public List<LeaveRequest>? LeaveRequests { get; set; }
 
         public LeaveType()

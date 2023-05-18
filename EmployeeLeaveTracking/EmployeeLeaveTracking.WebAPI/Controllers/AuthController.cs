@@ -28,6 +28,7 @@ namespace StudentTeacher.Controllers
 
                 IdentityResult userResult = await _repository.UserAuthentication.RegisterUserAsync(userRegistration);
                 return !userResult.Succeeded ? new BadRequestObjectResult(userResult) : StatusCode(201);
+
             }
             catch (Exception ex)
             {

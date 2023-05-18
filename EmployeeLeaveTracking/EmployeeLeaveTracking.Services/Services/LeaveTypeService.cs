@@ -77,7 +77,7 @@ namespace EmployeeLeaveTracking.Services.Services
             return leaveType;
         }
 
-        public LeaveTypeDTO Update(LeaveTypeDTO leaveType)
+        public LeaveTypeDTO? Update(LeaveTypeDTO leaveType)
         {
             LeaveType existingLeaveType = _dbContext.LeaveTypes.Find(leaveType.Id);
 
@@ -110,7 +110,7 @@ namespace EmployeeLeaveTracking.Services.Services
         }
 
   
-        public List<LeaveTypeWithTotalDaysDTO> GetLeaveTypesWithTotalDaysTaken()
+        public List<LeaveTypeWithTotalDaysDTO>? GetLeaveTypesWithTotalDaysTaken()
         {
             StatusMaster? approvedLeaves = _dbContext.Status.Where(s => s.StatusType.ToLower() == "approved").FirstOrDefault();
 

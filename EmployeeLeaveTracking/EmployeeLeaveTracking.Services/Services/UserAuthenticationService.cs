@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
+using EmployeeLeaveTracking.Data.Context;
 using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Data.Models;
 using EmployeeLeaveTracking.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -18,26 +20,29 @@ public sealed class UserAuthenticationService : IUserAuthentication
     private readonly IMapper _mapper;
     private User? _user;
     private readonly RoleManager<IdentityRole> _roleManager;
+    private readonly EmployeeLeaveDbContext _context;
 
-    public UserAuthenticationService(UserManager<User> userManager, IConfiguration configuration, IMapper mapper, RoleManager<IdentityRole> roleManager)
+
+    public UserAuthenticationService(UserManager<User> userManager, IConfiguration configuration, IMapper mapper, RoleManager<IdentityRole> roleManager,
+                                   EmployeeLeaveDbContext context)
     {
         _userManager = userManager;
         _configuration = configuration;
         _mapper = mapper;
         _roleManager = roleManager;
+        _context = context;
     }
 
     public async Task<IdentityResult> RegisterUserAsync(NewUserDTO userRegistration)
     {
         User user = _mapper.Map<User>(userRegistration);
 
-        /* await _userManager.ChangePasswordAsync()*/
-
-
         IdentityResult result = await _userManager.CreateAsync(user, userRegistration.Password);
 
         if (result.Succeeded)
         {
+
+
             if (!await _roleManager.RoleExistsAsync("Manager"))
             {
                 IdentityRole managerRole = new IdentityRole("Manager");
@@ -50,7 +55,7 @@ public sealed class UserAuthenticationService : IUserAuthentication
                 await _roleManager.CreateAsync(employeeRole);
             }
 
-            if (userRegistration.ManagerId == "")
+            if (userRegistration.ManagerId == String.Empty)
             {
                 await _userManager.AddToRoleAsync(user, "Manager");
             }
@@ -60,7 +65,57 @@ public sealed class UserAuthenticationService : IUserAuthentication
             }
         }
 
+
+        //initial leave balances for the new user
+        var leaveTypes = await _context.LeaveTypes.ToListAsync();
+        var leaveBalances = new List<LeaveBalance>();
+
+        foreach (var leaveType in leaveTypes)
+        {
+            double balance = 0;
+           /* DateTime dt = DateTime.Now;
+            int month = dt.Month;*/
+
+            switch (leaveType.LeaveTypeName)
+            {
+                case "Unpaid Leave":
+                    balance = 30;
+                    break;
+                case "Paid Leave":
+                    /*balance = month * 1.5;*/
+                    balance = 1.5;
+                    break;
+                case "Compensatory Off":
+                    balance = 0;
+                    break;
+                case "Work From Home":
+                    /*balance = month * 1;*/
+                    balance = 1;
+                    break;
+                case "Forgot Id Card":
+                    balance = 0;
+                    break;
+                case "On Duty":
+                    balance = 0;
+                    break;
+                default:
+                    break;
+            }
+
+            var leaveBalance = new LeaveBalance
+            {
+                UserId = user.Id,
+                LeaveTypeId = leaveType.Id,
+                Balance = balance
+            };
+
+            leaveBalances.Add(leaveBalance);
+        }
+
+        await _context.LeaveBalances.AddRangeAsync(leaveBalances);
+        await _context.SaveChangesAsync();
         return result;
+
     }
 
     public async Task<bool> ValidateUserAsync(UserLoginDTO loginDto)

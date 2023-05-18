@@ -13,7 +13,6 @@ using Microsoft.OpenApi.Models;
 using StudentTeacher.Service.Services;
 using System.Text;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -52,6 +51,7 @@ builder.Services.AddScoped<IUser, UserService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<IDesignationMaster, DesignationMasterService>();
 builder.Services.AddScoped<IProfileImage, ProfileImageService>();
+builder.Services.AddScoped<ILeaveBalance, LeaveBalanceService>();
 
 
 builder.Services.AddCors(options =>

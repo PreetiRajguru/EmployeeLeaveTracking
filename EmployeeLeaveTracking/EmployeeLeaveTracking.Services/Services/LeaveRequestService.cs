@@ -137,6 +137,53 @@ namespace EmployeeLeaveTracking.Services.Services
 
             return leaveRequest;
         }
+
+
+        //new method
+        public NewLeaveRequestDTO NewCreateNewLeaveRequest(NewLeaveRequestDTO leaveRequest)
+        {
+            LeaveRequest newLeaveRequest = new LeaveRequest
+            {
+                RequestComments = leaveRequest.RequestComments,
+                EmployeeId = leaveRequest.EmployeeId,
+                ManagerId = leaveRequest.ManagerId,
+                LeaveTypeId = leaveRequest.LeaveTypeId,
+                StartDate = leaveRequest.StartDate,
+                EndDate = leaveRequest.EndDate,
+                TotalDays = leaveRequest.TotalDays,
+                StatusId = leaveRequest.StatusId
+            };
+
+            _dbContext.LeaveRequests.Add(newLeaveRequest);
+            _dbContext.SaveChanges();
+
+            leaveRequest.Id = newLeaveRequest.Id;
+
+            var balance = _dbContext.LeaveBalances
+            .FirstOrDefault(b => b.UserId == leaveRequest.EmployeeId && b.LeaveTypeId == leaveRequest.LeaveTypeId);
+
+            if (balance == null)
+            {
+                balance = new LeaveBalance
+                {
+                    UserId = leaveRequest.EmployeeId,
+                    LeaveTypeId = leaveRequest.LeaveTypeId,
+                    Balance = -leaveRequest.TotalDays
+                };
+                _dbContext.LeaveBalances.Add(balance);
+            }
+            else
+            {
+                balance.Balance -= leaveRequest.TotalDays;
+            }
+
+            _dbContext.SaveChanges();
+
+            return leaveRequest;
+
+        }
+
+
         public LeaveRequestDTO Update(LeaveRequestDTO leaveRequest)
         {
             LeaveRequest? existingLeaveRequest = _dbContext.LeaveRequests
@@ -320,6 +367,6 @@ namespace EmployeeLeaveTracking.Services.Services
             .Where(c => c.EmployeeId.Equals(employeeId)); 
 
             return leaveRequestByEmployeeId.Select(c => new UserLeaveRequestMapper().Map(c)).ToList();
-        }
+        }           
     }
 }

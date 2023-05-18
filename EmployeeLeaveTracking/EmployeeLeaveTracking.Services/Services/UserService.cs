@@ -1,5 +1,6 @@
 ﻿using EmployeeLeaveTracking.Data.Context;
 using EmployeeLeaveTracking.Data.DTOs;
+using EmployeeLeaveTracking.Data.Models;
 using EmployeeLeaveTracking.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,9 @@ namespace EmployeeLeaveTracking.Services.Services
             _httpContextAccessor = httpContextAccessor;
         }
 
+        public UserService()
+        {
+        }
 
         public IEnumerable<UserRegistrationDTO> GetUsersByManagerId(string managerId)
         {

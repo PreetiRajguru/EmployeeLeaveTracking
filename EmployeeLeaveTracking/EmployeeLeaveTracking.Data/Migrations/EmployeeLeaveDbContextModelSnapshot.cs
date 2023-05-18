@@ -47,6 +47,81 @@ namespace EmployeeLeaveTracking.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Designations");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedDate = new DateTime(2023, 5, 15, 12, 54, 50, 696, DateTimeKind.Utc).AddTicks(3557),
+                            DesignationName = "Intern",
+                            IsDeleted = false,
+                            ModifiedDate = new DateTime(2023, 5, 15, 12, 54, 50, 696, DateTimeKind.Utc).AddTicks(4196)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedDate = new DateTime(2023, 5, 15, 12, 54, 50, 696, DateTimeKind.Utc).AddTicks(6201),
+                            DesignationName = "Software Engineer",
+                            IsDeleted = false,
+                            ModifiedDate = new DateTime(2023, 5, 15, 12, 54, 50, 696, DateTimeKind.Utc).AddTicks(6204)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedDate = new DateTime(2023, 5, 15, 12, 54, 50, 696, DateTimeKind.Utc).AddTicks(6206),
+                            DesignationName = "Senior Software Engineer",
+                            IsDeleted = false,
+                            ModifiedDate = new DateTime(2023, 5, 15, 12, 54, 50, 696, DateTimeKind.Utc).AddTicks(6207)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedDate = new DateTime(2023, 5, 15, 12, 54, 50, 696, DateTimeKind.Utc).AddTicks(6208),
+                            DesignationName = "Tech Lead",
+                            IsDeleted = false,
+                            ModifiedDate = new DateTime(2023, 5, 15, 12, 54, 50, 696, DateTimeKind.Utc).AddTicks(6209)
+                        });
+                });
+
+            modelBuilder.Entity("EmployeeLeaveTracking.Data.Models.LeaveBalance", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<double>("Balance")
+                        .HasColumnType("float");
+
+                    b.Property<int?>("CreatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("LeaveTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ModifiedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LeaveTypeId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("LeaveBalances");
                 });
 
             modelBuilder.Entity("EmployeeLeaveTracking.Data.Models.LeaveRequest", b =>
@@ -65,7 +140,7 @@ namespace EmployeeLeaveTracking.Data.Migrations
                     b.Property<string>("EmployeeId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime?>("EndDate")
+                    b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool?>("IsDeleted")
@@ -86,7 +161,7 @@ namespace EmployeeLeaveTracking.Data.Migrations
                     b.Property<string>("RequestComments")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("StartDate")
+                    b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("StatusId")
@@ -136,6 +211,56 @@ namespace EmployeeLeaveTracking.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("LeaveTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedDate = new DateTime(2023, 5, 15, 12, 54, 50, 695, DateTimeKind.Utc).AddTicks(7945),
+                            IsDeleted = false,
+                            LeaveTypeName = "Paid Leave",
+                            ModifiedDate = new DateTime(2023, 5, 15, 12, 54, 50, 695, DateTimeKind.Utc).AddTicks(9131)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedDate = new DateTime(2023, 5, 15, 12, 54, 50, 696, DateTimeKind.Utc).AddTicks(923),
+                            IsDeleted = false,
+                            LeaveTypeName = "Unpaid Leave",
+                            ModifiedDate = new DateTime(2023, 5, 15, 12, 54, 50, 696, DateTimeKind.Utc).AddTicks(925)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedDate = new DateTime(2023, 5, 15, 12, 54, 50, 696, DateTimeKind.Utc).AddTicks(929),
+                            IsDeleted = false,
+                            LeaveTypeName = "Forgot ID Card",
+                            ModifiedDate = new DateTime(2023, 5, 15, 12, 54, 50, 696, DateTimeKind.Utc).AddTicks(929)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CreatedDate = new DateTime(2023, 5, 15, 12, 54, 50, 696, DateTimeKind.Utc).AddTicks(933),
+                            IsDeleted = false,
+                            LeaveTypeName = "Work From Home",
+                            ModifiedDate = new DateTime(2023, 5, 15, 12, 54, 50, 696, DateTimeKind.Utc).AddTicks(934)
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CreatedDate = new DateTime(2023, 5, 15, 12, 54, 50, 696, DateTimeKind.Utc).AddTicks(936),
+                            IsDeleted = false,
+                            LeaveTypeName = "Compensatory Off",
+                            ModifiedDate = new DateTime(2023, 5, 15, 12, 54, 50, 696, DateTimeKind.Utc).AddTicks(937)
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CreatedDate = new DateTime(2023, 5, 15, 12, 54, 50, 696, DateTimeKind.Utc).AddTicks(939),
+                            IsDeleted = false,
+                            LeaveTypeName = "On Duty",
+                            ModifiedDate = new DateTime(2023, 5, 15, 12, 54, 50, 696, DateTimeKind.Utc).AddTicks(940)
+                        });
                 });
 
             modelBuilder.Entity("EmployeeLeaveTracking.Data.Models.ProfileImage", b =>
@@ -144,7 +269,6 @@ namespace EmployeeLeaveTracking.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ImagePath")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserId");
@@ -180,6 +304,32 @@ namespace EmployeeLeaveTracking.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Status");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedDate = new DateTime(2023, 5, 15, 12, 54, 50, 696, DateTimeKind.Utc).AddTicks(9890),
+                            IsDeleted = false,
+                            ModifiedDate = new DateTime(2023, 5, 15, 12, 54, 50, 697, DateTimeKind.Utc).AddTicks(1799),
+                            StatusType = "Pending"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CreatedDate = new DateTime(2023, 5, 15, 12, 54, 50, 697, DateTimeKind.Utc).AddTicks(4873),
+                            IsDeleted = false,
+                            ModifiedDate = new DateTime(2023, 5, 15, 12, 54, 50, 697, DateTimeKind.Utc).AddTicks(4877),
+                            StatusType = "Approved"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CreatedDate = new DateTime(2023, 5, 15, 12, 54, 50, 697, DateTimeKind.Utc).AddTicks(4883),
+                            IsDeleted = false,
+                            ModifiedDate = new DateTime(2023, 5, 15, 12, 54, 50, 697, DateTimeKind.Utc).AddTicks(4884),
+                            StatusType = "Rejected"
+                        });
                 });
 
             modelBuilder.Entity("EmployeeLeaveTracking.Data.Models.User", b =>
@@ -427,6 +577,25 @@ namespace EmployeeLeaveTracking.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("EmployeeLeaveTracking.Data.Models.LeaveBalance", b =>
+                {
+                    b.HasOne("EmployeeLeaveTracking.Data.Models.LeaveType", "LeaveType")
+                        .WithMany("LeaveBalances")
+                        .HasForeignKey("LeaveTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EmployeeLeaveTracking.Data.Models.User", "Employee")
+                        .WithMany("EmployeeLeaveBalance")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("LeaveType");
+                });
+
             modelBuilder.Entity("EmployeeLeaveTracking.Data.Models.LeaveRequest", b =>
                 {
                     b.HasOne("EmployeeLeaveTracking.Data.Models.User", "Employee")
@@ -540,6 +709,8 @@ namespace EmployeeLeaveTracking.Data.Migrations
 
             modelBuilder.Entity("EmployeeLeaveTracking.Data.Models.LeaveType", b =>
                 {
+                    b.Navigation("LeaveBalances");
+
                     b.Navigation("LeaveRequests");
                 });
 
@@ -550,6 +721,8 @@ namespace EmployeeLeaveTracking.Data.Migrations
 
             modelBuilder.Entity("EmployeeLeaveTracking.Data.Models.User", b =>
                 {
+                    b.Navigation("EmployeeLeaveBalance");
+
                     b.Navigation("EmployeeLeaveRequests");
 
                     b.Navigation("ManagerLeaveRequests");
