@@ -44,7 +44,7 @@ namespace EmployeeLeaveTracking.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            this.SeedRoles(modelBuilder);
+            SeedRoles(modelBuilder);
 
             modelBuilder.Entity<LeaveRequest>()
            .HasOne(lb => lb.Manager)
@@ -117,7 +117,7 @@ namespace EmployeeLeaveTracking.Data.Context
 
         }
 
-        private void SeedRoles(ModelBuilder builder)
+        private static void SeedRoles(ModelBuilder builder)
         {
             builder.Entity<IdentityRole>().HasData(
                 new IdentityRole() { Id = "1", Name = "Manager", ConcurrencyStamp = "1", NormalizedName = "Manager" },

@@ -1,300 +1,90 @@
-User Id: 530ee7c3-aba1-453a-8c98-ca77d988aa14
-Previous Balance: 78
-Updated Balance: 79.5
-User Id: 530ee7c3-aba1-453a-8c98-ca77d988aa14
+User Id: 5af7db5b-4821-43f3-9086-2ae774e07f2c
+Previous Balance: 4.5
+Updated Balance: 6
+User Id: 5af7db5b-4821-43f3-9086-2ae774e07f2c
 Previous Balance: 30
 Updated Balance: 30
-User Id: 530ee7c3-aba1-453a-8c98-ca77d988aa14
+User Id: 5af7db5b-4821-43f3-9086-2ae774e07f2c
 Previous Balance: 0
 Updated Balance: 0
-User Id: 530ee7c3-aba1-453a-8c98-ca77d988aa14
-Previous Balance: 52
-Updated Balance: 53
-User Id: 530ee7c3-aba1-453a-8c98-ca77d988aa14
+User Id: 5af7db5b-4821-43f3-9086-2ae774e07f2c
+Previous Balance: 3
+Updated Balance: 4
+User Id: 5af7db5b-4821-43f3-9086-2ae774e07f2c
 Previous Balance: 0
 Updated Balance: 0
-User Id: 530ee7c3-aba1-453a-8c98-ca77d988aa14
+User Id: 5af7db5b-4821-43f3-9086-2ae774e07f2c
 Previous Balance: 0
 Updated Balance: 0
-User Id: e52d268e-5e27-4d48-ad9b-6195165a882c
-Previous Balance: 78
-Updated Balance: 79.5
-User Id: e52d268e-5e27-4d48-ad9b-6195165a882c
+User Id: 9581f69b-bb50-4cde-914b-a9f767731b50
+Previous Balance: 1.5
+Updated Balance: 3
+User Id: 9581f69b-bb50-4cde-914b-a9f767731b50
 Previous Balance: 30
 Updated Balance: 30
-User Id: e52d268e-5e27-4d48-ad9b-6195165a882c
+User Id: 9581f69b-bb50-4cde-914b-a9f767731b50
 Previous Balance: 0
 Updated Balance: 0
-User Id: e52d268e-5e27-4d48-ad9b-6195165a882c
-Previous Balance: 52
-Updated Balance: 53
-User Id: e52d268e-5e27-4d48-ad9b-6195165a882c
+User Id: 9581f69b-bb50-4cde-914b-a9f767731b50
+Previous Balance: 3
+Updated Balance: 4
+User Id: 9581f69b-bb50-4cde-914b-a9f767731b50
 Previous Balance: 0
 Updated Balance: 0
-User Id: e52d268e-5e27-4d48-ad9b-6195165a882c
+User Id: 9581f69b-bb50-4cde-914b-a9f767731b50
 Previous Balance: 0
 Updated Balance: 0
-User Id: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Previous Balance: 73.5
-Error occurred for User ID: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Exception Message: Exception of type 'System.Exception' was thrown.
-Exception Stack Trace:    at EmployeeLeaveTracking.Scheduler.Scheduler.LeaveAddition(String filePath) in D:\ProjectAdditions\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\Scheduler.cs:line 145
-Exception Occurred At: 18-05-2023 09:18:37 AM
-User Id: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Previous Balance: 30
-Error occurred for User ID: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Exception Message: Exception of type 'System.Exception' was thrown.
-Exception Stack Trace:    at EmployeeLeaveTracking.Scheduler.Scheduler.LeaveAddition(String filePath) in D:\ProjectAdditions\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\Scheduler.cs:line 145
-Exception Occurred At: 18-05-2023 09:18:37 AM
-User Id: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Previous Balance: 0
-Error occurred for User ID: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Exception Message: Exception of type 'System.Exception' was thrown.
-Exception Stack Trace:    at EmployeeLeaveTracking.Scheduler.Scheduler.LeaveAddition(String filePath) in D:\ProjectAdditions\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\Scheduler.cs:line 145
-Exception Occurred At: 18-05-2023 09:18:37 AM
-User Id: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Previous Balance: 51
-Error occurred for User ID: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Exception Message: Exception of type 'System.Exception' was thrown.
-Exception Stack Trace:    at EmployeeLeaveTracking.Scheduler.Scheduler.LeaveAddition(String filePath) in D:\ProjectAdditions\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\Scheduler.cs:line 145
-Exception Occurred At: 18-05-2023 09:18:37 AM
-User Id: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Previous Balance: 0
-Error occurred for User ID: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Exception Message: Exception of type 'System.Exception' was thrown.
-Exception Stack Trace:    at EmployeeLeaveTracking.Scheduler.Scheduler.LeaveAddition(String filePath) in D:\ProjectAdditions\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\Scheduler.cs:line 145
-Exception Occurred At: 18-05-2023 09:18:38 AM
-User Id: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Previous Balance: 0
-Error occurred for User ID: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Exception Message: Exception of type 'System.Exception' was thrown.
-Exception Stack Trace:    at EmployeeLeaveTracking.Scheduler.Scheduler.LeaveAddition(String filePath) in D:\ProjectAdditions\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\Scheduler.cs:line 145
-Exception Occurred At: 18-05-2023 09:18:38 AM
-User Id: 397d5414-addc-4c91-806c-454398669407
-Previous Balance: 70.5
-Updated Balance: 72
-User Id: 530ee7c3-aba1-453a-8c98-ca77d988aa14
-Previous Balance: 79.5
-Updated Balance: 81
-User Id: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Previous Balance: 0
-Error occurred for User ID: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Exception Message: Exception of type 'System.Exception' was thrown.
-Exception Stack Trace:    at EmployeeLeaveTracking.Scheduler.Scheduler.LeaveAddition(String filePath) in D:\ProjectAdditions\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\Scheduler.cs:line 145
-Exception Occurred At: 18-05-2023 09:18:38 AM
-User Id: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Previous Balance: 52
-Error occurred for User ID: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Exception Message: Exception of type 'System.Exception' was thrown.
-Exception Stack Trace:    at EmployeeLeaveTracking.Scheduler.Scheduler.LeaveAddition(String filePath) in D:\ProjectAdditions\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\Scheduler.cs:line 145
-Exception Occurred At: 18-05-2023 09:18:38 AM
-User Id: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Previous Balance: 0
-Error occurred for User ID: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Exception Message: Exception of type 'System.Exception' was thrown.
-Exception Stack Trace:    at EmployeeLeaveTracking.Scheduler.Scheduler.LeaveAddition(String filePath) in D:\ProjectAdditions\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\Scheduler.cs:line 145
-Exception Occurred At: 18-05-2023 09:18:38 AM
-User Id: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Previous Balance: 30
-Error occurred for User ID: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Exception Message: Exception of type 'System.Exception' was thrown.
-Exception Stack Trace:    at EmployeeLeaveTracking.Scheduler.Scheduler.LeaveAddition(String filePath) in D:\ProjectAdditions\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\Scheduler.cs:line 145
-Exception Occurred At: 18-05-2023 09:18:38 AM
-User Id: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Previous Balance: 75
-Error occurred for User ID: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Exception Message: Exception of type 'System.Exception' was thrown.
-Exception Stack Trace:    at EmployeeLeaveTracking.Scheduler.Scheduler.LeaveAddition(String filePath) in D:\ProjectAdditions\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\Scheduler.cs:line 145
-Exception Occurred At: 18-05-2023 09:18:38 AM
-User Id: e52d268e-5e27-4d48-ad9b-6195165a882c
-Previous Balance: 0
-Updated Balance: 0
-User Id: e52d268e-5e27-4d48-ad9b-6195165a882c
-Previous Balance: 0
-Updated Balance: 0
-User Id: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Previous Balance: 0
-Error occurred for User ID: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Exception Message: Exception of type 'System.Exception' was thrown.
-Exception Stack Trace:    at EmployeeLeaveTracking.Scheduler.Scheduler.LeaveAddition(String filePath) in D:\ProjectAdditions\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\Scheduler.cs:line 145
-Exception Occurred At: 18-05-2023 09:18:38 AM
-User Id: e52d268e-5e27-4d48-ad9b-6195165a882c
-Previous Balance: 53
-Updated Balance: 54
-User Id: e52d268e-5e27-4d48-ad9b-6195165a882c
+User Id: ba36300d-6dff-4685-a436-ff941bc5971a
+Previous Balance: 4.5
+Updated Balance: 6
+User Id: ba36300d-6dff-4685-a436-ff941bc5971a
 Previous Balance: 30
 Updated Balance: 30
-User Id: e52d268e-5e27-4d48-ad9b-6195165a882c
-Previous Balance: 79.5
-Updated Balance: 81
-User Id: 530ee7c3-aba1-453a-8c98-ca77d988aa14
+User Id: ba36300d-6dff-4685-a436-ff941bc5971a
 Previous Balance: 0
 Updated Balance: 0
-User Id: 530ee7c3-aba1-453a-8c98-ca77d988aa14
+User Id: ba36300d-6dff-4685-a436-ff941bc5971a
+Previous Balance: 3
+Updated Balance: 4
+User Id: ba36300d-6dff-4685-a436-ff941bc5971a
 Previous Balance: 0
 Updated Balance: 0
-User Id: 530ee7c3-aba1-453a-8c98-ca77d988aa14
-Previous Balance: 53
-Updated Balance: 54
-User Id: 530ee7c3-aba1-453a-8c98-ca77d988aa14
+User Id: ba36300d-6dff-4685-a436-ff941bc5971a
 Previous Balance: 0
 Updated Balance: 0
-User Id: 530ee7c3-aba1-453a-8c98-ca77d988aa14
+User Id: dbad13e0-1651-4b14-82fd-91fe34c5499c
+Previous Balance: 4.5
+Updated Balance: 6
+User Id: dbad13e0-1651-4b14-82fd-91fe34c5499c
 Previous Balance: 30
 Updated Balance: 30
-User Id: e52d268e-5e27-4d48-ad9b-6195165a882c
+User Id: dbad13e0-1651-4b14-82fd-91fe34c5499c
 Previous Balance: 0
 Updated Balance: 0
-User Id: 397d5414-addc-4c91-806c-454398669407
-Previous Balance: 72
-Updated Balance: 73.5
-User Id: 530ee7c3-aba1-453a-8c98-ca77d988aa14
-Previous Balance: 79.5
-Updated Balance: 81
-User Id: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Previous Balance: 53
-Error occurred for User ID: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Exception Message: Exception of type 'System.Exception' was thrown.
-Exception Stack Trace:    at EmployeeLeaveTracking.Scheduler.Scheduler.LeaveAddition(String filePath) in D:\ProjectAdditions\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\Scheduler.cs:line 145
-Exception Occurred At: 18-05-2023 09:18:38 AM
-User Id: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Previous Balance: 0
-Error occurred for User ID: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Exception Message: Exception of type 'System.Exception' was thrown.
-Exception Stack Trace:    at EmployeeLeaveTracking.Scheduler.Scheduler.LeaveAddition(String filePath) in D:\ProjectAdditions\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\Scheduler.cs:line 145
-Exception Occurred At: 18-05-2023 09:18:38 AM
-User Id: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Previous Balance: 30
-Error occurred for User ID: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Exception Message: Exception of type 'System.Exception' was thrown.
-Exception Stack Trace:    at EmployeeLeaveTracking.Scheduler.Scheduler.LeaveAddition(String filePath) in D:\ProjectAdditions\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\Scheduler.cs:line 145
-Exception Occurred At: 18-05-2023 09:18:38 AM
-User Id: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Previous Balance: 76.5
-Error occurred for User ID: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Exception Message: Exception of type 'System.Exception' was thrown.
-Exception Stack Trace:    at EmployeeLeaveTracking.Scheduler.Scheduler.LeaveAddition(String filePath) in D:\ProjectAdditions\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\Scheduler.cs:line 145
-Exception Occurred At: 18-05-2023 09:18:38 AM
-User Id: e52d268e-5e27-4d48-ad9b-6195165a882c
+User Id: dbad13e0-1651-4b14-82fd-91fe34c5499c
+Previous Balance: 3
+Updated Balance: 4
+User Id: dbad13e0-1651-4b14-82fd-91fe34c5499c
 Previous Balance: 0
 Updated Balance: 0
-User Id: e52d268e-5e27-4d48-ad9b-6195165a882c
+User Id: dbad13e0-1651-4b14-82fd-91fe34c5499c
 Previous Balance: 0
 Updated Balance: 0
-User Id: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Previous Balance: 0
-Error occurred for User ID: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Exception Message: Exception of type 'System.Exception' was thrown.
-Exception Stack Trace:    at EmployeeLeaveTracking.Scheduler.Scheduler.LeaveAddition(String filePath) in D:\ProjectAdditions\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\Scheduler.cs:line 145
-Exception Occurred At: 18-05-2023 09:18:38 AM
-User Id: e52d268e-5e27-4d48-ad9b-6195165a882c
-Previous Balance: 54
-Updated Balance: 55
-User Id: e52d268e-5e27-4d48-ad9b-6195165a882c
+User Id: a9264020-f791-4d6f-9983-9f0c8d206d48
+Previous Balance: 4.5
+Updated Balance: 6
+User Id: a9264020-f791-4d6f-9983-9f0c8d206d48
 Previous Balance: 30
 Updated Balance: 30
-User Id: e52d268e-5e27-4d48-ad9b-6195165a882c
-Previous Balance: 81
-Updated Balance: 82.5
-User Id: 530ee7c3-aba1-453a-8c98-ca77d988aa14
+User Id: a9264020-f791-4d6f-9983-9f0c8d206d48
 Previous Balance: 0
 Updated Balance: 0
-User Id: 530ee7c3-aba1-453a-8c98-ca77d988aa14
+User Id: a9264020-f791-4d6f-9983-9f0c8d206d48
+Previous Balance: 3
+Updated Balance: 4
+User Id: a9264020-f791-4d6f-9983-9f0c8d206d48
 Previous Balance: 0
 Updated Balance: 0
-User Id: 530ee7c3-aba1-453a-8c98-ca77d988aa14
-Previous Balance: 54
-Updated Balance: 55
-User Id: 530ee7c3-aba1-453a-8c98-ca77d988aa14
+User Id: a9264020-f791-4d6f-9983-9f0c8d206d48
 Previous Balance: 0
 Updated Balance: 0
-User Id: 530ee7c3-aba1-453a-8c98-ca77d988aa14
-Previous Balance: 30
-Updated Balance: 30
-User Id: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Previous Balance: 0
-Error occurred for User ID: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Exception Message: Exception of type 'System.Exception' was thrown.
-Exception Stack Trace:    at EmployeeLeaveTracking.Scheduler.Scheduler.LeaveAddition(String filePath) in D:\ProjectAdditions\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\Scheduler.cs:line 145
-Exception Occurred At: 18-05-2023 09:18:38 AM
-User Id: 530ee7c3-aba1-453a-8c98-ca77d988aa14
-Previous Balance: 81
-Updated Balance: 82.5
-User Id: 397d5414-addc-4c91-806c-454398669407
-Previous Balance: 72
-Updated Balance: 73.5
-User Id: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Previous Balance: 0
-Error occurred for User ID: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Exception Message: Exception of type 'System.Exception' was thrown.
-Exception Stack Trace:    at EmployeeLeaveTracking.Scheduler.Scheduler.LeaveAddition(String filePath) in D:\ProjectAdditions\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\Scheduler.cs:line 145
-Exception Occurred At: 18-05-2023 09:18:38 AM
-User Id: 530ee7c3-aba1-453a-8c98-ca77d988aa14
-Previous Balance: 30
-Updated Balance: 30
-User Id: 530ee7c3-aba1-453a-8c98-ca77d988aa14
-Previous Balance: 0
-Updated Balance: 0
-User Id: 530ee7c3-aba1-453a-8c98-ca77d988aa14
-Previous Balance: 53
-Updated Balance: 54
-User Id: 530ee7c3-aba1-453a-8c98-ca77d988aa14
-Previous Balance: 0
-Updated Balance: 0
-User Id: 530ee7c3-aba1-453a-8c98-ca77d988aa14
-Previous Balance: 0
-Updated Balance: 0
-User Id: e52d268e-5e27-4d48-ad9b-6195165a882c
-Previous Balance: 79.5
-Updated Balance: 81
-User Id: e52d268e-5e27-4d48-ad9b-6195165a882c
-Previous Balance: 30
-Updated Balance: 30
-User Id: e52d268e-5e27-4d48-ad9b-6195165a882c
-Previous Balance: 0
-Updated Balance: 0
-User Id: e52d268e-5e27-4d48-ad9b-6195165a882c
-Previous Balance: 0
-Updated Balance: 0
-User Id: e52d268e-5e27-4d48-ad9b-6195165a882c
-Previous Balance: 0
-Updated Balance: 0
-User Id: e52d268e-5e27-4d48-ad9b-6195165a882c
-Previous Balance: 0
-Updated Balance: 0
-User Id: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Previous Balance: 75
-Error occurred for User ID: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Exception Message: Exception of type 'System.Exception' was thrown.
-Exception Stack Trace:    at EmployeeLeaveTracking.Scheduler.Scheduler.LeaveAddition(String filePath) in D:\ProjectAdditions\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\Scheduler.cs:line 145
-Exception Occurred At: 18-05-2023 09:18:38 AM
-User Id: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Previous Balance: 30
-Error occurred for User ID: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Exception Message: Exception of type 'System.Exception' was thrown.
-Exception Stack Trace:    at EmployeeLeaveTracking.Scheduler.Scheduler.LeaveAddition(String filePath) in D:\ProjectAdditions\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\Scheduler.cs:line 145
-Exception Occurred At: 18-05-2023 09:18:38 AM
-User Id: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Previous Balance: 0
-Error occurred for User ID: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Exception Message: Exception of type 'System.Exception' was thrown.
-Exception Stack Trace:    at EmployeeLeaveTracking.Scheduler.Scheduler.LeaveAddition(String filePath) in D:\ProjectAdditions\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\Scheduler.cs:line 145
-Exception Occurred At: 18-05-2023 09:18:38 AM
-User Id: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Previous Balance: 52
-Error occurred for User ID: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Exception Message: Exception of type 'System.Exception' was thrown.
-Exception Stack Trace:    at EmployeeLeaveTracking.Scheduler.Scheduler.LeaveAddition(String filePath) in D:\ProjectAdditions\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\Scheduler.cs:line 145
-Exception Occurred At: 18-05-2023 09:18:38 AM
-User Id: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Previous Balance: 0
-Error occurred for User ID: cd7d9e27-52da-4626-b7bd-8c97d0d0d7c6
-Exception Message: Exception of type 'System.Exception' was thrown.
-Exception Stack Trace:    at EmployeeLeaveTracking.Scheduler.Scheduler.LeaveAddition(String filePath) in D:\ProjectAdditions\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\Scheduler.cs:line 145
-Exception Occurred At: 18-05-2023 09:18:38 AM
-User Id: e52d268e-5e27-4d48-ad9b-6195165a882c
-Previous Balance: 53
-Updated Balance: 54
-User Id: 397d5414-addc-4c91-806c-454398669407
-Previous Balance: 73.5
-Updated Balance: 75

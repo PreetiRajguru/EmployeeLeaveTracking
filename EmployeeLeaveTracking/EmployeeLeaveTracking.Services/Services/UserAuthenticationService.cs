@@ -73,23 +73,19 @@ public sealed class UserAuthenticationService : IUserAuthentication
         foreach (var leaveType in leaveTypes)
         {
             double balance = 0;
-           /* DateTime dt = DateTime.Now;
-            int month = dt.Month;*/
-
+           
             switch (leaveType.LeaveTypeName)
             {
                 case "Unpaid Leave":
                     balance = 30;
                     break;
                 case "Paid Leave":
-                    /*balance = month * 1.5;*/
                     balance = 1.5;
                     break;
                 case "Compensatory Off":
                     balance = 0;
                     break;
                 case "Work From Home":
-                    /*balance = month * 1;*/
                     balance = 1;
                     break;
                 case "Forgot Id Card":
@@ -137,7 +133,7 @@ public sealed class UserAuthenticationService : IUserAuthentication
     {
         IConfigurationSection jwtConfig = _configuration.GetSection("JwtConfig");
         byte[] key = Encoding.UTF8.GetBytes(jwtConfig["secret"]);
-        SymmetricSecurityKey secret = new SymmetricSecurityKey(key);
+        SymmetricSecurityKey secret = new(key);
         return new SigningCredentials(secret, SecurityAlgorithms.HmacSha256);
     }
 
@@ -169,8 +165,7 @@ public sealed class UserAuthenticationService : IUserAuthentication
     private JwtSecurityToken GenerateTokenOptions(SigningCredentials signingCredentials, List<Claim> claims)
     {
         IConfigurationSection jwtSettings = _configuration.GetSection("JwtConfig");
-        JwtSecurityToken tokenOptions = new JwtSecurityToken
-        (
+        JwtSecurityToken tokenOptions = new(
         issuer: jwtSettings["validIssuer"],
         audience: jwtSettings["validAudience"],
         claims: claims,

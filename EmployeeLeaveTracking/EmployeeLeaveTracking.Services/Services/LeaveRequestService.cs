@@ -96,7 +96,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public LeaveRequestDTO Create(LeaveRequestDTO leaveRequest)
         {
-            LeaveRequest newLeaveRequest = new LeaveRequest
+            LeaveRequest newLeaveRequest = new()
             {
                 RequestComments = leaveRequest.RequestComments,
                 EmployeeId = leaveRequest.EmployeeId,
@@ -323,7 +323,6 @@ namespace EmployeeLeaveTracking.Services.Services
             return await _dbContext.LeaveRequests.FirstOrDefaultAsync(l => l.Id == id);
         }
 
-
         public async Task<int> UpdateLeaveRequestStatus(int id, int statusId)
         {
             LeaveRequest leaveRequest = await GetLeaveById(id);
@@ -337,9 +336,23 @@ namespace EmployeeLeaveTracking.Services.Services
             _dbContext.Entry(leaveRequest).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
 
+            if (statusId == 3)
+            {
+                LeaveBalance leaveBalance = await _dbContext.LeaveBalances.FirstOrDefaultAsync(b =>
+                    b.UserId == leaveRequest.EmployeeId && b.LeaveTypeId == leaveRequest.LeaveTypeId);
+
+                if (leaveBalance != null)
+                {
+                    leaveBalance.Balance += leaveRequest.TotalDays;
+                    leaveBalance.ModifiedDate = DateTime.Now;
+
+                    _dbContext.Entry(leaveBalance).State = EntityState.Modified;
+                    await _dbContext.SaveChangesAsync();
+                }
+            }
+
             return statusId;
         }
-
 
         public double LeaveBalance(string employeeId)
         {

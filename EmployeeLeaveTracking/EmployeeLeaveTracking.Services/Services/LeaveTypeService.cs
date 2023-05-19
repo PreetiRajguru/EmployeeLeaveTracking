@@ -23,21 +23,6 @@ namespace EmployeeLeaveTracking.Services.Services
             _userService = userService;
         }
 
-        /* public IEnumerable<LeaveTypeDTO> GetAll()
-         {
-             IQueryable<LeaveTypeDTO> leaveTypes = _dbContext.LeaveTypes.Where(lt => lt.IsDeleted == false).Select(lt => new LeaveTypeDTO
-             {
-                 Id = lt.Id,
-                 LeaveTypeName = lt.LeaveTypeName
-             });
-
-             return leaveTypes;
-         }
- */
-
-
-
-
         public IEnumerable<LeaveTypeDTO> GetAll()
         {
             IQueryable<LeaveTypeDTO> leaveTypes = _dbContext.LeaveTypes
@@ -109,27 +94,33 @@ namespace EmployeeLeaveTracking.Services.Services
             return true;
         }
 
-  
-        public List<LeaveTypeWithTotalDaysDTO>? GetLeaveTypesWithTotalDaysTaken()
+        public List<LeaveTypeWithTotalDaysDTO> GetLeaveTypesWithTotalDaysTaken()
         {
-            StatusMaster? approvedLeaves = _dbContext.Status.Where(s => s.StatusType.ToLower() == "approved").FirstOrDefault();
+            StatusMaster approvedLeaves = _dbContext.Status.FirstOrDefault(s => s.StatusType.ToLower() == "approved");
+            StatusMaster pendingLeaves = _dbContext.Status.FirstOrDefault(s => s.StatusType.ToLower() == "pending");
 
-            string id = _userService.GetCurrentUserById();
+            string userId = _userService.GetCurrentUserById();
 
             List<LeaveTypeWithTotalDaysDTO> leaveTypesWithTotalDays = _dbContext.LeaveTypes
-                .Select(lt => new LeaveTypeWithTotalDaysDTO
-                {
-                    LeaveTypeId = lt.Id,
-                    LeaveTypeName = lt.LeaveTypeName,
-                    TotalDaysTaken = _dbContext.LeaveRequests
-                        .Where(lr => lr.EmployeeId == id && lr.LeaveTypeId == lt.Id && lr.StatusId == approvedLeaves.Id)
-                        .Sum(lr => lr.TotalDays)
-                })
+                .GroupJoin(
+                    _dbContext.LeaveBalances.Where(lb => lb.UserId == userId),
+                    lt => lt.Id,
+                    lb => lb.LeaveTypeId,
+                    (lt, lb) => new { LeaveType = lt, LeaveBalances = lb })
+                .SelectMany(
+                    x => x.LeaveBalances.DefaultIfEmpty(),
+                    (lt, lb) => new LeaveTypeWithTotalDaysDTO
+                    {
+                        LeaveTypeId = lt.LeaveType.Id,
+                        LeaveTypeName = lt.LeaveType.LeaveTypeName,
+                        BookedDays = _dbContext.LeaveRequests
+                            .Where(lr => lr.EmployeeId == userId && lr.LeaveTypeId == lt.LeaveType.Id &&
+                                         (lr.StatusId == approvedLeaves.Id || lr.StatusId == pendingLeaves.Id))
+                            .Sum(lr => lr.TotalDays),
+                        AvailableDays = lb != null ? lb.Balance : 0
+                    })
                 .ToList();
-            if (leaveTypesWithTotalDays == null)
-            {
-                return null;
-            }
+
             return leaveTypesWithTotalDays;
         }
     }
