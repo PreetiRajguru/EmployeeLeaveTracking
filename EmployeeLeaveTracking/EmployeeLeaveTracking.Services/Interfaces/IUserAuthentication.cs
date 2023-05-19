@@ -10,6 +10,7 @@ public interface IUserAuthentication
     Task<bool> ValidateUserAsync(UserLoginDTO loginDto);
 
     Task<string> CreateTokenAsync();
+    string GenerateRefreshToken();
 
     Task<IList<string>> GetRoles();
 

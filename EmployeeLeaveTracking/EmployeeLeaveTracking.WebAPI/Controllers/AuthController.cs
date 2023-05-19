@@ -51,7 +51,10 @@ namespace StudentTeacher.Controllers
                 bool validate = await _repository.UserAuthentication.ValidateUserAsync(user);
                 return !validate
                     ? Unauthorized()
-                    : Ok(new { Token = await _repository.UserAuthentication.CreateTokenAsync() , Role = _repository.UserAuthentication.GetRoles().Result[0] , Id = _repository.UserAuthentication.GetUserId() });
+                    : Ok(new { Token = await _repository.UserAuthentication.CreateTokenAsync() ,
+                        RefreshToken = _repository.UserAuthentication.GenerateRefreshToken(),
+                        Role = _repository.UserAuthentication.GetRoles().Result[0] , 
+                        Id = _repository.UserAuthentication.GetUserId() });
             }
             catch (Exception ex)
             {
@@ -59,6 +62,34 @@ namespace StudentTeacher.Controllers
                 return StatusCode(500, "An error occurred while authenticating user");
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
