@@ -24,6 +24,7 @@ import SendIcon from "@mui/icons-material/Send";
 import { useNavigate } from "react-router-dom";
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import ViewListIcon from "@mui/icons-material/ViewList";
+import AddHomeWorkSharpIcon from '@mui/icons-material/AddHomeWorkSharp';
 
 const Navigation = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -31,6 +32,7 @@ const Navigation = () => {
   const [open, setOpen] = React.useState(true);
   const [isLogin, setIsLogin] = React.useState(false);
   const [isManager, setIsManager] = React.useState(false);
+  const [isEmployee, setIsEmployee] = React.useState(false);
 
   const handleClick1 = () => {
     setOpen(!open);
@@ -46,12 +48,17 @@ const Navigation = () => {
 
   const getToken = () => {
     setIsLogin(
-      localStorage.getItem("token") && localStorage.getItem("token") != ""
+      localStorage.getItem("token") && localStorage.getItem("token") !== ""
         ? true
         : false
     );
     setIsManager(
-      localStorage.getItem("role") && localStorage.getItem("role") == "Manager"
+      localStorage.getItem("role") && localStorage.getItem("role") === "Manager"
+        ? true
+        : false
+    );
+    setIsEmployee(
+      localStorage.getItem("role") && localStorage.getItem("role") === "Employee"
         ? true
         : false
     );
@@ -65,6 +72,7 @@ const Navigation = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
     localStorage.removeItem("id");
+    localStorage.removeItem("refreshToken");
     setIsLogin(false);
     navigate("/");
   };
@@ -75,19 +83,22 @@ const Navigation = () => {
 
   return (
     <>
-      <AppBar position="static" color="transparent" style={{ width: "100%" }}>
+      <AppBar position="static" color="inherit" style={{ width: "100%" }}>
         <Toolbar>
-          {isLogin? <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-            onClick={toggleDrawer}
-          >
-            <MenuIcon />
-          </IconButton>: null}
+          {isLogin && (
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+              onClick={toggleDrawer}
+            >
+              <MenuIcon />
+            </IconButton>
+          )}
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <AddHomeWorkSharpIcon style={{marginRight : "13px"}}/>
             Employee Leave Tracking
           </Typography>
           <Button color="inherit" onClick={() => navigate("/")}>

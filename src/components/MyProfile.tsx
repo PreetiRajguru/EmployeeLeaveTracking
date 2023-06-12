@@ -1,22 +1,13 @@
 import {
   Card,
-  CardActionArea,
-  CardMedia,
   CardContent,
   Typography,
   Avatar,
   Stack,
-  Box,
-  Table,
-  TableBody,
   TableCell,
-  TableHead,
   TableRow,
   styled,
   tableCellClasses,
-  Button,
-  Paper,
-  TableContainer,
 } from "@mui/material";
 import axios from "axios";
 import { Key, ReactNode, useEffect, useState } from "react";
@@ -80,10 +71,14 @@ export default function CustomizedTables() {
       <br></br>
 
       {data.map((user) => (
-        <Card
-          sx={{ minWidth: 675, mt: 5 , backgroundColor: '#ebf4f8'}}
-        >
-          <CardContent style={{ display: "flex", alignItems: "center" , flexDirection:'column'}}>
+        <Card sx={{ minWidth: 675, mt: 5, backgroundColor: "#ebf4f8" }}>
+          <CardContent
+            style={{
+              display: "flex",
+              alignItems: "center",
+              flexDirection: "column",
+            }}
+          >
             <Stack direction="row" spacing={2}>
               <Avatar
                 src="/broken-image.jpg"

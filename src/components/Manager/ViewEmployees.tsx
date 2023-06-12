@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Key, ReactNode } from "react";
+import { useState, useEffect, Key, ReactNode } from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -13,8 +13,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
-import {IconButton} from "@mui/material";
-import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import { IconButton } from "@mui/material";
+import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -109,7 +109,6 @@ export default function CustomizedTables() {
         <br></br>
       </Typography>
       <StyledTableCell align="right">
-      
         <Button variant="outlined" onClick={exportPDF}>
           Generate Report
           <IconButton
@@ -119,11 +118,14 @@ export default function CustomizedTables() {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            <PictureAsPdfIcon sx={{ml:2, mr:0}}/>
+            <PictureAsPdfIcon sx={{ ml: 2, mr: 0 }} />
           </IconButton>
         </Button>
       </StyledTableCell>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
+      <Table
+        sx={{ minWidth: 700, border: "15px solid white" }}
+        aria-label="customized table"
+      >
         <TableHead>
           <TableRow>
             <StyledTableCell>Employee Name</StyledTableCell>

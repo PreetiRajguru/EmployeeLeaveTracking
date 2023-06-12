@@ -12,11 +12,10 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import axios from "axios";
-import { brown, green, pink, purple, red, yellow } from "@mui/material/colors";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.info.dark,
+    backgroundColor: theme.palette.info.light,
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
@@ -59,7 +58,7 @@ const NewRequests = () => {
       .then((response) => setStatusId(response.data))
       .catch((error) => console.log(error));
 
-      window.location.reload()
+    window.location.reload();
   };
 
   return (
@@ -69,7 +68,10 @@ const NewRequests = () => {
           Pending Requests
         </Typography>
         <Divider />
-        <Table sx={{ minWidth: 700 }} aria-label="simple table">
+        <Table
+          sx={{ minWidth: 700, border: "15px solid white" }}
+          aria-label="simple table"
+        >
           <TableHead>
             <TableRow>
               <StyledTableCell>Employee Name</StyledTableCell>

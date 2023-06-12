@@ -15,7 +15,8 @@ import axios from "axios";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.info.dark,
+    // backgroundColor: theme.palette.info.dark,
+    backgroundColor: theme.palette.info.light,
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
@@ -69,7 +70,8 @@ const ViewEmployeeDetails = () => {
         </Typography>
         <Divider />
         {/* simple table , customized table*/}
-        <Table sx={{ minWidth: 700 }} aria-label="simple table">
+        {/* <Table sx={{ minWidth: 700 }} aria-label="simple table"> */}
+        <Table sx={{ minWidth: 700, border: '15px solid white' }} aria-label="simple table">
           <TableHead>
             <TableRow>
               <StyledTableCell>Employee Name</StyledTableCell>

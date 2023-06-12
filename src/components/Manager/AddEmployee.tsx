@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
@@ -11,6 +11,8 @@ import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 const managerId = localStorage.getItem("id");
 
 export default function AddEmployee() {
+  const [isFormValid, setIsFormValid] = useState(false);
+
   const navigate = useNavigate();
   const [designation, setDesignation] = useState<any>([]);
   const [data, setData] = useState({
@@ -22,9 +24,19 @@ export default function AddEmployee() {
     phonenumber: "",
     managerId: "",
     designationId: "",
+    errors: {
+      firstname: "",
+      lastname: "",
+      username: "",
+      email: "",
+      password: "",
+      phonenumber: "",
+      managerId: "",
+      designationId: "",
+    },
   });
-  
-  const [errors, setErrors] = useState({
+
+  const [tryErrors, setTryErrors] = useState({
     firstname: "",
     lastname: "",
     username: "",
@@ -32,11 +44,61 @@ export default function AddEmployee() {
     password: "",
     phonenumber: "",
     managerId: "",
-    designationId:""
+    designationId: "",
   });
+
+  const [unAuthorized, setUnAuthorized] = useState(false);
+  const [isDesignationSelected, setIsDesignationSelected] = useState(false);
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
+
+    let errors = { ...data.errors };
+    let hasErrors = false;
+
+    if (!data.firstname) {
+      errors.firstname = "Firstname is required";
+      hasErrors = true;
+    }
+
+    if (!data.lastname) {
+      errors.lastname = "Lastname is required";
+      hasErrors = true;
+    }
+
+    if (!data.username) {
+      errors.username = "Username is required";
+      hasErrors = true;
+    }
+
+    if (!data.email) {
+      errors.email = "Email is required";
+      hasErrors = true;
+    }
+
+    if (!data.password) {
+      errors.password = "Password is required";
+      hasErrors = true;
+    }
+
+    if (!data.phonenumber) {
+      errors.phonenumber = "Phone Number is required";
+      hasErrors = true;
+    }
+
+    if (!data.designationId) {
+      errors.designationId = "Please select a designation";
+      hasErrors = true;
+    }
+
+    setData((prevState: any) => ({
+      ...prevState,
+      errors: errors,
+    }));
+
+    if (hasErrors) {
+      return;
+    }
 
     const newData = {
       firstname: data.firstname,
@@ -57,6 +119,29 @@ export default function AddEmployee() {
     } catch (error: any) {
       alert(error.response.data.message);
     }
+    const existingData = {
+      firstname: data.firstname,
+      lastname: data.lastname,
+      username: data.username,
+      email: data.email,
+      password: data.password,
+      phonenumber: data.phonenumber,
+      managerId: "",
+      designationId: "4",
+      errors: {
+        firstname: "",
+        lastname: "",
+        username: "",
+        email: "",
+        password: "",
+        phonenumber: "",
+        managerId: "",
+        designationId: "",
+      },
+    };
+    setData(existingData);
+    setUnAuthorized(true);
+
     setData({
       firstname: "",
       lastname: "",
@@ -66,26 +151,37 @@ export default function AddEmployee() {
       phonenumber: "",
       managerId: "",
       designationId: "",
+      errors: {
+        firstname: "",
+        lastname: "",
+        username: "",
+        email: "",
+        password: "",
+        phonenumber: "",
+        managerId: "",
+        designationId: "",
+      },
     });
   };
 
   const handleInputChange = (event: any) => {
     const { name, value } = event.target;
     let isValid = true;
-    const newErrors = { ...errors };
+    const newErrors = { ...tryErrors };
 
     // Add validations for each field
     switch (name) {
       case "firstname":
         // Check if field contains only alphabets
-        if (!/^[a-zA-Z ]*$/.test(value)) {
+        if (!value || !/^[a-zA-Z ]*$/.test(value)) {
           newErrors.firstname = "Only alphabets are allowed";
           isValid = false;
         } else {
           newErrors.firstname = "";
         }
         break;
-      case "lastname": 
+
+      case "lastname":
         // Check if field contains only alphabets
         if (!/^[a-zA-Z ]*$/.test(value)) {
           newErrors.lastname = "Only alphabets are allowed";
@@ -94,6 +190,7 @@ export default function AddEmployee() {
           newErrors.lastname = "";
         }
         break;
+
       case "username":
         // Check if field contains only alphanumeric characters and underscore
         if (!/^[a-zA-Z0-9_]*$/.test(value)) {
@@ -104,6 +201,7 @@ export default function AddEmployee() {
           newErrors.username = "";
         }
         break;
+
       case "email":
         // Check if email is valid
         if (!/\S+@\S+\.\S+/.test(value)) {
@@ -113,6 +211,7 @@ export default function AddEmployee() {
           newErrors.email = "";
         }
         break;
+
       case "password":
         // Check if password is strong
         if (
@@ -127,23 +226,50 @@ export default function AddEmployee() {
           newErrors.password = "";
         }
         break;
-      // case "phonenumber":
-      //   // Check if phone number is valid
-      //   if (!/^[0-9]{10}$/.test(value)) {
-      //     newErrors.phonenumber = "Enter a valid 10 digit phone number";
-      //     isValid = false;
-      //   } else {
-      //     newErrors.password = "";
-      //   }
-      //   break;
+
+      case "phonenumber":
+        // Check if phone number is valid
+        if (!/^\d{10}$/.test(value)) {
+          newErrors.phonenumber = "Enter a valid 10-digit phone number";
+          isValid = false;
+        } else {
+          newErrors.phonenumber = "";
+        }
+        break;
+
+      case "designationId":
+        // Check if designation is selected
+        if (!value) {
+          newErrors.designationId = "Please select a designation";
+          isValid = false;
+        } else {
+          newErrors.designationId = "";
+        }
+        break;
+
+      case "designationId":
+        if (!value) {
+          newErrors.designationId = "Please select a designation";
+          setIsDesignationSelected(false);
+          isValid = false;
+        } else {
+          newErrors.designationId = "";
+          setIsDesignationSelected(true);
+        }
+        break;
+
       default:
         break;
     }
-    setErrors(newErrors);
+    setTryErrors(newErrors);
     setData((prevState: any) => ({
       ...prevState,
+      errors: newErrors,
       [name]: value,
     }));
+
+    // Set the overall form validity
+    setIsFormValid(isValid);
   };
 
   const handleBackButton = () => {
@@ -179,6 +305,7 @@ export default function AddEmployee() {
         <Typography component="h1" variant="h5">
           Create Employee
         </Typography>
+
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
             margin="normal"
@@ -191,8 +318,8 @@ export default function AddEmployee() {
             autoComplete="firstname"
             autoFocus
             onChange={handleInputChange}
-            error={errors.firstname !== ""}
-            helperText={errors.firstname}
+            error={Boolean(data.errors.firstname)}
+            helperText={data.errors.firstname}
           />
           <TextField
             margin="normal"
@@ -204,8 +331,8 @@ export default function AddEmployee() {
             value={data.lastname}
             autoComplete="lastname"
             onChange={handleInputChange}
-            error={errors.lastname !== ""}
-            helperText={errors.lastname}
+            error={Boolean(data.errors.lastname)}
+            helperText={data.errors.lastname}
           />
           <TextField
             margin="normal"
@@ -217,8 +344,8 @@ export default function AddEmployee() {
             value={data.username}
             autoComplete="username"
             onChange={handleInputChange}
-            error={errors.username !== ""}
-            helperText={errors.username}
+            error={Boolean(data.errors.username)}
+            helperText={data.errors.username}
           />
           <TextField
             margin="normal"
@@ -230,8 +357,8 @@ export default function AddEmployee() {
             value={data.email}
             autoComplete="email"
             onChange={handleInputChange}
-            error={errors.email !== ""}
-            helperText={errors.email}
+            error={Boolean(data.errors.email)}
+            helperText={data.errors.email}
           />
           <TextField
             margin="normal"
@@ -244,8 +371,8 @@ export default function AddEmployee() {
             id="password"
             autoComplete="current-password"
             onChange={handleInputChange}
-            error={errors.password !== ""}
-            helperText={errors.password}
+            error={Boolean(data.errors.password)}
+            helperText={data.errors.password}
           />
           <TextField
             margin="normal"
@@ -254,17 +381,24 @@ export default function AddEmployee() {
             name="phonenumber"
             value={data.phonenumber}
             label="Mobile Number"
-            type="number"
+            type="text"
             id="phonenumber"
             sx={{ mb: 2 }}
             autoComplete="phonenumber"
             onChange={handleInputChange}
-            error={errors.phonenumber !== ""}
-            helperText={errors.phonenumber}
+            error={Boolean(data.errors.phonenumber)}
+            helperText={data.errors.phonenumber}
           />
-  
+
+          <br></br>
+          <br></br>
+
           <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label"> Designation Type </InputLabel>
+            <InputLabel id="demo-simple-select-label">
+              {" "}
+              Designation Type{" "}
+            </InputLabel>
+
             <Select
               name="designationId"
               label="Designation Name"
@@ -273,15 +407,25 @@ export default function AddEmployee() {
               sx={{ mb: 2 }}
               value={data.designationId}
               onChange={handleInputChange}
+              required
+              error={
+                !isDesignationSelected && Boolean(data.errors.designationId)
+              }
             >
               {designation?.map((option: any) => (
                 <MenuItem value={option.id}>{option.designationName}</MenuItem>
               ))}
             </Select>
+            {!isDesignationSelected && (
+              <Typography variant="caption" color="error">
+                {data.errors.designationId}
+              </Typography>
+            )}
           </FormControl>
 
           <br></br>
           <br></br>
+
           <div>
             <Button
               variant="contained"
@@ -295,7 +439,7 @@ export default function AddEmployee() {
               type="submit"
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
-              style={{ marginLeft: "300px" }}
+              style={{ marginLeft: "320px" }}
             >
               Create
             </Button>

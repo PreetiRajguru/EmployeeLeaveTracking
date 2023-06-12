@@ -90,11 +90,11 @@ export default function CustomizedTables() {
       try {
         const response = await axios.get(`/api/LeaveRequest/employee/${empId}`);
         setData(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error(error);
       }
     };
-
 
     const fetchLeaveTypesTotal = async () => {
       try {
@@ -112,6 +112,7 @@ export default function CustomizedTables() {
       try {
         const response = await axios.get(`/api/LeaveRequest/balance/${empId}`);
         setLeaveBalance(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error(error);
       }
@@ -123,9 +124,10 @@ export default function CustomizedTables() {
   }, []);
 
 console.log(type)
-  const carddetails = type.length > 0 ? type.map((val: { leaveTypeName: any; totalDaysTaken: any; }): any => {return {
+  const carddetails = type.length > 0 ? type.map((val: { leaveTypeName: any; bookedDays: any; availableDays: any;}): any => {return {
     header: val.leaveTypeName,
-    totalDaysTaken: val.totalDaysTaken 
+    bookedDays : val.bookedDays,
+    availableDays : val.availableDays
   }}) : []
   
 
@@ -154,7 +156,6 @@ console.log(type)
         </Typography>
         <Divider />
 
-        <h2 style = {{marginLeft: '30px', backgroundColor: '#bcdbf3', display: 'inline-block', padding: '5px 10px'}}>Leave Balance: {leaveBalance} </h2>
         <div style={{ display: "flex" }}>
           {carddetails.map((val:any) => (
             <CardContent
@@ -185,10 +186,14 @@ console.log(type)
               <CalendarMonthIcon
                 style={{ width: "50%", height: "50%", color: colors[Math.floor(Math.random() * colors.length)] }}
               />
-              <Typography sx={{ fontSize: 25 }} variant="body2" component="h1">
-                {val.totalDaysTaken}
-                {/* <br /> */}
+              <Typography sx={{ fontSize: 20 }} variant="body2" component="h1">
+                Available: {val.availableDays}
               </Typography>
+
+              <Typography sx={{ fontSize: 20 }} variant="body2" component="h1">
+                Booked: {val.bookedDays}
+              </Typography>
+              
             </CardContent>
           ))}
         </div>

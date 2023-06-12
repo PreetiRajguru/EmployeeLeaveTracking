@@ -30,12 +30,69 @@ const ApplyForLeaves = () => {
     employeeId: empId,
     leaveTypeId: undefined,
     statusId: 1,
+    errors: {
+      requestComments: "",
+      startDate: "",
+      endDate: "",
+      totalDays: "",
+      managerId: "",
+      employeeId: "",
+      leaveTypeId: "",
+      statusId: "",
+    },
   });
+
+  const [tryErrors, setTryErrors] = useState({
+    requestComments: "",
+    startDate: "",
+    endDate: "",
+    totalDays: "",
+    managerId: "",
+    employeeId: "",
+    leaveTypeId: "",
+    statusId: "",
+  });
+
+  const [isLeaveTypeSelected, setIsLeaveTypeSelected] = useState(false);
+
   const [leaveTypeName, setLeaveTypeName] = useState<any>([]);
   const [username, setUsername] = useState<string>();
+  const [unAuthorized, setUnAuthorized] = useState(false);
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
+
+    let errors = { ...leaveTypeDetails.errors };
+    let hasErrors = false;
+
+    if (!leaveTypeDetails.requestComments) {
+      errors.requestComments = "Request comments is required";
+      hasErrors = true;
+    }
+
+    if (!leaveTypeDetails.startDate) {
+      errors.startDate = "Start Date is required";
+      hasErrors = true;
+    }
+
+    if (!leaveTypeDetails.endDate) {
+      errors.endDate = "End Date is required";
+      hasErrors = true;
+    }
+
+    if (!leaveTypeDetails.leaveTypeId) {
+      errors.leaveTypeId = "Leave Type is required";
+      hasErrors = true;
+    }
+
+    setLeaveTypeDetails((prevState: any) => ({
+      ...prevState,
+      errors: errors,
+    }));
+
+    if (hasErrors) {
+      return;
+    }
 
     const newLeaveTypeDetails = {
       managerId: empManager,
@@ -49,31 +106,70 @@ const ApplyForLeaves = () => {
     };
 
     if (leaveBalance && newLeaveTypeDetails.totalDays > +leaveBalance) {
-      alert("Total days requested should be less than or equal to leave balance.");
+      alert(
+        "Total days requested should be less than or equal to leave balance."
+      );
       return;
     }
 
     try {
-      axios.post("/api/LeaveRequest", newLeaveTypeDetails).then((response) => {
-        alert("Leave Request Sent Succesfully");
+      axios
+        .post("/api/LeaveRequest/newleaverequest", newLeaveTypeDetails)
+        .then((response) => {
+          alert("Leave Request Sent Succesfully");
 
-        navigate("/leavedetails");
-      });
+          navigate("/leavedetails");
+        });
     } catch (error: any) {
       alert(error.response.data.message);
-
-      setLeaveTypeDetails({
-        managerId: "",
-        statusId: 1,
-        employeeId: "",
+      
+      const existingData = {
         requestComments: "",
         startDate: "",
         endDate: "",
         totalDays: 0,
+        managerId: empManager,
+        employeeId: empId,
         leaveTypeId: undefined,
+        statusId: 1,
+        errors: {
+          requestComments: "",
+          startDate: "",
+          endDate: "",
+          totalDays: "",
+          managerId: "",
+          employeeId: "",
+          leaveTypeId: "",
+          statusId: "",
+        },
+      };
+      
+      setLeaveTypeDetails(existingData);
+      setUnAuthorized(true);
+
+      setLeaveTypeDetails({
+        requestComments: "",
+        startDate: "",
+        endDate: "",
+        totalDays: 0,
+        managerId: empManager,
+        employeeId: empId,
+        leaveTypeId: undefined,
+        statusId: 1,
+        errors: {
+          requestComments: "",
+          startDate: "",
+          endDate: "",
+          totalDays: "",
+          managerId: "",
+          employeeId: "",
+          leaveTypeId: "",
+          statusId: "",
+        },
       });
     }
-  };
+    };
+      
 
   useEffect(() => {
     const fetchLeaveTypes = async () => {
@@ -86,25 +182,21 @@ const ApplyForLeaves = () => {
 
     fetchLeaveTypes();
 
-    // const role = localStorage.getItem("role");
-    // console.log(role);
     const fetchLeaveBalances = async () => {
       try {
         const response = await axios.get(`/api/LeaveRequest/balance/${empId}`);
         setLeaveBalance(response.data);
         console.log(response.data);
-      } catch (error) {
-      }
+      } catch (error) {}
     };
     fetchLeaveBalances();
 
     const fetchEmpManager = async () => {
-      try{
-        const response = await axios.get(`/api/User/${empId}/manager`)
+      try {
+        const response = await axios.get(`/api/User/${empId}/manager`);
         setEmpManager(response.data);
         console.log(response.data);
-      }
-        catch(error){  }
+      } catch (error) {}
     };
 
     fetchEmpManager();
@@ -127,43 +219,87 @@ const ApplyForLeaves = () => {
   }, [empId]);
 
   function getDateDifference(startDate: any, endDate: any) {
-    const oneDay = 24 * 60 * 60 * 1000; 
-    const diffDays = Math.round(Math.abs((startDate - endDate) / oneDay));
-    return diffDays + 1; 
+    const oneDay = 24 * 60 * 60 * 1000;
+    let totalDays = Math.round(Math.abs((startDate - endDate) / oneDay)) + 1;
+
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+
+    // Iterate through each day between start and end dates
+    for (let date = start; date <= end; date.setDate(date.getDate() + 1)) {
+      const day = date.getDay();
+      if (day === 0 || day === 6) {
+        // Exclude Sundays (0) and Saturdays (6)
+        totalDays--;
+      }
+    }
+
+    return totalDays;
   }
 
   const handleInputChange = (event: any) => {
     const { name, value } = event.target;
     let totalDays = leaveTypeDetails.totalDays;
-    if (name === "startDate") {
+
+    let isValid = true;
+    const newErrors = { ...tryErrors };
+
+    switch (name) {
+
+      case "startDate":
+
       const endDate = new Date(leaveTypeDetails.endDate);
-      totalDays = getDateDifference(new Date(value), endDate);
-    } else if (name === "endDate") {
-      const startDate = new Date(leaveTypeDetails.startDate);
-      totalDays = getDateDifference(startDate, new Date(value));
-    }
+      const selectedStartDate = new Date(value);
+
+      if (selectedStartDate > endDate) {
+        newErrors.startDate = "Start date cannot be greater than end date.";
+        isValid = false;
+      }else {
+        newErrors.requestComments = "";
+      }
+
+      totalDays = getDateDifference(selectedStartDate, endDate);
+      break;
+
+      case "endDate":
+
+        const startDate = new Date(leaveTypeDetails.startDate);
+        const selectedEndDate = new Date(value);
+  
+        if (selectedEndDate < startDate) {
+          newErrors.endDate = "End date cannot be less than start date.";
+          return;
+        }
+  
+        totalDays = getDateDifference(startDate, selectedEndDate);
+        break;
+
+        default:
+          break;
+      }
+
     setLeaveTypeDetails((prevState: any) => ({
       ...prevState,
       [name]: value,
       totalDays: totalDays,
+      errors: newErrors,
       employeeId: { empId },
-      empManager:{empManager}
+      empManager: { empManager },
     }));
   };
 
   return (
     <Box sx={{ display: "flex", justifyContent: "left", mt: 4 }}>
-      {/* <BasicCard /> */}
       <Container>
         <Typography variant="h4" align="left">
           Apply For Leaves
         </Typography>
 
-        <h2 style = {{ float: "right" , backgroundColor: '#bcdbf3', display: 'inline-block', padding: '5px 10px'}}>Leave Balance: {leaveBalance} </h2>
         <Divider />
 
         <Box component="form" sx={{ mt: 2 }} onSubmit={handleSubmit}>
-
+          <br />
+          <br />
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Leave Type</InputLabel>
             <Select
@@ -174,73 +310,85 @@ const ApplyForLeaves = () => {
               sx={{ mb: 2 }}
               value={leaveTypeDetails.leaveTypeId}
               onChange={handleInputChange}
+              error={
+                !isLeaveTypeSelected && Boolean(leaveTypeDetails.errors.leaveTypeId)
+              }
             >
               {leaveTypeName?.map((option: any) => (
                 <MenuItem value={option.id}>{option.leaveTypeName}</MenuItem>
               ))}
             </Select>
+            {!isLeaveTypeSelected && (
+              <Typography variant="caption" color="error">
+                {leaveTypeDetails.errors.leaveTypeId}
+              </Typography>
+            )}
           </FormControl>
 
           <TextField
             name="startDate"
             type="date"
-            required
             autoComplete="off"
             value={leaveTypeDetails.startDate}
             onChange={handleInputChange}
             sx={{ mb: 2, mr: 2 }}
+            inputProps={{
+              min: new Date().toISOString().slice(0, 10),
+            }}
+            error={Boolean(leaveTypeDetails.errors.startDate)}
+            helperText={leaveTypeDetails.errors.startDate}
           />
 
           <TextField
             name="endDate"
             type="date"
-            required
             autoComplete="off"
             value={leaveTypeDetails.endDate}
             onChange={handleInputChange}
-            sx={{ mb: 2 }}
+            sx={{ mb: 2, mr: 2 }}
+            inputProps={{
+              min: leaveTypeDetails.startDate,
+              max: new Date(
+                new Date().setFullYear(new Date().getFullYear() + 1)
+              )
+                .toISOString()
+                .slice(0, 10),
+            }}
+            error={Boolean(leaveTypeDetails.errors.endDate)}
+            helperText={leaveTypeDetails.errors.endDate}
           />
-
-          <TextField
-            name="totalDays"
-            label="Total Days"
-            required
-            fullWidth
-            autoComplete="off"
-            value={leaveTypeDetails.totalDays}
-            onChange={handleInputChange}
-            sx={{ mb: 2 }}
-          />
+          
+          <br></br>
+          <br></br>
+          Total Days: {leaveTypeDetails.totalDays}
+          <br></br>
+          <br></br>
 
           <TextField
             name="requestComments"
-            label="Request Comments"
-            required
-            fullWidth
-            multiline
-            rows={3}
+            type="text"
             autoComplete="off"
+            label="Reason for leave"
+            multiline
+            maxRows={4}
+            fullWidth
             value={leaveTypeDetails.requestComments}
             onChange={handleInputChange}
-            sx={{ mb: 2 }}
+            error={Boolean(leaveTypeDetails.errors.requestComments)}
+            helperText={leaveTypeDetails.errors.requestComments}
           />
 
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            sx={{ mt: 2, mr: 2 }}
-            onClick={handleSubmit}
-          >
-            Save
+          <br></br>
+          <br></br>
+
+          <Button type="submit" variant="contained" sx={{ mr: 2 }}>
+            Submit
           </Button>
-          <Button
-            variant="contained"
-            onClick={() => navigate("/leavedetails")}
-            sx={{ mt: 2 }}
-          >
-            Back
+
+          <Button variant="contained" onClick={() => navigate("/leavedetails")}>
+            Cancel
           </Button>
+
         </Box>
       </Container>
     </Box>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
@@ -7,12 +7,9 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import axios from "axios";
-import CloseIcon from '@mui/icons-material/Close';
-import Snackbar from '@mui/material/Snackbar';
-import IconButton from "@mui/material/IconButton";
 
 export default function Register() {
-  const [registrationError, setRegistrationError] = useState(false);
+  const [isFormValid, setIsFormValid] = useState(false);
   const [designation, setDesignation] = useState<any>([]);
   const [data, setData] = useState({
     firstname: "",
@@ -22,10 +19,20 @@ export default function Register() {
     password: "",
     phonenumber: "",
     managerId: "",
-    designationId:""
+    designationId: "",
+    errors: {
+      firstname: "",
+    lastname: "",
+    username: "",
+    email: "",
+    password: "",
+    phonenumber: "",
+    managerId: "",
+    designationId: "",
+    },
   });
 
-  const [errors, setErrors] = useState({
+    const [tryErrors, setTryErrors] = useState({
     firstname: "",
     lastname: "",
     username: "",
@@ -33,11 +40,56 @@ export default function Register() {
     password: "",
     phonenumber: "",
     managerId: "",
-    designationId:""
+    designationId: "",
   });
+  
+  const [unAuthorized, setUnAuthorized] = useState(false);
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
+
+    let errors = { ...data.errors };
+    let hasErrors = false;
+
+    if (!data.firstname) {
+      errors.firstname = "Firstname is required";
+      hasErrors = true;
+    }
+
+    if (!data.lastname) {
+      errors.lastname = "Lastname is required";
+      hasErrors = true;
+    }
+
+    if (!data.username) {
+      errors.username = "Username is required";
+      hasErrors = true;
+    }
+
+    if (!data.email) {
+      errors.email = "Email is required";
+      hasErrors = true;
+    }
+
+    if (!data.password) {
+      errors.password = "Password is required";
+      hasErrors = true;
+    }
+
+    if (!data.phonenumber) {
+      errors.phonenumber = "Phone Number is required";
+      hasErrors = true;
+    }
+ 
+
+    setData((prevState: any) => ({
+      ...prevState,
+      errors: errors,
+    }));
+
+    if (hasErrors) {
+      return;
+    }
 
     const newData = {
       firstname: data.firstname,
@@ -47,27 +99,67 @@ export default function Register() {
       password: data.password,
       phonenumber: data.phonenumber,
       managerId: "",
-      designationId: "4"
-    };
-
-    try {
-      console.log(newData);
-      
+      designationId: "4",
+      };
+    
+      try {
       axios.post("/api/Auth/register", newData).then((response) => {
         console.log(response.data);
         alert("User Registered Successfully");
       });
     } catch (error: any) {
-      setRegistrationError(true);
-      setData(newData);
+      const existingData= {
+        firstname: data.firstname,
+        lastname: data.lastname,
+        username: data.username,
+        email: data.email,
+        password: data.password,
+        phonenumber: data.phonenumber,
+        managerId: "",
+        designationId: "4",
+        errors: {
+          firstname: "",
+        lastname: "",
+        username: "",
+        email: "",
+        password: "",
+        phonenumber: "",
+        managerId: "",
+        designationId: "",
+        },
+        };
+      setData(existingData);
+      console.log(error);
+      setUnAuthorized(true);
       console.log(error.response.data.message);
     }
+    setData({
+      firstname: "",
+    lastname: "",
+    username: "",
+    email: "",
+    password: "",
+    phonenumber: "",
+    managerId: "",
+    designationId: "",
+    errors: {
+      firstname: "",
+    lastname: "",
+    username: "",
+    email: "",
+    password: "",
+    phonenumber: "",
+    managerId: "",
+    designationId: "",
+    },
+    });
   };
 
   const handleInputChange = (event: any) => {
-    const { name, value } = event.target;
-    let isValid = true;
-    const newErrors = { ...errors };
+   
+     const { name, value } = event.target;
+     let isValid = true;
+    const newErrors = { ...tryErrors };
 
     switch (name) {
       case "firstname":
@@ -79,7 +171,8 @@ export default function Register() {
           newErrors.firstname = "";
         }
         break;
-      case "lastname": 
+
+      case "lastname":
         // Check if field contains only alphabets
         if (!/^[a-zA-Z ]*$/.test(value)) {
           newErrors.lastname = "Only alphabets are allowed";
@@ -88,6 +181,7 @@ export default function Register() {
           newErrors.lastname = "";
         }
         break;
+
       case "username":
         // Check if field contains only alphanumeric characters and underscore
         if (!/^[a-zA-Z0-9_]*$/.test(value)) {
@@ -98,6 +192,7 @@ export default function Register() {
           newErrors.username = "";
         }
         break;
+
       case "email":
         // Check if email is valid
         if (!/\S+@\S+\.\S+/.test(value)) {
@@ -107,6 +202,7 @@ export default function Register() {
           newErrors.email = "";
         }
         break;
+
       case "password":
         // Check if password is strong
         if (
@@ -121,41 +217,41 @@ export default function Register() {
           newErrors.password = "";
         }
         break;
+
       case "phonenumber":
         // Check if phone number is valid
-        // if (!/^[0-9]{10}$/.test(value)) {
-        //   newErrors.phonenumber = "Enter a valid 10 digit phone number";
-        //   isValid = false;
-        // } else {
-        //   newErrors.password = "";
-        // }
-        // break;
+        if (!/^\d{10}$/.test(value)) {
+          newErrors.phonenumber = "Enter a valid 10-digit phone number";
+          isValid = false;
+        } else {
+          newErrors.phonenumber = "";
+        }
+        break;
+
       default:
         break;
     }
-    setErrors(newErrors);
+   
+    setTryErrors(newErrors);
     setData((prevState: any) => ({
       ...prevState,
+      errors: newErrors,
       [name]: value,
     }));
+    setIsFormValid(isValid);
   };
-  
-  const handleSnack = () => {
-    setRegistrationError(false)
-  }
 
   useEffect(() => {
-    const fetchDesignations = async() => {
+    const fetchDesignations = async () => {
       try {
-        const response = await axios.get('/api/DesignationMaster')
-        setDesignation(response.data)
+        const response = await axios.get("/api/DesignationMaster");
+        setDesignation(response.data);
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
-    }
+    };
     fetchDesignations();
-  },[])
-
+  }, []);
   return (
     <Container component="main" maxWidth="sm">
       <Box
@@ -175,7 +271,6 @@ export default function Register() {
         </Typography>
 
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
-          
           <TextField
             margin="normal"
             required
@@ -187,10 +282,10 @@ export default function Register() {
             autoComplete="firstname"
             autoFocus
             onChange={handleInputChange}
-            error={errors.firstname !== ""}
-            helperText={errors.firstname}
+            error={Boolean(data.errors.firstname)}
+            helperText={data.errors.firstname}
           />
-          
+
           <TextField
             margin="normal"
             required
@@ -201,10 +296,10 @@ export default function Register() {
             value={data.lastname}
             autoComplete="lastname"
             onChange={handleInputChange}
-            error={errors.lastname !== ""}
-            helperText={errors.lastname}
+            error={Boolean(data.errors.lastname)}
+            helperText={data.errors.lastname}
           />
-          
+
           <TextField
             margin="normal"
             required
@@ -215,10 +310,10 @@ export default function Register() {
             value={data.username}
             autoComplete="username"
             onChange={handleInputChange}
-            error={errors.username !== ""}
-            helperText={errors.username}
+            error={Boolean(data.errors.username)}
+            helperText={data.errors.username}
           />
-          
+
           <TextField
             margin="normal"
             required
@@ -229,10 +324,10 @@ export default function Register() {
             value={data.email}
             autoComplete="email"
             onChange={handleInputChange}
-            error={errors.email !== ""}
-            helperText={errors.email}
+            error={Boolean(data.errors.email)}
+            helperText={data.errors.email}
           />
-          
+
           <TextField
             margin="normal"
             required
@@ -244,10 +339,10 @@ export default function Register() {
             id="password"
             autoComplete="current-password"
             onChange={handleInputChange}
-            error={errors.password !== ""}
-            helperText={errors.password}
+            error={Boolean(data.errors.password)}
+            helperText={data.errors.password}
           />
-          
+
           <TextField
             margin="normal"
             required
@@ -259,10 +354,10 @@ export default function Register() {
             id="phonenumber"
             autoComplete="phonenumber"
             onChange={handleInputChange}
-            // error={errors.phonenumber !== ""}
-            // helperText={errors.phonenumber}
+            error={Boolean(data.errors.phonenumber)}
+            helperText={data.errors.phonenumber}
           />
-          
+
           <Button
             type="submit"
             fullWidth
@@ -271,22 +366,7 @@ export default function Register() {
           >
             Register
           </Button>
-          {
-            registrationError && <Snackbar
-            open={registrationError}
-            autoHideDuration={4000}
-            message="Registration Failed due to some error."
-            action={<IconButton
-              size="small"
-              aria-label="close"
-              color="inherit"
-              onClick={handleSnack}
-            >
-              <CloseIcon fontSize="small" />
-            </IconButton>}
-          />
-          }
-         
+
           <Grid container>
             <Grid item>
               <Link href="/" variant="body2">
@@ -294,7 +374,6 @@ export default function Register() {
               </Link>
             </Grid>
           </Grid>
-        
         </Box>
       </Box>
     </Container>
