@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fR/6TdqyZJNN+rUZZJWBguXMY7DjArcWwKuOuc4xMt0=",
+  "Hash": "9+fqVMwh1lEqUR+fFd6+ZKN5r9B1o3TtpBalCTv6KQ4=",
   "Source": "EmployeeLeaveTracking.WebAPI",
   "BasePath": "_content/EmployeeLeaveTracking.WebAPI",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "EmployeeLeaveTracking.WebAPI\\wwwroot",
       "Source": "EmployeeLeaveTracking.WebAPI",
-      "ContentRoot": "D:\\ProjectAdditions\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\",
       "BasePath": "_content/EmployeeLeaveTracking.WebAPI",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "D:\\ProjectAdditions\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\0fd3cc66-e84f-4bd5-bb32-e88a85370e34light-bulbs-5488573_1920.jpg",
+      "Identity": "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\0fd3cc66-e84f-4bd5-bb32-e88a85370e34light-bulbs-5488573_1920.jpg",
       "SourceId": "EmployeeLeaveTracking.WebAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ProjectAdditions\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\",
       "BasePath": "_content/EmployeeLeaveTracking.WebAPI",
       "RelativePath": "Images/0fd3cc66-e84f-4bd5-bb32-e88a85370e34light-bulbs-5488573_1920.jpg",
       "AssetKind": "All",
@@ -34,10 +34,10 @@
       "OriginalItemSpec": "wwwroot\\Images\\0fd3cc66-e84f-4bd5-bb32-e88a85370e34light-bulbs-5488573_1920.jpg"
     },
     {
-      "Identity": "D:\\ProjectAdditions\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\ccd5b9fc-6c54-4346-b5db-8f006aed6e77pexels-valiphotos-589840.jpg",
+      "Identity": "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\ccd5b9fc-6c54-4346-b5db-8f006aed6e77pexels-valiphotos-589840.jpg",
       "SourceId": "EmployeeLeaveTracking.WebAPI",
       "SourceType": "Discovered",
-      "ContentRoot": "D:\\ProjectAdditions\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\",
+      "ContentRoot": "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\",
       "BasePath": "_content/EmployeeLeaveTracking.WebAPI",
       "RelativePath": "Images/ccd5b9fc-6c54-4346-b5db-8f006aed6e77pexels-valiphotos-589840.jpg",
       "AssetKind": "All",

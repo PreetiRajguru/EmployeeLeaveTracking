@@ -4,14 +4,16 @@ using EmployeeLeaveTracking.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EmployeeLeaveTracking.Data.Migrations
 {
     [DbContext(typeof(EmployeeLeaveDbContext))]
-    partial class EmployeeLeaveDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230524065912_two")]
+    partial class two
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

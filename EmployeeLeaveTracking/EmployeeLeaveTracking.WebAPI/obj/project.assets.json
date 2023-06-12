@@ -8188,11 +8188,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\ProjectAdditions\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\EmployeeLeaveTracking.WebAPI.csproj",
+      "projectUniqueName": "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\EmployeeLeaveTracking.WebAPI.csproj",
       "projectName": "EmployeeLeaveTracking.WebAPI",
-      "projectPath": "D:\\ProjectAdditions\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\EmployeeLeaveTracking.WebAPI.csproj",
+      "projectPath": "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\EmployeeLeaveTracking.WebAPI.csproj",
       "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
-      "outputPath": "D:\\ProjectAdditions\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\obj\\",
+      "outputPath": "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\HP\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -8209,11 +8209,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\ProjectAdditions\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Data\\EmployeeLeaveTracking.Data.csproj": {
-              "projectPath": "D:\\ProjectAdditions\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Data\\EmployeeLeaveTracking.Data.csproj"
+            "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Data\\EmployeeLeaveTracking.Data.csproj": {
+              "projectPath": "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Data\\EmployeeLeaveTracking.Data.csproj"
             },
-            "D:\\ProjectAdditions\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Services\\EmployeeLeaveTracking.Services.csproj": {
-              "projectPath": "D:\\ProjectAdditions\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Services\\EmployeeLeaveTracking.Services.csproj"
+            "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Services\\EmployeeLeaveTracking.Services.csproj": {
+              "projectPath": "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.Services\\EmployeeLeaveTracking.Services.csproj"
             }
           }
         }

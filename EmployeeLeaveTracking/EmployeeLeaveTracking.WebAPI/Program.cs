@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using StudentTeacher.Service.Services;
+using EmployeeLeaveTracking.Services.Services;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -124,7 +124,7 @@ builder.Services.AddSwaggerGen(c =>
                             Id = "Bearer"
                         }
                     },
-                    new string[] {}
+                    Array.Empty<string>()
                 }
             });
 });

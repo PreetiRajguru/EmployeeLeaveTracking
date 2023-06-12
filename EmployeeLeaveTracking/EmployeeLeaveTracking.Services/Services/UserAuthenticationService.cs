@@ -12,7 +12,7 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace StudentTeacher.Service.Services;
+namespace EmployeeLeaveTracking.Services.Services;
 
 public sealed class UserAuthenticationService : IUserAuthentication
 {
@@ -22,7 +22,6 @@ public sealed class UserAuthenticationService : IUserAuthentication
     private User? _user;
     private readonly RoleManager<IdentityRole> _roleManager;
     private readonly EmployeeLeaveDbContext _context;
-
 
     public UserAuthenticationService(UserManager<User> userManager, IConfiguration configuration, IMapper mapper, RoleManager<IdentityRole> roleManager,
                                    EmployeeLeaveDbContext context)
@@ -115,12 +114,36 @@ public sealed class UserAuthenticationService : IUserAuthentication
 
     }
 
-    public async Task<bool> ValidateUserAsync(UserLoginDTO loginDto)
+    public async Task<LoginResponseDTO> ValidateUserAsync(UserLoginDTO loginDto)
     {
         _user = await _userManager.FindByNameAsync(loginDto.UserName);
-        bool result = _user != null && await _userManager.CheckPasswordAsync(_user, loginDto.Password);
-        return result;
+
+        if (_user != null)
+        {
+            var token = await CreateTokenAsync();
+            var refreshToken = GenerateRefreshToken();
+            _ = int.TryParse(_configuration["JwtConfig:RefreshTokenValidityInDays"], out int refreshTokenValidityInDays);
+
+            _user.RefreshToken = refreshToken;
+            _user.RefreshTokenExpiryTime = DateTime.Now.AddDays(refreshTokenValidityInDays);
+
+            await _userManager.UpdateAsync(_user);
+
+            if (await _userManager.CheckPasswordAsync(_user, loginDto.Password))
+            {
+                return new LoginResponseDTO
+                {
+                    Token = token,
+                    RefreshToken = refreshToken,
+                    Role = GetRoles().Result?[0],
+                    Id = GetUserId()
+                };
+            }
+        }
+
+        return null;
     }
+
 
     public async Task<string> CreateTokenAsync()
     {
@@ -140,18 +163,29 @@ public sealed class UserAuthenticationService : IUserAuthentication
 
     private async Task<List<Claim>> GetClaims()
     {
-        List<Claim> claims = new()  
+        List<Claim> claims = new List<Claim>();
+
+        if (_user != null)
         {
-            new Claim(ClaimTypes.Name, _user.UserName),
-            new Claim(ClaimTypes.Sid, _user.Id)
-        };
-        IList<string> roles = await _userManager.GetRolesAsync(_user);
-        foreach (var role in roles)
-        {
-            claims.Add(new Claim(ClaimTypes.Role, role));
+            claims.Add(new Claim(ClaimTypes.Name, _user.UserName));
+            claims.Add(new Claim(ClaimTypes.Sid, _user.Id));
+
+            if (_userManager != null && _user != null)
+            {
+                IList<string> roles = await _userManager.GetRolesAsync(_user);
+                if (roles != null)
+                {
+                    foreach (var role in roles)
+                    {
+                        claims.Add(new Claim(ClaimTypes.Role, role));
+                    }
+                }
+            }
         }
+
         return claims;
     }
+
 
     public Task<IList<string>> GetRoles()
     {
@@ -176,12 +210,6 @@ public sealed class UserAuthenticationService : IUserAuthentication
         return tokenOptions;
     }
 
-
-
-
-
-
-
     public string GenerateRefreshToken()
     {
         var randomNumber = new byte[64];
@@ -190,14 +218,14 @@ public sealed class UserAuthenticationService : IUserAuthentication
         return Convert.ToBase64String(randomNumber);
     }
 
-    private ClaimsPrincipal? GetPrincipalFromExpiredToken(string? token)
+    public ClaimsPrincipal? GetPrincipalFromExpiredToken(string? token)
     {
         var tokenValidationParameters = new TokenValidationParameters
         {
             ValidateAudience = false,
             ValidateIssuer = false,
             ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"])),
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtConfig:secret"])),
             ValidateLifetime = false
         };
 
@@ -207,8 +235,21 @@ public sealed class UserAuthenticationService : IUserAuthentication
             throw new SecurityTokenException("Invalid token");
 
         return principal;
-
     }
 
-    
+    public JwtSecurityToken CreateToken(List<Claim> authClaims)
+    {
+        var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtConfig:Secret"]));
+        _ = int.TryParse(_configuration["JwtConfig:TokenValidityInMinutes"], out int tokenValidityInMinutes);
+
+        var token = new JwtSecurityToken(
+            issuer: _configuration["JwtConfig:ValidIssuer"],
+            audience: _configuration["JwtConfig:ValidAudience"],
+            expires: DateTime.Now.AddMinutes(tokenValidityInMinutes),
+            claims: authClaims,
+            signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
+            );
+
+        return token;
+    }
 }

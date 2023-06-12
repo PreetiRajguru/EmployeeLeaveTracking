@@ -114,7 +114,6 @@ namespace EmployeeLeaveTracking.Data.Context
             new StatusMaster { Id = 1, StatusType = "Pending" },
             new StatusMaster { Id = 2, StatusType = "Approved" },
             new StatusMaster { Id = 3, StatusType = "Rejected" });
-
         }
 
         private static void SeedRoles(ModelBuilder builder)
@@ -126,12 +125,3 @@ namespace EmployeeLeaveTracking.Data.Context
         }
     }
 }
-
-
-
-
-
-
-
-
-

@@ -1,5 +1,6 @@
 ﻿using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeLeaveTracking.WebAPI.Controllers
@@ -17,7 +18,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpGet]
-      /*  [Authorize(Roles = "Manager,Employee")]*/
+        [Authorize(Roles = "Manager,Employee")]
         [Route("employees/{managerId}")]
         public ActionResult<IEnumerable<UserRegistrationDTO>> GetUsersByManagerId(string managerId)
         {
@@ -34,7 +35,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 
 
         [HttpGet]
-       /* [Authorize(Roles = "Manager,Employee")]*/
+        [Authorize(Roles = "Manager,Employee")]
         [Route("employee/{employeeId}")]
         public ActionResult<IEnumerable<UserRegistrationDTO>> GetUserDetails(string employeeId)
         {
@@ -51,7 +52,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 
 
         [HttpGet("currentuser/{employeeId}")]
-       /* [Authorize(Roles = "Manager,Employee")]*/
+        [Authorize(Roles = "Manager,Employee")]
         public ActionResult<CurrentUserDTO> GetUserBasicInfo(string employeeId)
         {
             try
@@ -72,7 +73,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 
 
         [HttpGet("{employeeId}/manager")]
-      /*  [Authorize(Roles = "Manager,Employee")]*/
+        [Authorize(Roles = "Manager,Employee")]
         public async Task<ActionResult<string>> GetManagerId(string employeeId)
         {
             try
@@ -92,7 +93,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 
 
         [HttpPut("{id}")]
-      /*  [Authorize(Roles = "Manager,Employee")]*/
+        [Authorize(Roles = "Manager,Employee")]
         public async Task<IActionResult> UpdateUser(string id, [FromBody] UserRegistrationDTO user)
         {
             if (user == null)

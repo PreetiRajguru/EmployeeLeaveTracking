@@ -19,7 +19,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpPost]
-        /*[Authorize(Roles = "Manager,Employee")]*/
+        [Authorize(Roles = "Manager,Employee")]
         public async Task<IActionResult> Post([FromForm] ProfileImageUploadDTO model)
         {
             try
@@ -40,7 +40,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpGet]
-      /*  [Authorize(Roles = "Manager,Employee")]*/
+        [Authorize(Roles = "Manager,Employee")]
         public IActionResult Get(string id)
         {
             try

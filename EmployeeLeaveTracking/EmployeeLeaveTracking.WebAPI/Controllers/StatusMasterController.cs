@@ -19,7 +19,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpGet]
-       /* [Authorize(Roles = "Manager,Employee")]*/
+        [Authorize(Roles = "Manager,Employee")]
         public IActionResult GetAll()
         {
             try
@@ -34,7 +34,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpGet("{id}")]
-       /* [Authorize(Roles = "Manager,Employee")]*/
+        [Authorize(Roles = "Manager,Employee")]
         public IActionResult GetById(int id)
         {
             try
@@ -73,7 +73,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-       /* [Authorize(Roles = "Manager")]*/
+        [Authorize(Roles = "Manager")]
         public IActionResult Update(int id, [FromBody] StatusMasterDTO statusMaster)
         {
             try
@@ -99,7 +99,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        /*[Authorize(Roles = "Manager")]*/
+        [Authorize(Roles = "Manager")]
         public IActionResult Delete(int id)
         {
             try

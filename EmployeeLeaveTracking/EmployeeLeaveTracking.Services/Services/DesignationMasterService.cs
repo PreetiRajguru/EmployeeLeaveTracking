@@ -2,7 +2,6 @@
 using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Data.Models;
 using EmployeeLeaveTracking.Services.Interfaces;
-using System.Web.Http.ModelBinding;
 
 namespace EmployeeLeaveTracking.Services.Services
 {

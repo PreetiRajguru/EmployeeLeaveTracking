@@ -5,7 +5,7 @@ using EmployeeLeaveTracking.Services.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 
-namespace StudentTeacher.Service.Services;
+namespace EmployeeLeaveTracking.Services.Services;
 
 public class RepositoryManagerService : IRepository
 {
@@ -17,6 +17,7 @@ public class RepositoryManagerService : IRepository
     private IConfiguration _configuration;
     private readonly RoleManager<IdentityRole> _roleManager;
     private readonly EmployeeLeaveDbContext _context;
+
 
     public RepositoryManagerService(EmployeeLeaveDbContext repositoryContext, UserManager<User> userManager, IMapper mapper, IConfiguration configuration, 
         RoleManager<IdentityRole> roleManager, EmployeeLeaveDbContext context)
