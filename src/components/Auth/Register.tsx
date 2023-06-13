@@ -7,10 +7,12 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import axios from "axios";
+import useHttp from "../../config/https";
 
 export default function Register() {
   const [isFormValid, setIsFormValid] = useState(false);
   const [designation, setDesignation] = useState<any>([]);
+  const {axiosInstance, loading} = useHttp();
   const [data, setData] = useState({
     firstname: "",
     lastname: "",
@@ -103,7 +105,7 @@ export default function Register() {
       };
     
       try {
-      axios.post("/api/Auth/register", newData).then((response) => {
+      axiosInstance.post("/api/Auth/register", newData).then((response) => {
         console.log(response.data);
         alert("User Registered Successfully");
       });
@@ -244,7 +246,7 @@ export default function Register() {
   useEffect(() => {
     const fetchDesignations = async () => {
       try {
-        const response = await axios.get("/api/DesignationMaster");
+        const response = await axiosInstance.get("/api/DesignationMaster");
         setDesignation(response.data);
       } catch (error) {
         console.log(error);

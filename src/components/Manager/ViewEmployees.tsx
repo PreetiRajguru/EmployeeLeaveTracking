@@ -15,6 +15,7 @@ import jsPDF from "jspdf";
 import "jspdf-autotable";
 import { IconButton } from "@mui/material";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
+import useHttp from "../../config/https";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -50,13 +51,14 @@ export interface Employee {
 
 export default function CustomizedTables() {
   const navigate = useNavigate();
+  const {axiosInstance, loading} = useHttp();
   const [data, setData] = useState<Employee[]>([]);
 
   useEffect(() => {
     const managerId = localStorage.getItem("id");
     const fetchAllEmployeesForManager = async () => {
       try {
-        const response = await axios.get(`api/User/employees/${managerId}`);
+        const response = await axiosInstance.get(`api/User/employees/${managerId}`);
         console.log(response);
         setData(response.data);
       } catch (error) {

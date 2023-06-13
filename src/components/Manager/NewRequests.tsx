@@ -11,7 +11,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
-import axios from "axios";
+import useHttp from "../../config/https";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -37,11 +37,12 @@ const NewRequests = () => {
   const { empId } = useParams();
   const navigate = useNavigate();
   const [data, setData] = useState<any>([]);
+  const {axiosInstance, loading} = useHttp();
   const [statusId, setStatusId] = useState();
   useEffect(() => {
     const fetchLeaveDetails = async () => {
       try {
-        const response = await axios.get(`api/LeaveRequest/status/1`);
+        const response = await axiosInstance.get(`api/LeaveRequest/status/1`);
         setData(response.data);
         console.log(data);
       } catch (error) {
@@ -53,7 +54,7 @@ const NewRequests = () => {
   }, []);
 
   const fetchStatus = (rowId: any, param: any) => {
-    axios
+    axiosInstance
       .put(`/api/LeaveRequest/${rowId}/status/${param}`)
       .then((response) => setStatusId(response.data))
       .catch((error) => console.log(error));

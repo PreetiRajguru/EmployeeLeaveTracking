@@ -14,9 +14,12 @@ import MyProfile from './components/MyProfile'
 import ProfileImage from './components/ProfileImage'
 import MyLeaveDetails from './components/Employee/MyLeaveDetails'
 import axios from 'axios'
-import { AppContext } from './config/https';
 import NewRequests from './components/Manager/NewRequests';
 import React from 'react';
+import { AppContext } from './config/https';
+import Loader from './components/Loader/Loader';
+import useHttp from './config/https'
+import ChangePassword from './components/ChangePassword';
 
 function App() {
 
@@ -31,16 +34,20 @@ function App() {
   };
 
   useEffect(() => {
-    axios.defaults.baseURL = 'https://localhost:7033';
+    // axiosInstance.defaults.baseURL = 'https://localhost:7033';
     getToken()
     })
 
-    const [loading] = useState(true);
+    // const [loading] = useState(true);
+    const {axiosInstance, loading} = useHttp();
 
   return (
 
     <AppContext.Provider value={{ loading }}>
     <div>
+
+    {loading ? <Loader /> : ""}
+    
       <BrowserRouter>
 
       <Navigation />
@@ -57,6 +64,7 @@ function App() {
         <Route path="/leavedetails" element={<MyLeaveDetails />} />
         <Route path="/newrequests" element={<NewRequests />} />
         <Route path="/myprofile" element={<MyProfile />} />
+        <Route path="/changepassword" element={<ChangePassword />} />
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
       

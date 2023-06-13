@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { Key, ReactNode, useEffect, useState } from "react";
+import useHttp from "../config/https";
 
 const empId = localStorage.getItem("id");
 
@@ -48,12 +49,13 @@ export interface Employee {
 
 export default function CustomizedTables() {
   const [data, setData] = useState<Employee[]>([]);
+  const {axiosInstance, loading} = useHttp();
 
   useEffect(() => {
     const empId = localStorage.getItem("id");
     const fetchAllEmployeesForManager = async () => {
       try {
-        const response = await axios.get(`api/User/employee/${empId}`);
+        const response = await axiosInstance.get(`api/User/employee/${empId}`);
         console.log(response);
         setData(response.data);
       } catch (error) {

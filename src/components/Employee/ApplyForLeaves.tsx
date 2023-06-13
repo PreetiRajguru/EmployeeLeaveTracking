@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import useReadLocalStorage from "../useReadLocalStorage";
+import useHttp from "../../config/https";
 
 const ApplyForLeaves = () => {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ const ApplyForLeaves = () => {
   console.log(empId);
   const [leaveBalance, setLeaveBalance] = useState();
   const [empManager, setEmpManager] = useState("");
+  const {axiosInstance, loading} = useHttp();
   const [leaveTypeDetails, setLeaveTypeDetails] = useState({
     requestComments: "",
     startDate: "",
@@ -113,7 +115,7 @@ const ApplyForLeaves = () => {
     }
 
     try {
-      axios
+      axiosInstance
         .post("/api/LeaveRequest/newleaverequest", newLeaveTypeDetails)
         .then((response) => {
           alert("Leave Request Sent Succesfully");
@@ -174,7 +176,7 @@ const ApplyForLeaves = () => {
   useEffect(() => {
     const fetchLeaveTypes = async () => {
       try {
-        const response = await axios.get("/api/LeaveType");
+        const response = await axiosInstance.get("/api/LeaveType");
         setLeaveTypeName(response.data);
         console.log(response.data);
       } catch (error) {}
@@ -184,7 +186,7 @@ const ApplyForLeaves = () => {
 
     const fetchLeaveBalances = async () => {
       try {
-        const response = await axios.get(`/api/LeaveRequest/balance/${empId}`);
+        const response = await axiosInstance.get(`/api/LeaveRequest/balance/${empId}`);
         setLeaveBalance(response.data);
         console.log(response.data);
       } catch (error) {}
@@ -193,7 +195,7 @@ const ApplyForLeaves = () => {
 
     const fetchEmpManager = async () => {
       try {
-        const response = await axios.get(`/api/User/${empId}/manager`);
+        const response = await axiosInstance.get(`/api/User/${empId}/manager`);
         setEmpManager(response.data);
         console.log(response.data);
       } catch (error) {}
@@ -209,7 +211,7 @@ const ApplyForLeaves = () => {
 
     const fetchUsername = async () => {
       try {
-        const response = await axios.get(`/api/User/currentuser/${empId}`);
+        const response = await axiosInstance.get(`/api/User/currentuser/${empId}`);
         setUsername(`${response.data.firstName} ${response.data.lastName}`);
       } catch (error) {
         console.error(error);

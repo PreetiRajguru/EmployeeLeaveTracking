@@ -14,6 +14,8 @@ import { useNavigate } from "react-router-dom";
 import { Divider, Card, CardActions, CardContent, Box } from "@mui/material";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import TablePagination from '@mui/material/TablePagination';
+import useHttp from "../../config/https";
+import Loader from "../Loader/Loader";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -57,6 +59,7 @@ export default function CustomizedTables() {
   const [dense, setDense] = useState(false);
   const [visibleRows, setVisibleRows] = useState(null);
   const [rowsPerPage, setRowsPerPage] = useState(DEFAULT_ROWS_PER_PAGE);
+  const {axiosInstance, loading} = useHttp();
   
   const empId = localStorage.getItem('id');
   var colors = ['#afd6d0','#d3afd6', '#edbcbc', '#c7ebba', '#e8e4a6', '#f0c7f4','#f7d2a7','#e3aff4'];
@@ -88,7 +91,7 @@ export default function CustomizedTables() {
   useEffect(() => {
     const fetchLeaveDetails = async () => {
       try {
-        const response = await axios.get(`/api/LeaveRequest/employee/${empId}`);
+        const response = await axiosInstance.get(`/api/LeaveRequest/employee/${empId}`);
         setData(response.data);
         console.log(response.data);
       } catch (error) {
@@ -98,7 +101,7 @@ export default function CustomizedTables() {
 
     const fetchLeaveTypesTotal = async () => {
       try {
-        const response = await axios.get(
+        const response = await axiosInstance.get(
           "/api/LeaveType/employee/leavetypes"
         );
         setType(response.data);
@@ -110,7 +113,7 @@ export default function CustomizedTables() {
 
     const fetchLeaveBalances = async () => {
       try {
-        const response = await axios.get(`/api/LeaveRequest/balance/${empId}`);
+        const response = await axiosInstance.get(`/api/LeaveRequest/balance/${empId}`);
         setLeaveBalance(response.data);
         console.log(response.data);
       } catch (error) {
@@ -138,7 +141,7 @@ console.log(type)
       
       const fetchLeaveDetails = async () => {
         try {
-          const response = await axios.get(`/api/LeaveRequest/employeeId/${rowsPerPage}/${rowsPerPage * newPage}`);
+          const response = await axiosInstance.get(`/api/LeaveRequest/employeeId/${rowsPerPage}/${rowsPerPage * newPage}`);
           setData(response.data);
         } catch (error) {
           console.error(error);
@@ -150,6 +153,7 @@ console.log(type)
 
   return (
     <>
+    {loading ? <Loader /> :
       <TableContainer component={Paper}>
         <Typography component="h1" variant="h5" align="center" sx={{ mb: 3 }}>
           My Leave Details
@@ -250,6 +254,7 @@ console.log(type)
         </Table>
         </Box>
       </TableContainer>
+      }
     </>
   );
 }

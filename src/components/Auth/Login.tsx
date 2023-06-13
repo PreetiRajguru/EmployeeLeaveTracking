@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { Card, CardActionArea, CardMedia, CardContent } from "@mui/material";
 
 import swal from 'sweetalert';
+import useHttp from "../../config/https";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -51,6 +52,7 @@ export default function Login() {
   } else if(isLogin && isEmployee){
     navigate(`/leavedetails`);
   }
+  const {axiosInstance, loading} = useHttp();
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -83,7 +85,7 @@ export default function Login() {
     };
 
     try {
-      const response = await axios.post("/api/Auth/login", newData);
+      const response = await axiosInstance.post("/api/Auth/login", newData);
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("role", response.data.role);
       localStorage.setItem("id", response.data.id);

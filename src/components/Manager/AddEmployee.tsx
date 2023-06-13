@@ -7,11 +7,13 @@ import Container from "@mui/material/Container";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
+import useHttp from "../../config/https";
 
 const managerId = localStorage.getItem("id");
 
 export default function AddEmployee() {
   const [isFormValid, setIsFormValid] = useState(false);
+  const {axiosInstance, loading} = useHttp();
 
   const navigate = useNavigate();
   const [designation, setDesignation] = useState<any>([]);
@@ -112,7 +114,7 @@ export default function AddEmployee() {
     };
 
     try {
-      axios.post("/api/Auth/register", newData).then((response) => {
+      axiosInstance.post("/api/Auth/register", newData).then((response) => {
         console.log(response.data);
         alert("Employee Added Successfully.");
       });
@@ -279,7 +281,7 @@ export default function AddEmployee() {
   useEffect(() => {
     const fetchDesignations = async () => {
       try {
-        const response = await axios.get("/api/DesignationMaster");
+        const response = await axiosInstance.get("/api/DesignationMaster");
         setDesignation(response.data);
       } catch (error) {
         console.log(error);

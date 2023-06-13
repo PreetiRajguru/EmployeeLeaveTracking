@@ -176,6 +176,17 @@ const Navigation = () => {
                   onClick={() => navigate("/newrequests")}
                 />
               </ListItemButton>
+
+              <ListItemButton>
+                <ListItemIcon>
+                  <AccountBoxIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="Change Password"
+                  onClick={() => navigate("/changepassword")}
+                />
+              </ListItemButton>
+
             </>
           ) : (
             <>
@@ -203,6 +214,16 @@ const Navigation = () => {
                   <AccountBoxIcon />
                 </ListItemIcon>
                 <ListItemText
+                  primary="Change Password"
+                  onClick={() => navigate("/changepassword")}
+                />
+              </ListItemButton>
+
+              <ListItemButton>
+                <ListItemIcon>
+                  <AccountBoxIcon />
+                </ListItemIcon>
+                <ListItemText
                   primary="My Profile"
                   onClick={() => navigate("/myprofile")}
                 />
@@ -217,6 +238,7 @@ const Navigation = () => {
                   onClick={() => navigate("/profileimage")}
                 />
               </ListItemButton>
+
             </>
           )}
         </List>
