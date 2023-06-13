@@ -74,7 +74,7 @@ namespace EmployeeLeaveTracking.Controllers
        
         [Route("refresh-token")]
         public async Task<IActionResult> RefreshToken(TokenModel tokenModel)
-        {
+            {
             if (tokenModel is null)
             {
                 return BadRequest("Invalid client request");
@@ -143,6 +143,32 @@ namespace EmployeeLeaveTracking.Controllers
         }
 
 
+        /*
+                [HttpPost]
+                public async Task<IActionResult> ChangePasswordHash(string userId, string newPasswordHash)
+                {
+                    var user = await _userManager.FindByIdAsync(userId);
+                    if (user == null)
+                    {
+                        return NotFound();
+                    }
+
+                    *//*var newPassword = _userManager.PasswordHasher.HashPassword(user,newPasswordHash);*//*
+
+                    user.PasswordHash = newPasswordHash;
+                    var result = await _userManager.UpdateAsync(user);
+                    if (!result.Succeeded)
+                    {
+                        foreach (var error in result.Errors)
+                        {
+                            ModelState.AddModelError("", error.Description);
+                        }
+
+                        return BadRequest(ModelState);
+                    }
+
+                    return Ok();
+                }*/
 
 
 
@@ -150,32 +176,106 @@ namespace EmployeeLeaveTracking.Controllers
 
 
 
+        /*  [HttpPost]
+          public async Task<IActionResult> ChangePasswordHash(string userId, string newPassword)
+          {
+              var user = await _userManager.FindByIdAsync(userId);
+              if (user == null)
+              {
+                  return NotFound();
+              }
+
+              var newPasswordHash = _userManager.PasswordHasher.HashPassword(user, newPassword);
+
+              user.PasswordHash = newPassword;
+              var result = await _userManager.UpdateAsync(user);
+              if (!result.Succeeded)
+              {
+                  foreach (var error in result.Errors)
+                  {
+                      ModelState.AddModelError("", error.Description);
+                  }
+
+                  return BadRequest(ModelState);
+              }
+
+              return Ok();
+          }
+  */
 
 
 
-/*
         [HttpPost]
-        public async Task<IActionResult> ChangePassword(User usermodel)
+        [Route("{userid}/{currentpassword}/{newpassword}")]
+        public async Task<IActionResult> ChangePassword(string userId, string currentPassword, string newPassword)
         {
-            ApplicationUser user = await AppUserManager.FindByIdAsync(usermodel.Id);
+            var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
             {
                 return NotFound();
             }
-            user.PasswordHash = AppUserManager.PasswordHasher.HashPassword(usermodel.Password);
-            var result = await AppUserManager.UpdateAsync(user);
+
+            var passwordValid = await _userManager.CheckPasswordAsync(user, currentPassword);
+            if (!passwordValid)
+            {
+                ModelState.AddModelError("", "Invalid current password.");
+                return BadRequest(ModelState);
+            }
+
+            var newPasswordHash = _userManager.PasswordHasher.HashPassword(user, newPassword);
+            user.PasswordHash = newPasswordHash;
+
+            var result = await _userManager.UpdateAsync(user);
             if (!result.Succeeded)
             {
-                //throw exception......
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+
+                return BadRequest(ModelState);
             }
+
             return Ok();
-        }*/
+        }
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* [HttpPost]
+         public async Task<IActionResult> ChangePassword(User usermodel)
+         {
+             var user = await _userManager.FindByIdAsync(usermodel.Id);
+             if (user == null)
+             {
+                 return NotFound();
+             }
+             user.PasswordHash = _userManager.PasswordHasher.HashPassword(usermodel,usermodel.PasswordHash);
+             var result = await _userManager.UpdateAsync(user);
+             if (!result.Succeeded)
+             {
+                 //throw exception......
+             }
+             return Ok();
+         }*/
 
 
         /*
