@@ -20,6 +20,7 @@ import { AppContext } from './config/https';
 import Loader from './components/Loader/Loader';
 import useHttp from './config/https'
 import ChangePassword from './components/ChangePassword';
+import UpdateUserProfile from './components/UpdateUserProfile';
 
 function App() {
 
@@ -65,6 +66,7 @@ function App() {
         <Route path="/newrequests" element={<NewRequests />} />
         <Route path="/myprofile" element={<MyProfile />} />
         <Route path="/changepassword" element={<ChangePassword />} />
+        <Route path="/updateuserprofile" element={<UpdateUserProfile />} />
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
       

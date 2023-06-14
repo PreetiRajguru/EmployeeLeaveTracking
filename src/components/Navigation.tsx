@@ -25,6 +25,9 @@ import { useNavigate } from "react-router-dom";
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import ViewListIcon from "@mui/icons-material/ViewList";
 import AddHomeWorkSharpIcon from '@mui/icons-material/AddHomeWorkSharp';
+import PasswordIcon from '@mui/icons-material/Password';
+import ImageIcon from '@mui/icons-material/Image';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const Navigation = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -179,11 +182,43 @@ const Navigation = () => {
 
               <ListItemButton>
                 <ListItemIcon>
-                  <AccountBoxIcon />
+                  <PasswordIcon />
                 </ListItemIcon>
                 <ListItemText
                   primary="Change Password"
                   onClick={() => navigate("/changepassword")}
+                />
+              </ListItemButton>
+
+
+              <ListItemButton>
+                <ListItemIcon>
+                  <AccountBoxIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="Update Profile"
+                  onClick={() => navigate("/updateuserprofile")}
+                />
+              </ListItemButton>
+
+              
+              <ListItemButton>
+                <ListItemIcon>
+                  <AccountCircleIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="My Profile"
+                  onClick={() => navigate("/myprofile")}
+                />
+              </ListItemButton>
+
+              <ListItemButton>
+                <ListItemIcon>
+                  <ImageIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="Profile Image"
+                  onClick={() => navigate("/profileimage")}
                 />
               </ListItemButton>
 
@@ -211,7 +246,7 @@ const Navigation = () => {
 
               <ListItemButton>
                 <ListItemIcon>
-                  <AccountBoxIcon />
+                <PasswordIcon />
                 </ListItemIcon>
                 <ListItemText
                   primary="Change Password"
@@ -219,9 +254,21 @@ const Navigation = () => {
                 />
               </ListItemButton>
 
+
               <ListItemButton>
                 <ListItemIcon>
                   <AccountBoxIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="Update Profile"
+                  onClick={() => navigate("/updateuserprofile")}
+                />
+              </ListItemButton>
+
+
+              <ListItemButton>
+                <ListItemIcon>
+                  <AccountCircleIcon />
                 </ListItemIcon>
                 <ListItemText
                   primary="My Profile"
@@ -231,7 +278,7 @@ const Navigation = () => {
 
               <ListItemButton>
                 <ListItemIcon>
-                  <AccountBoxIcon />
+                  <ImageIcon />
                 </ListItemIcon>
                 <ListItemText
                   primary="Profile Image"
