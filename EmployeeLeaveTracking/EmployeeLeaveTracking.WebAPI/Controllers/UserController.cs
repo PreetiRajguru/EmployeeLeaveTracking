@@ -92,9 +92,10 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
 
-        [HttpPut("{id}")]
+        ///update user profile
+        [HttpPut("updateprofile/{id}")]
         [Authorize(Roles = "Manager,Employee")]
-        public async Task<IActionResult> UpdateUser(string id, [FromBody] UserRegistrationDTO user)
+        public async Task<IActionResult> UpdateUser(string id, [FromBody] UpdateProfileDTO user)
         {
             if (user == null)
             {
@@ -115,13 +116,49 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 
             try
             {
-                UserRegistrationDTO updatedUser = await _userService.UpdateUser(user);
+                UpdateProfileDTO updatedUser = await _userService.UpdateUserProfile(user);
 
                 return Ok(updatedUser);
             }
             catch (ArgumentException ex)
             {
                 return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //get current user details
+
+        [HttpGet("currentuserdetails/{employeeId}")]
+        [Authorize(Roles = "Manager,Employee")]
+        public ActionResult<UpdateProfileDTO> GetCurrentUserDetails(string employeeId)
+        {
+            try
+            {
+                UpdateProfileDTO userBasicInfo = _userService.GetCurrentUserDetails(employeeId);
+                if (userBasicInfo == null)
+                {
+                    return NotFound();
+                }
+                return Ok(userBasicInfo);
             }
             catch (Exception ex)
             {

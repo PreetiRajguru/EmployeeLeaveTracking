@@ -10,10 +10,13 @@ namespace EmployeeLeaveTracking.Services.Interfaces
 
         public CurrentUserDTO GetCurrentUser(string employeeId);
 
+        public UpdateProfileDTO GetCurrentUserDetails(string employeeId);
+
         Task<string> GetManagerIdAsync(string employeeId);
 
 
+       /* Task<UserRegistrationDTO> UpdateUser(UserRegistrationDTO user);*/
 
-        Task<UserRegistrationDTO> UpdateUser(UserRegistrationDTO user);
+        Task<UpdateProfileDTO> UpdateUserProfile(UpdateProfileDTO user);
     }
 }

@@ -125,7 +125,11 @@ namespace EmployeeLeaveTracking.Services.Services
             return employee.ManagerId;
         }
 
-        public async Task<UserRegistrationDTO> UpdateUser(UserRegistrationDTO user)
+      
+
+
+        //update user profile
+        public async Task<UpdateProfileDTO> UpdateUserProfile(UpdateProfileDTO user)
         {
             Data.Models.User existingUser = await _dbContext.Users.FindAsync(user.Id);
 
@@ -139,12 +143,46 @@ namespace EmployeeLeaveTracking.Services.Services
             existingUser.UserName = user.UserName;
             existingUser.Email = user.Email;
             existingUser.PhoneNumber = user.PhoneNumber;
-            existingUser.ManagerId = user.ManagerId;
-            existingUser.DesignationId = user.DesignationId;
 
             await _dbContext.SaveChangesAsync();
 
             return user;
         }
+
+
+
+
+
+
+
+
+        //get user details
+
+        public UpdateProfileDTO GetCurrentUserDetails(string employeeId)
+        {
+            if (string.IsNullOrWhiteSpace(employeeId))
+            {
+                throw new ArgumentException("Employee Id cannot be null or whitespace.", nameof(employeeId));
+            }
+
+            Data.Models.User? user = _dbContext.Users
+                .FirstOrDefault(u => u.Id == employeeId);
+
+            if (user == null)
+            {
+                throw new ArgumentException($"User with ID {employeeId} not found.");
+            }
+
+            return new UpdateProfileDTO
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                UserName = user.UserName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber
+            };
+        }
+
     }
 }

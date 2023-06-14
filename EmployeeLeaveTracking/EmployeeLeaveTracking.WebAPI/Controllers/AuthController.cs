@@ -3,7 +3,6 @@ using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Data.Models;
 using EmployeeLeaveTracking.Services.Interfaces;
 using EmployeeLeaveTracking.WebAPI.Controllers;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
@@ -143,68 +142,6 @@ namespace EmployeeLeaveTracking.Controllers
         }
 
 
-        /*
-                [HttpPost]
-                public async Task<IActionResult> ChangePasswordHash(string userId, string newPasswordHash)
-                {
-                    var user = await _userManager.FindByIdAsync(userId);
-                    if (user == null)
-                    {
-                        return NotFound();
-                    }
-
-                    *//*var newPassword = _userManager.PasswordHasher.HashPassword(user,newPasswordHash);*//*
-
-                    user.PasswordHash = newPasswordHash;
-                    var result = await _userManager.UpdateAsync(user);
-                    if (!result.Succeeded)
-                    {
-                        foreach (var error in result.Errors)
-                        {
-                            ModelState.AddModelError("", error.Description);
-                        }
-
-                        return BadRequest(ModelState);
-                    }
-
-                    return Ok();
-                }*/
-
-
-
-
-
-
-
-        /*  [HttpPost]
-          public async Task<IActionResult> ChangePasswordHash(string userId, string newPassword)
-          {
-              var user = await _userManager.FindByIdAsync(userId);
-              if (user == null)
-              {
-                  return NotFound();
-              }
-
-              var newPasswordHash = _userManager.PasswordHasher.HashPassword(user, newPassword);
-
-              user.PasswordHash = newPassword;
-              var result = await _userManager.UpdateAsync(user);
-              if (!result.Succeeded)
-              {
-                  foreach (var error in result.Errors)
-                  {
-                      ModelState.AddModelError("", error.Description);
-                  }
-
-                  return BadRequest(ModelState);
-              }
-
-              return Ok();
-          }
-  */
-
-
-
         [HttpPost]
         [Route("{userid}/{currentpassword}/{newpassword}")]
         public async Task<IActionResult> ChangePassword(string userId, string currentPassword, string newPassword)
@@ -238,66 +175,5 @@ namespace EmployeeLeaveTracking.Controllers
 
             return Ok();
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /* [HttpPost]
-         public async Task<IActionResult> ChangePassword(User usermodel)
-         {
-             var user = await _userManager.FindByIdAsync(usermodel.Id);
-             if (user == null)
-             {
-                 return NotFound();
-             }
-             user.PasswordHash = _userManager.PasswordHasher.HashPassword(usermodel,usermodel.PasswordHash);
-             var result = await _userManager.UpdateAsync(user);
-             if (!result.Succeeded)
-             {
-                 //throw exception......
-             }
-             return Ok();
-         }*/
-
-
-        /*
-
-
-                [HttpPost]
-                public async Task<IActionResult> changePassword(UsercredentialsModel usermodel)
-                {
-                    ApplicationUser user = await AppUserManager.FindByIdAsync(usermodel.Id);
-                    if (user == null)
-                    {
-                        return NotFound();
-                    }
-                    user.PasswordHash = AppUserManager.PasswordHasher.HashPassword(usermodel.Password);
-                    var result = await AppUserManager.UpdateAsync(user);
-                    if (!result.Succeeded)
-                    {
-                        //throw exception......
-                    }
-                    return Ok();
-                }*/
-
-
     }
 }
