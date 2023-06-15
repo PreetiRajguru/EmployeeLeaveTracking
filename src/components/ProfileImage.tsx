@@ -1,41 +1,42 @@
 import { ChangeEvent, useRef, useState } from "react";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
-import axios from "axios";
+import useHttp from "../config/https";
 
-const UserId = localStorage.getItem("id");
-
-export default function ProfileImage() 
-{
-  const [file, setFile] = useState<any>({
-    UserId : "",
-    Image : ""
-  });
-  
+export default function ProfileImage() {
+  const { axiosInstance, loading } = useHttp();
+  const [file, setFile] = useState<string>("");
+  const userId = localStorage.getItem("id");
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleUploadClick = () => {
     inputRef.current?.click();
   };
 
-  const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) {
       return;
     }
 
-    setFile({
-      UserId: UserId,
-      Image: URL.createObjectURL(e.target.files[0])
-    });
-console.log("file-----", file)
+    const selectedFile = e.target.files[0];
+    const imageUrl = URL.createObjectURL(selectedFile);
+
+    setFile(imageUrl);
 
     try {
-      axios.post("/api/ProfileImage", file).then((response) => {
-        console.log(response);
-        alert("Image Added Successfully.");
+      const formData = new FormData();
+      formData.append("UserId", userId!);
+      formData.append("Image", selectedFile);
+
+      const response = await axiosInstance.post("/api/ProfileImage", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       });
+      console.log(response);
+      alert("Image Added Successfully.");
     } catch (error: any) {
-      alert(error.response.data.message);
+      alert(error.response?.data?.message || "An error occurred.");
     }
   };
 
@@ -47,7 +48,8 @@ console.log("file-----", file)
         alignItems: "center",
       }}
     >
-      <div style={{ fontSize: "30px", marginTop: "50px" }}>Upload Image:</div>
+      
+      <div style={{ fontSize: "30px", marginTop: "50px" }}>Upload Profile Image:</div>
 
       <Stack spacing={2} direction="row">
         <Button
@@ -55,7 +57,7 @@ console.log("file-----", file)
           onClick={handleUploadClick}
           style={{ marginTop: "50px" }}
         >
-          Upload Image
+          Upload 
         </Button>
       </Stack>
 
@@ -66,11 +68,15 @@ console.log("file-----", file)
         style={{ display: "none" }}
       />
 
-      <img
-        src={file.Image}
-        alt="sds"
-        style={{ height: "500px", width: "900px" }}
-      ></img>
+    <div style={{ fontSize: "25px", marginTop: "10px" }}>Preview :</div>
+
+      {file && (
+        <img
+          src={file}
+          alt="Uploaded Image"
+          style={{ height: "400px", width: "700px" }}
+        />
+      )}
     </div>
   );
 }

@@ -9,9 +9,12 @@ import {
   styled,
   tableCellClasses,
 } from "@mui/material";
-import axios from "axios";
 import { Key, ReactNode, useEffect, useState } from "react";
 import useHttp from "../config/https";
+import * as React from 'react';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+import AutoFixNormalIcon from '@mui/icons-material/AutoFixNormal';
 
 const empId = localStorage.getItem("id");
 
@@ -49,21 +52,56 @@ export interface Employee {
 
 export default function CustomizedTables() {
   const [data, setData] = useState<Employee[]>([]);
-  const {axiosInstance, loading} = useHttp();
+  const { axiosInstance, loading } = useHttp();
+
+  //profile image
+  const [image, setImage] = useState<any>(null);
+  const [imageExists, setImageExists] = useState(false);
 
   useEffect(() => {
     const empId = localStorage.getItem("id");
-    const fetchAllEmployeesForManager = async () => {
+
+    const role = localStorage.getItem("role");
+    if (role == "Employee") {
+      const fetchEmployeeForManager = async () => {
+        try {
+          const response = await axiosInstance.get(
+            `api/User/employee/${empId}`
+          );
+          console.log(response);
+          setData(response.data);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      fetchEmployeeForManager();
+      console.log(data);
+    } else if (role == "Manager") {
+      const fetchManager = async () => {
+        try {
+          const response = await axiosInstance.get(`api/User/manager/${empId}`);
+          console.log(response);
+          setData(response.data);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      fetchManager();
+      console.log(data);
+    }
+
+    const fetchProfilePic = async () => {
       try {
-        const response = await axiosInstance.get(`api/User/employee/${empId}`);
+        const response = await axiosInstance.get(`api/ProfileImage/${empId}`);
         console.log(response);
-        setData(response.data);
+        setImage(response.data);
+        setImageExists(true);
       } catch (error) {
         console.error(error);
+        setImageExists(false);
       }
     };
-    fetchAllEmployeesForManager();
-    console.log(data);
+    fetchProfilePic();
   }, []);
 
   return (
@@ -73,7 +111,7 @@ export default function CustomizedTables() {
       <br></br>
 
       {data.map((user) => (
-        <Card sx={{ minWidth: 675, mt: 5, backgroundColor: "#ebf4f8" }}>
+        <Card sx={{ minWidth: 675, mt: 5, backgroundColor: "white" }}>
           <CardContent
             style={{
               display: "flex",
@@ -81,7 +119,19 @@ export default function CustomizedTables() {
               flexDirection: "column",
             }}
           >
-            <Stack direction="row" spacing={2}>
+            {imageExists && image ? (
+              <img
+                // src={image}
+                src={`https://localhost:7033/${image}`}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  height: "150px",
+                  width: "150px",
+                  borderRadius: "100px",
+                }}
+              />
+            ) : (
               <Avatar
                 src="/broken-image.jpg"
                 style={{
@@ -91,8 +141,10 @@ export default function CustomizedTables() {
                   width: "100px",
                 }}
               />
-            </Stack>
+            )}
+
             <br></br>
+
             <Typography
               gutterBottom
               variant="h5"
@@ -104,24 +156,39 @@ export default function CustomizedTables() {
             </Typography>
             <br></br>
 
-            <Typography variant="h6" component="div">
-              <b>Firstname :</b> {user.firstName}
-            </Typography>
-            <Typography variant="h6" component="div">
-              <b>Lastname :</b> {user.lastName}
-            </Typography>
-            <Typography variant="h6" component="div">
-              <b>Username :</b> {user.userName}
-            </Typography>
-            <Typography variant="h6" component="div">
-              <b>Email :</b> {user.email}
-            </Typography>
-            {/* <Typography variant="h6" component="div">
-            Designation : {user.designationName}
-            </Typography> */}
-            <Typography variant="h6" component="div">
-              <b>Contact Details :</b> {user.phoneNumber}
-            </Typography>
+            <table style={{ fontSize: "20px" }}>
+              <tr>
+                <td>
+                  <b>Firstname</b>
+                </td>
+                <td>{user.firstName}</td>
+              </tr>
+              <tr>
+                <td>
+                  <b>Lastname</b>
+                </td>
+                <td>{user.lastName}</td>
+              </tr>
+              <tr>
+                <td>
+                  <b>Username</b>
+                </td>
+                <td>{user.userName}</td>
+              </tr>
+              <tr>
+                <td>
+                  <b>Email</b>
+                </td>
+                <td>{user.email}</td>
+              </tr>
+
+              <tr>
+                <td>
+                  <b>Contact Number &nbsp;&nbsp;&nbsp;&nbsp;</b>
+                </td>
+                <td>{user.phoneNumber}</td>
+              </tr>
+            </table>
           </CardContent>
         </Card>
       ))}

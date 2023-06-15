@@ -28,6 +28,7 @@ import AddHomeWorkSharpIcon from '@mui/icons-material/AddHomeWorkSharp';
 import PasswordIcon from '@mui/icons-material/Password';
 import ImageIcon from '@mui/icons-material/Image';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AutoFixNormalIcon from '@mui/icons-material/AutoFixNormal';
 
 const Navigation = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -179,21 +180,20 @@ const Navigation = () => {
                   onClick={() => navigate("/newrequests")}
                 />
               </ListItemButton>
-
+              
               <ListItemButton>
                 <ListItemIcon>
-                  <PasswordIcon />
+                  <AccountCircleIcon />
                 </ListItemIcon>
                 <ListItemText
-                  primary="Change Password"
-                  onClick={() => navigate("/changepassword")}
+                  primary="My Profile"
+                  onClick={() => navigate("/myprofile")}
                 />
               </ListItemButton>
-
-
+              
               <ListItemButton>
                 <ListItemIcon>
-                  <AccountBoxIcon />
+                  <AutoFixNormalIcon />
                 </ListItemIcon>
                 <ListItemText
                   primary="Update Profile"
@@ -204,11 +204,11 @@ const Navigation = () => {
               
               <ListItemButton>
                 <ListItemIcon>
-                  <AccountCircleIcon />
+                  <PasswordIcon />
                 </ListItemIcon>
                 <ListItemText
-                  primary="My Profile"
-                  onClick={() => navigate("/myprofile")}
+                  primary="Change Password"
+                  onClick={() => navigate("/changepassword")}
                 />
               </ListItemButton>
 
@@ -225,6 +225,7 @@ const Navigation = () => {
             </>
           ) : (
             <>
+
               <ListItemButton>
                 <ListItemIcon>
                   <SendIcon />
@@ -233,6 +234,7 @@ const Navigation = () => {
                   primary="Apply For Leaves"
                   onClick={() => navigate("/applyforleaves")}
                 />
+
               </ListItemButton>
               <ListItemButton>
                 <ListItemIcon>
@@ -246,18 +248,18 @@ const Navigation = () => {
 
               <ListItemButton>
                 <ListItemIcon>
-                <PasswordIcon />
+                  <AccountCircleIcon />
                 </ListItemIcon>
                 <ListItemText
-                  primary="Change Password"
-                  onClick={() => navigate("/changepassword")}
+                  primary="My Profile"
+                  onClick={() => navigate("/myprofile")}
                 />
               </ListItemButton>
 
 
               <ListItemButton>
                 <ListItemIcon>
-                  <AccountBoxIcon />
+                  <AutoFixNormalIcon />
                 </ListItemIcon>
                 <ListItemText
                   primary="Update Profile"
@@ -265,14 +267,13 @@ const Navigation = () => {
                 />
               </ListItemButton>
 
-
               <ListItemButton>
                 <ListItemIcon>
-                  <AccountCircleIcon />
+                <PasswordIcon />
                 </ListItemIcon>
                 <ListItemText
-                  primary="My Profile"
-                  onClick={() => navigate("/myprofile")}
+                  primary="Change Password"
+                  onClick={() => navigate("/changepassword")}
                 />
               </ListItemButton>
 

@@ -5,6 +5,11 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import useHttp from "../config/https";
+import { Avatar } from "@mui/material";
+import * as React from 'react';
+import DeleteIcon from '@mui/icons-material/Delete';
+import AutoFixNormalIcon from '@mui/icons-material/AutoFixNormal';
+import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 
 export default function UpdateUserProfile() {
   const [isFormValid, setIsFormValid] = useState(false);
@@ -26,6 +31,10 @@ export default function UpdateUserProfile() {
     },
   });
 
+  //profile image
+  const [image, setImage] = useState<any>(null);
+  const [imageExists, setImageExists] = useState(false);
+
   const [tryErrors, setTryErrors] = useState({
     firstname: "",
     lastname: "",
@@ -46,10 +55,31 @@ const [dataFetched, setDataFetched] = useState(false);
     fetchUserId();
   }, []);
 
+//profile pic
+useEffect(() => {
+  const empId = localStorage.getItem("id");
+
+  const fetchProfilePic = async () => {
+    try {
+      const response = await axiosInstance.get(`api/ProfileImage/${empId}`);
+      console.log(response);
+      setImage(response.data);
+      setImageExists(true);
+    } catch (error) {
+      console.error(error);
+      setImageExists(false);
+    }
+  };
+  fetchProfilePic();
+}, []);
+
+
+
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        if (!dataFetched) { // Only fetch data if it hasn't been fetched before
+        if (!dataFetched) { 
+          // Only fetch data if it hasn't been fetched before
           const response = await axiosInstance.get(
             `/api/User/currentuserdetails/${localStorage.getItem("id")}`
           );
@@ -171,7 +201,20 @@ const [dataFetched, setDataFetched] = useState(false);
       },
     });
   };
+  const handleDelete = () => {
+   //delete functionality
+   try {
+    const id = localStorage.getItem("id");
+    const response = axiosInstance.delete(`/api/ProfileImage/${id}`);
+    console.log(response);
+    alert("Image Deleted Successfully.");
+    window.location.reload();
+  } catch (error: any) {
+    alert(error.response?.data?.message || "An error occurred.");
+  }
 
+
+  };
   const handleInputChange = (event: any) => {
     const { name, value } = event.target;
     let isValid = true;
@@ -252,7 +295,7 @@ const [dataFetched, setDataFetched] = useState(false);
           borderRadius: 2,
           px: 4,
           py: 6,
-          marginTop: 8,
+          marginTop: 3,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
@@ -261,6 +304,44 @@ const [dataFetched, setDataFetched] = useState(false);
         <Typography component="h1" variant="h5">
           Update Profile
         </Typography>
+        <br></br>
+
+        {imageExists && image ? (
+              <img
+                // src={image}
+                src={`https://localhost:7033/${image}`}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  height: "150px",
+                  width: "150px",
+                  borderRadius: "100px",
+                }}
+              />
+            ) : (
+              <Avatar
+                src="/broken-image.jpg"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  height: "100px",
+                  width: "100px",
+                }}
+              />
+            )}
+
+            <br></br>
+
+            <div>
+            <Button variant="outlined" color="success">
+            <AutoFixHighIcon/>
+            </Button>
+
+            <Button variant="outlined" color="error" style={{marginLeft:"20px"}} onClick={handleDelete}>
+            <DeleteIcon />
+            </Button>
+            </div>
+          
 
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
