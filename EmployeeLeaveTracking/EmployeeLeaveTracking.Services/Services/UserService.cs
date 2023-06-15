@@ -75,6 +75,36 @@ namespace EmployeeLeaveTracking.Services.Services
             return user;
         }
 
+        //details for manager
+        public IEnumerable<UserRegistrationDTO> GetManagerDetails(string employeeId)
+        {
+            if (string.IsNullOrWhiteSpace(employeeId))
+            {
+                throw new ArgumentException("Manager Id cannot be null or whitespace.", nameof(employeeId));
+            }
+            IQueryable<UserRegistrationDTO> user = _dbContext.Users
+                .Where(u => u.Id.Equals(employeeId))
+                .Select(u => new UserRegistrationDTO
+                {
+                    FirstName = u.FirstName,
+                    LastName = u.LastName,
+                    UserName = u.UserName,
+                    Email = u.Email,
+                    PhoneNumber = u.PhoneNumber,
+                    ManagerId = u.ManagerId,
+                    DesignationId = u.DesignationId
+                });
+            if (!user.Any())
+            {
+                throw new ArgumentException($"User with ID {employeeId} not found.");
+            }
+
+            return user;
+        }
+
+
+
+
         public string GetCurrentUserById()
         {
             string? userId = _httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.Sid);

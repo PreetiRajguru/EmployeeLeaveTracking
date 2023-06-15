@@ -8,6 +8,8 @@ namespace EmployeeLeaveTracking.Services.Interfaces
 
         IEnumerable<UserRegistrationDTO> GetUserDetails(string employeeId);
 
+        IEnumerable<UserRegistrationDTO> GetManagerDetails(string employeeId);
+
         public CurrentUserDTO GetCurrentUser(string employeeId);
 
         public UpdateProfileDTO GetCurrentUserDetails(string employeeId);

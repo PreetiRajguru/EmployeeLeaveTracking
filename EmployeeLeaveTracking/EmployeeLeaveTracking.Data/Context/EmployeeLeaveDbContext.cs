@@ -90,8 +90,8 @@ namespace EmployeeLeaveTracking.Data.Context
 
 
             modelBuilder.Entity<ProfileImage>()
-            .HasOne(p => p.User)
-            .WithOne(p => p.ProfileImages);
+                      .HasOne(p => p.User)
+                      .WithOne(p => p.ProfileImages);
 
 
             modelBuilder.Entity<LeaveType>().HasData(

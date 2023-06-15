@@ -50,6 +50,23 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
             }
         }
 
+        //details for manager
+        [HttpGet]
+        [Authorize(Roles = "Manager,Employee")]
+        [Route("manager/{employeeId}")]
+        public ActionResult<IEnumerable<UserRegistrationDTO>> GetManagerDetails(string employeeId)
+        {
+            try
+            {
+                IEnumerable<UserRegistrationDTO> user = _userService.GetManagerDetails(employeeId);
+                return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+        }
+
 
         [HttpGet("currentuser/{employeeId}")]
         [Authorize(Roles = "Manager,Employee")]

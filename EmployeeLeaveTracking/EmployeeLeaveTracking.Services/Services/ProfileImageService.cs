@@ -18,15 +18,16 @@ namespace EmployeeLeaveTracking.Services.Services
         }
         public async Task<int> UploadImage([FromForm] ProfileImageUploadDTO imageEntity)
         {
-            if (imageEntity.Image.FileName == null || imageEntity.Image.FileName.Length == 0)
+            if (imageEntity.Image?.FileName == null || imageEntity.Image.FileName.Length == 0)
             {
                 return 0;
             }
 
-            string path = Path.Combine(_environment.WebRootPath,
-                                        "Images", Guid.NewGuid().ToString() + imageEntity.Image.FileName);
+            string randomFileName = Guid.NewGuid().ToString();
+            string rootPath = Path.Combine(_environment.WebRootPath, "Images", randomFileName + imageEntity.Image.FileName);
+            string databaseImagePath = "\\Images\\" + randomFileName + imageEntity.Image.FileName;
 
-            using (FileStream stream = new FileStream(path, FileMode.Create))
+            using (FileStream stream = new(rootPath, FileMode.Create))
             {
                 await imageEntity.Image.CopyToAsync(stream);
                 stream.Close();
@@ -35,33 +36,45 @@ namespace EmployeeLeaveTracking.Services.Services
             ProfileImage imageData = _context.ProfileImages.FirstOrDefault(e => e.UserId.Equals(imageEntity.UserId))!;
             if (imageData == null)
             {
-                ProfileImage userProfileModel = new ProfileImage
+                ProfileImage userProfileModel = new()
                 {
                     UserId = imageEntity.UserId,
-                    ImagePath = path
+                    ImagePath = databaseImagePath
                 };
                 _context.Add(userProfileModel);
             }
             else
             {
-                imageData.ImagePath = path;
+                File.Delete(_environment.WebRootPath + imageData.ImagePath);
+                imageData.ImagePath = databaseImagePath;
             }
-
-            User user = _context.Users.FirstOrDefault(e => e.Id.Equals(imageEntity.UserId))!;
-            user.ProfilePictureUrl = path;
             _context.SaveChanges();
-
             return 1;
         }
+
         public string GetImage(string userId)
         {
-            string imagePath = _context.Users.FirstOrDefault(e => e.Id.Equals(userId)).ProfilePictureUrl;
-            if (string.IsNullOrEmpty(imagePath))
+            var profileImage = _context.ProfileImages.FirstOrDefault(e => e.UserId.Equals(userId));
+            if (profileImage != null && !string.IsNullOrEmpty(profileImage.ImagePath))
+            {
+                return profileImage.ImagePath;
+            }
+            else
             {
                 return null;
             }
-            else
-                return imagePath;
+        }
+
+        public int DeleteImage(string userId)
+        {
+            ProfileImage imageData = _context.ProfileImages.FirstOrDefault(e => e.UserId.Equals(userId))!;
+            if (imageData != null)
+            {
+                File.Delete(_environment.WebRootPath + imageData.ImagePath);
+                _context.Remove(imageData);
+                _context.SaveChanges();
+            }
+            return 0;
         }
     }
 }

@@ -38,10 +38,8 @@ namespace EmployeeLeaveTracking.Data.Models
 
         public List<LeaveBalance> EmployeeLeaveBalance { get; set; }
 
-    /*    public List<LeaveBalance> ManagerLeaveBalance { get; set; }*/
+        /*    public List<LeaveBalance> ManagerLeaveBalance { get; set; }*/
 
-
-        public string? ProfilePictureUrl { get; set; }
         public ProfileImage ProfileImages { get; set; }
 
         public User()

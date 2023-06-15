@@ -1,12 +1,16 @@
 {
   "Files": [
     {
-      "Id": "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\0fd3cc66-e84f-4bd5-bb32-e88a85370e34light-bulbs-5488573_1920.jpg",
-      "PackagePath": "staticwebassets\\Images\\0fd3cc66-e84f-4bd5-bb32-e88a85370e34light-bulbs-5488573_1920.jpg"
+      "Id": "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\00bfdae1-7a79-49b7-b270-ee0285603ec7abcd.jpg",
+      "PackagePath": "staticwebassets\\Images\\00bfdae1-7a79-49b7-b270-ee0285603ec7abcd.jpg"
     },
     {
-      "Id": "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\ccd5b9fc-6c54-4346-b5db-8f006aed6e77pexels-valiphotos-589840.jpg",
-      "PackagePath": "staticwebassets\\Images\\ccd5b9fc-6c54-4346-b5db-8f006aed6e77pexels-valiphotos-589840.jpg"
+      "Id": "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\9865fb35-4cda-43a5-972f-ea007cb28b5blight-bulbs-5488573_1920.jpg",
+      "PackagePath": "staticwebassets\\Images\\9865fb35-4cda-43a5-972f-ea007cb28b5blight-bulbs-5488573_1920.jpg"
+    },
+    {
+      "Id": "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\abcd.jpg",
+      "PackagePath": "staticwebassets\\Images\\abcd.jpg"
     },
     {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.EmployeeLeaveTracking.WebAPI.Microsoft.AspNetCore.StaticWebAssets.props",

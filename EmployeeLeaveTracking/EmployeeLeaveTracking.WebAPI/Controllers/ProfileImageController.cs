@@ -6,17 +6,16 @@ using Microsoft.AspNetCore.Mvc;
 namespace EmployeeLeaveTracking.WebAPI.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize(Roles = "Manager, Employee")]
     [ApiController]
-    [Authorize]
     public class ProfileImageController : ControllerBase
     {
-        private readonly IWebHostEnvironment _environment;
         private readonly IProfileImage _profileImageService;
-        public ProfileImageController(IWebHostEnvironment environment, IProfileImage profileImageService)
+        public ProfileImageController(IProfileImage profileImageService)
         {
-            _environment = environment;
             _profileImageService = profileImageService;
         }
+
 
         [HttpPost]
         [Authorize(Roles = "Manager,Employee")]
@@ -25,21 +24,19 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
             try
             {
                 await _profileImageService.UploadImage(model);
-
                 if (model == null)
                 {
-                    return BadRequest("Null");
+                    return BadRequest();
                 }
-
-                return Ok("Upload Successfull ");
+                return Ok();
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"An error occurred : {ex.Message}");
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         [Authorize(Roles = "Manager,Employee")]
         public IActionResult Get(string id)
         {
@@ -48,14 +45,32 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
                 string result = _profileImageService.GetImage(id);
                 if (result == null)
                 {
-                    return BadRequest("Null");
+                    return BadRequest();
                 }
-
+                
                 return Ok(result);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"An error occurred : {ex.Message}");
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+        [HttpDelete("{id}")]
+        [Authorize(Roles = "Manager,Employee")]
+        public IActionResult Delete(string id)
+        {
+            try
+            {
+                int result = _profileImageService.DeleteImage(id);
+                if (result.Equals(0))
+                {
+                    return Ok();
+                }
+                return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
     }

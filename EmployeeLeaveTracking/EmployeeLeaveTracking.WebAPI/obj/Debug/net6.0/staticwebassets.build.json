@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9+fqVMwh1lEqUR+fFd6+ZKN5r9B1o3TtpBalCTv6KQ4=",
+  "Hash": "y0DKKkJdvoHYvXtOzzWf07zj2WyL0fr/tVZ5r9scBrE=",
   "Source": "EmployeeLeaveTracking.WebAPI",
   "BasePath": "_content/EmployeeLeaveTracking.WebAPI",
   "Mode": "Default",
@@ -17,12 +17,12 @@
   ],
   "Assets": [
     {
-      "Identity": "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\0fd3cc66-e84f-4bd5-bb32-e88a85370e34light-bulbs-5488573_1920.jpg",
+      "Identity": "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\00bfdae1-7a79-49b7-b270-ee0285603ec7abcd.jpg",
       "SourceId": "EmployeeLeaveTracking.WebAPI",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\",
       "BasePath": "_content/EmployeeLeaveTracking.WebAPI",
-      "RelativePath": "Images/0fd3cc66-e84f-4bd5-bb32-e88a85370e34light-bulbs-5488573_1920.jpg",
+      "RelativePath": "Images/00bfdae1-7a79-49b7-b270-ee0285603ec7abcd.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -31,15 +31,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\0fd3cc66-e84f-4bd5-bb32-e88a85370e34light-bulbs-5488573_1920.jpg"
+      "OriginalItemSpec": "wwwroot\\Images\\00bfdae1-7a79-49b7-b270-ee0285603ec7abcd.jpg"
     },
     {
-      "Identity": "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\ccd5b9fc-6c54-4346-b5db-8f006aed6e77pexels-valiphotos-589840.jpg",
+      "Identity": "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\9865fb35-4cda-43a5-972f-ea007cb28b5blight-bulbs-5488573_1920.jpg",
       "SourceId": "EmployeeLeaveTracking.WebAPI",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\",
       "BasePath": "_content/EmployeeLeaveTracking.WebAPI",
-      "RelativePath": "Images/ccd5b9fc-6c54-4346-b5db-8f006aed6e77pexels-valiphotos-589840.jpg",
+      "RelativePath": "Images/9865fb35-4cda-43a5-972f-ea007cb28b5blight-bulbs-5488573_1920.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -48,7 +48,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\ccd5b9fc-6c54-4346-b5db-8f006aed6e77pexels-valiphotos-589840.jpg"
+      "OriginalItemSpec": "wwwroot\\Images\\9865fb35-4cda-43a5-972f-ea007cb28b5blight-bulbs-5488573_1920.jpg"
+    },
+    {
+      "Identity": "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\abcd.jpg",
+      "SourceId": "EmployeeLeaveTracking.WebAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\",
+      "BasePath": "_content/EmployeeLeaveTracking.WebAPI",
+      "RelativePath": "Images/abcd.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\abcd.jpg"
     }
   ]
 }
