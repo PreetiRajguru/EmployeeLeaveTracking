@@ -6,7 +6,6 @@
 
         public string? DesignationName { get; set; }
 
-
         public DateTime? CreatedDate { get; set; }
 
         public int? CreatedBy { get; set; }
@@ -16,8 +15,6 @@
         public int? ModifiedBy { get; set; }
 
         public bool? IsDeleted { get; set; } = false;
-
-
 
         public List<User>? Users { get; set; }
 

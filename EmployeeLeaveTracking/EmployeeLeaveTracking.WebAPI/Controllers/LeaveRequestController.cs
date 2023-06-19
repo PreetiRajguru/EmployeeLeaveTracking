@@ -276,5 +276,21 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 
             return CreatedAtRoute(new { id = createdLeaveRequest.Id }, createdLeaveRequest);
         }
+
+
+
+
+        [HttpPost("leaveaddition")]
+        public IActionResult CompOffLeaveAddition(NewLeaveRequestDTO leaveRequest)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var createdLeaveRequest = _leaveRequestService.CompOffLeaveAddition(leaveRequest);
+
+            return CreatedAtRoute(new { id = createdLeaveRequest.Id }, createdLeaveRequest);
+        }
     }
 }

@@ -6,6 +6,8 @@ namespace EmployeeLeaveTracking.Services.Interfaces
     {
         IEnumerable<LeaveTypeDTO> GetAll();
 
+        IEnumerable<LeaveTypeDTO> GetCompOff();
+
         LeaveTypeDTO GetById(int id);
 
         LeaveTypeDTO Create(LeaveTypeDTO leaveType);

@@ -8,7 +8,6 @@ namespace EmployeeLeaveTracking.Data.DTOs
 
         public string? LastName { get; init; }
 
-
         [Required(ErrorMessage = "Username is required")]
         public string? UserName { get; init; }
 

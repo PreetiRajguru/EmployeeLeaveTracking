@@ -10,7 +10,6 @@ namespace EmployeeLeaveTracking.Data.DTOs
 
         public string? LastName { get; init; }
 
-
         [Required(ErrorMessage = "Username is required")]
         public string? UserName { get; init; }
 
@@ -25,7 +24,6 @@ namespace EmployeeLeaveTracking.Data.DTOs
         public int DesignationId { get; init; }
 
         public string? DesignationName { get; init; }
-
 
         public string? ProfilePictureUrl { get; set; }
     }

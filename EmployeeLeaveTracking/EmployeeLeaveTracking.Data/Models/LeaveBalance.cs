@@ -14,7 +14,6 @@
 
         public LeaveType LeaveType { get; set; } = null!;
 
-
         public DateTime? CreatedDate { get; set; }
 
         public int? CreatedBy { get; set; }

@@ -142,7 +142,7 @@ namespace EmployeeLeaveTracking.Services.Services
         //new method
         public NewLeaveRequestDTO NewCreateNewLeaveRequest(NewLeaveRequestDTO leaveRequest)
         {
-            LeaveRequest newLeaveRequest = new LeaveRequest
+            LeaveRequest newLeaveRequest = new()
             {
                 RequestComments = leaveRequest.RequestComments,
                 EmployeeId = leaveRequest.EmployeeId,
@@ -174,7 +174,75 @@ namespace EmployeeLeaveTracking.Services.Services
             }
             else
             {
-                balance.Balance -= leaveRequest.TotalDays;
+                balance.Balance = leaveRequest.TotalDays;
+            }
+
+            _dbContext.SaveChanges();
+
+            return leaveRequest;
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //compoff addition by manager
+        public NewLeaveRequestDTO CompOffLeaveAddition(NewLeaveRequestDTO leaveRequest)
+        {
+            LeaveRequest newLeaveRequest = new()
+            {
+                RequestComments = leaveRequest.RequestComments,
+                EmployeeId = leaveRequest.EmployeeId,
+                ManagerId = leaveRequest.ManagerId,
+                LeaveTypeId = leaveRequest.LeaveTypeId,
+                StartDate = leaveRequest.StartDate,
+                EndDate = leaveRequest.EndDate,
+                TotalDays = leaveRequest.TotalDays,
+                StatusId = leaveRequest.StatusId
+            };
+
+            _dbContext.LeaveRequests.Add(newLeaveRequest);
+            _dbContext.SaveChanges();
+
+            leaveRequest.Id = newLeaveRequest.Id;
+
+            var balance = _dbContext.LeaveBalances
+            .FirstOrDefault(b => b.UserId == leaveRequest.EmployeeId && b.LeaveTypeId == leaveRequest.LeaveTypeId);
+
+            if (balance == null)
+            {
+                balance = new LeaveBalance
+                {
+                    UserId = leaveRequest.EmployeeId,
+                    LeaveTypeId = leaveRequest.LeaveTypeId,
+                    Balance = +leaveRequest.TotalDays
+                };
+                _dbContext.LeaveBalances.Add(balance);
+            }
+            else
+            {
+                balance.Balance += leaveRequest.TotalDays;
             }
 
             _dbContext.SaveChanges();

@@ -29,7 +29,6 @@ namespace EmployeeLeaveTracking.Data.Context
 
         }
 
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -39,7 +38,6 @@ namespace EmployeeLeaveTracking.Data.Context
                     "MultipleActiveResultSets=True;");
             }
         }
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -52,25 +50,21 @@ namespace EmployeeLeaveTracking.Data.Context
            .HasForeignKey(lb => lb.ManagerId)
            .OnDelete(DeleteBehavior.NoAction);
 
-
             modelBuilder.Entity<LeaveRequest>()
            .HasOne(lb => lb.Employee)
            .WithMany(lt => lt.EmployeeLeaveRequests)
            .HasForeignKey(lb => lb.EmployeeId)
            .OnDelete(DeleteBehavior.NoAction);
 
-
             modelBuilder.Entity<LeaveRequest>()
            .HasOne(lb => lb.LeaveType)
            .WithMany(lt => lt.LeaveRequests)
            .HasForeignKey(lb => lb.LeaveTypeId);
 
-
             modelBuilder.Entity<LeaveRequest>()
           .HasOne(lb => lb.StatusMaster)
           .WithMany(lt => lt.LeaveRequests)
           .HasForeignKey(lb => lb.StatusId);
-
 
             modelBuilder.Entity<User>()
           .HasOne(lb => lb.Designation)
@@ -82,17 +76,14 @@ namespace EmployeeLeaveTracking.Data.Context
           .WithMany(lt => lt.EmployeeLeaveBalance)
           .HasForeignKey(lb => lb.UserId);
 
-
             modelBuilder.Entity<LeaveBalance>()
           .HasOne(lb => lb.LeaveType)
           .WithMany(lt => lt.LeaveBalances)
           .HasForeignKey(lb => lb.LeaveTypeId);
 
-
             modelBuilder.Entity<ProfileImage>()
                       .HasOne(p => p.User)
                       .WithOne(p => p.ProfileImages);
-
 
             modelBuilder.Entity<LeaveType>().HasData(
             new LeaveType { Id = 1, LeaveTypeName = "Paid Leave" },
@@ -102,13 +93,11 @@ namespace EmployeeLeaveTracking.Data.Context
             new LeaveType { Id = 5, LeaveTypeName = "Compensatory Off" },
             new LeaveType { Id = 6, LeaveTypeName = "On Duty" });
 
-
             modelBuilder.Entity<DesignationMaster>().HasData(
             new DesignationMaster { Id = 1, DesignationName = "Intern" },
             new DesignationMaster { Id = 2, DesignationName = "Software Engineer" },
             new DesignationMaster { Id = 3, DesignationName = "Senior Software Engineer" },
             new DesignationMaster { Id = 4, DesignationName = "Tech Lead" });
-
 
             modelBuilder.Entity<StatusMaster>().HasData(
             new StatusMaster { Id = 1, StatusType = "Pending" },

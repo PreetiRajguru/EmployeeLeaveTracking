@@ -1,7 +1,4 @@
-﻿using EmployeeLeaveTracking.Data.DTOs;
-using EmployeeLeaveTracking.Services.Interfaces;
-using EmployeeLeaveTracking.Services.Services;
-using Microsoft.AspNetCore.Authorization;
+﻿using EmployeeLeaveTracking.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeLeaveTracking.WebAPI.Controllers

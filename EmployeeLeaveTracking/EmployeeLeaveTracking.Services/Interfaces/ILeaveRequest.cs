@@ -13,6 +13,7 @@ namespace EmployeeLeaveTracking.Services.Interfaces
 
         public NewLeaveRequestDTO CreateNewLeaveRequest(NewLeaveRequestDTO leaveRequest);
 
+
         LeaveRequestDTO Update(LeaveRequestDTO leaveRequest);
 
         bool Delete(int id);
@@ -36,5 +37,9 @@ namespace EmployeeLeaveTracking.Services.Interfaces
         
         //new method
         public NewLeaveRequestDTO NewCreateNewLeaveRequest(NewLeaveRequestDTO leaveRequest);
+        
+        //compoff
+
+        public NewLeaveRequestDTO CompOffLeaveAddition(NewLeaveRequestDTO leaveRequest);
     }
 }

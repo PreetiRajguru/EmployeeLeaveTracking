@@ -31,6 +31,23 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
             }
         }
 
+
+        [HttpGet("compoff")]
+        [Authorize(Roles = "Manager,Employee")]
+        public IActionResult GetCompOff()
+        {
+            try
+            {
+                IEnumerable<LeaveTypeDTO> leaveTypes = _leaveTypeService.GetCompOff();
+                return Ok(leaveTypes);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred while getting leave types: {ex.Message}");
+            }
+        }
+
+
         [HttpGet("{id}")]
         [Authorize(Roles = "Manager,Employee")]
         public IActionResult GetById(int id)

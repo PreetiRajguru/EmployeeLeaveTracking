@@ -12,7 +12,6 @@
 
         public int TotalDays { get; set; }
 
-
         public DateTime? CreatedDate { get; set; }
 
         public int? CreatedBy { get; set; }
@@ -23,8 +22,6 @@
 
         public bool? IsDeleted { get; set; } = false;
 
-
-
         public string? ManagerId { get; set; }
 
         public string? EmployeeId { get; set; }
@@ -32,8 +29,6 @@
         public int LeaveTypeId { get; set; }
 
         public int StatusId { get; set; }
-
-
 
         public User? Employee { get; set; }
 

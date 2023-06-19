@@ -26,7 +26,9 @@ namespace EmployeeLeaveTracking.Services.Services
         public IEnumerable<LeaveTypeDTO> GetAll()
         {
             IQueryable<LeaveTypeDTO> leaveTypes = _dbContext.LeaveTypes
-                .Where(lt => lt.IsDeleted == false && lt.LeaveTypeName != "Compensatory Off" && lt.LeaveTypeName != "On Duty")
+                /* .Where(lt => lt.IsDeleted == false && lt.LeaveTypeName != "Compensatory Off" && lt.LeaveTypeName != "On Duty")
+                 */
+                .Where(lt => lt.IsDeleted == false)
                 .Select(lt => new LeaveTypeDTO
                 {
                     Id = lt.Id,
@@ -35,6 +37,27 @@ namespace EmployeeLeaveTracking.Services.Services
 
             return leaveTypes;
         }
+
+
+
+        public IEnumerable<LeaveTypeDTO> GetCompOff()
+        {
+            IQueryable<LeaveTypeDTO> leaveTypes = _dbContext.LeaveTypes
+                .Where(lt => lt.IsDeleted == false && lt.LeaveTypeName == "Compensatory Off")
+                .Select(lt => new LeaveTypeDTO
+                {
+                    Id = lt.Id,
+                    LeaveTypeName = lt.LeaveTypeName
+                });
+
+            return leaveTypes;
+        }
+
+
+
+
+
+
 
         public LeaveTypeDTO GetById(int id)
         {
@@ -49,7 +72,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public LeaveTypeDTO Create(LeaveTypeDTO leaveType)
         {
-            LeaveType newLeaveType = new LeaveType
+            LeaveType newLeaveType = new()
             {
                 LeaveTypeName = leaveType.LeaveTypeName
             };
