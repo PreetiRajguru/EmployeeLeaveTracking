@@ -22,13 +22,12 @@ import ListItemButton from "@mui/material/ListItemButton";
 import DraftsIcon from "@mui/icons-material/Drafts";
 import SendIcon from "@mui/icons-material/Send";
 import { useNavigate } from "react-router-dom";
-import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import ViewListIcon from "@mui/icons-material/ViewList";
 import AddHomeWorkSharpIcon from '@mui/icons-material/AddHomeWorkSharp';
 import PasswordIcon from '@mui/icons-material/Password';
-import ImageIcon from '@mui/icons-material/Image';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AutoFixNormalIcon from '@mui/icons-material/AutoFixNormal';
+import AddBoxIcon from '@mui/icons-material/AddBox';
 
 const Navigation = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -212,15 +211,26 @@ const Navigation = () => {
                 />
               </ListItemButton>
 
+
               <ListItemButton>
                 <ListItemIcon>
-                  <ImageIcon />
+                  <AddBoxIcon />
                 </ListItemIcon>
                 <ListItemText
-                  primary="Profile Image"
-                  onClick={() => navigate("/profileimage")}
+                  primary="Comp-Off Request"
+                  onClick={() => navigate("/compoff")}
                 />
               </ListItemButton>
+
+              {/* <ListItemButton>
+                <ListItemIcon>
+                  <AddBoxIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="On-Duty Request"
+                  onClick={() => navigate("/changepassword")}
+                />
+              </ListItemButton> */}
 
             </>
           ) : (
@@ -274,16 +284,6 @@ const Navigation = () => {
                 <ListItemText
                   primary="Change Password"
                   onClick={() => navigate("/changepassword")}
-                />
-              </ListItemButton>
-
-              <ListItemButton>
-                <ListItemIcon>
-                  <ImageIcon />
-                </ListItemIcon>
-                <ListItemText
-                  primary="Profile Image"
-                  onClick={() => navigate("/profileimage")}
                 />
               </ListItemButton>
 

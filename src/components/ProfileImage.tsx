@@ -2,6 +2,7 @@ import { ChangeEvent, useRef, useState } from "react";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import useHttp from "../config/https";
+import swal from 'sweetalert';
 
 export default function ProfileImage() {
   const { axiosInstance, loading } = useHttp();
@@ -34,9 +35,9 @@ export default function ProfileImage() {
         },
       });
       console.log(response);
-      alert("Image Added Successfully.");
+      swal("Image Added Successfully.");
     } catch (error: any) {
-      alert(error.response?.data?.message || "An error occurred.");
+      swal(error.response?.data?.message || "An error occurred.");
     }
   };
 

@@ -12,25 +12,24 @@ import {
   FormControl,
   Divider,
 } from "@mui/material";
-import useReadLocalStorage from "../useReadLocalStorage";
-import useHttp from "../../config/https";
-import 'react-toastify/dist/ReactToastify.css';
+import useReadLocalStorage from "./useReadLocalStorage";
+import useHttp from "../config/https";
 import swal from 'sweetalert';
 
-const ApplyForLeaves = () => {
+const CompOff = () => {
   const navigate = useNavigate();
-  const empId = useReadLocalStorage("id");
-  console.log(empId);
+  const managerId = useReadLocalStorage("id");
+  console.log(managerId);
   const [leaveBalance, setLeaveBalance] = useState();
   const [empManager, setEmpManager] = useState("");
-  const {axiosInstance, loading} = useHttp();
+  const { axiosInstance, loading } = useHttp();
   const [leaveTypeDetails, setLeaveTypeDetails] = useState({
     requestComments: "",
     startDate: "",
     endDate: "",
     totalDays: 0,
-    managerId: empManager,
-    employeeId: empId,
+    managerId: managerId,
+    employeeId: undefined,
     leaveTypeId: undefined,
     statusId: 1,
     errors: {
@@ -58,7 +57,12 @@ const ApplyForLeaves = () => {
 
   const [isLeaveTypeSelected, setIsLeaveTypeSelected] = useState(false);
 
+  const [isEmployeeSelected, setEmployeeSelected] = useState(false);
+
   const [leaveTypeName, setLeaveTypeName] = useState<any>([]);
+
+  const [employeeName, setEmployeeName] = useState<any>([]);
+
   const [username, setUsername] = useState<string>();
   const [unAuthorized, setUnAuthorized] = useState(false);
 
@@ -98,38 +102,41 @@ const ApplyForLeaves = () => {
     }
 
     const newLeaveTypeDetails = {
-      managerId: empManager,
+      managerId: managerId,
       statusId: leaveTypeDetails.statusId,
       startDate: leaveTypeDetails.startDate,
       endDate: leaveTypeDetails.endDate,
       totalDays: leaveTypeDetails.totalDays,
       requestComments: leaveTypeDetails.requestComments,
-      employeeId: empId,
+      employeeId: leaveTypeDetails.employeeId,
       leaveTypeId: leaveTypeDetails.leaveTypeId,
     };
 
     if (leaveBalance && newLeaveTypeDetails.totalDays > +leaveBalance) {
-      swal( "Total days requested should be less than or equal to leave balance.");
+      swal(
+        "Total days requested should be less than or equal to leave balance."
+      );
       return;
     }
 
     try {
       axiosInstance
-        .post("/api/LeaveRequest/newleaverequest", newLeaveTypeDetails)
+        .post("/api/LeaveRequest/leaveaddition", newLeaveTypeDetails)
         .then((response) => {
-          swal("Leave Request Sent Succesfully");
-          navigate("/leavedetails");
+          swal("Leave Added Succesfully");
+
+        //   navigate("/leavedetails");
         });
     } catch (error: any) {
       swal(error.response.data.message);
-      
+
       const existingData = {
         requestComments: "",
         startDate: "",
         endDate: "",
         totalDays: 0,
         managerId: empManager,
-        employeeId: empId,
+        employeeId: undefined,
         leaveTypeId: undefined,
         statusId: 1,
         errors: {
@@ -143,7 +150,7 @@ const ApplyForLeaves = () => {
           statusId: "",
         },
       };
-      
+
       setLeaveTypeDetails(existingData);
       setUnAuthorized(true);
 
@@ -153,7 +160,8 @@ const ApplyForLeaves = () => {
         endDate: "",
         totalDays: 0,
         managerId: empManager,
-        employeeId: empId,
+        //select empid from dropdown menu
+        employeeId: undefined,
         leaveTypeId: undefined,
         statusId: 1,
         errors: {
@@ -168,13 +176,12 @@ const ApplyForLeaves = () => {
         },
       });
     }
-    };
-      
+  };
 
   useEffect(() => {
     const fetchLeaveTypes = async () => {
       try {
-        const response = await axiosInstance.get("/api/LeaveType");
+        const response = await axiosInstance.get("/api/LeaveType/compoff");
         setLeaveTypeName(response.data);
         console.log(response.data);
       } catch (error) {}
@@ -182,60 +189,76 @@ const ApplyForLeaves = () => {
 
     fetchLeaveTypes();
 
-    const fetchLeaveBalances = async () => {
+    const mId = localStorage.getItem("id");
+    const fetchEmployees = async () => {
       try {
-        const response = await axiosInstance.get(`/api/LeaveRequest/balance/${empId}`);
-        setLeaveBalance(response.data);
-        console.log(response.data);
-      } catch (error) {}
-    };
-    fetchLeaveBalances();
-
-    const fetchEmpManager = async () => {
-      try {
-        const response = await axiosInstance.get(`/api/User/${empId}/manager`);
-        setEmpManager(response.data);
+        const response = await axiosInstance.get(`/api/User/employees/${mId}`);
+        setEmployeeName(response.data);
         console.log(response.data);
       } catch (error) {}
     };
 
-    fetchEmpManager();
+    fetchEmployees();
+
+    // const fetchLeaveBalances = async () => {
+    //   try {
+    //     const response = await axiosInstance.get(
+    //       `/api/LeaveRequest/balance/${empId}`
+    //     );
+    //     setLeaveBalance(response.data);
+    //     console.log(response.data);
+    //   } catch (error) {}
+    // };
+    // fetchLeaveBalances();
+
+    // const fetchEmpManager = async () => {
+    //   try {
+    //     const response = await axiosInstance.get(`/api/User/${managerId}/manager`);
+    //     setEmpManager(response.data);
+    //     console.log(response.data);
+    //   } catch (error) {}
+    // };
+
+    // fetchEmpManager();
   }, []);
 
   useEffect(() => {
-    if (!empId || username) {
+    if (!managerId || username) {
       return;
     }
 
-    const fetchUsername = async () => {
-      try {
-        const response = await axiosInstance.get(`/api/User/currentuser/${empId}`);
-        setUsername(`${response.data.firstName} ${response.data.lastName}`);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchUsername();
-  }, [empId]);
+    // const fetchUsername = async () => {
+    //   try {
+    //     const response = await axiosInstance.get(
+    //       `/api/User/currentuser/${managerId}`
+    //     );
+    //     setUsername(`${response.data.firstName} ${response.data.lastName}`);
+    //   } catch (error) {
+    //     console.error(error);
+    //   }
+    // };
+    // fetchUsername();
+  }, [managerId]);
 
-  function getDateDifference(startDate: any, endDate: any) {
+  function getDateDifference(startDate:any , endDate: any) {
     const oneDay = 24 * 60 * 60 * 1000;
     let totalDays = Math.round(Math.abs((startDate - endDate) / oneDay)) + 1;
-
+  
     const start = new Date(startDate);
     const end = new Date(endDate);
-
+  
     // Iterate through each day between start and end dates
     for (let date = start; date <= end; date.setDate(date.getDate() + 1)) {
       const day = date.getDay();
-      if (day === 0 || day === 6) {
-        // Exclude Sundays (0) and Saturdays (6)
+      if (day !== 0 && day !== 6) {
+        // Exclude non-Saturdays and non-Sundays
         totalDays--;
       }
     }
-
+  
     return totalDays;
   }
+  
 
   const handleInputChange = (event: any) => {
     const { name, value } = event.target;
@@ -245,46 +268,42 @@ const ApplyForLeaves = () => {
     const newErrors = { ...tryErrors };
 
     switch (name) {
-
       case "startDate":
+        const endDate = new Date(leaveTypeDetails.endDate);
+        const selectedStartDate = new Date(value);
 
-      const endDate = new Date(leaveTypeDetails.endDate);
-      const selectedStartDate = new Date(value);
+        if (selectedStartDate > endDate) {
+          newErrors.startDate = "Start date cannot be greater than end date.";
+          isValid = false;
+        } else {
+          newErrors.requestComments = "";
+        }
 
-      if (selectedStartDate > endDate) {
-        newErrors.startDate = "Start date cannot be greater than end date.";
-        isValid = false;
-      }else {
-        newErrors.requestComments = "";
-      }
-
-      totalDays = getDateDifference(selectedStartDate, endDate);
-      break;
+        totalDays = getDateDifference(selectedStartDate, endDate);
+        break;
 
       case "endDate":
-
         const startDate = new Date(leaveTypeDetails.startDate);
         const selectedEndDate = new Date(value);
-  
+
         if (selectedEndDate < startDate) {
           newErrors.endDate = "End date cannot be less than start date.";
           return;
         }
-  
+
         totalDays = getDateDifference(startDate, selectedEndDate);
         break;
 
-        default:
-          break;
-      }
+      default:
+        break;
+    }
 
     setLeaveTypeDetails((prevState: any) => ({
       ...prevState,
       [name]: value,
       totalDays: totalDays,
       errors: newErrors,
-      employeeId: { empId },
-      empManager: { empManager },
+      empManager: { managerId },
     }));
   };
 
@@ -292,7 +311,7 @@ const ApplyForLeaves = () => {
     <Box sx={{ display: "flex", justifyContent: "left", mt: 4 }}>
       <Container>
         <Typography variant="h4" align="left">
-          Apply For Leaves
+          Add Compensatory Off
         </Typography>
 
         <Divider />
@@ -311,7 +330,8 @@ const ApplyForLeaves = () => {
               value={leaveTypeDetails.leaveTypeId}
               onChange={handleInputChange}
               error={
-                !isLeaveTypeSelected && Boolean(leaveTypeDetails.errors.leaveTypeId)
+                !isLeaveTypeSelected &&
+                Boolean(leaveTypeDetails.errors.leaveTypeId)
               }
             >
               {leaveTypeName?.map((option: any) => (
@@ -324,6 +344,36 @@ const ApplyForLeaves = () => {
               </Typography>
             )}
           </FormControl>
+
+
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Employees</InputLabel>
+            <Select
+              name="employeeId"
+              label="Employee Id/Name"
+              id="demo-simple-select"
+              fullWidth
+              sx={{ mb: 2 }}
+              value={employeeName.employeeId}
+              onChange={handleInputChange}
+              error={
+                !isEmployeeSelected &&          
+                Boolean(leaveTypeDetails.errors.employeeId)
+              }
+            >
+              {employeeName?.map((option: any) => (
+                <MenuItem value={option.id}>
+                  {`${option.firstName} ${option.lastName}`}
+                </MenuItem>
+              ))}
+            </Select>
+            {!isEmployeeSelected && (
+              <Typography variant="caption" color="error">
+                {leaveTypeDetails.errors.employeeId}
+              </Typography>
+            )}
+          </FormControl>
+
 
           <TextField
             name="startDate"
@@ -338,7 +388,6 @@ const ApplyForLeaves = () => {
             error={Boolean(leaveTypeDetails.errors.startDate)}
             helperText={leaveTypeDetails.errors.startDate}
           />
-
           <TextField
             name="endDate"
             type="date"
@@ -357,13 +406,11 @@ const ApplyForLeaves = () => {
             error={Boolean(leaveTypeDetails.errors.endDate)}
             helperText={leaveTypeDetails.errors.endDate}
           />
-          
           <br></br>
           <br></br>
           Total Days: {leaveTypeDetails.totalDays}
           <br></br>
           <br></br>
-
           <TextField
             name="requestComments"
             type="text"
@@ -377,22 +424,18 @@ const ApplyForLeaves = () => {
             error={Boolean(leaveTypeDetails.errors.requestComments)}
             helperText={leaveTypeDetails.errors.requestComments}
           />
-
           <br></br>
           <br></br>
-
           <Button type="submit" variant="contained" sx={{ mr: 2 }}>
             Submit
           </Button>
-
           <Button variant="contained" onClick={() => navigate("/leavedetails")}>
             Cancel
           </Button>
-
         </Box>
       </Container>
     </Box>
   );
 };
 
-export default ApplyForLeaves;
+export default CompOff;

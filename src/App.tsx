@@ -21,6 +21,7 @@ import Loader from './components/Loader/Loader';
 import useHttp from './config/https'
 import ChangePassword from './components/ChangePassword';
 import UpdateUserProfile from './components/UpdateUserProfile';
+import CompOff from './components/CompOff';
 
 function App() {
 
@@ -67,6 +68,7 @@ function App() {
         <Route path="/myprofile" element={<MyProfile />} />
         <Route path="/changepassword" element={<ChangePassword />} />
         <Route path="/updateuserprofile" element={<UpdateUserProfile />} />
+        <Route path="/compoff" element={<CompOff />} />
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
       

@@ -131,7 +131,7 @@ const useHttp = () => {
   const refreshToken = async () => {
     try {
       console.log("Refresh Token api was called");
-      alert(localStorage.getItem("token"));
+      // alert(localStorage.getItem("token"));
       const response = await axiosInstance.post(
         "https://localhost:7033/api/Auth/refresh-token",
         {
@@ -178,7 +178,7 @@ const useHttp = () => {
 
       if (error.response.status === 401 && !originalRequest._retry) {
         if (isRefreshing) {
-          alert();
+          // alert();
           // console.log("Refresh Token api was called");
           // refreshToken();
           // Token refresh is already in progress, add the request to the queue

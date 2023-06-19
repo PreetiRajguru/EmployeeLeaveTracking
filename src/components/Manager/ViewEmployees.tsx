@@ -10,7 +10,6 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import { IconButton } from "@mui/material";

@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import useHttp from "../../config/https";
+import swal from 'sweetalert';
 
 const managerId = localStorage.getItem("id");
 
@@ -116,7 +117,7 @@ export default function AddEmployee() {
     try {
       axiosInstance.post("/api/Auth/register", newData).then((response) => {
         console.log(response.data);
-        alert("Employee Added Successfully.");
+        swal("Employee Added Successfully.");
       });
     } catch (error: any) {
       alert(error.response.data.message);

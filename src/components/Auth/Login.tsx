@@ -6,14 +6,15 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Card, CardActionArea, CardMedia, CardContent } from "@mui/material";
+import 'react-toastify/dist/ReactToastify.css';
 
 import swal from 'sweetalert';
 import useHttp from "../../config/https";
 
 export default function Login() {
+
   const navigate = useNavigate();
   const [data, setData] = useState({
     username: "",
@@ -92,13 +93,11 @@ export default function Login() {
       localStorage.setItem("refreshToken", response.data.refreshToken);
 
       if (response.data.role === "Manager") {
-        // swal("Login Successfull !");
-        alert("Login Successfull !");
+        swal("Login Successfull !");
         navigate(`/viewemployees`);
         window.location.reload();
       } else if (response.data.role === "Employee") {
-        // swal("Login Successfull");
-        alert("Login Successfull !");
+        swal("Login Successfull");
         navigate(`/leavedetails`);
         window.location.reload();
       }

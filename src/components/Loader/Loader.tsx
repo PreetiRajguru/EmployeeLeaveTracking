@@ -6,7 +6,7 @@ const Loader: React.FC = () => {
     return (
 
         <div>
-            <h3>Hello</h3>
+            <h3>Loading ... </h3>
         </div>
 
         // <div className="my-spinner">

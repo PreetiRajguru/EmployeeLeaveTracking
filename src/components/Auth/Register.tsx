@@ -6,8 +6,8 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import axios from "axios";
 import useHttp from "../../config/https";
+import swal from 'sweetalert';
 
 export default function Register() {
   const [isFormValid, setIsFormValid] = useState(false);
@@ -107,7 +107,7 @@ export default function Register() {
       try {
       axiosInstance.post("/api/Auth/register", newData).then((response) => {
         console.log(response.data);
-        alert("User Registered Successfully");
+        swal("User Registered Successfully");
       });
     } catch (error: any) {
       const existingData= {

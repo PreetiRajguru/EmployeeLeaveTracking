@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, ChangeEvent } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
@@ -6,10 +6,9 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import useHttp from "../config/https";
 import { Avatar } from "@mui/material";
-import * as React from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
-import AutoFixNormalIcon from '@mui/icons-material/AutoFixNormal';
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
+import swal from 'sweetalert';
 
 export default function UpdateUserProfile() {
   const [isFormValid, setIsFormValid] = useState(false);
@@ -34,6 +33,41 @@ export default function UpdateUserProfile() {
   //profile image
   const [image, setImage] = useState<any>(null);
   const [imageExists, setImageExists] = useState(false);
+
+  const [file, setFile] = useState<string>("");
+  const userId = localStorage.getItem("id");
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  const handleUploadClick = () => {
+    inputRef.current?.click();
+  };
+
+  const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files) {
+      return;
+    }
+
+    const selectedFile = e.target.files[0];
+    const imageUrl = URL.createObjectURL(selectedFile);
+
+    setFile(imageUrl);
+
+    try {
+      const formData = new FormData();
+      formData.append("UserId", userId!);
+      formData.append("Image", selectedFile);
+
+      const response = await axiosInstance.post("/api/ProfileImage", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log(response);
+      window.location.reload();
+    } catch (error: any) {
+      swal(error.response?.data?.message || "An error occurred.");
+    }
+  };
 
   const [tryErrors, setTryErrors] = useState({
     firstname: "",
@@ -164,7 +198,7 @@ useEffect(() => {
         .put(`/api/User/updateprofile/${user}`, newData)
         .then((response: { data: any }) => {
           console.log(response.data);
-          alert("User Profile Updated Successfully");
+          swal("User Profile Updated Successfully");
         });
     } catch (error: any) {
       const existingData = {
@@ -207,10 +241,9 @@ useEffect(() => {
     const id = localStorage.getItem("id");
     const response = axiosInstance.delete(`/api/ProfileImage/${id}`);
     console.log(response);
-    alert("Image Deleted Successfully.");
     window.location.reload();
   } catch (error: any) {
-    alert(error.response?.data?.message || "An error occurred.");
+    swal(error.response?.data?.message || "An error occurred.");
   }
 
 
@@ -333,7 +366,7 @@ useEffect(() => {
             <br></br>
 
             <div>
-            <Button variant="outlined" color="success">
+            <Button variant="outlined" color="success"  onClick={handleUploadClick}>
             <AutoFixHighIcon/>
             </Button>
 
@@ -341,7 +374,12 @@ useEffect(() => {
             <DeleteIcon />
             </Button>
             </div>
-          
+            <input
+        type="file"
+        ref={inputRef}
+        onChange={handleFileChange}
+        style={{ display: "none" }}
+      />
 
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField

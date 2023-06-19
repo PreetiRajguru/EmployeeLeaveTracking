@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container, Box, Typography, TextField, Button } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import useHttp from "../config/https";
+import swal from 'sweetalert';
 
 const ChangePassword = () => {
   const [isFormValid, setIsFormValid] = useState(false);
@@ -58,7 +59,7 @@ const ChangePassword = () => {
     try {
       const response = await axiosInstance.post(`/api/Auth/${user}/${data.current}/${data.new}`);
       console.log(response.data);
-      alert("Password Changed Successfully");
+      swal("Password Changed Successfully");
     } catch (error: any) {
       const existingData = {
         current: data.current,
