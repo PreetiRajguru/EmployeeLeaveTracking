@@ -22,6 +22,7 @@ import useHttp from './config/https'
 import ChangePassword from './components/ChangePassword';
 import UpdateUserProfile from './components/UpdateUserProfile';
 import CompOff from './components/CompOff';
+import OnDuty from './components/OnDuty';
 
 function App() {
 
@@ -69,6 +70,7 @@ function App() {
         <Route path="/changepassword" element={<ChangePassword />} />
         <Route path="/updateuserprofile" element={<UpdateUserProfile />} />
         <Route path="/compoff" element={<CompOff />} />
+        <Route path="/onduty" element={<OnDuty />} />
         <Route path="/*" element={<ErrorPage />} />
       </Routes>
       

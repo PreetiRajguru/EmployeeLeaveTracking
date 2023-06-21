@@ -16,7 +16,7 @@ import useReadLocalStorage from "./useReadLocalStorage";
 import useHttp from "../config/https";
 import swal from "sweetalert";
 
-const CompOff = () => {
+const OnDuty = () => {
   const navigate = useNavigate();
 
   const managerId = useReadLocalStorage("id");
@@ -86,9 +86,9 @@ const CompOff = () => {
     };
 
     try {
-      const response = await axiosInstance.put("/api/CompOff", newLeaveTypeDetails);
-      const updatedCompOff = response.data;
-      swal("Comp-Off Leave Added Successfully");
+      const response = await axiosInstance.put("/api/OnDuty", newLeaveTypeDetails);
+      const updatedOnDuty = response.data;
+      swal("On-Duty Leave Added Successfully");
 
       navigate("/viewemployees");
     } catch (error) {
@@ -181,7 +181,7 @@ const CompOff = () => {
     <Box sx={{ display: "flex", justifyContent: "left", mt: 4 }}>
       <Container>
         <Typography variant="h4" align="left">
-          Add Compensatory Off
+          Add On Duty 
         </Typography>
 
         <Divider />
@@ -290,4 +290,4 @@ const CompOff = () => {
   );
 };
 
-export default CompOff;
+export default OnDuty;

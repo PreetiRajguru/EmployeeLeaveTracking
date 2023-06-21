@@ -222,6 +222,17 @@ const Navigation = () => {
                 />
               </ListItemButton>
 
+
+              <ListItemButton>
+                <ListItemIcon>
+                  <AddBoxIcon />
+                </ListItemIcon>
+                <ListItemText
+                  primary="On-Duty Request"
+                  onClick={() => navigate("/onduty")}
+                />
+              </ListItemButton>
+
               {/* <ListItemButton>
                 <ListItemIcon>
                   <AddBoxIcon />
