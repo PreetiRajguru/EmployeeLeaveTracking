@@ -324,14 +324,16 @@ const ApplyForLeaves = () => {
               </Typography>
             )}
           </FormControl>
+          <br></br><br></br>
 
+              Start Date : 
           <TextField
             name="startDate"
             type="date"
             autoComplete="off"
             value={leaveTypeDetails.startDate}
             onChange={handleInputChange}
-            sx={{ mb: 2, mr: 2 }}
+            sx={{ mb: 2, mr: 2, ml:2 }}
             inputProps={{
               min: new Date().toISOString().slice(0, 10),
             }}
@@ -339,13 +341,15 @@ const ApplyForLeaves = () => {
             helperText={leaveTypeDetails.errors.startDate}
           />
 
+
+            End Date : 
           <TextField
             name="endDate"
             type="date"
             autoComplete="off"
             value={leaveTypeDetails.endDate}
             onChange={handleInputChange}
-            sx={{ mb: 2, mr: 2 }}
+            sx={{ mb: 2, mr: 2, ml:2 }}
             inputProps={{
               min: leaveTypeDetails.startDate,
               max: new Date(
@@ -361,6 +365,7 @@ const ApplyForLeaves = () => {
           <br></br>
           <br></br>
           Total Days: {leaveTypeDetails.totalDays}
+          <br></br>
           <br></br>
           <br></br>
 

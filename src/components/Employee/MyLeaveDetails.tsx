@@ -64,30 +64,6 @@ export default function CustomizedTables() {
   const empId = localStorage.getItem('id');
   var colors = ['#afd6d0','#d3afd6', '#edbcbc', '#c7ebba', '#e8e4a6', '#f0c7f4','#f7d2a7','#e3aff4'];
 
-  function BasicCard() {
-    return (
-      <Card sx={{ minWidth: 275 }}>
-        <CardContent>
-          <Typography variant="h6" color="text.secondary" gutterBottom>
-            Employee Details
-          </Typography>
-          <Divider sx={{ mb: 1 }} />
-          <Typography component="div" sx={{ fontSize: 14, mb: 0.5 }}>
-            Preeti Rajguru
-          </Typography>
-          <Typography sx={{ mb: 1, fontSize: 14 }} color="text.secondary">
-            preeti@gmail.com
-          </Typography>
-          <Typography variant="body2" sx={{ mb: 1, fontSize: 14 }}>
-            Phone.No:7654567543
-            <br></br>
-            Wadgaon Sheri, Pune - 41
-          </Typography>
-        </CardContent>
-      </Card>
-    );
-  }
-
   useEffect(() => {
     const fetchLeaveDetails = async () => {
       try {
@@ -122,7 +98,7 @@ export default function CustomizedTables() {
     };
 
     fetchLeaveDetails();
-    fetchLeaveBalances();
+    // fetchLeaveBalances();  
     fetchLeaveTypesTotal();
   }, []);
 
