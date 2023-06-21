@@ -70,6 +70,8 @@ public sealed class UserAuthenticationService : IUserAuthentication
         var leaveTypes = await _context.LeaveTypes.ToListAsync();
         var leaveBalances = new List<LeaveBalance>();
         var compOffs = new List<CompOff>();
+        var onDutys = new List<OnDuty>();
+
         foreach (var leaveType in leaveTypes)
         {
             double balance = 0;
@@ -121,9 +123,23 @@ public sealed class UserAuthenticationService : IUserAuthentication
 
         compOffs.Add(compOff);
 
+        //initial on-duty leaves for the new user
+
+        var onDuty = new OnDuty
+        {
+            UserId = user.Id,
+            Balance = 0,
+            WorkedDate = DateTime.Now,
+            Reason = " ",
+        };
+
+        onDutys.Add(onDuty);
+
         await _context.LeaveBalances.AddRangeAsync(leaveBalances);
         await _context.SaveChangesAsync();
         await _context.CompOffs.AddRangeAsync(compOffs);
+        await _context.SaveChangesAsync();
+        await _context.OnDutys.AddRangeAsync(onDutys);
         await _context.SaveChangesAsync();
         return result;
 

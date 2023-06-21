@@ -52,6 +52,7 @@ builder.Services.AddScoped<IDesignationMaster, DesignationMasterService>();
 builder.Services.AddScoped<IProfileImage, ProfileImageService>();
 builder.Services.AddScoped<ILeaveBalance, LeaveBalanceService>();
 builder.Services.AddScoped<ICompOff, CompOffService>();
+builder.Services.AddScoped<IOnDuty, OnDutyService>();
 
 
 builder.Services.AddCors(options =>

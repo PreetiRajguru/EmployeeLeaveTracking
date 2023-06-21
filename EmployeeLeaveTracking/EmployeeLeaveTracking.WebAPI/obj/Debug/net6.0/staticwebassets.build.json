@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "SLh4viIYQFLVD7eP0d5Pv4CmkU2j9EGPiQdBmufYe4A=",
+  "Hash": "GMgjde0EsLUyQhy4sCS20f4nBvxPjP6ZmhlNE6kuLvM=",
   "Source": "EmployeeLeaveTracking.WebAPI",
   "BasePath": "_content/EmployeeLeaveTracking.WebAPI",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\88665b21-3b1b-4e12-913b-561073a09bf04.jpg"
+    },
+    {
+      "Identity": "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\99d97c58-4038-444c-9a36-e51a08dc328f1.jpg",
+      "SourceId": "EmployeeLeaveTracking.WebAPI",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\",
+      "BasePath": "_content/EmployeeLeaveTracking.WebAPI",
+      "RelativePath": "Images/99d97c58-4038-444c-9a36-e51a08dc328f1.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\99d97c58-4038-444c-9a36-e51a08dc328f1.jpg"
     },
     {
       "Identity": "D:\\ProjectAgain\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\9b8bfbe0-b788-4804-b9cc-8434cfe28d4f1.jpg",

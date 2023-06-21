@@ -21,6 +21,8 @@ namespace EmployeeLeaveTracking.Data.Context
 
         public DbSet<CompOff> CompOffs { get; set; }
 
+        public DbSet<OnDuty> OnDutys { get; set; }
+
         public EmployeeLeaveDbContext()
         {
 
@@ -90,6 +92,11 @@ namespace EmployeeLeaveTracking.Data.Context
             modelBuilder.Entity<CompOff>()
                       .HasOne(p => p.User)
                       .WithMany(p => p.CompOffs)
+                      .HasForeignKey(lb => lb.UserId);
+
+            modelBuilder.Entity<OnDuty>()
+                      .HasOne(p => p.User)
+                      .WithMany(p => p.OnDutys)
                       .HasForeignKey(lb => lb.UserId);
 
             modelBuilder.Entity<LeaveType>().HasData(

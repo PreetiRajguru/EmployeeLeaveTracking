@@ -43,6 +43,8 @@ namespace EmployeeLeaveTracking.Data.Models
 
         public List<CompOff>? CompOffs { get; set; }
 
+        public List<OnDuty>? OnDutys { get; set; }
+
         public User()
         {
             CreatedDate = DateTime.UtcNow;
