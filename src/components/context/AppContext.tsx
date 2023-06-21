@@ -11,7 +11,7 @@ const NameProvider = ({ children }: any) => {
     try {
       const name = await axios.get(`/User/currentuser/${userId}`);
       setName(name.data)
-      console.log("APp Provider==", name);
+      console.log("App Provider == ", name);
     } catch (error) {
       console.log(error);
     }

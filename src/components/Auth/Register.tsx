@@ -10,9 +10,12 @@ import useHttp from "../../config/https";
 import swal from 'sweetalert';
 
 export default function Register() {
+
   const [isFormValid, setIsFormValid] = useState(false);
   const [designation, setDesignation] = useState<any>([]);
   const {axiosInstance, loading} = useHttp();
+  const [unAuthorized, setUnAuthorized] = useState(false);
+
   const [data, setData] = useState({
     firstname: "",
     lastname: "",
@@ -44,8 +47,6 @@ export default function Register() {
     managerId: "",
     designationId: "",
   });
-  
-  const [unAuthorized, setUnAuthorized] = useState(false);
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -81,8 +82,7 @@ export default function Register() {
     if (!data.phonenumber) {
       errors.phonenumber = "Phone Number is required";
       hasErrors = true;
-    }
- 
+    } 
 
     setData((prevState: any) => ({
       ...prevState,
@@ -254,8 +254,10 @@ export default function Register() {
     };
     fetchDesignations();
   }, []);
+
   return (
     <Container component="main" maxWidth="sm">
+      
       <Box
         sx={{
           boxShadow: 3,
@@ -268,11 +270,13 @@ export default function Register() {
           alignItems: "center",
         }}
       >
+
         <Typography component="h1" variant="h5">
           Register
         </Typography>
 
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          
           <TextField
             margin="normal"
             required
@@ -376,6 +380,7 @@ export default function Register() {
               </Link>
             </Grid>
           </Grid>
+          
         </Box>
       </Box>
     </Container>

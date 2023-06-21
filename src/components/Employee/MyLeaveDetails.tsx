@@ -49,12 +49,10 @@ const DEFAULT_ORDER_BY = 'employeeName';
 const DEFAULT_ROWS_PER_PAGE = 5;
 
 export default function CustomizedTables() {
-  // const { empId } = useParams();
   const navigate = useNavigate();
   const [data, setData] = useState<any>([]);
   const [leaveBalance, setLeaveBalance] = useState();
   const [type, setType] = useState<any>([]);
-  
   const [page, setPage] = useState(1);
   const [dense, setDense] = useState(false);
   const [visibleRows, setVisibleRows] = useState(null);
@@ -87,18 +85,7 @@ export default function CustomizedTables() {
       }
     };
 
-    const fetchLeaveBalances = async () => {
-      try {
-        const response = await axiosInstance.get(`/api/LeaveRequest/balance/${empId}`);
-        setLeaveBalance(response.data);
-        console.log(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
     fetchLeaveDetails();
-    // fetchLeaveBalances();  
     fetchLeaveTypesTotal();
   }, []);
 

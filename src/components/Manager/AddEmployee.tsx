@@ -5,7 +5,6 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import useHttp from "../../config/https";
 import swal from 'sweetalert';
@@ -15,9 +14,11 @@ const managerId = localStorage.getItem("id");
 export default function AddEmployee() {
   const [isFormValid, setIsFormValid] = useState(false);
   const {axiosInstance, loading} = useHttp();
-
   const navigate = useNavigate();
   const [designation, setDesignation] = useState<any>([]);
+  const [unAuthorized, setUnAuthorized] = useState(false);
+  const [isDesignationSelected, setIsDesignationSelected] = useState(false);
+
   const [data, setData] = useState({
     firstname: "",
     lastname: "",
@@ -49,9 +50,6 @@ export default function AddEmployee() {
     managerId: "",
     designationId: "",
   });
-
-  const [unAuthorized, setUnAuthorized] = useState(false);
-  const [isDesignationSelected, setIsDesignationSelected] = useState(false);
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();

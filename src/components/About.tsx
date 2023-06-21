@@ -21,13 +21,13 @@ export default function ActionAreaCard() {
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
               LMS
-              <CardMedia
+              {/* <CardMedia
                 sx={{ height: 400 }}
                 component="img"
                 height="140"
                 image="https://img.freepik.com/free-vector/quitting-time-concept-illustration_114360-1657.jpg?w=900&t=st=1684495868~exp=1684496468~hmac=512077ad8392c558524c9a8ff98041e5ce3536f71b79f368c5b8a235f1b534f2"
                 alt="leave"
-              />
+              /> */}
               {/* <a href="https://www.flaticon.com/free-icons/finish" title="finish icons">Finish icons created by Leremy - Flaticon</a> */}
             </Typography>
             <Typography variant="body2" color="text.secondary">

@@ -18,12 +18,18 @@ import 'react-toastify/dist/ReactToastify.css';
 import swal from 'sweetalert';
 
 const ApplyForLeaves = () => {
+
   const navigate = useNavigate();
   const empId = useReadLocalStorage("id");
   console.log(empId);
   const [leaveBalance, setLeaveBalance] = useState();
   const [empManager, setEmpManager] = useState("");
   const {axiosInstance, loading} = useHttp();
+  const [isLeaveTypeSelected, setIsLeaveTypeSelected] = useState(false);
+  const [leaveTypeName, setLeaveTypeName] = useState<any>([]);
+  const [username, setUsername] = useState<string>();
+  const [unAuthorized, setUnAuthorized] = useState(false);
+
   const [leaveTypeDetails, setLeaveTypeDetails] = useState({
     requestComments: "",
     startDate: "",
@@ -55,12 +61,6 @@ const ApplyForLeaves = () => {
     leaveTypeId: "",
     statusId: "",
   });
-
-  const [isLeaveTypeSelected, setIsLeaveTypeSelected] = useState(false);
-
-  const [leaveTypeName, setLeaveTypeName] = useState<any>([]);
-  const [username, setUsername] = useState<string>();
-  const [unAuthorized, setUnAuthorized] = useState(false);
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -289,8 +289,10 @@ const ApplyForLeaves = () => {
   };
 
   return (
+
     <Box sx={{ display: "flex", justifyContent: "left", mt: 4 }}>
       <Container>
+       
         <Typography variant="h4" align="left">
           Apply For Leaves
         </Typography>
@@ -326,7 +328,7 @@ const ApplyForLeaves = () => {
           </FormControl>
           <br></br><br></br>
 
-              Start Date : 
+            Start Date : 
           <TextField
             name="startDate"
             type="date"

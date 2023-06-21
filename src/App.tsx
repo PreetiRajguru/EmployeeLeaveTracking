@@ -13,7 +13,6 @@ import ErrorPage from './components/ErrorPage'
 import MyProfile from './components/MyProfile'
 import ProfileImage from './components/ProfileImage'
 import MyLeaveDetails from './components/Employee/MyLeaveDetails'
-import axios from 'axios'
 import NewRequests from './components/Manager/NewRequests';
 import React from 'react';
 import { AppContext } from './config/https';
@@ -37,11 +36,9 @@ function App() {
   };
 
   useEffect(() => {
-    // axiosInstance.defaults.baseURL = 'https://localhost:7033';
     getToken()
     })
 
-    // const [loading] = useState(true);
     const {axiosInstance, loading} = useHttp();
 
   return (
