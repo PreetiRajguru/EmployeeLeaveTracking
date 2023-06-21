@@ -26,8 +26,6 @@ namespace EmployeeLeaveTracking.Services.Services
         public IEnumerable<LeaveTypeDTO> GetAll()
         {
             IQueryable<LeaveTypeDTO> leaveTypes = _dbContext.LeaveTypes
-                /* .Where(lt => lt.IsDeleted == false && lt.LeaveTypeName != "Compensatory Off" && lt.LeaveTypeName != "On Duty")
-                 */
                 .Where(lt => lt.IsDeleted == false)
                 .Select(lt => new LeaveTypeDTO
                 {
@@ -52,12 +50,6 @@ namespace EmployeeLeaveTracking.Services.Services
 
             return leaveTypes;
         }
-
-
-
-
-
-
 
         public LeaveTypeDTO GetById(int id)
         {
@@ -146,57 +138,5 @@ namespace EmployeeLeaveTracking.Services.Services
 
             return leaveTypesWithTotalDays;
         }
-
-        /* public List<LeaveTypeWithTotalDaysDTO> GetLeaveTypesWithTotalDaysTaken()
-         {
-             StatusMaster approvedLeaves = _dbContext.Status.FirstOrDefault(s => s.StatusType.ToLower() == "approved");
-             StatusMaster pendingLeaves = _dbContext.Status.FirstOrDefault(s => s.StatusType.ToLower() == "pending");
-
-             string userId = _userService.GetCurrentUserById();
-
-             List<LeaveTypeWithTotalDaysDTO> leaveTypesWithTotalDays = _dbContext.LeaveTypes
-                 .GroupJoin(
-                     _dbContext.LeaveBalances.Where(lb => lb.UserId == userId),
-                     lt => lt.Id,
-                     lb => lb.LeaveTypeId,
-                     (lt, lb) => new { LeaveType = lt, LeaveBalances = lb })
-                 .SelectMany(
-                     x => x.LeaveBalances.DefaultIfEmpty(),
-                     (lt, lb) => new LeaveTypeWithTotalDaysDTO
-                     {
-                         LeaveTypeId = lt.LeaveType.Id,
-                         LeaveTypeName = lt.LeaveType.LeaveTypeName,
-                         BookedDays = _dbContext.LeaveRequests
-                             .Where(lr => lr.EmployeeId == userId && lr.LeaveTypeId == lt.LeaveType.Id &&
-                                          (lr.StatusId == approvedLeaves.Id || lr.StatusId == pendingLeaves.Id))
-                             .Sum(lr => lr.TotalDays),
-                         AvailableDays = lb != null ? lb.Balance : 0
-                     })
-                 .ToList();
-
-             //compOffDTO
-             if (leaveTypesWithTotalDays.Any(x => x.LeaveTypeId == 5))
-             {
-                 CompOff c = new CompOff();
-                 if (userId == c.UserId)
-                 {
-                     c.UserId = userId;
-                     LeaveTypeWithTotalDaysDTO leaveTypesWithTotalDayss = new LeaveTypeWithTotalDaysDTO
-                     {
-                         LeaveTypeId = 5,
-                         LeaveTypeName = "Compensatory Off",
-                         BookedDays = (int)c.Booked,
-                         AvailableDays = (double)c.Available,
-                     };
-                     leaveTypesWithTotalDays.Add(leaveTypesWithTotalDayss);
-                 }
-             }
-
-             return leaveTypesWithTotalDays;
-         }*/
-
-
-
-
     }
 }

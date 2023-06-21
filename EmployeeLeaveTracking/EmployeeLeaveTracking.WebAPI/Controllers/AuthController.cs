@@ -5,7 +5,6 @@ using EmployeeLeaveTracking.Services.Interfaces;
 using EmployeeLeaveTracking.WebAPI.Controllers;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
 using System.IdentityModel.Tokens.Jwt;
 
 namespace EmployeeLeaveTracking.Controllers
@@ -70,7 +69,6 @@ namespace EmployeeLeaveTracking.Controllers
 
 
         [HttpPost]
-       
         [Route("refresh-token")]
         public async Task<IActionResult> RefreshToken(TokenModel tokenModel)
             {
@@ -140,7 +138,6 @@ namespace EmployeeLeaveTracking.Controllers
 
             return NoContent();
         }
-
 
         [HttpPost]
         [Route("{userid}/{currentpassword}/{newpassword}")]

@@ -16,6 +16,7 @@ namespace EmployeeLeaveTracking.Services.Services
         private readonly UserService _userService;
         private readonly UserManager<User> _userManager;
         private User? _user;
+
         public LeaveRequestService(EmployeeLeaveDbContext dbContext, UserManager<User> userManager, IHttpContextAccessor httpContextAccessor, UserService userService)
         {
             _dbContext = dbContext;
@@ -116,7 +117,7 @@ namespace EmployeeLeaveTracking.Services.Services
             return leaveRequest;
         }
 
-       public NewLeaveRequestDTO CreateNewLeaveRequest(NewLeaveRequestDTO leaveRequest)
+        public NewLeaveRequestDTO CreateNewLeaveRequest(NewLeaveRequestDTO leaveRequest)
         {
             LeaveRequest newLeaveRequest = new LeaveRequest
             {
@@ -139,7 +140,7 @@ namespace EmployeeLeaveTracking.Services.Services
         }
 
 
-        //new method
+        //new method for adding leave request
         public NewLeaveRequestDTO NewCreateNewLeaveRequest(NewLeaveRequestDTO leaveRequest)
         {
             LeaveRequest newLeaveRequest = new()
@@ -183,32 +184,6 @@ namespace EmployeeLeaveTracking.Services.Services
 
         }
 
-
-        //trial for adding logic of comp-off leave 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
 
         public LeaveRequestDTO Update(LeaveRequestDTO leaveRequest)
         {
@@ -293,7 +268,7 @@ namespace EmployeeLeaveTracking.Services.Services
             }
 
             List<LeaveRequest> leaveRequests = await _dbContext.LeaveRequests
-                .Include(lr => lr.Employee) 
+                .Include(lr => lr.Employee)
                 .Where(lr => lr.StatusId == statusId)
                 .ToListAsync();
 
@@ -385,8 +360,8 @@ namespace EmployeeLeaveTracking.Services.Services
             StatusMaster? approvedLeaves = _dbContext.Status.Where(s => s.StatusType.ToLower() == "approved").FirstOrDefault();
             List<LeaveRequest> leaveRequests = _dbContext.LeaveRequests
                 .Where(lr => lr.EmployeeId.Equals(employeeId) && lr.StatusId == approvedLeaves.Id)
-                .ToList(); 
-            
+                .ToList();
+
             int totalDays = leaveRequests.Sum(lr => lr.TotalDays);
 
             DateTime dt = DateTime.Now;
@@ -401,13 +376,13 @@ namespace EmployeeLeaveTracking.Services.Services
         public List<UserLeaveRequestDTO> LeavesByEmployeeId(string employeeId)
         {
             IQueryable<LeaveRequest> leaveRequestByEmployeeId = _dbContext.LeaveRequests
-            
+
             .Include(m => m.Employee)
             .Include(m => m.LeaveType)
             .Include(m => m.StatusMaster)
-            .Where(c => c.EmployeeId.Equals(employeeId)); 
+            .Where(c => c.EmployeeId.Equals(employeeId));
 
             return leaveRequestByEmployeeId.Select(c => new UserLeaveRequestMapper().Map(c)).ToList();
-        }           
+        }
     }
 }

@@ -1,5 +1,4 @@
-﻿using EmployeeLeaveTracking.Data.DTOs;
-using EmployeeLeaveTracking.Data.Models;
+﻿using EmployeeLeaveTracking.Data.Models;
 
 namespace EmployeeLeaveTracking.Services.Interfaces
 {

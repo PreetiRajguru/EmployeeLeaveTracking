@@ -16,9 +16,6 @@ namespace EmployeeLeaveTracking.Services.Interfaces
 
         Task<string> GetManagerIdAsync(string employeeId);
 
-
-       /* Task<UserRegistrationDTO> UpdateUser(UserRegistrationDTO user);*/
-
         Task<UpdateProfileDTO> UpdateUserProfile(UpdateProfileDTO user);
     }
 }

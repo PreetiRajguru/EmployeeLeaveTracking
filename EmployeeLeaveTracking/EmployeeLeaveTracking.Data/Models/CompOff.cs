@@ -21,6 +21,5 @@ namespace EmployeeLeaveTracking.Data.Models
         public DateTime? ExpiryDate { get; set; }
 
         public string? Reason { get; set; }
-
     }
 }

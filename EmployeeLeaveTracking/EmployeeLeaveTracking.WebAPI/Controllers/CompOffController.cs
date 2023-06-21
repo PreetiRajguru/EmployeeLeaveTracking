@@ -53,6 +53,4 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
             return NoContent();
         }
     }
-
-
 }

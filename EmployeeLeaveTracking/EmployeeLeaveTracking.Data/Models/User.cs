@@ -12,11 +12,9 @@ namespace EmployeeLeaveTracking.Data.Models
 
         public int DesignationId { get; set; }
 
-
         public string? RefreshToken { get; set; }
 
         public DateTime RefreshTokenExpiryTime { get; set; }
-
 
         public DateTime? CreatedDate { get; set; }
 
@@ -28,7 +26,6 @@ namespace EmployeeLeaveTracking.Data.Models
 
         public bool? IsDeleted { get; set; } = false;
 
-
         public DesignationMaster Designation { get; set; } = null!;
 
         public List<LeaveRequest>? ManagerLeaveRequests { get; set; }
@@ -36,8 +33,6 @@ namespace EmployeeLeaveTracking.Data.Models
         public List<LeaveRequest> EmployeeLeaveRequests { get; set; }
 
         public List<LeaveBalance> EmployeeLeaveBalance { get; set; }
-
-        /*    public List<LeaveBalance> ManagerLeaveBalance { get; set; }*/
 
         public ProfileImage ProfileImages { get; set; }
 

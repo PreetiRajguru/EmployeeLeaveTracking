@@ -9,5 +9,4 @@ namespace EmployeeLeaveTracking.Services.Interfaces
         CompOffDTO UpdateCompOff(CompOffDTO compOffDTO);
         void DeleteCompOff(string userId);
     }
-
 }

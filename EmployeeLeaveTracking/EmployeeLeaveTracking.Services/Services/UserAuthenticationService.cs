@@ -75,7 +75,7 @@ public sealed class UserAuthenticationService : IUserAuthentication
         foreach (var leaveType in leaveTypes)
         {
             double balance = 0;
-           
+
             switch (leaveType.LeaveTypeName)
             {
                 case "Unpaid Leave":
@@ -109,7 +109,7 @@ public sealed class UserAuthenticationService : IUserAuthentication
 
             leaveBalances.Add(leaveBalance);
 
-            }
+        }
 
         //initial comp-off leaves for the new user
 

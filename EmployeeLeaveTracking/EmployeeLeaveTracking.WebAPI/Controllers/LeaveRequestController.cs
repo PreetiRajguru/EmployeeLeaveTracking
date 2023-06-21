@@ -173,8 +173,6 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
 
-
-
         [HttpGet("employee/{employeeId}")]
         [Authorize(Roles = "Manager,Employee")]
         public IActionResult LeavesByEmployeeId(string employeeId)
@@ -276,6 +274,5 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 
             return CreatedAtRoute(new { id = createdLeaveRequest.Id }, createdLeaveRequest);
         }
-
     }
 }

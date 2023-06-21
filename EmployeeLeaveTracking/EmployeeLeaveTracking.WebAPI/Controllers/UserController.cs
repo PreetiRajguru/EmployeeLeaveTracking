@@ -148,20 +148,6 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         //get current user details
 
         [HttpGet("currentuserdetails/{employeeId}")]

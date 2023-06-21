@@ -102,8 +102,6 @@ namespace EmployeeLeaveTracking.Services.Services
         }
 
 
-
-
         public string GetCurrentUserById()
         {
             string? userId = _httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.Sid);
@@ -140,7 +138,6 @@ namespace EmployeeLeaveTracking.Services.Services
         }
 
 
-
         public async Task<string> GetManagerIdAsync(string employeeId)
         {
             Data.Models.User employee = await _dbContext.Users
@@ -153,8 +150,6 @@ namespace EmployeeLeaveTracking.Services.Services
 
             return employee.ManagerId;
         }
-
-      
 
 
         //update user profile
@@ -179,14 +174,7 @@ namespace EmployeeLeaveTracking.Services.Services
         }
 
 
-
-
-
-
-
-
         //get user details
-
         public UpdateProfileDTO GetCurrentUserDetails(string employeeId)
         {
             if (string.IsNullOrWhiteSpace(employeeId))
@@ -212,6 +200,5 @@ namespace EmployeeLeaveTracking.Services.Services
                 PhoneNumber = user.PhoneNumber
             };
         }
-
     }
 }

@@ -24,7 +24,7 @@ namespace EmployeeLeaveTracking.Services.Services
                 Reason = onDutyDTO.Reason
             };
 
-            // Calculate and set the expiry date
+            // calculating and setting the expiry date
             onDuty.ExpiryDate = ((DateTime)onDuty.WorkedDate).AddDays(45);
 
 
@@ -51,24 +51,6 @@ namespace EmployeeLeaveTracking.Services.Services
             return onDutyDTO;
         }
 
-        /* public CompOffDTO UpdateCompOff(CompOffDTO compOffDTO)
-         {
-             var compOff = _dbContext.CompOffs.FirstOrDefault(c => c.UserId == compOffDTO.UserId);
-             if (compOff == null)
-                 return null;
-
-             compOff.Balance = compOffDTO.Balance;
-             compOff.WorkedDate = (DateTime)compOffDTO.WorkedDate;
-             compOff.Reason = compOffDTO.Reason;
-
-             // Calculate and update the expiry date
-             compOff.ExpiryDate = ((DateTime)compOff.WorkedDate).AddDays(45);
-
-
-             _dbContext.SaveChanges();
-
-             return compOffDTO;
-         }*/
 
         public OnDutyDTO UpdateOnDuty(OnDutyDTO onDutyDTO)
         {
@@ -107,5 +89,4 @@ namespace EmployeeLeaveTracking.Services.Services
             }
         }
     }
-
 }

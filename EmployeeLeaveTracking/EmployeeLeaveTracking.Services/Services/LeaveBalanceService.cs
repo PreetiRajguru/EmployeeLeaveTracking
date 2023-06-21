@@ -1,5 +1,4 @@
 ﻿using EmployeeLeaveTracking.Data.Context;
-using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Data.Models;
 using EmployeeLeaveTracking.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;

@@ -10,8 +10,10 @@ namespace EmployeeLeaveTracking.Data.Models
         [Key]
         [ForeignKey("User")]
         public string? UserId { get; set; }
+
         [JsonIgnore]
         public User? User { get; set; }
+
         [NotMapped]
         public IFormFile? Image { get; set; }
 

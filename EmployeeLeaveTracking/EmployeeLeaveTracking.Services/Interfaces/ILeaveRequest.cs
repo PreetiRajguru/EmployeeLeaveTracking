@@ -33,10 +33,8 @@ namespace EmployeeLeaveTracking.Services.Interfaces
         double LeaveBalance(string employeeId);
 
         public List<UserLeaveRequestDTO> LeavesByEmployeeId(string employeeId);
-
         
-        //new method
+        //new leave request method
         public NewLeaveRequestDTO NewCreateNewLeaveRequest(NewLeaveRequestDTO leaveRequest);
-        
     }
 }
