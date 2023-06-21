@@ -13,10 +13,9 @@ namespace EmployeeLeaveTracking.Data.Models
         public int DesignationId { get; set; }
 
 
-
         public string? RefreshToken { get; set; }
-        public DateTime RefreshTokenExpiryTime { get; set; }
 
+        public DateTime RefreshTokenExpiryTime { get; set; }
 
 
         public DateTime? CreatedDate { get; set; }
@@ -41,6 +40,8 @@ namespace EmployeeLeaveTracking.Data.Models
         /*    public List<LeaveBalance> ManagerLeaveBalance { get; set; }*/
 
         public ProfileImage ProfileImages { get; set; }
+
+        public List<CompOff>? CompOffs { get; set; }
 
         public User()
         {

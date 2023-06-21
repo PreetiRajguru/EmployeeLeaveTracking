@@ -38,8 +38,5 @@ namespace EmployeeLeaveTracking.Services.Interfaces
         //new method
         public NewLeaveRequestDTO NewCreateNewLeaveRequest(NewLeaveRequestDTO leaveRequest);
         
-        //compoff
-
-        public NewLeaveRequestDTO CompOffLeaveAddition(NewLeaveRequestDTO leaveRequest);
     }
 }

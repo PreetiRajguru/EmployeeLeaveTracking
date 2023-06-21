@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using EmployeeLeaveTracking.Services.Services;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -52,6 +51,7 @@ builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<IDesignationMaster, DesignationMasterService>();
 builder.Services.AddScoped<IProfileImage, ProfileImageService>();
 builder.Services.AddScoped<ILeaveBalance, LeaveBalanceService>();
+builder.Services.AddScoped<ICompOff, CompOffService>();
 
 
 builder.Services.AddCors(options =>

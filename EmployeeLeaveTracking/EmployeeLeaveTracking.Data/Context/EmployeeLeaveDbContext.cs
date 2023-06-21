@@ -19,6 +19,8 @@ namespace EmployeeLeaveTracking.Data.Context
 
         public DbSet<LeaveBalance> LeaveBalances { get; set; }
 
+        public DbSet<CompOff> CompOffs { get; set; }
+
         public EmployeeLeaveDbContext()
         {
 
@@ -84,6 +86,11 @@ namespace EmployeeLeaveTracking.Data.Context
             modelBuilder.Entity<ProfileImage>()
                       .HasOne(p => p.User)
                       .WithOne(p => p.ProfileImages);
+
+            modelBuilder.Entity<CompOff>()
+                      .HasOne(p => p.User)
+                      .WithMany(p => p.CompOffs)
+                      .HasForeignKey(lb => lb.UserId);
 
             modelBuilder.Entity<LeaveType>().HasData(
             new LeaveType { Id = 1, LeaveTypeName = "Paid Leave" },

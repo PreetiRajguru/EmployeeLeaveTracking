@@ -174,7 +174,7 @@ namespace EmployeeLeaveTracking.Services.Services
             }
             else
             {
-                balance.Balance = leaveRequest.TotalDays;
+                balance.Balance = balance.Balance - leaveRequest.TotalDays;
             }
 
             _dbContext.SaveChanges();
@@ -184,6 +184,7 @@ namespace EmployeeLeaveTracking.Services.Services
         }
 
 
+        //trial for adding logic of comp-off leave 
 
 
 
@@ -207,50 +208,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
 
 
-        //compoff addition by manager
-        public NewLeaveRequestDTO CompOffLeaveAddition(NewLeaveRequestDTO leaveRequest)
-        {
-            LeaveRequest newLeaveRequest = new()
-            {
-                RequestComments = leaveRequest.RequestComments,
-                EmployeeId = leaveRequest.EmployeeId,
-                ManagerId = leaveRequest.ManagerId,
-                LeaveTypeId = leaveRequest.LeaveTypeId,
-                StartDate = leaveRequest.StartDate,
-                EndDate = leaveRequest.EndDate,
-                TotalDays = leaveRequest.TotalDays,
-                StatusId = leaveRequest.StatusId
-            };
-
-            _dbContext.LeaveRequests.Add(newLeaveRequest);
-            _dbContext.SaveChanges();
-
-            leaveRequest.Id = newLeaveRequest.Id;
-
-            var balance = _dbContext.LeaveBalances
-            .FirstOrDefault(b => b.UserId == leaveRequest.EmployeeId && b.LeaveTypeId == leaveRequest.LeaveTypeId);
-
-            if (balance == null)
-            {
-                balance = new LeaveBalance
-                {
-                    UserId = leaveRequest.EmployeeId,
-                    LeaveTypeId = leaveRequest.LeaveTypeId,
-                    Balance = +leaveRequest.TotalDays
-                };
-                _dbContext.LeaveBalances.Add(balance);
-            }
-            else
-            {
-                balance.Balance += leaveRequest.TotalDays;
-            }
-
-            _dbContext.SaveChanges();
-
-            return leaveRequest;
-
-        }
-
+        
 
         public LeaveRequestDTO Update(LeaveRequestDTO leaveRequest)
         {
@@ -427,7 +385,9 @@ namespace EmployeeLeaveTracking.Services.Services
             StatusMaster? approvedLeaves = _dbContext.Status.Where(s => s.StatusType.ToLower() == "approved").FirstOrDefault();
             List<LeaveRequest> leaveRequests = _dbContext.LeaveRequests
                 .Where(lr => lr.EmployeeId.Equals(employeeId) && lr.StatusId == approvedLeaves.Id)
-                .ToList(); int totalDays = leaveRequests.Sum(lr => lr.TotalDays);
+                .ToList(); 
+            
+            int totalDays = leaveRequests.Sum(lr => lr.TotalDays);
 
             DateTime dt = DateTime.Now;
             int month = dt.Month;

@@ -69,7 +69,7 @@ public sealed class UserAuthenticationService : IUserAuthentication
         //initial leave balances for the new user
         var leaveTypes = await _context.LeaveTypes.ToListAsync();
         var leaveBalances = new List<LeaveBalance>();
-
+        var compOffs = new List<CompOff>();
         foreach (var leaveType in leaveTypes)
         {
             double balance = 0;
@@ -106,9 +106,24 @@ public sealed class UserAuthenticationService : IUserAuthentication
             };
 
             leaveBalances.Add(leaveBalance);
-        }
+
+            }
+
+        //initial comp-off leaves for the new user
+
+        var compOff = new CompOff
+        {
+            UserId = user.Id,
+            Balance = 0,
+            WorkedDate = DateTime.Now,
+            Reason = " ",
+        };
+
+        compOffs.Add(compOff);
 
         await _context.LeaveBalances.AddRangeAsync(leaveBalances);
+        await _context.SaveChangesAsync();
+        await _context.CompOffs.AddRangeAsync(compOffs);
         await _context.SaveChangesAsync();
         return result;
 
