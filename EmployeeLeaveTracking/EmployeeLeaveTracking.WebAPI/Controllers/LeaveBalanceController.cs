@@ -21,5 +21,12 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 
             return Ok(leaveBalances);
         }
+
+        [HttpGet("/employee/{employeeId}")]
+        public IActionResult GetLeaveBalancesByEmpId([FromRoute] string employeeId)
+        {
+            var leaveBalances = _leaveBalanceService.GetLeaveBalancesByEmpId(employeeId);
+            return Ok(leaveBalances);
+        }
     }
 }

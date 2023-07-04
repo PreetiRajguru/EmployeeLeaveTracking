@@ -136,9 +136,7 @@ public sealed class UserAuthenticationService : IUserAuthentication
         onDutys.Add(onDuty);
 
         await _context.LeaveBalances.AddRangeAsync(leaveBalances);
-        await _context.SaveChangesAsync();
         await _context.CompOffs.AddRangeAsync(compOffs);
-        await _context.SaveChangesAsync();
         await _context.OnDutys.AddRangeAsync(onDutys);
         await _context.SaveChangesAsync();
         return result;

@@ -355,6 +355,7 @@ namespace EmployeeLeaveTracking.Services.Services
             return statusId;
         }
 
+        //make changes in this method for bringing all types leave balances for a single employee
         public double LeaveBalance(string employeeId)
         {
             StatusMaster? approvedLeaves = _dbContext.Status.Where(s => s.StatusType.ToLower() == "approved").FirstOrDefault();

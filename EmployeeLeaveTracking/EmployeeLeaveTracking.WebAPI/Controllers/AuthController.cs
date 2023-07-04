@@ -103,6 +103,7 @@ namespace EmployeeLeaveTracking.Controllers
             var newRefreshToken = _repository.UserAuthentication.GenerateRefreshToken();
 
             user.RefreshToken = newRefreshToken;
+           // user.RefreshTokenExpiryTime = DateTime.Now;
             await _userManager.UpdateAsync(user);
 
             return new ObjectResult(new

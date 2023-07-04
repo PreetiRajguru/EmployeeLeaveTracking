@@ -33,5 +33,22 @@ namespace EmployeeLeaveTracking.Services.Services
                 })
                 .ToList();
         }
+
+
+        public IEnumerable<LeaveBalance> GetLeaveBalancesByEmpId(string employeeId)
+        {
+            return _dbContext.LeaveBalances
+                .Include(u => u.Employee)
+                .Where(e => e.IsDeleted == false && e.UserId == employeeId)
+                .Select(lb => new LeaveBalance()
+                {
+                    Id = lb.Id,
+                    UserId = lb.UserId,
+                    LeaveTypeId = lb.LeaveTypeId,
+                    Balance = lb.Balance,
+                    ModifiedDate = lb.ModifiedDate
+                })
+                .ToList();
+        }
     }
 }

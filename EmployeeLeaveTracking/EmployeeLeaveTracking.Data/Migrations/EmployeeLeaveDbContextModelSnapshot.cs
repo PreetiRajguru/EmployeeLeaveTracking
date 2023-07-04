@@ -71,34 +71,34 @@ namespace EmployeeLeaveTracking.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 6, 21, 7, 30, 16, 692, DateTimeKind.Utc).AddTicks(7499),
+                            CreatedDate = new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(5508),
                             DesignationName = "Intern",
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2023, 6, 21, 7, 30, 16, 692, DateTimeKind.Utc).AddTicks(7931)
+                            ModifiedDate = new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(6315)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2023, 6, 21, 7, 30, 16, 692, DateTimeKind.Utc).AddTicks(8918),
+                            CreatedDate = new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(7752),
                             DesignationName = "Software Engineer",
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2023, 6, 21, 7, 30, 16, 692, DateTimeKind.Utc).AddTicks(8919)
+                            ModifiedDate = new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(7754)
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2023, 6, 21, 7, 30, 16, 692, DateTimeKind.Utc).AddTicks(8921),
+                            CreatedDate = new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(7755),
                             DesignationName = "Senior Software Engineer",
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2023, 6, 21, 7, 30, 16, 692, DateTimeKind.Utc).AddTicks(8921)
+                            ModifiedDate = new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(7756)
                         },
                         new
                         {
                             Id = 4,
-                            CreatedDate = new DateTime(2023, 6, 21, 7, 30, 16, 692, DateTimeKind.Utc).AddTicks(8922),
+                            CreatedDate = new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(7757),
                             DesignationName = "Tech Lead",
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2023, 6, 21, 7, 30, 16, 692, DateTimeKind.Utc).AddTicks(8923)
+                            ModifiedDate = new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(7758)
                         });
                 });
 
@@ -235,50 +235,50 @@ namespace EmployeeLeaveTracking.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 6, 21, 7, 30, 16, 691, DateTimeKind.Utc).AddTicks(9077),
+                            CreatedDate = new DateTime(2023, 7, 4, 5, 33, 18, 284, DateTimeKind.Utc).AddTicks(7214),
                             IsDeleted = false,
                             LeaveTypeName = "Paid Leave",
-                            ModifiedDate = new DateTime(2023, 6, 21, 7, 30, 16, 692, DateTimeKind.Utc).AddTicks(4483)
+                            ModifiedDate = new DateTime(2023, 7, 4, 5, 33, 18, 285, DateTimeKind.Utc).AddTicks(8347)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2023, 6, 21, 7, 30, 16, 692, DateTimeKind.Utc).AddTicks(5539),
+                            CreatedDate = new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(1023),
                             IsDeleted = false,
                             LeaveTypeName = "Unpaid Leave",
-                            ModifiedDate = new DateTime(2023, 6, 21, 7, 30, 16, 692, DateTimeKind.Utc).AddTicks(5540)
+                            ModifiedDate = new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(1027)
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2023, 6, 21, 7, 30, 16, 692, DateTimeKind.Utc).AddTicks(5542),
+                            CreatedDate = new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(1031),
                             IsDeleted = false,
                             LeaveTypeName = "Forgot ID Card",
-                            ModifiedDate = new DateTime(2023, 6, 21, 7, 30, 16, 692, DateTimeKind.Utc).AddTicks(5543)
+                            ModifiedDate = new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(1032)
                         },
                         new
                         {
                             Id = 4,
-                            CreatedDate = new DateTime(2023, 6, 21, 7, 30, 16, 692, DateTimeKind.Utc).AddTicks(5544),
+                            CreatedDate = new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(1034),
                             IsDeleted = false,
                             LeaveTypeName = "Work From Home",
-                            ModifiedDate = new DateTime(2023, 6, 21, 7, 30, 16, 692, DateTimeKind.Utc).AddTicks(5545)
+                            ModifiedDate = new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(1036)
                         },
                         new
                         {
                             Id = 5,
-                            CreatedDate = new DateTime(2023, 6, 21, 7, 30, 16, 692, DateTimeKind.Utc).AddTicks(5546),
+                            CreatedDate = new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(1038),
                             IsDeleted = false,
                             LeaveTypeName = "Compensatory Off",
-                            ModifiedDate = new DateTime(2023, 6, 21, 7, 30, 16, 692, DateTimeKind.Utc).AddTicks(5547)
+                            ModifiedDate = new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(1039)
                         },
                         new
                         {
                             Id = 6,
-                            CreatedDate = new DateTime(2023, 6, 21, 7, 30, 16, 692, DateTimeKind.Utc).AddTicks(5548),
+                            CreatedDate = new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(1041),
                             IsDeleted = false,
                             LeaveTypeName = "On Duty",
-                            ModifiedDate = new DateTime(2023, 6, 21, 7, 30, 16, 692, DateTimeKind.Utc).AddTicks(5549)
+                            ModifiedDate = new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(1043)
                         });
                 });
 
@@ -347,25 +347,25 @@ namespace EmployeeLeaveTracking.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2023, 6, 21, 7, 30, 16, 693, DateTimeKind.Utc).AddTicks(497),
+                            CreatedDate = new DateTime(2023, 7, 4, 5, 33, 18, 287, DateTimeKind.Utc).AddTicks(26),
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2023, 6, 21, 7, 30, 16, 693, DateTimeKind.Utc).AddTicks(931),
+                            ModifiedDate = new DateTime(2023, 7, 4, 5, 33, 18, 287, DateTimeKind.Utc).AddTicks(611),
                             StatusType = "Pending"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2023, 6, 21, 7, 30, 16, 693, DateTimeKind.Utc).AddTicks(2031),
+                            CreatedDate = new DateTime(2023, 7, 4, 5, 33, 18, 287, DateTimeKind.Utc).AddTicks(1865),
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2023, 6, 21, 7, 30, 16, 693, DateTimeKind.Utc).AddTicks(2032),
+                            ModifiedDate = new DateTime(2023, 7, 4, 5, 33, 18, 287, DateTimeKind.Utc).AddTicks(1867),
                             StatusType = "Approved"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2023, 6, 21, 7, 30, 16, 693, DateTimeKind.Utc).AddTicks(2034),
+                            CreatedDate = new DateTime(2023, 7, 4, 5, 33, 18, 287, DateTimeKind.Utc).AddTicks(1869),
                             IsDeleted = false,
-                            ModifiedDate = new DateTime(2023, 6, 21, 7, 30, 16, 693, DateTimeKind.Utc).AddTicks(2035),
+                            ModifiedDate = new DateTime(2023, 7, 4, 5, 33, 18, 287, DateTimeKind.Utc).AddTicks(1870),
                             StatusType = "Rejected"
                         });
                 });
