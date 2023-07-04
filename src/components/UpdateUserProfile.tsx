@@ -9,6 +9,7 @@ import { Avatar } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import swal from 'sweetalert';
+import { useNavigate } from "react-router-dom";
 
 export default function UpdateUserProfile() {
   const [isFormValid, setIsFormValid] = useState(false);
@@ -33,6 +34,7 @@ export default function UpdateUserProfile() {
   //profile image
   const [image, setImage] = useState<any>(null);
   const [imageExists, setImageExists] = useState(false);
+  const navigate = useNavigate();
 
   const [file, setFile] = useState<string>("");
   const userId = localStorage.getItem("id");
@@ -106,8 +108,6 @@ useEffect(() => {
   };
   fetchProfilePic();
 }, []);
-
-
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -220,20 +220,20 @@ useEffect(() => {
       setUnAuthorized(true);
       console.log(error.response.data.message);
     }
-    setData({
-      firstname: "",
-      lastname: "",
-      username: "",
-      email: "",
-      phonenumber: "",
-      errors: {
-        firstname: "",
-        lastname: "",
-        username: "",
-        email: "",
-        phonenumber: "",
-      },
-    });
+    // setData({
+    //   firstname: "",
+    //   lastname: "",
+    //   username: "",
+    //   email: "",
+    //   phonenumber: "",
+    //   errors: {
+    //     firstname: "",
+    //     lastname: "",
+    //     username: "",
+    //     email: "",
+    //     phonenumber: "",
+    //   },
+    // });
   };
   const handleDelete = () => {
    //delete functionality
@@ -461,6 +461,15 @@ useEffect(() => {
             sx={{ mt: 3, mb: 2 }}
           >
             Update
+          </Button>
+
+          <Button
+            fullWidth
+            variant="contained"
+            sx={{ mt: 1, mb: 2 }}
+            onClick={() => navigate("/myprofile")}
+          >
+            Back
           </Button>
         </Box>
       </Box>

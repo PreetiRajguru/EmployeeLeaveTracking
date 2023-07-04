@@ -14,17 +14,18 @@ import {
 } from "@mui/material";
 import useReadLocalStorage from "../useReadLocalStorage";
 import useHttp from "../../config/https";
-import 'react-toastify/dist/ReactToastify.css';
-import swal from 'sweetalert';
+import "react-toastify/dist/ReactToastify.css";
+import swal from "sweetalert";
 
 const ApplyForLeaves = () => {
-
   const navigate = useNavigate();
-  const empId = useReadLocalStorage("id");
+  // const empId = useReadLocalStorage("id");
+  const empId = localStorage.getItem("id");
   console.log(empId);
   const [leaveBalance, setLeaveBalance] = useState();
+  const [newLeaveBalance, setNewLeaveBalance] = useState([]);
   const [empManager, setEmpManager] = useState("");
-  const {axiosInstance, loading} = useHttp();
+  const { axiosInstance, loading } = useHttp();
   const [isLeaveTypeSelected, setIsLeaveTypeSelected] = useState(false);
   const [leaveTypeName, setLeaveTypeName] = useState<any>([]);
   const [username, setUsername] = useState<string>();
@@ -108,8 +109,19 @@ const ApplyForLeaves = () => {
       leaveTypeId: leaveTypeDetails.leaveTypeId,
     };
 
-    if (leaveBalance && newLeaveTypeDetails.totalDays > +leaveBalance) {
-      swal( "Total days requested should be less than or equal to leave balance.");
+    //validation for checking balance
+
+    let data: any = newLeaveBalance.filter(
+      (s: any) =>
+        s.leaveTypeId == newLeaveTypeDetails.leaveTypeId && s.leaveTypeId != 2
+    );
+
+    // alert(JSON.stringify(data) + ' '+ newLeaveTypeDetails.totalDays);
+
+    if (data && newLeaveTypeDetails.totalDays > data[0]?.balance) {
+      swal(
+        "Total days requested should be less than or equal to leave balance."
+      );
       return;
     }
 
@@ -122,7 +134,7 @@ const ApplyForLeaves = () => {
         });
     } catch (error: any) {
       swal(error.response.data.message);
-      
+
       const existingData = {
         requestComments: "",
         startDate: "",
@@ -143,7 +155,7 @@ const ApplyForLeaves = () => {
           statusId: "",
         },
       };
-      
+
       setLeaveTypeDetails(existingData);
       setUnAuthorized(true);
 
@@ -168,8 +180,7 @@ const ApplyForLeaves = () => {
         },
       });
     }
-    };
-      
+  };
 
   useEffect(() => {
     const fetchLeaveTypes = async () => {
@@ -184,12 +195,31 @@ const ApplyForLeaves = () => {
 
     const fetchLeaveBalances = async () => {
       try {
-        const response = await axiosInstance.get(`/api/LeaveRequest/balance/${empId}`);
+        const response = await axiosInstance.get(
+          `/api/LeaveRequest/balance/${empId}`
+        );
         setLeaveBalance(response.data);
-        console.log(response.data);
+        console.log("old balance - ", response.data);
       } catch (error) {}
     };
     fetchLeaveBalances();
+
+    const fetchLeaveBalancesPerType = async () => {
+      try {
+        const response = await axiosInstance.get(`/employee/${empId}`);
+        setNewLeaveBalance(response.data);
+
+        console.log("1st Array Element", response.data[0].leaveTypeId);
+
+        console.log("new leave balance ---", newLeaveBalance);
+
+        console.log("new balance - ", response.data);
+      } catch (error) {
+        swal("Error Occurred");
+      }
+    };
+
+    fetchLeaveBalancesPerType();
 
     const fetchEmpManager = async () => {
       try {
@@ -209,7 +239,9 @@ const ApplyForLeaves = () => {
 
     const fetchUsername = async () => {
       try {
-        const response = await axiosInstance.get(`/api/User/currentuser/${empId}`);
+        const response = await axiosInstance.get(
+          `/api/User/currentuser/${empId}`
+        );
         setUsername(`${response.data.firstName} ${response.data.lastName}`);
       } catch (error) {
         console.error(error);
@@ -217,7 +249,6 @@ const ApplyForLeaves = () => {
     };
     fetchUsername();
   }, [empId]);
-
   function getDateDifference(startDate: any, endDate: any) {
     const oneDay = 24 * 60 * 60 * 1000;
     let totalDays = Math.round(Math.abs((startDate - endDate) / oneDay)) + 1;
@@ -245,38 +276,35 @@ const ApplyForLeaves = () => {
     const newErrors = { ...tryErrors };
 
     switch (name) {
-
       case "startDate":
+        const endDate = new Date(leaveTypeDetails.endDate);
+        const selectedStartDate = new Date(value);
 
-      const endDate = new Date(leaveTypeDetails.endDate);
-      const selectedStartDate = new Date(value);
+        if (selectedStartDate > endDate) {
+          newErrors.startDate = "Start date cannot be greater than end date.";
+          isValid = false;
+        } else {
+          newErrors.requestComments = "";
+        }
 
-      if (selectedStartDate > endDate) {
-        newErrors.startDate = "Start date cannot be greater than end date.";
-        isValid = false;
-      }else {
-        newErrors.requestComments = "";
-      }
-
-      totalDays = getDateDifference(selectedStartDate, endDate);
-      break;
+        totalDays = getDateDifference(selectedStartDate, endDate);
+        break;
 
       case "endDate":
-
         const startDate = new Date(leaveTypeDetails.startDate);
         const selectedEndDate = new Date(value);
-  
+
         if (selectedEndDate < startDate) {
           newErrors.endDate = "End date cannot be less than start date.";
           return;
         }
-  
+
         totalDays = getDateDifference(startDate, selectedEndDate);
         break;
 
-        default:
-          break;
-      }
+      default:
+        break;
+    }
 
     setLeaveTypeDetails((prevState: any) => ({
       ...prevState,
@@ -289,10 +317,8 @@ const ApplyForLeaves = () => {
   };
 
   return (
-
     <Box sx={{ display: "flex", justifyContent: "left", mt: 4 }}>
       <Container>
-       
         <Typography variant="h4" align="left">
           Apply For Leaves
         </Typography>
@@ -313,7 +339,8 @@ const ApplyForLeaves = () => {
               value={leaveTypeDetails.leaveTypeId}
               onChange={handleInputChange}
               error={
-                !isLeaveTypeSelected && Boolean(leaveTypeDetails.errors.leaveTypeId)
+                !isLeaveTypeSelected &&
+                Boolean(leaveTypeDetails.errors.leaveTypeId)
               }
             >
               {leaveTypeName?.map((option: any) => (
@@ -326,32 +353,30 @@ const ApplyForLeaves = () => {
               </Typography>
             )}
           </FormControl>
-          <br></br><br></br>
-
-            Start Date : 
+          <br></br>
+          <br></br>
+          From :
           <TextField
             name="startDate"
             type="date"
             autoComplete="off"
             value={leaveTypeDetails.startDate}
             onChange={handleInputChange}
-            sx={{ mb: 2, mr: 2, ml:2 }}
+            sx={{ mb: 2, mr: 2, ml: 2 }}
             inputProps={{
               min: new Date().toISOString().slice(0, 10),
             }}
             error={Boolean(leaveTypeDetails.errors.startDate)}
             helperText={leaveTypeDetails.errors.startDate}
           />
-
-
-            End Date : 
+          To :
           <TextField
             name="endDate"
             type="date"
             autoComplete="off"
             value={leaveTypeDetails.endDate}
             onChange={handleInputChange}
-            sx={{ mb: 2, mr: 2, ml:2 }}
+            sx={{ mb: 2, mr: 2, ml: 2 }}
             inputProps={{
               min: leaveTypeDetails.startDate,
               max: new Date(
@@ -363,14 +388,12 @@ const ApplyForLeaves = () => {
             error={Boolean(leaveTypeDetails.errors.endDate)}
             helperText={leaveTypeDetails.errors.endDate}
           />
-          
           <br></br>
           <br></br>
           Total Days: {leaveTypeDetails.totalDays}
           <br></br>
           <br></br>
           <br></br>
-
           <TextField
             name="requestComments"
             type="text"
@@ -384,18 +407,14 @@ const ApplyForLeaves = () => {
             error={Boolean(leaveTypeDetails.errors.requestComments)}
             helperText={leaveTypeDetails.errors.requestComments}
           />
-
           <br></br>
           <br></br>
-
           <Button type="submit" variant="contained" sx={{ mr: 2 }}>
             Submit
           </Button>
-
           <Button variant="contained" onClick={() => navigate("/leavedetails")}>
             Cancel
           </Button>
-
         </Box>
       </Container>
     </Box>

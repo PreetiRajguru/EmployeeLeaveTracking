@@ -1,17 +1,18 @@
 import React from "react";
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import 'bootstrap/dist/js/bootstrap.bundle.js';
 
 const Loader: React.FC = () => {
-    return (
+  return (
+    // <div>
+    //     <h3>Loading ... </h3>
+    // </div>
 
-        <div>
-            <h3>Loading ... </h3>
+    <div className="overlay">
+      <div className="overlay__inner">
+        <div className="overlay__content">
+          <span className="spinner"></span>
         </div>
-
-        // <div className="my-spinner">
-        //     <div className="spinner-border text-primary" role="status"></div>
-        // </div>
-    );
+      </div>
+    </div>
+  );
 };
 export default Loader;

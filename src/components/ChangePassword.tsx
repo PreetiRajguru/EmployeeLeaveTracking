@@ -7,6 +7,7 @@ import swal from 'sweetalert';
 const ChangePassword = () => {
   const [isFormValid, setIsFormValid] = useState(false);
   const [user, setUser] = useState<any>([]);
+  const navigate = useNavigate();
   const { axiosInstance, loading } = useHttp();
   const [data, setData] = useState({
     current: "",
@@ -199,6 +200,14 @@ const ChangePassword = () => {
             sx={{ mt: 3, mb: 2 }}
           >
             Change Password
+          </Button>
+          <Button
+            fullWidth
+            variant="contained"
+            sx={{ mt: 0, mb: 2 }}
+            onClick={() => navigate("/myprofile")}
+          >
+            Back
           </Button>
         </Box>
       </Box>

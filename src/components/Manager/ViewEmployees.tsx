@@ -1,3 +1,4 @@
+
 import { useState, useEffect, Key, ReactNode } from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
@@ -12,7 +13,7 @@ import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
-import { IconButton } from "@mui/material";
+import { IconButton, TablePagination } from "@mui/material";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import useHttp from "../../config/https";
 
@@ -50,8 +51,10 @@ export interface Employee {
 
 export default function CustomizedTables() {
   const navigate = useNavigate();
-  const {axiosInstance, loading} = useHttp();
+  const { axiosInstance, loading } = useHttp();
   const [data, setData] = useState<Employee[]>([]);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
   useEffect(() => {
     const managerId = localStorage.getItem("id");
@@ -79,9 +82,7 @@ export default function CustomizedTables() {
     doc.setFontSize(15);
 
     const title = "My Employee Report";
-    const headers = [
-      ["FIRSTNAME", "LASTNAME", "USERNAME", "EMAIL", "PHONE NUMBER"],
-    ];
+    const headers = [["FIRSTNAME", "LASTNAME", "USERNAME", "EMAIL", "PHONE NUMBER"]];
 
     const pdfdata = data.map((elt) => [
       elt.firstName,
@@ -102,31 +103,33 @@ export default function CustomizedTables() {
     doc.save("employee.pdf");
   };
 
+  const handleChangePage = (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
+  const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
+
   return (
     <TableContainer component={Paper}>
       <Typography component="h1" variant="h5" align="center">
         View All Employees
-        <br></br>
-        <br></br>
+        <br />
+        <br />
       </Typography>
       <StyledTableCell align="right">
         <Button variant="outlined" onClick={exportPDF}>
           Generate Report
-          <IconButton
-            size="small"
-            edge="end"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
+          <IconButton size="small" edge="end" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
             <PictureAsPdfIcon sx={{ ml: 2, mr: 0 }} />
           </IconButton>
         </Button>
       </StyledTableCell>
-      <Table
-        sx={{ minWidth: 700, border: "15px solid white" }}
-        aria-label="customized table"
-      >
+      <Table sx={{ minWidth: 700, border: "15px solid white" }} aria-label="customized table">
         <TableHead>
           <TableRow>
             <StyledTableCell>Employee Name</StyledTableCell>
@@ -134,11 +137,14 @@ export default function CustomizedTables() {
             <StyledTableCell>Email</StyledTableCell>
             <StyledTableCell>Phone Number</StyledTableCell>
             <StyledTableCell>Designation Name</StyledTableCell>
-            <StyledTableCell align="right">Actions</StyledTableCell>
+            <StyledTableCell align="right"></StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((row) => (
+          {(rowsPerPage > 0
+            ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            : data
+          ).map((row) => (
             <StyledTableRow key={row.userName}>
               <StyledTableCell component="th" scope="row">
                 {row.firstName} {row.lastName}
@@ -156,17 +162,28 @@ export default function CustomizedTables() {
                 {row.designationName}
               </StyledTableCell>
               <StyledTableCell align="right">
-                <Button
-                  variant="outlined"
-                  onClick={() => navigate(`/viewempdetails/${row.id}`)}
-                >
+                <Button variant="outlined" onClick={() => navigate(`/viewempdetails/${row.id}`)}>
                   Leave Details
                 </Button>
               </StyledTableCell>
             </StyledTableRow>
           ))}
+          {emptyRows > 0 && (
+            <StyledTableRow style={{ height: 53 * emptyRows }}>
+              <StyledTableCell colSpan={6} />
+            </StyledTableRow>
+          )}
         </TableBody>
       </Table>
+      <TablePagination
+        rowsPerPageOptions={[5, 10, 25]}
+        component="div"
+        count={data.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
     </TableContainer>
   );
 }

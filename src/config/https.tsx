@@ -45,8 +45,8 @@ const useHttp = () => {
   };
 
   axiosInstance.interceptors.request.use((config) => {
-    setLoading(true);
-
+    setLoading(true); 
+    document.body.classList.add('loading-indicator');
     const token = localStorage.getItem("token");
     if (token) {
       config.headers.Authorization = "Bearer " + token;
@@ -60,7 +60,7 @@ const useHttp = () => {
   axiosInstance.interceptors.response.use(
     (config) => {
       setLoading(false);
-
+      document.body.classList.remove('loading-indicator');
       // Print this when receiving any HTTP response
       console.log("Response was received");
       return config;
@@ -68,7 +68,7 @@ const useHttp = () => {
     async (error) => {
       const originalRequest = error.config;
       setLoading(false);
-
+      document.body.classList.remove('loading-indicator');
       if (error.response.status === 401 && !originalRequest._retry) {
         if (isRefreshing) {
           

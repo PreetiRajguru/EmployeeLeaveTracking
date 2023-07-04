@@ -3,14 +3,14 @@ import {
   CardContent,
   Typography,
   Avatar,
-  Stack,
-  TableCell,
-  TableRow,
-  styled,
-  tableCellClasses,
+  Button,
+  ButtonGroup,
 } from "@mui/material";
 import { Key, ReactNode, useEffect, useState } from "react";
 import useHttp from "../config/https";
+import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
+import PasswordIcon from '@mui/icons-material/Password';
+import { useNavigate } from "react-router-dom";
 
 export interface Employee {
   userName: Key | null | undefined;
@@ -27,6 +27,7 @@ export interface Employee {
 export default function CustomizedTables() {
   const [data, setData] = useState<Employee[]>([]);
   const { axiosInstance, loading } = useHttp();
+  const navigate = useNavigate();
 
   //profile image
   const [image, setImage] = useState<any>(null);
@@ -82,7 +83,7 @@ export default function CustomizedTables() {
     <div
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
-      <br></br>
+      <br></br>            
 
       {data.map((user) => (
         <Card sx={{ minWidth: 675, mt: 5, backgroundColor: "white" }}>
@@ -95,7 +96,6 @@ export default function CustomizedTables() {
           >
             {imageExists && image ? (
               <img
-                // src={image}
                 src={`https://localhost:7033/${image}`}
                 style={{
                   display: "flex",
@@ -165,7 +165,17 @@ export default function CustomizedTables() {
             </table>
           </CardContent>
         </Card>
+        
       ))}
+      <br></br>
+       <ButtonGroup style={{marginLeft:"0px"}}>
+            <Button variant="outlined" color="success" onClick={() => navigate("/updateuserprofile")}>
+            <AutoFixHighIcon/> &nbsp; Edit Profile
+            </Button>
+            <Button variant="outlined" color="info" onClick={() => navigate("/changepassword")}>
+            <PasswordIcon/> &nbsp; Change Password
+            </Button>
+            </ButtonGroup>
     </div>
   );
 }

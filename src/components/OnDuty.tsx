@@ -214,9 +214,11 @@ const OnDuty = () => {
             )}
           </FormControl>
           <br></br>
-          <br></br>
 
-          Start Date : 
+          <h4><b>Worked Dates</b></h4>
+
+        <div style={{marginLeft:"0px"}}>
+          From : 
           <TextField
             name="workedDate"
             type="date"
@@ -235,7 +237,7 @@ const OnDuty = () => {
             helperText={leaveDetails.errors.workedDate}
           />
 
-          End Date : 
+          To : 
           <TextField
             name="endDate"
             type="date"
@@ -254,7 +256,8 @@ const OnDuty = () => {
             error={Boolean(leaveDetails.errors.endDate)}
             helperText={leaveDetails.errors.endDate}
           />
-          <br></br>
+          </div>
+
           <br></br>
           Total Days: {leaveDetails.balance}
           <br></br>

@@ -163,7 +163,8 @@ const ViewEmployeeDetails = () => {
         sx={{
           position: "fixed",
           bottom: "20px",
-          right: "20px",
+          // right: "20px",
+          left: "0px",
           mt: 1,
         }}
       >
