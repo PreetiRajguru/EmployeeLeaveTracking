@@ -28,6 +28,8 @@ namespace EmployeeLeaveTracking.Data.Models
 
         public DesignationMaster Designation { get; set; } = null!;
 
+        public List<Notification> Notifications { get; set; }
+
         public List<LeaveRequest>? ManagerLeaveRequests { get; set; }
 
         public List<LeaveRequest> EmployeeLeaveRequests { get; set; }

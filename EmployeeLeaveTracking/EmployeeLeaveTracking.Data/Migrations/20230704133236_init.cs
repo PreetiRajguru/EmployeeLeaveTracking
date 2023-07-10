@@ -374,10 +374,10 @@ namespace EmployeeLeaveTracking.Data.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "DesignationName", "IsDeleted", "ModifiedBy", "ModifiedDate" },
                 values: new object[,]
                 {
-                    { 1, null, new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(5508), "Intern", false, null, new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(6315) },
-                    { 2, null, new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(7752), "Software Engineer", false, null, new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(7754) },
-                    { 3, null, new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(7755), "Senior Software Engineer", false, null, new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(7756) },
-                    { 4, null, new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(7757), "Tech Lead", false, null, new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(7758) }
+                    { 1, null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(8077), "Intern", false, null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(8849) },
+                    { 2, null, new DateTime(2023, 7, 4, 13, 32, 35, 436, DateTimeKind.Utc).AddTicks(857), "Software Engineer", false, null, new DateTime(2023, 7, 4, 13, 32, 35, 436, DateTimeKind.Utc).AddTicks(858) },
+                    { 3, null, new DateTime(2023, 7, 4, 13, 32, 35, 436, DateTimeKind.Utc).AddTicks(861), "Senior Software Engineer", false, null, new DateTime(2023, 7, 4, 13, 32, 35, 436, DateTimeKind.Utc).AddTicks(861) },
+                    { 4, null, new DateTime(2023, 7, 4, 13, 32, 35, 436, DateTimeKind.Utc).AddTicks(864), "Tech Lead", false, null, new DateTime(2023, 7, 4, 13, 32, 35, 436, DateTimeKind.Utc).AddTicks(864) }
                 });
 
             migrationBuilder.InsertData(
@@ -385,12 +385,12 @@ namespace EmployeeLeaveTracking.Data.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "IsDeleted", "LeaveTypeName", "ModifiedBy", "ModifiedDate" },
                 values: new object[,]
                 {
-                    { 1, null, new DateTime(2023, 7, 4, 5, 33, 18, 284, DateTimeKind.Utc).AddTicks(7214), false, "Paid Leave", null, new DateTime(2023, 7, 4, 5, 33, 18, 285, DateTimeKind.Utc).AddTicks(8347) },
-                    { 2, null, new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(1023), false, "Unpaid Leave", null, new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(1027) },
-                    { 3, null, new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(1031), false, "Forgot ID Card", null, new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(1032) },
-                    { 4, null, new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(1034), false, "Work From Home", null, new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(1036) },
-                    { 5, null, new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(1038), false, "Compensatory Off", null, new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(1039) },
-                    { 6, null, new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(1041), false, "On Duty", null, new DateTime(2023, 7, 4, 5, 33, 18, 286, DateTimeKind.Utc).AddTicks(1043) }
+                    { 1, null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(1816), false, "Paid Leave", null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(3038) },
+                    { 2, null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(4998), false, "Unpaid Leave", null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(4999) },
+                    { 3, null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(5002), false, "Forgot ID Card", null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(5003) },
+                    { 4, null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(5005), false, "Work From Home", null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(5006) },
+                    { 5, null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(5008), false, "Compensatory Off", null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(5009) },
+                    { 6, null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(5010), false, "On Duty", null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(5011) }
                 });
 
             migrationBuilder.InsertData(
@@ -398,9 +398,9 @@ namespace EmployeeLeaveTracking.Data.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "IsDeleted", "ModifiedBy", "ModifiedDate", "StatusType" },
                 values: new object[,]
                 {
-                    { 1, null, new DateTime(2023, 7, 4, 5, 33, 18, 287, DateTimeKind.Utc).AddTicks(26), false, null, new DateTime(2023, 7, 4, 5, 33, 18, 287, DateTimeKind.Utc).AddTicks(611), "Pending" },
-                    { 2, null, new DateTime(2023, 7, 4, 5, 33, 18, 287, DateTimeKind.Utc).AddTicks(1865), false, null, new DateTime(2023, 7, 4, 5, 33, 18, 287, DateTimeKind.Utc).AddTicks(1867), "Approved" },
-                    { 3, null, new DateTime(2023, 7, 4, 5, 33, 18, 287, DateTimeKind.Utc).AddTicks(1869), false, null, new DateTime(2023, 7, 4, 5, 33, 18, 287, DateTimeKind.Utc).AddTicks(1870), "Rejected" }
+                    { 1, null, new DateTime(2023, 7, 4, 13, 32, 35, 436, DateTimeKind.Utc).AddTicks(3490), false, null, new DateTime(2023, 7, 4, 13, 32, 35, 436, DateTimeKind.Utc).AddTicks(4240), "Pending" },
+                    { 2, null, new DateTime(2023, 7, 4, 13, 32, 35, 437, DateTimeKind.Utc).AddTicks(6808), false, null, new DateTime(2023, 7, 4, 13, 32, 35, 437, DateTimeKind.Utc).AddTicks(6822), "Approved" },
+                    { 3, null, new DateTime(2023, 7, 4, 13, 32, 35, 437, DateTimeKind.Utc).AddTicks(6828), false, null, new DateTime(2023, 7, 4, 13, 32, 35, 437, DateTimeKind.Utc).AddTicks(6829), "Rejected" }
                 });
 
             migrationBuilder.CreateIndex(

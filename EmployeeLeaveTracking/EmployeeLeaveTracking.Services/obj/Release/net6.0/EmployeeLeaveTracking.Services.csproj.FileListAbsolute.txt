@@ -15,3 +15,20 @@ D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTra
 D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.pdb
 D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.genruntimeconfig.cache
 D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\ref\EmployeeLeaveTracking.Services.dll
+D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Services.deps.json
+D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Services.runtimeconfig.json
+D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Services.dll
+D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Services.pdb
+D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Data.dll
+D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Data.pdb
+D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.csproj.AssemblyReference.cache
+D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.GeneratedMSBuildEditorConfig.editorconfig
+D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.AssemblyInfoInputs.cache
+D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.AssemblyInfo.cs
+D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.csproj.CoreCompileInputs.cache
+D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.csproj.CopyComplete
+D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.dll
+D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\refint\EmployeeLeaveTracking.Services.dll
+D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.pdb
+D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.genruntimeconfig.cache
+D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\ref\EmployeeLeaveTracking.Services.dll

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using EmployeeLeaveTracking.Data.Models;
 using Microsoft.AspNetCore.Identity;
+using EmployeeLeaveTracking.Data.DTOs;
 
 namespace EmployeeLeaveTracking.Data.Context
 {
@@ -23,6 +24,10 @@ namespace EmployeeLeaveTracking.Data.Context
 
         public DbSet<OnDuty> OnDutys { get; set; }
 
+        public DbSet<NotificationType> NotificationTypes { get; set; }
+
+        public DbSet<Notification> Notifications { get; set; }
+
         public EmployeeLeaveDbContext()
         {
 
@@ -38,8 +43,9 @@ namespace EmployeeLeaveTracking.Data.Context
             if (!optionsBuilder.IsConfigured)
             {
                 /*optionsBuilder.UseSqlServer("ConnStr");*/
-                optionsBuilder.UseSqlServer("Server=localhost;Database=EmployeeLeaveAdditions;Trusted_Connection=True;TrustServerCertificate=True;" +
-                    "MultipleActiveResultSets=True;");
+              /*  optionsBuilder.UseSqlServer("Server=localhost;Database=EmployeeLeaveAdditions;Trusted_Connection=True;TrustServerCertificate=True;" +
+                    "MultipleActiveResultSets=True;");*/
+                optionsBuilder.UseSqlServer("Server=tcp:employeeleavetracking.database.windows.net,1433;Initial Catalog=EmployeeLeaveTracking;Persist Security Info=False;User ID=preeti;Password=ashwin@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
             }
         }
 
@@ -85,6 +91,21 @@ namespace EmployeeLeaveTracking.Data.Context
           .WithMany(lt => lt.LeaveBalances)
           .HasForeignKey(lb => lb.LeaveTypeId);
 
+            modelBuilder.Entity<Notification>()
+          .HasOne(lb => lb.NotificationTypeName)
+          .WithMany(lt => lt.Notifications)
+          .HasForeignKey(lb => lb.NotificationTypeId);
+
+             modelBuilder.Entity<Notification>()
+           .HasOne(n => n.LeaveRequest)
+           .WithMany(lr => lr.Notifications)
+           .HasForeignKey(n => n.LeaveRequestId);
+
+            modelBuilder.Entity<Notification>()
+          .HasOne(lb => lb.User)
+          .WithMany(lt => lt.Notifications)
+          .HasForeignKey(lb => lb.UserId);
+
             modelBuilder.Entity<ProfileImage>()
                       .HasOne(p => p.User)
                       .WithOne(p => p.ProfileImages);
@@ -117,6 +138,10 @@ namespace EmployeeLeaveTracking.Data.Context
             new StatusMaster { Id = 1, StatusType = "Pending" },
             new StatusMaster { Id = 2, StatusType = "Approved" },
             new StatusMaster { Id = 3, StatusType = "Rejected" });
+
+            modelBuilder.Entity<NotificationType>().HasData(
+            new NotificationType { Id = 1, NotificationTypeName = "Leave Request" },
+            new NotificationType { Id = 2, NotificationTypeName = "Leave Response" });
         }
 
         private static void SeedRoles(ModelBuilder builder)

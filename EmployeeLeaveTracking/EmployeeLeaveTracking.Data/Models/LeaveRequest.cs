@@ -34,6 +34,8 @@
 
         public User? Manager { get; set; }
 
+        public List<Notification>? Notifications { get; set; }
+
         public StatusMaster? StatusMaster { get; set; }
 
         public LeaveType? LeaveType { get; set; }

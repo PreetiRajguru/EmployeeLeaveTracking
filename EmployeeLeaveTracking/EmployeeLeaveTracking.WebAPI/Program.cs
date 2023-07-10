@@ -35,6 +35,7 @@ var mapperConfig = new MapperConfiguration(map =>
     map.AddProfile<LeaveRequestProfile>();
     map.AddProfile<LeaveTypeProfile>();
     map.AddProfile<UserProfile>();
+    map.AddProfile<NotificationProfile>();
 });
 builder.Services.AddSingleton(mapperConfig.CreateMapper());
 
@@ -53,6 +54,7 @@ builder.Services.AddScoped<IProfileImage, ProfileImageService>();
 builder.Services.AddScoped<ILeaveBalance, LeaveBalanceService>();
 builder.Services.AddScoped<ICompOff, CompOffService>();
 builder.Services.AddScoped<IOnDuty, OnDutyService>();
+builder.Services.AddScoped<INotification, NotificationService>();
 
 
 builder.Services.AddCors(options =>
@@ -132,24 +134,30 @@ builder.Services.AddSwaggerGen(c =>
 
 
 var app = builder.Build();
-app.UseCors("AllowAll");
 
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    /*app.UseSwaggerUI();*/
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "EmployeeLeaveTrackingApi V1");
+    });
 }
+app.UseCors("AllowAll");
 
+app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseRouting();
 
-app.UseHttpsRedirection(); 
 
 app.UseAuthentication();
 
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapFallbackToFile("index.html");
 
 app.Run();

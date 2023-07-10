@@ -1,4 +1,5 @@
-﻿using EmployeeLeaveTracking.Data.Context;
+﻿using AutoMapper;
+using EmployeeLeaveTracking.Data.Context;
 using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Data.Mappers;
 using EmployeeLeaveTracking.Data.Models;
@@ -16,13 +17,15 @@ namespace EmployeeLeaveTracking.Services.Services
         private readonly UserService _userService;
         private readonly UserManager<User> _userManager;
         private User? _user;
+        private readonly IMapper _mapper;
 
-        public LeaveRequestService(EmployeeLeaveDbContext dbContext, UserManager<User> userManager, IHttpContextAccessor httpContextAccessor, UserService userService)
+        public LeaveRequestService(EmployeeLeaveDbContext dbContext, UserManager<User> userManager, IHttpContextAccessor httpContextAccessor, UserService userService, IMapper mapper)
         {
             _dbContext = dbContext;
             _userManager = userManager;
             _httpContextAccessor = httpContextAccessor;
             _userService = userService;
+            _mapper = mapper;
         }
 
         public IEnumerable<LeaveRequestDTO> GetAll()
@@ -140,9 +143,21 @@ namespace EmployeeLeaveTracking.Services.Services
         }
 
 
-        //new method for adding leave request
+
         public NewLeaveRequestDTO NewCreateNewLeaveRequest(NewLeaveRequestDTO leaveRequest)
         {
+            // Check if there are any existing leave requests for the same user and overlapping dates
+            bool isLeaveAlreadyExists = _dbContext.LeaveRequests
+                .Any(lr => lr.EmployeeId == leaveRequest.EmployeeId &&
+                           lr.StartDate <= leaveRequest.EndDate &&
+                           lr.EndDate >= leaveRequest.StartDate &&
+                           lr.StatusId == 2);
+
+            if (isLeaveAlreadyExists)
+            {
+                throw new Exception("Leave request already approved for the same dates.");
+            }
+
             LeaveRequest newLeaveRequest = new()
             {
                 RequestComments = leaveRequest.RequestComments,
@@ -161,7 +176,7 @@ namespace EmployeeLeaveTracking.Services.Services
             leaveRequest.Id = newLeaveRequest.Id;
 
             var balance = _dbContext.LeaveBalances
-            .FirstOrDefault(b => b.UserId == leaveRequest.EmployeeId && b.LeaveTypeId == leaveRequest.LeaveTypeId);
+                .FirstOrDefault(b => b.UserId == leaveRequest.EmployeeId && b.LeaveTypeId == leaveRequest.LeaveTypeId);
 
             if (balance == null)
             {
@@ -175,14 +190,33 @@ namespace EmployeeLeaveTracking.Services.Services
             }
             else
             {
-                balance.Balance = balance.Balance - leaveRequest.TotalDays;
+                balance.Balance -= leaveRequest.TotalDays;
             }
 
+            
+            var notification = _mapper.Map<NotificationDTO, Notification>(new NotificationDTO
+            {
+                UserId = leaveRequest.ManagerId,
+                LeaveRequestId = newLeaveRequest.Id,
+                NotificationTypeId = 1,
+                IsViewed = false
+            });
+
+
+            _dbContext.Notifications.Add(notification);
             _dbContext.SaveChanges();
 
             return leaveRequest;
-
         }
+
+
+
+
+
+
+
+
+
 
 
         public LeaveRequestDTO Update(LeaveRequestDTO leaveRequest)
@@ -324,6 +358,7 @@ namespace EmployeeLeaveTracking.Services.Services
             return await _dbContext.LeaveRequests.FirstOrDefaultAsync(l => l.Id == id);
         }
 
+
         public async Task<int> UpdateLeaveRequestStatus(int id, int statusId)
         {
             LeaveRequest leaveRequest = await GetLeaveById(id);
@@ -337,23 +372,43 @@ namespace EmployeeLeaveTracking.Services.Services
             _dbContext.Entry(leaveRequest).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
 
-            if (statusId == 3)
+            if (statusId == 2 || statusId == 3) 
             {
-                LeaveBalance leaveBalance = await _dbContext.LeaveBalances.FirstOrDefaultAsync(b =>
-                    b.UserId == leaveRequest.EmployeeId && b.LeaveTypeId == leaveRequest.LeaveTypeId);
-
-                if (leaveBalance != null)
+                NotificationDTO notification = new NotificationDTO
                 {
-                    leaveBalance.Balance += leaveRequest.TotalDays;
-                    leaveBalance.ModifiedDate = DateTime.Now;
+                    UserId = leaveRequest.EmployeeId,
+                    LeaveRequestId = leaveRequest.Id,
+                    NotificationTypeId = 2,
+                    IsViewed = false
+                };
 
-                    _dbContext.Entry(leaveBalance).State = EntityState.Modified;
-                    await _dbContext.SaveChangesAsync();
-                }
+                var notificationEntity = _mapper.Map<Notification>(notification);
+                _dbContext.Notifications.Add(notificationEntity);
+                await _dbContext.SaveChangesAsync();
             }
 
             return statusId;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         //make changes in this method for bringing all types leave balances for a single employee
         public double LeaveBalance(string employeeId)
