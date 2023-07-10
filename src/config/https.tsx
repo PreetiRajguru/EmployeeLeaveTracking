@@ -5,7 +5,8 @@ export const AppContext = React.createContext<any>({});
 
 const useHttp = () => {
   const axiosInstance = axios.create({
-    baseURL: "https://localhost:7033/"
+    // baseURL: "https://localhost:7033/"
+    baseURL: "https://employeeleavetracking.azurewebsites.net/"
   });
   const [loading, setLoading] = useState(false);
   let isRefreshing = false;
@@ -26,7 +27,8 @@ const useHttp = () => {
     try {
       console.log("Refresh Token api was called");
       const response = await axiosInstance.post(
-        "https://localhost:7033/api/Auth/refresh-token",
+        // "https://localhost:7033/api/Auth/refresh-token",
+        "https://employeeleavetracking.azurewebsites.net/api/Auth/refresh-token",
         {
           accessToken: localStorage.getItem("token"),
           refreshToken: localStorage.getItem("refreshToken"),

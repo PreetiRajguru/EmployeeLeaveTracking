@@ -22,6 +22,7 @@ import ChangePassword from './components/ChangePassword';
 import UpdateUserProfile from './components/UpdateUserProfile';
 import CompOff from './components/CompOff';
 import OnDuty from './components/OnDuty';
+import ManagerNotifications from './components/Manager/ManagerNotifications';
 
 function App() {
 
@@ -69,6 +70,7 @@ function App() {
         <Route path="/compoff" element={<CompOff />} />
         <Route path="/onduty" element={<OnDuty />} />
         <Route path="/*" element={<ErrorPage />} />
+        <Route path="/managernotifications" element={<ManagerNotifications />} />
       </Routes>
       
       </BrowserRouter>

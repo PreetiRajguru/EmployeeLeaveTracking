@@ -11,7 +11,6 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
-import axios from "axios";
 import useHttp from "../../config/https";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -55,14 +54,28 @@ const ViewEmployeeDetails = () => {
     fetchLeaveDetails();
   }, []);
 
-  const fetchStatus = (rowId: any, param: any) => {
-    axiosInstance
-      .put(`/api/LeaveRequest/${rowId}/status/${param}`)
-      .then((response) => setStatusId(response.data))
-      .catch((error) => console.log(error));
+  // const fetchStatus = (rowId: any, param: any) => {
+  //   axiosInstance
+  //     .put(`/api/LeaveRequest/${rowId}/status/${param}`)
+  //     .then((response) => setStatusId(response.data))
+  //     .catch((error) => console.log(error));
 
-      window.location.reload()
+  //     window.location.reload()
+  // };
+
+
+  const fetchStatus = async (rowId: any, param: any) => {
+    try {
+      await axiosInstance.put(`/api/LeaveRequest/${rowId}/status/${param}`);
+      const updatedResponse = await axiosInstance.get(`/api/LeaveRequest/${rowId}`);
+      const updatedStatus = updatedResponse.data.status;
+      setStatusId(updatedStatus);
+    } catch (error) {
+      console.log(error);
+    }
+    window.location.reload()
   };
+  
 
   return (
     <div>

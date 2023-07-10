@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/b5eb6825-998e-45f8-bd64-1ce48d1776dd/resourceGroups/Employee_Leave_Tracking/providers/Microsoft.Web/sites/EmployeeLeavesTracking",
+    "appService.deploySubpath": "build"
+}

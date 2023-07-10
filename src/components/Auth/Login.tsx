@@ -8,8 +8,8 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { useNavigate } from "react-router-dom";
 import { Card, CardActionArea, CardMedia, CardContent } from "@mui/material";
-import 'react-toastify/dist/ReactToastify.css';
-import swal from 'sweetalert';
+import "react-toastify/dist/ReactToastify.css";
+import swal from "sweetalert";
 import useHttp from "../../config/https";
 
 export default function Login() {
@@ -23,12 +23,16 @@ export default function Login() {
       password: "",
     },
   });
-
   const [unAuthorized, setUnAuthorized] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const [isManager, setIsManager] = useState(false);
   const [isEmployee, setIsEmployee] = useState(false);
-  const {axiosInstance, loading} = useHttp();
+  const { axiosInstance, loading } = useHttp();
+  const empId = localStorage.getItem("id");
+
+  useEffect(() => {
+    getToken();
+  }, []);
 
   const getToken = () => {
     setIsLogin(
@@ -42,21 +46,43 @@ export default function Login() {
         : false
     );
     setIsEmployee(
-      localStorage.getItem("role") && localStorage.getItem("role") === "Employee"
+      localStorage.getItem("role") &&
+        localStorage.getItem("role") === "Employee"
         ? true
         : false
     );
   };
 
-  if(isLogin && isManager){
+  const fetchCurrentUser = async () => {
+    try {
+      const response = await axiosInstance.get(
+        `api/User/currentuserdetails/${localStorage.getItem("id")}`
+      );
+      navigate(`/leavedetails`, { state: { data: response.data} });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-    navigate(`/viewemployees`);
+  const fetchUser = async () => {
+    try {
+       
+      const response = await axiosInstance.get(
+        `api/User/currentuserdetails/${localStorage.getItem("id")}`
+      );
+      navigate(`/viewemployees`, { state: { data: response.data} });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-  } 
-  else if(isLogin && isEmployee){
 
-    navigate(`/leavedetails`);
-
+  if (isLogin && isManager) {
+    fetchUser();
+    //navigate(`/viewemployees`);
+  } else if (isLogin && isEmployee) {
+    fetchCurrentUser();
+    //navigate(`/leavedetails`);
   }
 
   const handleSubmit = async (event: any) => {
@@ -98,12 +124,17 @@ export default function Login() {
 
       if (response.data.role === "Manager") {
         swal("Login Successfull !");
-        navigate(`/viewemployees`);
-        window.location.reload();
+        // navigate(`/viewemployees`);
+        if(response.data && response.data.id){
+          fetchUser();
+          }
+        // window.location.reload();
       } else if (response.data.role === "Employee") {
         swal("Login Successfull");
-        navigate(`/leavedetails`);
-        window.location.reload();
+        if(response.data && response.data.id){
+          fetchCurrentUser();
+        }
+        // window.location.reload();
       }
 
       if (response.status !== 200) {
@@ -149,10 +180,6 @@ export default function Login() {
   const handleSnack = () => {
     setUnAuthorized(false);
   };
-  
-  useEffect(() => {
-    getToken();
-  }, []);
 
   return (
     <>
@@ -192,7 +219,6 @@ export default function Login() {
               alignItems: "center",
             }}
           >
-
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
@@ -203,7 +229,6 @@ export default function Login() {
               noValidate
               sx={{ mt: 1 }}
             >
-
               <TextField
                 margin="normal"
                 required
@@ -256,7 +281,6 @@ export default function Login() {
                   </Link>
                 </Grid>
               </Grid>
-
             </Box>
           </Box>
         </Container>

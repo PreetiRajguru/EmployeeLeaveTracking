@@ -48,7 +48,7 @@ const NewRequests = () => {
       try {
         const response = await axiosInstance.get(`api/LeaveRequest/status/1`);
         setData(response.data);
-        console.log('data',data);
+        console.log("data", data);
       } catch (error) {
         console.error(error);
       }
@@ -56,27 +56,47 @@ const NewRequests = () => {
     fetchLeaveDetails();
   }, []);
 
-  const fetchStatus = (rowId: any, param: any) => {
-    axiosInstance
-      .put(`/api/LeaveRequest/${rowId}/status/${param}`)
-      .then((response) => setStatusId(response.data))
-      .catch((error) => console.log(error));
+  // const fetchStatus = (rowId: any, param: any) => {
+  //   axiosInstance
+  //     .put(`/api/LeaveRequest/${rowId}/status/${param}`)
+  //     .then((response) => setStatusId(response.data))
+  //     .catch((error) => console.log(error));
 
+  //   window.location.reload();
+  // };
+
+  const fetchStatus = async (rowId: any, param: any) => {
+    try {
+      await axiosInstance.put(`/api/LeaveRequest/${rowId}/status/${param}`);
+      const updatedResponse = await axiosInstance.get(
+        `/api/LeaveRequest/${rowId}`
+      );
+      const updatedStatus = updatedResponse.data.status;
+      setStatusId(updatedStatus);
+    } catch (error) {
+      console.log(error);
+    }
     window.location.reload();
   };
 
-  const handleChangePage = (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
+  const handleChangePage = (
+    event: React.MouseEvent<HTMLButtonElement> | null,
+    newPage: number
+  ) => {
     setPage(newPage);
     // window.location.reload();
   };
 
-  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeRowsPerPage = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
     // window.location.reload();
   };
 
-  const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
+  const emptyRows =
+    rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
 
   return (
     <div>
@@ -100,75 +120,73 @@ const NewRequests = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-          {(rowsPerPage > 0
-            ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            : data
-          ).map((row: any) => (
-                <StyledTableRow key={row.employeeFirstName}>
-                  <StyledTableCell component="th" scope="row">
-                    {row.employeeFirstName} {row.employeeLastName}
-                  </StyledTableCell>
-                  <StyledTableCell align="right">
-                    {new Date(row.startDate).toLocaleDateString()}
-                  </StyledTableCell>
-                  <StyledTableCell align="right">
-                    {new Date(row.endDate).toLocaleDateString()}
-                  </StyledTableCell>
-                  <StyledTableCell align="right">
-                    {row.requestComments}
-                  </StyledTableCell>
-                  <StyledTableCell align="right">
-                    {row.totalDays}
-                  </StyledTableCell>
-                  <StyledTableCell align="right">
-                    {statusId === 2 || row.statusName === "Approved" ? (
-                      <Typography variant="body1" color="success">
-                        Approved
-                      </Typography>
-                    ) : statusId === 3 || row.statusName === "Rejected" ? (
-                      <Typography variant="body1" color="error">
-                        Rejected
-                      </Typography>
-                    ) : row.statusName === "Pending" ? (
-                      <div>
-                        <Button
-                          sx={{ mr: 2 }}
-                          variant="contained"
-                          color="success"
-                          onClick={() => fetchStatus(row.id, 2)}
-                        >
-                          Approve
-                        </Button>
-                        <Button
-                          variant="contained"
-                          color="error"
-                          onClick={() => fetchStatus(row.id, 3)}
-                        >
-                          Reject
-                        </Button>
-                      </div>
-                    ) : (
-                      <div>
-                        <Button
-                          sx={{ mr: 2 }}
-                          variant="contained"
-                          color="success"
-                          onClick={() => fetchStatus(row.id, 2)}
-                        >
-                          Approve
-                        </Button>
-                        <Button
-                          variant="contained"
-                          color="error"
-                          onClick={() => fetchStatus(row.id, 3)}
-                        >
-                          Reject
-                        </Button>
-                      </div>
-                    )}
-                  </StyledTableCell>
-                </StyledTableRow>
-              ))}
+            {(rowsPerPage > 0
+              ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              : data
+            ).map((row: any) => (
+              <StyledTableRow key={row.employeeFirstName}>
+                <StyledTableCell component="th" scope="row">
+                  {row.employeeFirstName} {row.employeeLastName}
+                </StyledTableCell>
+                <StyledTableCell align="right">
+                  {new Date(row.startDate).toLocaleDateString()}
+                </StyledTableCell>
+                <StyledTableCell align="right">
+                  {new Date(row.endDate).toLocaleDateString()}
+                </StyledTableCell>
+                <StyledTableCell align="right">
+                  {row.requestComments}
+                </StyledTableCell>
+                <StyledTableCell align="right">{row.totalDays}</StyledTableCell>
+                <StyledTableCell align="right">
+                  {statusId === 2 || row.statusName === "Approved" ? (
+                    <Typography variant="body1" color="success">
+                      Approved
+                    </Typography>
+                  ) : statusId === 3 || row.statusName === "Rejected" ? (
+                    <Typography variant="body1" color="error">
+                      Rejected
+                    </Typography>
+                  ) : row.statusName === "Pending" ? (
+                    <div>
+                      <Button
+                        sx={{ mr: 2 }}
+                        variant="contained"
+                        color="success"
+                        onClick={() => fetchStatus(row.id, 2)}
+                      >
+                        Approve
+                      </Button>
+                      <Button
+                        variant="contained"
+                        color="error"
+                        onClick={() => fetchStatus(row.id, 3)}
+                      >
+                        Reject
+                      </Button>
+                    </div>
+                  ) : (
+                    <div>
+                      <Button
+                        sx={{ mr: 2 }}
+                        variant="contained"
+                        color="success"
+                        onClick={() => fetchStatus(row.id, 2)}
+                      >
+                        Approve
+                      </Button>
+                      <Button
+                        variant="contained"
+                        color="error"
+                        onClick={() => fetchStatus(row.id, 3)}
+                      >
+                        Reject
+                      </Button>
+                    </div>
+                  )}
+                </StyledTableCell>
+              </StyledTableRow>
+            ))}
             {emptyRows > 0 && (
               <StyledTableRow style={{ height: 53 * emptyRows }}>
                 <StyledTableCell colSpan={6} />
@@ -203,12 +221,6 @@ const NewRequests = () => {
 };
 
 export default NewRequests;
-
-
-
-
-
-
 
 //original
 // import { useState, useEffect } from "react";

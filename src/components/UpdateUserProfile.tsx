@@ -342,7 +342,8 @@ useEffect(() => {
         {imageExists && image ? (
               <img
                 // src={image}
-                src={`https://localhost:7033/${image}`}
+                // src={`https://localhost:7033/${image}`}
+                src={`https://employeeleavetracking.azurewebsites.net/${image}`}
                 style={{
                   display: "flex",
                   alignItems: "center",

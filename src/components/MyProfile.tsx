@@ -34,6 +34,7 @@ export default function CustomizedTables() {
   const [imageExists, setImageExists] = useState(false);
 
   useEffect(() => {
+  
     const empId = localStorage.getItem("id");
 
     const role = localStorage.getItem("role");
@@ -96,7 +97,8 @@ export default function CustomizedTables() {
           >
             {imageExists && image ? (
               <img
-                src={`https://localhost:7033/${image}`}
+                // src={`https://localhost:7033/${image}`}
+                src={`https://employeeleavetracking.azurewebsites.net/${image}`}
                 style={{
                   display: "flex",
                   alignItems: "center",
