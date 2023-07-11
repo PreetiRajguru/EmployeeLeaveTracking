@@ -9,6 +9,7 @@ namespace EmployeeLeaveTracking.Data.Mappers
         public NotificationProfile()
         {
             CreateMap<NotificationDTO, Notification>();
+            CreateMap<Notification, DetailedNotificationDTO>();
             CreateMap<Notification, NotificationDTO>();
             CreateMap<LeaveRequest, NotificationDTO>();
         }

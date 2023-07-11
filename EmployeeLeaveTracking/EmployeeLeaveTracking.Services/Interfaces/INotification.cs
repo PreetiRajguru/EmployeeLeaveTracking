@@ -4,7 +4,10 @@ namespace EmployeeLeaveTracking.Services.Interfaces
 {
     public interface INotification
     {
-        IEnumerable<NotificationDTO> GetUnviewedNotifications();
+        IEnumerable<DetailedNotificationDTO> GetAllNotificationsForManager();
+
+        IEnumerable<DetailedNotificationDTO> GetAllNotificationsForEmployee();
+
         void MarkNotificationAsViewed(int notificationId);
     }
 }

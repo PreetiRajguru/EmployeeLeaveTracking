@@ -14,10 +14,17 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
             _notificationService = notificationService;
         }
 
-        [HttpGet("unviewed")]
-        public IActionResult GetUnviewedNotifications()
+        [HttpGet("manager")]
+        public IActionResult GetAllNotificationsForManager()
         {
-            var unviewedNotifications = _notificationService.GetUnviewedNotifications();
+            var unviewedNotifications = _notificationService.GetAllNotificationsForManager();
+            return Ok(unviewedNotifications);
+        }
+
+        [HttpGet("employee")]
+        public IActionResult GetAllNotificationsForEmployee()
+        {
+            var unviewedNotifications = _notificationService.GetAllNotificationsForEmployee();
             return Ok(unviewedNotifications);
         }
 
