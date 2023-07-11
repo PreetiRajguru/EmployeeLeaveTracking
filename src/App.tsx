@@ -23,6 +23,7 @@ import UpdateUserProfile from './components/UpdateUserProfile';
 import CompOff from './components/CompOff';
 import OnDuty from './components/OnDuty';
 import ManagerNotifications from './components/Manager/ManagerNotifications';
+import EmployeeNotifications from './components/Employee/EmployeeNotifications';
 
 function App() {
 
@@ -71,6 +72,7 @@ function App() {
         <Route path="/onduty" element={<OnDuty />} />
         <Route path="/*" element={<ErrorPage />} />
         <Route path="/managernotifications" element={<ManagerNotifications />} />
+        <Route path="/employeenotifications" element={<EmployeeNotifications />} />
       </Routes>
       
       </BrowserRouter>

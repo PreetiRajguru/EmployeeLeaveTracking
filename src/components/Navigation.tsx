@@ -37,7 +37,7 @@ import { profileSubject } from "../components/Auth/profileSubject";
 const Navigation = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const {state}= useLocation();
+  const { state } = useLocation();
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [open, setOpen] = React.useState(true);
@@ -164,7 +164,7 @@ const Navigation = () => {
                   <AccountCircleIcon />
                 )}
                 &nbsp;&nbsp;
-                
+
                 {/* {state && state.data && (
                   <Typography variant="h6" component="div" sx={{ flexGrow: 0 }}>
                     {}
@@ -172,9 +172,9 @@ const Navigation = () => {
                   </Typography>
                 )} */}
 
-                {data  && data.firstName && (
+                {data && data.firstName && (
                   <Typography variant="h6" component="div" sx={{ flexGrow: 0 }}>
-                    {}
+                    { }
                     {data.firstName} {data.lastName}
                   </Typography>
                 )}
@@ -277,6 +277,15 @@ const Navigation = () => {
             </>
           ) : (
             <>
+
+
+              <ListItemButton onClick={() => navigate("/employeenotifications")}>
+                <ListItemIcon>
+                  <NotificationsIcon />
+                </ListItemIcon>
+                <ListItemText primary="Notifications" />
+              </ListItemButton>
+
               <ListItemButton onClick={() => navigate("/applyforleaves")}>
                 <ListItemIcon>
                   <AddBoxIcon />
