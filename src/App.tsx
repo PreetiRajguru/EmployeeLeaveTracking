@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
@@ -24,11 +24,12 @@ import CompOff from './components/CompOff';
 import OnDuty from './components/OnDuty';
 import ManagerNotifications from './components/Manager/ManagerNotifications';
 import EmployeeNotifications from './components/Employee/EmployeeNotifications';
+import NotifyLeave from './components/NotifyLeave';
 
 function App() {
 
   const [isLogin, setIsLogin] = React.useState(false);
-  
+
   const getToken = () => {
     setIsLogin(
       localStorage.getItem("token") && localStorage.getItem("token") != ""
@@ -39,44 +40,45 @@ function App() {
 
   useEffect(() => {
     getToken()
-    })
+  })
 
-    const {axiosInstance, loading} = useHttp();
+  const { axiosInstance, loading } = useHttp();
 
   return (
 
     <AppContext.Provider value={{ loading }}>
-    <div>
+      <div>
 
-    {loading ? <Loader /> : ""}
-    
-      <BrowserRouter>
+        {loading ? <Loader /> : ""}
 
-      <Navigation />
+        <BrowserRouter>
 
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/addemployee" element={<AddEmployee />} />
-        <Route path="/viewemployees" element={<ViewEmployess />} />
-        <Route path="/viewempdetails/:empId" element={<ViewEmployeeDetails />} />
-        <Route path="/applyforleaves" element={<ApplyForLeaves />} />
-        <Route path="/profileimage" element={<ProfileImage />} />
-        <Route path="/leavedetails" element={<MyLeaveDetails />} />
-        <Route path="/newrequests" element={<NewRequests />} />
-        <Route path="/myprofile" element={<MyProfile />} />
-        <Route path="/changepassword" element={<ChangePassword />} />
-        <Route path="/updateuserprofile" element={<UpdateUserProfile />} />
-        <Route path="/compoff" element={<CompOff />} />
-        <Route path="/onduty" element={<OnDuty />} />
-        <Route path="/*" element={<ErrorPage />} />
-        <Route path="/managernotifications" element={<ManagerNotifications />} />
-        <Route path="/employeenotifications" element={<EmployeeNotifications />} />
-      </Routes>
-      
-      </BrowserRouter>
-    </div>
+          <Navigation />
+
+          <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/addemployee" element={<AddEmployee />} />
+            <Route path="/viewemployees" element={<ViewEmployess />} />
+            <Route path="/viewempdetails/:empId" element={<ViewEmployeeDetails />} />
+            <Route path="/applyforleaves" element={<ApplyForLeaves />} />
+            <Route path="/profileimage" element={<ProfileImage />} />
+            <Route path="/leavedetails" element={<MyLeaveDetails />} />
+            <Route path="/newrequests" element={<NewRequests />} />
+            <Route path="/myprofile" element={<MyProfile />} />
+            <Route path="/changepassword" element={<ChangePassword />} />
+            <Route path="/updateuserprofile" element={<UpdateUserProfile />} />
+            <Route path="/compoff" element={<CompOff />} />
+            <Route path="/onduty" element={<OnDuty />} />
+            <Route path="/*" element={<ErrorPage />} />
+            <Route path="/managernotifications" element={<ManagerNotifications />} />
+            <Route path="/employeenotifications" element={<EmployeeNotifications />} />
+            <Route path="/notifyleave" element={<NotifyLeave />} />
+          </Routes>
+
+        </BrowserRouter>
+      </div>
     </AppContext.Provider>
   );
 }
