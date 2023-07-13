@@ -34,5 +34,13 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
             _notificationService.MarkNotificationAsViewed(id);
             return Ok();
         }
+
+
+        [HttpGet("count")]
+        public ActionResult<int> GetNotViewedNotificationCount()
+        {
+            int count = _notificationService.GetNotViewedNotificationCount();
+            return count;
+        }
     }
 }

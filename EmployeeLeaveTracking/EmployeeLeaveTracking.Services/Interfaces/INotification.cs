@@ -9,6 +9,8 @@ namespace EmployeeLeaveTracking.Services.Interfaces
         IEnumerable<DetailedNotificationDTO> GetAllNotificationsForEmployee();
 
         void MarkNotificationAsViewed(int notificationId);
+
+        int GetNotViewedNotificationCount();
     }
 }
 
