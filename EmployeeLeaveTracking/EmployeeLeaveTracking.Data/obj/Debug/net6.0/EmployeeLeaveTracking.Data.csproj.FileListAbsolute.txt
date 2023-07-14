@@ -82,3 +82,17 @@ C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking
 C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Data\obj\Debug\net6.0\EmployeeLeaveTracking.Data.pdb
 C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Data\obj\Debug\net6.0\EmployeeLeaveTracking.Data.genruntimeconfig.cache
 C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Data\obj\Debug\net6.0\ref\EmployeeLeaveTracking.Data.dll
+D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Data\bin\Debug\net6.0\EmployeeLeaveTracking.Data.deps.json
+D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Data\bin\Debug\net6.0\EmployeeLeaveTracking.Data.runtimeconfig.json
+D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Data\bin\Debug\net6.0\EmployeeLeaveTracking.Data.dll
+D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Data\bin\Debug\net6.0\EmployeeLeaveTracking.Data.pdb
+D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Data\obj\Debug\net6.0\EmployeeLeaveTracking.Data.csproj.AssemblyReference.cache
+D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Data\obj\Debug\net6.0\EmployeeLeaveTracking.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Data\obj\Debug\net6.0\EmployeeLeaveTracking.Data.AssemblyInfoInputs.cache
+D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Data\obj\Debug\net6.0\EmployeeLeaveTracking.Data.AssemblyInfo.cs
+D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Data\obj\Debug\net6.0\EmployeeLeaveTracking.Data.csproj.CoreCompileInputs.cache
+D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Data\obj\Debug\net6.0\EmployeeLeaveTracking.Data.dll
+D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Data\obj\Debug\net6.0\refint\EmployeeLeaveTracking.Data.dll
+D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Data\obj\Debug\net6.0\EmployeeLeaveTracking.Data.pdb
+D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Data\obj\Debug\net6.0\EmployeeLeaveTracking.Data.genruntimeconfig.cache
+D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Data\obj\Debug\net6.0\ref\EmployeeLeaveTracking.Data.dll
