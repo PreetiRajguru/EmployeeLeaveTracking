@@ -58,7 +58,7 @@ const ManagerNotifications = () => {
   useEffect(() => {
     const fetchNotificationDetails = async () => {
       try {
-        const response = await axiosInstance.get(`api/Notifications/manager`);
+        const response = await axiosInstance.get(`api/Notifications/all`);
         setData(response.data);
         console.log(response.data);
         // Initialize the open state for each row

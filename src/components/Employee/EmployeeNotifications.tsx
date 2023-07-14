@@ -44,7 +44,7 @@ const EmployeeNotifications = () => {
   useEffect(() => {
     const fetchNotificationDetails = async () => {
       try {
-        const response = await axiosInstance.get(`api/Notifications/employee`);
+        const response = await axiosInstance.get(`api/Notifications/all`);
         setData(response.data);
         console.log(response.data);
       } catch (error) {

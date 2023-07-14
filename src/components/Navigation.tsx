@@ -55,12 +55,10 @@ const Navigation = () => {
   const [notificationCount, setNotificationCount] = useState(0);
 
   const handleNotificationsClick = () => {
-    if(isManager)
-    {
+    if (isManager) {
       navigate("/managernotifications");
     }
-    else if(isEmployee)
-    {
+    else if (isEmployee) {
       navigate("/employeenotifications");
     }
   };
@@ -74,10 +72,10 @@ const Navigation = () => {
         console.error(error);
       }
     };
-  
+
     fetchNotificationCount();
   }, [state]);
-  
+
 
   useEffect(() => {
     fetchDetails();
@@ -177,7 +175,7 @@ const Navigation = () => {
             <>
 
               <Badge badgeContent={notificationCount} color="secondary">
-                <NotificationsIcon  onClick={handleNotificationsClick}  />
+                <NotificationsIcon onClick={handleNotificationsClick} />
               </Badge>
 
               &nbsp;&nbsp;&nbsp;&nbsp;
@@ -336,22 +334,3 @@ const Navigation = () => {
 };
 
 export default Navigation;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
