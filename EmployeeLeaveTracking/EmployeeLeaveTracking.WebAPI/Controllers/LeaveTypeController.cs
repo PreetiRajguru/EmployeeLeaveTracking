@@ -152,7 +152,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 
                 return Ok(leaveTypesWithTotalDays);
             }
-            catch(Exception ex) { }
+            catch(Exception ) { }
             {
                 return NoContent();
             }

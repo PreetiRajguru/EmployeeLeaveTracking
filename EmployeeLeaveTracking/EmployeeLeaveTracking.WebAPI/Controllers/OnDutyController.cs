@@ -1,6 +1,8 @@
 ﻿using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace EmployeeLeaveTracking.WebAPI.Controllers
 {
@@ -16,6 +18,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Manager")]
         public IActionResult CreateOnDuty(OnDutyDTO onDutyDTO)
         {
             OnDutyDTO createdOnDuty = _onDutyService.CreateOnDuty(onDutyDTO);
@@ -27,6 +30,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 
 
         [HttpGet("{userId}")]
+        [Authorize(Roles = "Employee")]
         public IActionResult GetOnDuty(string userId)
         {
             OnDutyDTO onDuty = _onDutyService.GetOnDuty(userId);
@@ -38,6 +42,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 
 
         [HttpPut]
+        [Authorize(Roles = "Manager,Employee")]
         public IActionResult UpdateOnDuty(OnDutyDTO onDutyDTO)
         {
             OnDutyDTO updatedOnDuty = _onDutyService.UpdateOnDuty(onDutyDTO);
@@ -49,6 +54,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 
 
         [HttpDelete("{userId}")]
+        [Authorize(Roles = "Manager")]
         public IActionResult DeleteOnDuty(string userId)
         {
             _onDutyService.DeleteOnDuty(userId);

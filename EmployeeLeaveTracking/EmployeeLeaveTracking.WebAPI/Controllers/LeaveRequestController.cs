@@ -235,7 +235,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 
                 return result;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 _logger.LogError("An error occurred while updating the leave request status.");
 

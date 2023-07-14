@@ -12,6 +12,9 @@ namespace EmployeeLeaveTracking.Data.Mappers
             CreateMap<Notification, DetailedNotificationDTO>();
             CreateMap<Notification, NotificationDTO>();
             CreateMap<LeaveRequest, NotificationDTO>();
+
+            CreateMap<Notification, DetailedNotificationDTO>();
+            CreateMap<LeaveRequest, DetailedLeaveDTO>();
         }
     }
 }

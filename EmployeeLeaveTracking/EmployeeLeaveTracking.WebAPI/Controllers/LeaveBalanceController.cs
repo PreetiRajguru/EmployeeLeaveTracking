@@ -1,5 +1,7 @@
 ﻿using EmployeeLeaveTracking.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace EmployeeLeaveTracking.WebAPI.Controllers
 {
@@ -15,6 +17,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Manager,Employee")]
         public IActionResult GetAllLeaveBalances()
         {
             IEnumerable<Data.Models.LeaveBalance> leaveBalances = _leaveBalanceService.GetAllLeaveBalances();
@@ -23,6 +26,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
         [HttpGet("/employee/{employeeId}")]
+        [Authorize(Roles = "Manager,Employee")]
         public IActionResult GetLeaveBalancesByEmpId([FromRoute] string employeeId)
         {
             IEnumerable<Data.Models.LeaveBalance> leaveBalances = _leaveBalanceService.GetLeaveBalancesByEmpId(employeeId);

@@ -115,6 +115,32 @@ namespace EmployeeLeaveTracking.Services.Services
         }
 
 
+
+
+
+        public string GetCurrentUserByRole()
+        {
+            string? userRole = _httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.Role);
+
+            if (string.IsNullOrEmpty(userRole))
+            {
+                throw new Exception("User Role not found in HttpContext");
+            }
+
+            return userRole;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
         public CurrentUserDTO GetCurrentUser(string employeeId)
         {
             if (string.IsNullOrWhiteSpace(employeeId))

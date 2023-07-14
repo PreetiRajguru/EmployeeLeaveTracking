@@ -61,7 +61,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
                 IEnumerable<UserRegistrationDTO> user = _userService.GetManagerDetails(employeeId);
                 return Ok(user);
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 return BadRequest();
             }
