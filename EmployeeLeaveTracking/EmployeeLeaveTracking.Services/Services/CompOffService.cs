@@ -16,7 +16,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public CompOffDTO CreateCompOff(CompOffDTO compOffDTO)
         {
-            var compOff = new CompOff
+            CompOff compOff = new CompOff
             {
                 UserId = compOffDTO.UserId,
                 Balance = compOffDTO.Balance,
@@ -36,11 +36,11 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public CompOffDTO GetCompOff(string userId)
         {
-            var compOff = _dbContext.CompOffs.FirstOrDefault(c => c.UserId == userId);
+            CompOff? compOff = _dbContext.CompOffs.FirstOrDefault(c => c.UserId == userId);
             if (compOff == null)
                 return null;
 
-            var compOffDTO = new CompOffDTO
+            CompOffDTO compOffDTO = new CompOffDTO
             {
                 UserId = compOff.UserId,
                 Balance = compOff.Balance,
@@ -53,7 +53,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public CompOffDTO UpdateCompOff(CompOffDTO compOffDTO)
         {
-            var compOff = _dbContext.CompOffs.FirstOrDefault(c => c.UserId == compOffDTO.UserId);
+            CompOff? compOff = _dbContext.CompOffs.FirstOrDefault(c => c.UserId == compOffDTO.UserId);
             if (compOff == null)
                 return null;
 
@@ -65,7 +65,7 @@ namespace EmployeeLeaveTracking.Services.Services
             compOff.ExpiryDate = ((DateTime)compOff.WorkedDate).AddDays(45);
 
             // Update LeaveBalance model
-            var leaveBalance = _dbContext.LeaveBalances.FirstOrDefault(l => l.UserId == compOffDTO.UserId && l.LeaveTypeId == 5);
+            LeaveBalance? leaveBalance = _dbContext.LeaveBalances.FirstOrDefault(l => l.UserId == compOffDTO.UserId && l.LeaveTypeId == 5);
             if (leaveBalance != null)
             {
                 leaveBalance.Balance = (double)compOffDTO.Balance;
@@ -80,7 +80,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public void DeleteCompOff(string userId)
         {
-            var compOff = _dbContext.CompOffs.FirstOrDefault(c => c.UserId == userId);
+            CompOff? compOff = _dbContext.CompOffs.FirstOrDefault(c => c.UserId == userId);
             if (compOff != null)
             {
                 _dbContext.CompOffs.Remove(compOff);

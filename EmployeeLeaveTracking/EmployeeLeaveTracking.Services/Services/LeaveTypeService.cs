@@ -37,7 +37,6 @@ namespace EmployeeLeaveTracking.Services.Services
         }
 
 
-
         public IEnumerable<LeaveTypeDTO> GetCompOff()
         {
             IQueryable<LeaveTypeDTO> leaveTypes = _dbContext.LeaveTypes

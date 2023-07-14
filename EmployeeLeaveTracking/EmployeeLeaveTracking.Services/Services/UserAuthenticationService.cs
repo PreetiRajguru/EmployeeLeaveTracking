@@ -67,10 +67,10 @@ public sealed class UserAuthenticationService : IUserAuthentication
 
 
         //initial leave balances for the new user
-        var leaveTypes = await _context.LeaveTypes.ToListAsync();
-        var leaveBalances = new List<LeaveBalance>();
-        var compOffs = new List<CompOff>();
-        var onDutys = new List<OnDuty>();
+        List<LeaveType> leaveTypes = await _context.LeaveTypes.ToListAsync();
+        List<LeaveBalance> leaveBalances = new List<LeaveBalance>();
+        List<CompOff> compOffs = new List<CompOff>();
+        List<OnDuty> onDutys = new List<OnDuty>();
 
         foreach (var leaveType in leaveTypes)
         {
@@ -100,7 +100,7 @@ public sealed class UserAuthenticationService : IUserAuthentication
                     break;
             }
 
-            var leaveBalance = new LeaveBalance
+            LeaveBalance leaveBalance = new LeaveBalance
             {
                 UserId = user.Id,
                 LeaveTypeId = leaveType.Id,
@@ -113,7 +113,7 @@ public sealed class UserAuthenticationService : IUserAuthentication
 
         //initial comp-off leaves for the new user
 
-        var compOff = new CompOff
+        CompOff compOff = new CompOff
         {
             UserId = user.Id,
             Balance = 0,
@@ -125,7 +125,7 @@ public sealed class UserAuthenticationService : IUserAuthentication
 
         //initial on-duty leaves for the new user
 
-        var onDuty = new OnDuty
+        OnDuty onDuty = new OnDuty
         {
             UserId = user.Id,
             Balance = 0,
@@ -149,8 +149,8 @@ public sealed class UserAuthenticationService : IUserAuthentication
 
         if (_user != null)
         {
-            var token = await CreateTokenAsync();
-            var refreshToken = GenerateRefreshToken();
+            string token = await CreateTokenAsync();
+            string refreshToken = GenerateRefreshToken();
             _ = int.TryParse(_configuration["JwtConfig:RefreshTokenValidityInDays"], out int refreshTokenValidityInDays);
 
             _user.RefreshToken = refreshToken;
@@ -241,15 +241,15 @@ public sealed class UserAuthenticationService : IUserAuthentication
 
     public string GenerateRefreshToken()
     {
-        var randomNumber = new byte[64];
-        using var rng = RandomNumberGenerator.Create();
+        byte[] randomNumber = new byte[64];
+        using RandomNumberGenerator rng = RandomNumberGenerator.Create();
         rng.GetBytes(randomNumber);
         return Convert.ToBase64String(randomNumber);
     }
 
     public ClaimsPrincipal? GetPrincipalFromExpiredToken(string? token)
     {
-        var tokenValidationParameters = new TokenValidationParameters
+        TokenValidationParameters tokenValidationParameters = new TokenValidationParameters
         {
             ValidateAudience = false,
             ValidateIssuer = false,
@@ -258,8 +258,8 @@ public sealed class UserAuthenticationService : IUserAuthentication
             ValidateLifetime = false
         };
 
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out SecurityToken securityToken);
+        JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+        ClaimsPrincipal principal = tokenHandler.ValidateToken(token, tokenValidationParameters, out SecurityToken securityToken);
         if (securityToken is not JwtSecurityToken jwtSecurityToken || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
             throw new SecurityTokenException("Invalid token");
 
@@ -268,10 +268,10 @@ public sealed class UserAuthenticationService : IUserAuthentication
 
     public JwtSecurityToken CreateToken(List<Claim> authClaims)
     {
-        var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtConfig:Secret"]));
+        SymmetricSecurityKey authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtConfig:Secret"]));
         _ = int.TryParse(_configuration["JwtConfig:TokenValidityInMinutes"], out int tokenValidityInMinutes);
 
-        var token = new JwtSecurityToken(
+        JwtSecurityToken token = new JwtSecurityToken(
             issuer: _configuration["JwtConfig:ValidIssuer"],
             audience: _configuration["JwtConfig:ValidAudience"],
             expires: DateTime.Now.AddMinutes(tokenValidityInMinutes),

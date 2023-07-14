@@ -54,7 +54,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public string GetImage(string userId)
         {
-            var profileImage = _context.ProfileImages.FirstOrDefault(e => e.UserId.Equals(userId));
+            ProfileImage? profileImage = _context.ProfileImages.FirstOrDefault(e => e.UserId.Equals(userId));
             if (profileImage != null && !string.IsNullOrEmpty(profileImage.ImagePath))
             {
                 return profileImage.ImagePath;

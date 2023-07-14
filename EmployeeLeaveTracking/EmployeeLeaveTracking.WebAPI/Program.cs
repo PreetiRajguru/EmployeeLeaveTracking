@@ -16,18 +16,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen();
 
- 
 builder.Services.AddIdentity<User, IdentityRole>()
        .AddEntityFrameworkStores<EmployeeLeaveDbContext>()
        .AddDefaultTokenProviders().AddRoles<IdentityRole>(); ;
 
-
 builder.Services.AddDbContext<EmployeeLeaveDbContext>(options =>
-
 options.UseSqlServer(builder.Configuration.GetConnectionString("ConnStr")));
-
 
 builder.Services.Configure<ApiBehaviorOptions>(options => { options.SuppressModelStateInvalidFilter = true; });
 var mapperConfig = new MapperConfiguration(map =>
@@ -37,8 +34,8 @@ var mapperConfig = new MapperConfiguration(map =>
     map.AddProfile<UserProfile>();
     map.AddProfile<NotificationProfile>();
 });
-builder.Services.AddSingleton(mapperConfig.CreateMapper());
 
+builder.Services.AddSingleton(mapperConfig.CreateMapper());
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<EmployeeLeaveTracking.Services.Interfaces.ILogger, LoggerService>();
@@ -68,8 +65,8 @@ builder.Services.AddCors(options =>
 });
 
 
-var jwtConfig = builder.Configuration.GetSection("JwtConfig");
-var secretKey = jwtConfig["secret"];
+IConfigurationSection jwtConfig = builder.Configuration.GetSection("JwtConfig");
+string secretKey = jwtConfig["secret"];
 builder.Services.AddAuthentication(opt =>
 {
     opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -133,7 +130,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 
-var app = builder.Build();
+WebApplication app = builder.Build();
 
 
 // Configure the HTTP request pipeline.
@@ -147,17 +144,11 @@ if (app.Environment.IsDevelopment())
     });
 }
 app.UseCors("AllowAll");
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-
-
 app.UseAuthentication();
-
 app.UseAuthorization();
-
 app.MapControllers();
 app.MapFallbackToFile("index.html");
-
 app.Run();

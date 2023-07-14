@@ -18,7 +18,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         [HttpPost]
         public IActionResult CreateOnDuty(OnDutyDTO onDutyDTO)
         {
-            var createdOnDuty = _onDutyService.CreateOnDuty(onDutyDTO);
+            OnDutyDTO createdOnDuty = _onDutyService.CreateOnDuty(onDutyDTO);
             if (createdOnDuty != null)
                 return Ok(createdOnDuty);
 
@@ -29,7 +29,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         [HttpGet("{userId}")]
         public IActionResult GetOnDuty(string userId)
         {
-            var onDuty = _onDutyService.GetOnDuty(userId);
+            OnDutyDTO onDuty = _onDutyService.GetOnDuty(userId);
             if (onDuty != null)
                 return Ok(onDuty);
 
@@ -40,7 +40,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         [HttpPut]
         public IActionResult UpdateOnDuty(OnDutyDTO onDutyDTO)
         {
-            var updatedOnDuty = _onDutyService.UpdateOnDuty(onDutyDTO);
+            OnDutyDTO updatedOnDuty = _onDutyService.UpdateOnDuty(onDutyDTO);
             if (updatedOnDuty != null)
                 return Ok(updatedOnDuty);
 

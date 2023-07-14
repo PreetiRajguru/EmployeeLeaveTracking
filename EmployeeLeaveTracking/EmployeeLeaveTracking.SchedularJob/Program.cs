@@ -10,7 +10,7 @@ namespace SchedulerJob
     {
         public static void Main()
         {
-            // Create a service collection and configure the dependencies
+            // creating a service collection and configuring the dependencies
             var services = new ServiceCollection();
             services.AddScoped<EmployeeLeaveDbContext>();
             services.AddScoped<LeaveBalanceService>();
@@ -27,7 +27,7 @@ namespace SchedulerJob
             // Build the service provider
             var serviceProvider = services.BuildServiceProvider();
 
-            // Resolve the required dependencies
+            // resolving the required dependencies
             var dbContext = serviceProvider.GetRequiredService<EmployeeLeaveDbContext>();
             var scheduler = serviceProvider.GetRequiredService<Scheduler>();
 

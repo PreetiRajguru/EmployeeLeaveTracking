@@ -23,31 +23,31 @@ namespace EmployeeLeaveTracking.Services.Services
         {
             string id = _userService.GetCurrentUserById();
 
-            var notifications = _dbContext.Notifications
+            List<Data.Models.Notification> notifications = _dbContext.Notifications
                 .Where(n => n.UserId == id)
                 /*.OrderByDescending(n => n.CreatedAt) */
-                .OrderByDescending(n => n.Id) 
-                .Take(10) 
+                .OrderByDescending(n => n.Id)
+                .Take(10)
                 .ToList();
 
-            var notificationDTOs = new List<DetailedNotificationDTO>();
+            List<DetailedNotificationDTO> notificationDTOs = new List<DetailedNotificationDTO>();
 
             foreach (var notification in notifications)
             {
-                var notificationDTO = new DetailedNotificationDTO
+                DetailedNotificationDTO notificationDTO = new DetailedNotificationDTO
                 {
-                    Id = notification.Id, 
+                    Id = notification.Id,
                     UserId = notification.UserId,
                     LeaveRequestId = notification.LeaveRequestId,
                     NotificationTypeId = notification.NotificationTypeId,
                     IsViewed = notification.IsViewed
                 };
 
-                // Fetch leave details based on LeaveRequestId and update the DTO
-                var leave = _dbContext.LeaveRequests.FirstOrDefault(l => l.Id == notificationDTO.LeaveRequestId);
+                // fetching leave details based on LeaveRequestId and updating the DTO
+                Data.Models.LeaveRequest? leave = _dbContext.LeaveRequests.FirstOrDefault(l => l.Id == notificationDTO.LeaveRequestId);
                 if (leave != null)
                 {
-                    var leaveDTO = new DetailedLeaveDTO
+                    DetailedLeaveDTO leaveDTO = new DetailedLeaveDTO
                     {
                         LeaveId = leave.Id,
                         StartDate = leave.StartDate,
@@ -58,8 +58,8 @@ namespace EmployeeLeaveTracking.Services.Services
                         TotalDays = leave.TotalDays
                     };
 
-                    // Fetch leave type details based on LeaveTypeId and update the DTO
-                    var leaveType = _dbContext.LeaveTypes.FirstOrDefault(lt => lt.Id == leaveDTO.LeaveTypeId);
+                    // fetching leave type details based on LeaveTypeId and updating the DTO
+                    Data.Models.LeaveType? leaveType = _dbContext.LeaveTypes.FirstOrDefault(lt => lt.Id == leaveDTO.LeaveTypeId);
                     if (leaveType != null)
                     {
                         leaveDTO.LeaveTypeName = leaveType.LeaveTypeName;
@@ -67,15 +67,15 @@ namespace EmployeeLeaveTracking.Services.Services
 
                     notificationDTO.Leave = leaveDTO;
 
-                    // Fetch employee details based on EmployeeId and update the DTO
-                    var employee = _dbContext.Users.FirstOrDefault(u => u.Id == leave.EmployeeId);
+                    // fetching employee details based on EmployeeId and updating the DTO
+                    Data.Models.User? employee = _dbContext.Users.FirstOrDefault(u => u.Id == leave.EmployeeId);
                     if (employee != null)
                     {
                         leaveDTO.FirstName = employee.FirstName;
                         leaveDTO.LastName = employee.LastName;
                     }
 
-                    var statusName = _dbContext.Status.FirstOrDefault(s => s.Id == leaveDTO.StatusId);
+                    Data.Models.StatusMaster? statusName = _dbContext.Status.FirstOrDefault(s => s.Id == leaveDTO.StatusId);
                     if (statusName != null)
                     {
                         leaveDTO.StatusName = statusName.StatusType;
@@ -93,18 +93,18 @@ namespace EmployeeLeaveTracking.Services.Services
         {
             string id = _userService.GetCurrentUserById();
 
-            var notifications = _dbContext.Notifications
+            List<Data.Models.Notification> notifications = _dbContext.Notifications
                 .Where(n => n.UserId == id)
                 /*.OrderByDescending(n => n.CreatedAt)*/
-                .OrderByDescending(n => n.Id) 
-                .Take(10) 
+                .OrderByDescending(n => n.Id)
+                .Take(10)
                 .ToList();
 
-            var notificationDTOs = new List<DetailedNotificationDTO>();
+            List<DetailedNotificationDTO> notificationDTOs = new List<DetailedNotificationDTO>();
 
             foreach (var notification in notifications)
             {
-                var notificationDTO = new DetailedNotificationDTO
+                DetailedNotificationDTO notificationDTO = new DetailedNotificationDTO
                 {
                     Id = notification.Id,
                     UserId = notification.UserId,
@@ -113,11 +113,11 @@ namespace EmployeeLeaveTracking.Services.Services
                     IsViewed = notification.IsViewed
                 };
 
-                // Fetch leave details based on LeaveRequestId and update the DTO
-                var leave = _dbContext.LeaveRequests.FirstOrDefault(l => l.Id == notificationDTO.LeaveRequestId);
+                // fetching leave details based on LeaveRequestId and updating the DTO
+                Data.Models.LeaveRequest? leave = _dbContext.LeaveRequests.FirstOrDefault(l => l.Id == notificationDTO.LeaveRequestId);
                 if (leave != null)
                 {
-                    var leaveDTO = new DetailedLeaveDTO
+                    DetailedLeaveDTO leaveDTO = new DetailedLeaveDTO
                     {
                         LeaveId = leave.Id,
                         StartDate = leave.StartDate,
@@ -128,8 +128,8 @@ namespace EmployeeLeaveTracking.Services.Services
                         TotalDays = leave.TotalDays
                     };
 
-                    // Fetch leave type details based on LeaveTypeId and update the DTO
-                    var leaveType = _dbContext.LeaveTypes.FirstOrDefault(lt => lt.Id == leaveDTO.LeaveTypeId);
+                    // fetching leave type details based on LeaveTypeId and updating the DTO
+                    Data.Models.LeaveType? leaveType = _dbContext.LeaveTypes.FirstOrDefault(lt => lt.Id == leaveDTO.LeaveTypeId);
                     if (leaveType != null)
                     {
                         leaveDTO.LeaveTypeName = leaveType.LeaveTypeName;
@@ -137,15 +137,15 @@ namespace EmployeeLeaveTracking.Services.Services
 
                     notificationDTO.Leave = leaveDTO;
 
-                    // Fetch employee details based on EmployeeId and update the DTO
-                    var manager = _dbContext.Users.FirstOrDefault(u => u.Id == leave.ManagerId);
+                    // fetching employee details based on EmployeeId and updating the DTO
+                    Data.Models.User? manager = _dbContext.Users.FirstOrDefault(u => u.Id == leave.ManagerId);
                     if (manager != null)
                     {
                         leaveDTO.FirstName = manager.FirstName;
                         leaveDTO.LastName = manager.LastName;
                     }
 
-                    var statusName = _dbContext.Status.FirstOrDefault(s => s.Id == leaveDTO.StatusId);
+                    Data.Models.StatusMaster? statusName = _dbContext.Status.FirstOrDefault(s => s.Id == leaveDTO.StatusId);
                     if (statusName != null)
                     {
                         leaveDTO.StatusName = statusName.StatusType;
@@ -160,10 +160,10 @@ namespace EmployeeLeaveTracking.Services.Services
 
 
 
-        // updating isviewed to 1 
+        // updating isviewed value to 1 
         public void MarkNotificationAsViewed(int notificationId)
         {
-            var notification = _dbContext.Notifications.Find(notificationId);
+            Data.Models.Notification notification = _dbContext.Notifications.Find(notificationId);
             if (notification != null)
             {
                 notification.IsViewed = true;
@@ -186,9 +186,3 @@ namespace EmployeeLeaveTracking.Services.Services
 
     }
 }
-
-
-
-
-
-   

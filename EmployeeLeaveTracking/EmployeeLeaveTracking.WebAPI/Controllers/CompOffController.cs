@@ -1,6 +1,5 @@
 ﻿using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Services.Interfaces;
-using EmployeeLeaveTracking.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EmployeeLeaveTracking.WebAPI.Controllers
@@ -19,7 +18,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         [HttpPost]
         public IActionResult CreateCompOff(CompOffDTO compOffDTO)
         {
-            var createdCompOff = _compOffService.CreateCompOff(compOffDTO);
+            CompOffDTO createdCompOff = _compOffService.CreateCompOff(compOffDTO);
             if (createdCompOff != null)
                 return Ok(createdCompOff);
 
@@ -29,7 +28,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         [HttpGet("{userId}")]
         public IActionResult GetCompOff(string userId)
         {
-            var compOff = _compOffService.GetCompOff(userId);
+            CompOffDTO compOff = _compOffService.GetCompOff(userId);
             if (compOff != null)
                 return Ok(compOff);
 
@@ -39,7 +38,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         [HttpPut]
         public IActionResult UpdateCompOff(CompOffDTO compOffDTO)
         {
-            var updatedCompOff = _compOffService.UpdateCompOff(compOffDTO);
+            CompOffDTO updatedCompOff = _compOffService.UpdateCompOff(compOffDTO);
             if (updatedCompOff != null)
                 return Ok(updatedCompOff);
 

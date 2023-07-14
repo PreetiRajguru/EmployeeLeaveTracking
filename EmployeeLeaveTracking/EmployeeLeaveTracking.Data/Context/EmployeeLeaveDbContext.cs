@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using EmployeeLeaveTracking.Data.Models;
 using Microsoft.AspNetCore.Identity;
-using EmployeeLeaveTracking.Data.DTOs;
 
 namespace EmployeeLeaveTracking.Data.Context
 {

@@ -16,7 +16,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public OnDutyDTO CreateOnDuty(OnDutyDTO onDutyDTO)
         {
-            var onDuty = new OnDuty
+            OnDuty onDuty = new OnDuty
             {
                 UserId = onDutyDTO.UserId,
                 Balance = onDutyDTO.Balance,
@@ -36,11 +36,11 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public OnDutyDTO GetOnDuty(string userId)
         {
-            var onDuty = _dbContext.OnDutys.FirstOrDefault(c => c.UserId == userId);
+            OnDuty? onDuty = _dbContext.OnDutys.FirstOrDefault(c => c.UserId == userId);
             if (onDuty == null)
                 return null;
 
-            var onDutyDTO = new OnDutyDTO
+            OnDutyDTO onDutyDTO = new OnDutyDTO
             {
                 UserId = onDuty.UserId,
                 Balance = onDuty.Balance,
@@ -54,7 +54,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public OnDutyDTO UpdateOnDuty(OnDutyDTO onDutyDTO)
         {
-            var onDuty = _dbContext.OnDutys.FirstOrDefault(c => c.UserId == onDutyDTO.UserId);
+            OnDuty? onDuty = _dbContext.OnDutys.FirstOrDefault(c => c.UserId == onDutyDTO.UserId);
             if (onDuty == null)
                 return null;
 
@@ -62,11 +62,11 @@ namespace EmployeeLeaveTracking.Services.Services
             onDuty.WorkedDate = (DateTime)onDutyDTO.WorkedDate;
             onDuty.Reason = onDutyDTO.Reason;
 
-            // Calculate and update the expiry date
+            // calculate and update the expiry date
             onDuty.ExpiryDate = ((DateTime)onDuty.WorkedDate).AddDays(45);
 
-            // Update LeaveBalance model
-            var leaveBalance = _dbContext.LeaveBalances.FirstOrDefault(l => l.UserId == onDutyDTO.UserId && l.LeaveTypeId == 6);
+            // update LeaveBalance model
+            LeaveBalance? leaveBalance = _dbContext.LeaveBalances.FirstOrDefault(l => l.UserId == onDutyDTO.UserId && l.LeaveTypeId == 6);
             if (leaveBalance != null)
             {
                 leaveBalance.Balance = (double)onDutyDTO.Balance;
@@ -81,7 +81,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public void DeleteOnDuty(string userId)
         {
-            var onDuty = _dbContext.OnDutys.FirstOrDefault(c => c.UserId == userId);
+            OnDuty? onDuty = _dbContext.OnDutys.FirstOrDefault(c => c.UserId == userId);
             if (onDuty != null)
             {
                 _dbContext.OnDutys.Remove(onDuty);

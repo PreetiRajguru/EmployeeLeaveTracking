@@ -271,7 +271,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var createdLeaveRequest = _leaveRequestService.NewCreateNewLeaveRequest(leaveRequest);
+            NewLeaveRequestDTO createdLeaveRequest = _leaveRequestService.NewCreateNewLeaveRequest(leaveRequest);
 
             return CreatedAtRoute(new { id = createdLeaveRequest.Id }, createdLeaveRequest);
         }

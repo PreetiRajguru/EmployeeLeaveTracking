@@ -17,7 +17,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         [HttpGet]
         public IActionResult GetAllLeaveBalances()
         {
-            var leaveBalances = _leaveBalanceService.GetAllLeaveBalances();
+            IEnumerable<Data.Models.LeaveBalance> leaveBalances = _leaveBalanceService.GetAllLeaveBalances();
 
             return Ok(leaveBalances);
         }
@@ -25,7 +25,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         [HttpGet("/employee/{employeeId}")]
         public IActionResult GetLeaveBalancesByEmpId([FromRoute] string employeeId)
         {
-            var leaveBalances = _leaveBalanceService.GetLeaveBalancesByEmpId(employeeId);
+            IEnumerable<Data.Models.LeaveBalance> leaveBalances = _leaveBalanceService.GetLeaveBalancesByEmpId(employeeId);
             return Ok(leaveBalances);
         }
     }

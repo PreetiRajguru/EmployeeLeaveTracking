@@ -7,6 +7,6 @@
         public int? LeaveRequestId { get; set; }
         public int? NotificationTypeId { get; set; }
         public bool? IsViewed { get; set; }
-        public DetailedLeaveDTO Leave { get; set; }
+        public DetailedLeaveDTO? Leave { get; set; }
     }
 }

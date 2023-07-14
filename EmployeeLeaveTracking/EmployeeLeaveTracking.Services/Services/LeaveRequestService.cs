@@ -146,7 +146,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
         public NewLeaveRequestDTO NewCreateNewLeaveRequest(NewLeaveRequestDTO leaveRequest)
         {
-            // Check if there are any existing leave requests for the same user and overlapping dates
+            //checking if there are any existing leave requests for the same user and overlapping dates
             bool isLeaveAlreadyExists = _dbContext.LeaveRequests
                 .Any(lr => lr.EmployeeId == leaveRequest.EmployeeId &&
                            lr.StartDate <= leaveRequest.EndDate &&
@@ -175,7 +175,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
             leaveRequest.Id = newLeaveRequest.Id;
 
-            var balance = _dbContext.LeaveBalances
+            LeaveBalance? balance = _dbContext.LeaveBalances
                 .FirstOrDefault(b => b.UserId == leaveRequest.EmployeeId && b.LeaveTypeId == leaveRequest.LeaveTypeId);
 
             if (balance == null)
@@ -193,8 +193,8 @@ namespace EmployeeLeaveTracking.Services.Services
                 balance.Balance -= leaveRequest.TotalDays;
             }
 
-            
-            var notification = _mapper.Map<NotificationDTO, Notification>(new NotificationDTO
+
+            Notification notification = _mapper.Map<NotificationDTO, Notification>(new NotificationDTO
             {
                 UserId = leaveRequest.ManagerId,
                 LeaveRequestId = newLeaveRequest.Id,
@@ -208,15 +208,6 @@ namespace EmployeeLeaveTracking.Services.Services
 
             return leaveRequest;
         }
-
-
-
-
-
-
-
-
-
 
 
         public LeaveRequestDTO Update(LeaveRequestDTO leaveRequest)
@@ -392,25 +383,6 @@ namespace EmployeeLeaveTracking.Services.Services
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //make changes in this method for bringing all types leave balances for a single employee
         public double LeaveBalance(string employeeId)
         {
             StatusMaster? approvedLeaves = _dbContext.Status.Where(s => s.StatusType.ToLower() == "approved").FirstOrDefault();
