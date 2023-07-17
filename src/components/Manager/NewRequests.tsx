@@ -47,23 +47,15 @@ const NewRequests = () => {
     const fetchLeaveDetails = async () => {
       try {
         const response = await axiosInstance.get(`api/LeaveRequest/status/1`);
+        console.log("...",response);
         setData(response.data);
-        console.log("data", data);
       } catch (error) {
         console.error(error);
       }
     };
     fetchLeaveDetails();
+    console.log("////", data);
   }, []);
-
-  // const fetchStatus = (rowId: any, param: any) => {
-  //   axiosInstance
-  //     .put(`/api/LeaveRequest/${rowId}/status/${param}`)
-  //     .then((response) => setStatusId(response.data))
-  //     .catch((error) => console.log(error));
-
-  //   window.location.reload();
-  // };
 
   const fetchStatus = async (rowId: any, param: any) => {
     try {
@@ -79,24 +71,17 @@ const NewRequests = () => {
     window.location.reload();
   };
 
-  const handleChangePage = (
-    event: React.MouseEvent<HTMLButtonElement> | null,
-    newPage: number
-  ) => {
+  const handleChangePage = (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
     setPage(newPage);
-    // window.location.reload();
   };
 
-  const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
-    // window.location.reload();
   };
 
-  const emptyRows =
-    rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
+  const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
+
 
   return (
     <div>
@@ -123,8 +108,8 @@ const NewRequests = () => {
             {(rowsPerPage > 0
               ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               : data
-            ).map((row: any) => (
-              <StyledTableRow key={row.employeeFirstName}>
+            ).map((row) => (
+              <StyledTableRow key={row.id}>
                 <StyledTableCell component="th" scope="row">
                   {row.employeeFirstName} {row.employeeLastName}
                 </StyledTableCell>
@@ -221,6 +206,28 @@ const NewRequests = () => {
 };
 
 export default NewRequests;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //original
 // import { useState, useEffect } from "react";

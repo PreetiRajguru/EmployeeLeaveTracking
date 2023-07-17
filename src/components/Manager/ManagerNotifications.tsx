@@ -12,7 +12,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import useHttp from "../../config/https";
-import { Modal } from "@mui/material";
+import { Modal, TablePagination } from "@mui/material";
 import { Box } from "@mui/system";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -52,7 +52,6 @@ const ManagerNotifications = () => {
   const [statusId, setStatusId] = useState();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-
   const [openArray, setOpenArray] = useState<boolean[]>([]); // Array of open states
 
   useEffect(() => {
@@ -70,7 +69,6 @@ const ManagerNotifications = () => {
     fetchNotificationDetails();
   }, []);
 
-  
   const handleRowClick = async (rowId: any) => {
     try {
       const selectedRow = data.find((row) => row.id === rowId);
@@ -103,11 +101,22 @@ const ManagerNotifications = () => {
     setOpenArray(openArray.map(() => false));
   };
 
+  const handleChangePage = (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
+  const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
+
   return (
     <div>
       <TableContainer component={Paper}>
         <Typography component="h1" variant="h5" align="center" sx={{ mb: 3, mt: 2 }}>
-          Manager Notifications
+         Notifications
         </Typography>
         <Divider />
 
@@ -116,15 +125,14 @@ const ManagerNotifications = () => {
             <TableRow sx={{ backgroundColor: "#fafafa" }}>
               <TableCell>Employee Name</TableCell>
               <TableCell align="right">Leave Type</TableCell>
-              {/* <TableCell align="right">Start Date</TableCell>
-              <TableCell align="right">End Date</TableCell> */}
-              {/* <TableCell align="right">Total Days</TableCell> */}
-              {/* <TableCell align="right">Request Comments</TableCell> */}
               <TableCell align="right">Status</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((row: any, index: number) => (
+            {(rowsPerPage > 0
+            ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            : data
+          ).map((row: any, index: number) => (
               <StyledTableRow
                 key={row.id}
                 className={!row.isViewed ? "is-viewed" : ""}
@@ -134,22 +142,7 @@ const ManagerNotifications = () => {
                   {row.leave.firstName} {row.leave.lastName}
                 </TableCell>
                 <TableCell align="right">{row.leave.leaveTypeName}</TableCell>
-                {/* <TableCell align="right">
-                  {new Date(row.leave.startDate).toLocaleDateString()}
-                </TableCell>
-                <TableCell align="right">
-                  {new Date(row.leave.endDate).toLocaleDateString()}
-                </TableCell>
-                <TableCell align="right">{row.leave.totalDays}</TableCell>
-                <TableCell align="right">{row.leave.requestComments}</TableCell> */}
                 <TableCell align="right">{row.leave.statusName}
-                  {/* {row.leave.statusId === 1 ? (
-                    <Button variant="contained" sx={{ ml: 2 }} onClick={() => handleOpen(index)}>
-                      {row.leave.statusName}
-                    </Button>
-                  ) : (
-                    row.leave.statusName
-                  )} */}
                 </TableCell>
                 
                 <Modal
@@ -180,10 +173,23 @@ const ManagerNotifications = () => {
                 </Modal>
               </StyledTableRow>
             ))}
+            {emptyRows > 0 && (
+              <StyledTableRow style={{ height: 53 * emptyRows }}>
+                <StyledTableCell colSpan={6} />
+              </StyledTableRow>
+            )}
           </TableBody>
         </Table>
+        <TablePagination
+        rowsPerPageOptions={[5, 10, 25]}
+        component="div"
+        count={data.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
       </TableContainer>
-        
     </div>
   );
 };

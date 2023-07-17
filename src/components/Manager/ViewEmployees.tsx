@@ -1,4 +1,3 @@
-
 import { useState, useEffect, Key, ReactNode } from "react";
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
@@ -61,14 +60,15 @@ export default function CustomizedTables() {
     const fetchAllEmployeesForManager = async () => {
       try {
         const response = await axiosInstance.get(`api/User/employees/${managerId}`);
-        console.log(response);
+        console.log("...",response);
         setData(response.data);
+        console.log("length", data.length);
       } catch (error) {
         console.error(error);
       }
     };
     fetchAllEmployeesForManager();
-    console.log(data);
+    console.log("//////",data);
   }, []);
 
   const exportPDF = () => {
@@ -145,7 +145,7 @@ export default function CustomizedTables() {
             ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             : data
           ).map((row) => (
-            <StyledTableRow key={row.userName}>
+            <StyledTableRow key={row.id}>
               <StyledTableCell component="th" scope="row">
                 {row.firstName} {row.lastName}
               </StyledTableCell>

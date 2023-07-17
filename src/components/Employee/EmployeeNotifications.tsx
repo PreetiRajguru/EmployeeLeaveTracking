@@ -12,6 +12,7 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import useHttp from "../../config/https";
+import { TablePagination } from "@mui/material";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -89,11 +90,22 @@ const EmployeeNotifications = () => {
   window.location.reload();
 };
 
+const handleChangePage = (event: React.MouseEvent<HTMLButtonElement> | null, newPage: number) => {
+  setPage(newPage);
+};
+
+const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
+  setRowsPerPage(parseInt(event.target.value, 10));
+  setPage(0);
+};
+
+const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
+
   return (
     <div>
       <TableContainer component={Paper}>
         <Typography component="h1" variant="h5" align="center" sx={{ mb: 3, mt: 2 }}>
-          Employee Notifications
+         Notifications
         </Typography>
         <Divider />
 
@@ -110,9 +122,13 @@ const EmployeeNotifications = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((row: any) => (
+            {/* {data.map((row: any) => ( */}
+            {(rowsPerPage > 0
+            ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            : data
+          ).map((row: any) => (
               <StyledTableRow
-                key={row.isViewed}
+                key={row.id}
                 className={!row.isViewed ? "is-viewed" : ""}
                 onClick={() => handleRowClick(row.id)}
                 >
@@ -131,10 +147,24 @@ const EmployeeNotifications = () => {
                 <TableCell align="right">{row.leave.statusName}</TableCell>
               </StyledTableRow>
             ))}
+            {emptyRows > 0 && (
+              <StyledTableRow style={{ height: 53 * emptyRows }}>
+                <StyledTableCell colSpan={6} />
+              </StyledTableRow>
+            )}
           </TableBody>
         </Table>
+        <TablePagination
+        rowsPerPageOptions={[5, 10, 25]}
+        component="div"
+        count={data.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
       </TableContainer>
-      <Button
+      {/* <Button
         variant="contained"
         onClick={() => navigate("/leavedetails")}
         sx={{
@@ -145,7 +175,7 @@ const EmployeeNotifications = () => {
         }}
       >
         Back to Leave Details
-      </Button>
+      </Button> */}
     </div>
   );
 };
