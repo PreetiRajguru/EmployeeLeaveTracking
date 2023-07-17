@@ -8,225 +8,225 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAR2YLiblpwkqidzhtmYYeagAAAAACAAAAAAAQZgAAAAEAACAAAAAbLw15jFNgvRoXb4N0oyF5y5HEWvWyLkpcCdkK4Sw4owAAAAAOgAAAAAIAACAAAAAJfShjyPlov9MQDvur2q4Bet9Oo48SBS9DHXDKALCp8IAAAABgyfZ40mzY6B3seM75QYHB1HLqOcnvjWwVKjNF1OSzza+kaw1I4aGtQbMQxisyvU301qc9f935ffVsA9JWGrOaML+VwRsJso1d1OvNHMv/se1fbLGIEDyWOwdiYMCPxlPnX5dbe2/ztQIj7aRwbVPSr1YhynXxvb5PvrX6eM8gt0AAAAD4ysUFGvk6WmLuMAhMCRFN8d7an5xg9V+4nzOquVbU1SZxztvTI4zp6HtLhLgPFAtmxT6cupeVfCKtGfypW2yd</EncryptedPassword>
     <_PublishTargetUrl>ftps://waws-prod-pn1-025.ftp.azurewebsites.windows.net/site/wwwroot</_PublishTargetUrl>
-    <History>True|2023-07-14T19:08:30.2899340Z;False|2023-07-15T00:36:56.9727892+05:30;True|2023-07-15T00:32:19.0915491+05:30;False|2023-07-15T00:31:05.8724498+05:30;True|2023-07-15T00:25:08.9188072+05:30;False|2023-07-11T12:26:30.7983858+05:30;False|2023-07-11T12:23:42.7377153+05:30;False|2023-07-11T12:21:03.3432910+05:30;</History>
+    <History>False|2023-07-17T05:41:41.4646340Z;True|2023-07-15T00:38:30.2899340+05:30;False|2023-07-15T00:36:56.9727892+05:30;True|2023-07-15T00:32:19.0915491+05:30;False|2023-07-15T00:31:05.8724498+05:30;True|2023-07-15T00:25:08.9188072+05:30;False|2023-07-11T12:26:30.7983858+05:30;False|2023-07-11T12:23:42.7377153+05:30;False|2023-07-11T12:21:03.3432910+05:30;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
     <File Include="appsettings.Development.json">
-      <publishTime>07/15/2023 00:20:07</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="appsettings.json">
-      <publishTime>07/15/2023 00:20:07</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="AutoMapper.dll">
-      <publishTime>01/16/2023 21:11:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="EmployeeLeaveTracking.Data.dll">
-      <publishTime>07/15/2023 00:30:26</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="EmployeeLeaveTracking.Data.pdb">
-      <publishTime>07/15/2023 00:30:26</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="EmployeeLeaveTracking.Services.dll">
-      <publishTime>07/15/2023 00:36:15</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="EmployeeLeaveTracking.Services.pdb">
-      <publishTime>07/15/2023 00:36:15</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="EmployeeLeaveTracking.WebAPI.deps.json">
-      <publishTime>07/15/2023 00:37:35</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="EmployeeLeaveTracking.WebAPI.dll">
-      <publishTime>07/15/2023 00:37:32</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="EmployeeLeaveTracking.WebAPI.exe">
-      <publishTime>07/15/2023 00:37:32</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="EmployeeLeaveTracking.WebAPI.pdb">
-      <publishTime>07/15/2023 00:37:32</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="EmployeeLeaveTracking.WebAPI.runtimeconfig.json">
-      <publishTime>07/15/2023 00:24:03</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.AspNetCore.Authentication.JwtBearer.dll">
-      <publishTime>01/14/2022 08:30:24</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll">
-      <publishTime>01/14/2022 08:30:24</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.Data.SqlClient.dll">
-      <publishTime>08/26/2020 04:54:48</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.EntityFrameworkCore.Abstractions.dll">
-      <publishTime>12/15/2021 15:30:02</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.EntityFrameworkCore.dll">
-      <publishTime>12/15/2021 15:30:20</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.EntityFrameworkCore.Relational.dll">
-      <publishTime>12/15/2021 15:30:32</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.EntityFrameworkCore.SqlServer.dll">
-      <publishTime>12/15/2021 15:30:38</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.Identity.Client.dll">
-      <publishTime>05/19/2020 01:41:54</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.IdentityModel.JsonWebTokens.dll">
-      <publishTime>06/30/2020 06:34:58</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.IdentityModel.Logging.dll">
-      <publishTime>06/30/2020 06:35:58</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.IdentityModel.Protocols.dll">
-      <publishTime>06/30/2020 06:36:48</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.IdentityModel.Protocols.OpenIdConnect.dll">
-      <publishTime>06/30/2020 06:43:54</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.IdentityModel.Tokens.dll">
-      <publishTime>06/30/2020 06:39:50</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.OpenApi.dll">
-      <publishTime>08/30/2020 01:44:12</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Microsoft.Win32.SystemEvents.dll">
-      <publishTime>11/15/2019 14:06:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Newtonsoft.Json.Bson.dll">
-      <publishTime>03/22/2017 16:31:20</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Newtonsoft.Json.dll">
-      <publishTime>03/21/2017 01:33:18</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="NLog.dll">
-      <publishTime>04/29/2023 15:40:36</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll">
-      <publishTime>11/15/2019 14:26:36</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="runtimes/unix/lib/netcoreapp3.1/Microsoft.Data.SqlClient.dll">
-      <publishTime>08/26/2020 04:55:12</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="runtimes/win-arm/native/Microsoft.Data.SqlClient.SNI.dll">
-      <publishTime>08/26/2020 02:04:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="runtimes/win-arm/native/Microsoft.Data.SqlClient.SNI.pdb">
-      <publishTime>08/26/2020 02:01:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="runtimes/win-arm64/native/Microsoft.Data.SqlClient.SNI.dll">
-      <publishTime>08/26/2020 02:05:06</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="runtimes/win-arm64/native/Microsoft.Data.SqlClient.SNI.pdb">
-      <publishTime>08/26/2020 02:01:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.dll">
-      <publishTime>08/26/2020 02:04:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.pdb">
-      <publishTime>08/26/2020 02:01:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.dll">
-      <publishTime>08/26/2020 02:04:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.pdb">
-      <publishTime>08/26/2020 02:01:56</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.dll">
-      <publishTime>11/15/2019 14:24:18</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll">
-      <publishTime>11/15/2019 14:24:20</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="runtimes/win/lib/netcoreapp3.0/System.Windows.Extensions.dll">
-      <publishTime>11/15/2019 14:24:30</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="runtimes/win/lib/netcoreapp3.1/Microsoft.Data.SqlClient.dll">
-      <publishTime>08/26/2020 04:54:48</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="runtimes/win/lib/netstandard2.0/System.Runtime.Caching.dll">
-      <publishTime>11/15/2019 14:23:44</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="runtimes/win/lib/netstandard2.0/System.Security.Cryptography.ProtectedData.dll">
-      <publishTime>11/15/2019 14:23:46</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Swashbuckle.AspNetCore.Swagger.dll">
-      <publishTime>10/16/2021 18:24:10</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Swashbuckle.AspNetCore.SwaggerGen.dll">
-      <publishTime>10/16/2021 18:24:36</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Swashbuckle.AspNetCore.SwaggerUI.dll">
-      <publishTime>10/16/2021 18:24:30</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="System.Configuration.ConfigurationManager.dll">
-      <publishTime>11/15/2019 14:07:04</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="System.Drawing.Common.dll">
-      <publishTime>09/19/2018 01:08:14</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="System.IdentityModel.Tokens.Jwt.dll">
-      <publishTime>06/30/2020 06:33:46</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="System.Net.Http.Formatting.dll">
-      <publishTime>05/28/2022 05:09:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="System.Runtime.Caching.dll">
-      <publishTime>11/15/2019 14:07:36</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="System.Security.Cryptography.ProtectedData.dll">
-      <publishTime>11/15/2019 14:07:42</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="System.Security.Permissions.dll">
-      <publishTime>11/15/2019 14:26:44</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="System.Web.Http.dll">
-      <publishTime>05/28/2022 05:11:46</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="System.Windows.Extensions.dll">
-      <publishTime>11/15/2019 14:26:52</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>07/15/2023 00:37:35</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/Images/03f3525d-aaaa-4101-8242-e839644790871.jpg">
-      <publishTime>07/15/2023 00:20:08</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/Images/0690f09d-ab94-4477-93f8-ed65475a6fd22.jpg">
-      <publishTime>07/15/2023 00:20:08</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/Images/11168730-7317-4863-8575-dfae5d5ccfbe1.jpg">
-      <publishTime>07/15/2023 00:20:08</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/Images/256e85a2-a906-4bd3-af78-1d43e5b69fd63.jpg">
-      <publishTime>07/15/2023 00:20:08</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/Images/85fc4b52-7fce-41fb-910d-a54a8bc8dc041.jpg">
-      <publishTime>07/15/2023 00:20:08</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/Images/87556353-f4aa-4182-8beb-4699ce7d26a12.jpg">
-      <publishTime>07/15/2023 00:20:08</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/Images/88665b21-3b1b-4e12-913b-561073a09bf04.jpg">
-      <publishTime>07/15/2023 00:20:08</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/Images/99d97c58-4038-444c-9a36-e51a08dc328f1.jpg">
-      <publishTime>07/15/2023 00:20:08</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/Images/9b8bfbe0-b788-4804-b9cc-8434cfe28d4f1.jpg">
-      <publishTime>07/15/2023 00:20:08</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/Images/abcd.jpg">
-      <publishTime>07/15/2023 00:20:08</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/Images/adcc4069-6b9c-43b0-9c70-6aabc70037b32.jpg">
-      <publishTime>07/15/2023 00:20:08</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/Images/c7a489c2-1de4-49cd-bfb8-511ca0bc4dde7.jpg">
-      <publishTime>07/15/2023 00:20:08</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="wwwroot/Images/e139b68a-f0a8-47b7-bfda-ad64741be5858.jpg">
-      <publishTime>07/15/2023 00:20:08</publishTime>
+      <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -20,6 +20,35 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         }
 
 
+        [HttpGet("top")]
+        [Authorize(Roles = "Manager,Employee")]
+        public IActionResult GetTopNotifications()
+        {
+            try
+            {
+                string id = _userService.GetCurrentUserById();
+                string userRole = _userService.GetCurrentUserByRole();
+
+                if (id == null)
+                {
+                    return BadRequest("User ID is null.");
+                }
+
+                IEnumerable<DetailedNotificationDTO> unviewedNotifications = _notificationService.GetTopNotifications(id,userRole);
+
+                if (unviewedNotifications == null)
+                {
+                    return NotFound("No notifications found for the manager.");
+                }
+
+                return Ok(unviewedNotifications);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "An error occurred while processing the request.");
+            }
+        }
+
         [HttpGet("all")]
         [Authorize(Roles = "Manager,Employee")]
         public IActionResult GetAllNotifications()
@@ -34,7 +63,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
                     return BadRequest("User ID is null.");
                 }
 
-                IEnumerable<DetailedNotificationDTO> unviewedNotifications = _notificationService.GetAllNotifications(id,userRole);
+                IEnumerable<DetailedNotificationDTO> unviewedNotifications = _notificationService.GetAllNotifications(id, userRole);
 
                 if (unviewedNotifications == null)
                 {

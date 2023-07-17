@@ -10,6 +10,8 @@ namespace EmployeeLeaveTracking.Services.Interfaces
 
 
 
+        IEnumerable<DetailedNotificationDTO> GetTopNotifications(string id, string userRole);
+
         IEnumerable<DetailedNotificationDTO> GetAllNotifications(string id, string userRole);
 
         void MarkNotificationAsViewed(int notificationId);
