@@ -9,7 +9,7 @@ import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import useHttp from "../../config/https";
 import swal from 'sweetalert';
 
-const managerId = localStorage.getItem("id");
+
 
 export default function AddEmployee() {
   const [isFormValid, setIsFormValid] = useState(false);
@@ -18,7 +18,7 @@ export default function AddEmployee() {
   const [designation, setDesignation] = useState<any>([]);
   const [unAuthorized, setUnAuthorized] = useState(false);
   const [isDesignationSelected, setIsDesignationSelected] = useState(false);
-
+  const managerId = localStorage.getItem("id");
   const [data, setData] = useState({
     firstname: "",
     lastname: "",

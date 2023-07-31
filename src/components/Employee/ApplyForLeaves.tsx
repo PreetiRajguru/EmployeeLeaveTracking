@@ -662,25 +662,47 @@ const ApplyForLeaves = () => {
     // }
 
     
-    try {
-      axiosInstance
-        .post("/api/LeaveRequest/newleaverequest", newLeaveTypeDetails)
-        .then((response) => {
-          swal("Leave Request Sent Succesfully");
-          navigate("/leavedetails");
-        })
-        .catch((error) => {
-          if (error.response && error.response.status === 500) {
-            swal("Leave request already approved for the same dates.");
-            return;
-          }
-          // Handle other error responses if needed
-          // swal(error.response.data.message);
-        });
-    } catch (error: any) {
-      // Handle any other errors
+  //   try {
+  //     axiosInstance
+  //       .post("/api/LeaveRequest/newleaverequest", newLeaveTypeDetails)
+  //       .then((response) => {
+  //         swal("Leave Request Sent Succesfully");
+  //         navigate("/leavedetails");
+  //       })
+  //       .catch((error) => {
+  //         if (error.response && error.response.status === 500) {
+  //           swal("Leave request already approved for the same dates.");
+  //           return;
+  //         }
+  //         // swal(error.response.data.message);
+  //       });
+  //   } catch (error: any) {
+  //     swal("An error occurred.");
+  //   }
+  // };
+
+
+  try {
+    const response = await axiosInstance.post(
+      "/api/LeaveRequest/newleaverequest",
+      newLeaveTypeDetails
+    );
+
+    if (response.status === 200) {
+      swal("Leave Request Sent Successfully");
+      navigate("/leavedetails");
+      }
+  } catch (error: any) {
+    if (error.response && error.response.status === 500) {
+      alert(JSON.stringify(error.response));
+      swal("Leave request already approved for the same dates.");
+    } else {
+      swal("An error occurred.");
     }
-  };
+  }
+};
+
+
 
   useEffect(() => {
     const fetchLeaveTypes = async () => {
@@ -927,3 +949,22 @@ export default ApplyForLeaves;
 
 
 
+
+
+// frontend date format
+//{27-07-2023 09:50:19}
+// backend date format
+//2023-07-27T09:50:19.930Z
+//how to do its comparison here 
+// bool isLeaveAlreadyExists = _dbContext.LeaveRequests
+// .Any(lr => lr.EmployeeId == leaveRequest.EmployeeId &&
+
+//   lr.StartDate <= leaveRequest.EndDate &&
+//   lr.EndDate >= leaveRequest.StartDate &&
+
+//   lr.StatusId == 2);
+
+// if (isLeaveAlreadyExists)
+// {
+// throw new Exception("Leave request already approved for the same dates.");
+// }

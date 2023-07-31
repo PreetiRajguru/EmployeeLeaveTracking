@@ -42,7 +42,7 @@ const NewRequests = () => {
   const [statusId, setStatusId] = useState();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-
+  
   useEffect(() => {
     const fetchLeaveDetails = async () => {
       try {
@@ -57,7 +57,7 @@ const NewRequests = () => {
     console.log("////", data);
   }, []);
 
-  const fetchStatus = async (rowId: any, param: any) => {
+  const   fetchStatus = async (rowId: any, param: any) => {
     try {
       await axiosInstance.put(`/api/LeaveRequest/${rowId}/status/${param}`);
       const updatedResponse = await axiosInstance.get(

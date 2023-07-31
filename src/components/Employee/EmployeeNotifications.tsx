@@ -122,7 +122,6 @@ const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsP
             </TableRow>
           </TableHead>
           <TableBody>
-            {/* {data.map((row: any) => ( */}
             {(rowsPerPage > 0
             ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             : data
