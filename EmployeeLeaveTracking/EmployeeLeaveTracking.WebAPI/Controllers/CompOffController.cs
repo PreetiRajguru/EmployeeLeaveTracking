@@ -19,9 +19,9 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Manager")]
-        public IActionResult CreateCompOff(CompOffDTO compOffDTO)
+        public IActionResult CreateCompOff(LeaveAdditionDTO compOffDTO)
         {
-            CompOffDTO createdCompOff = _compOffService.CreateCompOff(compOffDTO);
+            LeaveAdditionDTO createdCompOff = _compOffService.CreateCompOff(compOffDTO);
             if (createdCompOff != null)
                 return Ok(createdCompOff);
 
@@ -32,7 +32,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         [Authorize(Roles = "Employee")]
         public IActionResult GetCompOff(string userId)
         {
-            CompOffDTO compOff = _compOffService.GetCompOff(userId);
+            LeaveAdditionDTO compOff = _compOffService.GetCompOff(userId);
             if (compOff != null)
                 return Ok(compOff);
 
@@ -41,9 +41,9 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 
         [HttpPut]
         [Authorize(Roles = "Manager,Employee")]
-        public IActionResult UpdateCompOff(CompOffDTO compOffDTO)
+        public IActionResult UpdateCompOff(LeaveAdditionDTO compOffDTO)
         {
-            CompOffDTO updatedCompOff = _compOffService.UpdateCompOff(compOffDTO);
+            LeaveAdditionDTO updatedCompOff = _compOffService.UpdateCompOff(compOffDTO);
             if (updatedCompOff != null)
                 return Ok(updatedCompOff);
 

@@ -4,9 +4,9 @@ namespace EmployeeLeaveTracking.Services.Interfaces
 {
     public interface ICompOff
     {
-        CompOffDTO CreateCompOff(CompOffDTO compOffDTO);
-        CompOffDTO GetCompOff(string userId);
-        CompOffDTO UpdateCompOff(CompOffDTO compOffDTO);
+        LeaveAdditionDTO CreateCompOff(LeaveAdditionDTO compOffDTO);
+        LeaveAdditionDTO GetCompOff(string userId);
+        LeaveAdditionDTO UpdateCompOff(LeaveAdditionDTO compOffDTO);
         void DeleteCompOff(string userId);
     }
 }

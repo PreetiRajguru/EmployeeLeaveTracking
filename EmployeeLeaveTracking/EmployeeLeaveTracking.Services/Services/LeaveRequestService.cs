@@ -214,9 +214,9 @@ namespace EmployeeLeaveTracking.Services.Services
                 throw new Exception("Employee or manager not found.");
             }
 
-            User managerEmail = _dbContext.Users.FirstOrDefault(u => u.Id == leaveRequest.ManagerId);
+            User emailToManager = _dbContext.Users.FirstOrDefault(u => u.Id == leaveRequest.ManagerId);
 
-            if (managerEmail == null)
+            if (emailToManager == null)
             {
                 throw new Exception("Manager not found.");
             }
@@ -413,9 +413,9 @@ namespace EmployeeLeaveTracking.Services.Services
                 await _dbContext.SaveChangesAsync();
             }
 
-            User employeeEmail = await _dbContext.Users.FindAsync(leaveRequest.EmployeeId);
+            User emailToEmployee = await _dbContext.Users.FindAsync(leaveRequest.EmployeeId);
 
-            if (employeeEmail == null)
+            if (emailToEmployee == null)
             {
                 throw new Exception("Employee not found.");
             }

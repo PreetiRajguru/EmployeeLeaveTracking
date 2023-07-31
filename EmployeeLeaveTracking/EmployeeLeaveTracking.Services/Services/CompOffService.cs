@@ -14,7 +14,7 @@ namespace EmployeeLeaveTracking.Services.Services
             _dbContext = dbContext;
         }
 
-        public CompOffDTO CreateCompOff(CompOffDTO compOffDTO)
+        public LeaveAdditionDTO CreateCompOff(LeaveAdditionDTO compOffDTO)
         {
             CompOff compOff = new CompOff
             {
@@ -34,13 +34,13 @@ namespace EmployeeLeaveTracking.Services.Services
             return compOffDTO;
         }
 
-        public CompOffDTO GetCompOff(string userId)
+        public LeaveAdditionDTO GetCompOff(string userId)
         {
             CompOff? compOff = _dbContext.CompOffs.FirstOrDefault(c => c.UserId == userId);
             if (compOff == null)
                 return null;
 
-            CompOffDTO compOffDTO = new CompOffDTO
+            LeaveAdditionDTO compOffDTO = new LeaveAdditionDTO
             {
                 UserId = compOff.UserId,
                 Balance = compOff.Balance,
@@ -51,7 +51,7 @@ namespace EmployeeLeaveTracking.Services.Services
             return compOffDTO;
         }
 
-        public CompOffDTO UpdateCompOff(CompOffDTO compOffDTO)
+        public LeaveAdditionDTO UpdateCompOff(LeaveAdditionDTO compOffDTO)
         {
             CompOff? compOff = _dbContext.CompOffs.FirstOrDefault(c => c.UserId == compOffDTO.UserId);
             if (compOff == null)

@@ -4,11 +4,11 @@ namespace EmployeeLeaveTracking.Services.Interfaces
 {
     public interface IOnDuty
     {
-        OnDutyDTO CreateOnDuty(OnDutyDTO onDutyDTO);
+        LeaveAdditionDTO CreateOnDuty(LeaveAdditionDTO onDutyDTO);
 
-        OnDutyDTO GetOnDuty(string userId);
+        LeaveAdditionDTO GetOnDuty(string userId);
 
-        OnDutyDTO UpdateOnDuty(OnDutyDTO onDutyDTO);
+        LeaveAdditionDTO UpdateOnDuty(LeaveAdditionDTO onDutyDTO);
 
         void DeleteOnDuty(string userId);
     }

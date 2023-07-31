@@ -1,6 +1,6 @@
 ﻿namespace EmployeeLeaveTracking.Data.DTOs
 {
-    public class CompOffDTO
+    public class LeaveAdditionDTO
     {
         public string? UserId { get; set; }
 

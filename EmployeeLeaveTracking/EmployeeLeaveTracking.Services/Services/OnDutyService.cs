@@ -14,7 +14,7 @@ namespace EmployeeLeaveTracking.Services.Services
             _dbContext = dbContext;
         }
 
-        public OnDutyDTO CreateOnDuty(OnDutyDTO onDutyDTO)
+        public LeaveAdditionDTO CreateOnDuty(LeaveAdditionDTO onDutyDTO)
         {
             OnDuty onDuty = new OnDuty
             {
@@ -34,13 +34,13 @@ namespace EmployeeLeaveTracking.Services.Services
             return onDutyDTO;
         }
 
-        public OnDutyDTO GetOnDuty(string userId)
+        public LeaveAdditionDTO GetOnDuty(string userId)
         {
             OnDuty? onDuty = _dbContext.OnDutys.FirstOrDefault(c => c.UserId == userId);
             if (onDuty == null)
                 return null;
 
-            OnDutyDTO onDutyDTO = new OnDutyDTO
+            LeaveAdditionDTO onDutyDTO = new LeaveAdditionDTO
             {
                 UserId = onDuty.UserId,
                 Balance = onDuty.Balance,
@@ -52,7 +52,7 @@ namespace EmployeeLeaveTracking.Services.Services
         }
 
 
-        public OnDutyDTO UpdateOnDuty(OnDutyDTO onDutyDTO)
+        public LeaveAdditionDTO UpdateOnDuty(LeaveAdditionDTO onDutyDTO)
         {
             OnDuty? onDuty = _dbContext.OnDutys.FirstOrDefault(c => c.UserId == onDutyDTO.UserId);
             if (onDuty == null)
