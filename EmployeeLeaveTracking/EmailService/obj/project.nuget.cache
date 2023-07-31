@@ -1,12 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "LNjGXZ8nsu7U22Hnrtbfc4VIROI4KuAXGMTbKyF4ew7I9bfE0t3w4/LFMs4wlheNHsFu4YQ6hH4dvSfOK5ZbqQ==",
+  "dgSpecHash": "F4Wh9gZtEZcYTVh+F9eYAucP/RGsxl98QXji2LLlCvWcc8pIETw22pgqBvQB/yrHORibDXVW+BH0F/IBzVUMDg==",
   "success": true,
   "projectFilePath": "C:\\Users\\IncubXperts\\Desktop\\ELT - API\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmailService\\EmailService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\IncubXperts\\.nuget\\packages\\mailkit\\3.2.0\\mailkit.3.2.0.nupkg.sha512",
+    "C:\\Users\\IncubXperts\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
+    "C:\\Users\\IncubXperts\\.nuget\\packages\\microsoft.extensions.configuration.binder\\7.0.4\\microsoft.extensions.configuration.binder.7.0.4.nupkg.sha512",
     "C:\\Users\\IncubXperts\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.0\\microsoft.extensions.dependencyinjection.6.0.0.nupkg.sha512",
     "C:\\Users\\IncubXperts\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\IncubXperts\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\IncubXperts\\.nuget\\packages\\mimekit\\3.2.0\\mimekit.3.2.0.nupkg.sha512",
     "C:\\Users\\IncubXperts\\.nuget\\packages\\netcore.mailkit\\2.1.0\\netcore.mailkit.2.1.0.nupkg.sha512",
     "C:\\Users\\IncubXperts\\.nuget\\packages\\portable.bouncycastle\\1.9.0\\portable.bouncycastle.1.9.0.nupkg.sha512",

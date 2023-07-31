@@ -8,6 +8,7 @@ using EmployeeLeaveTracking.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System.Resources;
 
 namespace EmployeeLeaveTracking.Services.Services
@@ -20,14 +21,16 @@ namespace EmployeeLeaveTracking.Services.Services
         private readonly UserManager<User> _userManager;
         private User? _user;
         private readonly IMapper _mapper;
+        private readonly IConfiguration _configuration;
 
-        public LeaveRequestService(EmployeeLeaveDbContext dbContext, UserManager<User> userManager, IHttpContextAccessor httpContextAccessor, UserService userService, IMapper mapper)
+        public LeaveRequestService(EmployeeLeaveDbContext dbContext, UserManager<User> userManager, IHttpContextAccessor httpContextAccessor, UserService userService, IMapper mapper, IConfiguration configuration)
         {
             _dbContext = dbContext;
             _userManager = userManager;
             _httpContextAccessor = httpContextAccessor;
             _userService = userService;
             _mapper = mapper;
+            _configuration = configuration;
         }
 
         public IEnumerable<LeaveRequestDTO> GetAll()
@@ -236,7 +239,7 @@ namespace EmployeeLeaveTracking.Services.Services
                 leaveRequest.TotalDays,
                 leaveRequest.RequestComments);
 
-            EmailHelper emailService = new EmailHelper();
+            EmailHelper emailService = new(_configuration);
             string emailToAddress = manager.Email; //manager's email address
             string subject = "Leave Request";
             emailService.SendEmail(emailToAddress, subject, emailBody);
@@ -439,7 +442,8 @@ namespace EmployeeLeaveTracking.Services.Services
                 leaveStatus);
             //return manager and employee names with this response to display in email template
 
-            EmailHelper emailService = new EmailHelper();
+            EmailHelper emailService = new(_configuration);
+
             string emailToAddress = "rajgurupreeti0@gmail.com";
             /*string emailToAddress = employeeEmail.Email;*/
             string subject = "Leave Response";
