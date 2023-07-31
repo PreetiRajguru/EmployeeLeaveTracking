@@ -1,326 +1,3 @@
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\appsettings.Development.json
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\appsettings.json
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.WebAPI.exe
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.WebAPI.deps.json
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.WebAPI.runtimeconfig.json
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.WebAPI.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.WebAPI.pdb
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\AutoMapper.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Humanizer.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.Data.SqlClient.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.EntityFrameworkCore.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Design.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.Identity.Client.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.IdentityModel.Logging.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.IdentityModel.Tokens.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.OpenApi.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.Win32.SystemEvents.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\NLog.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Swashbuckle.AspNetCore.Swagger.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Configuration.ConfigurationManager.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Drawing.Common.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.IdentityModel.Tokens.Jwt.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Runtime.Caching.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Security.Cryptography.ProtectedData.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Security.Permissions.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Windows.Extensions.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.Data.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.Services.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.Data.pdb
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.Services.pdb
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.csproj.AssemblyReference.cache
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.GeneratedMSBuildEditorConfig.editorconfig
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.AssemblyInfoInputs.cache
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.AssemblyInfo.cs
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.csproj.CoreCompileInputs.cache
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.MvcApplicationPartsAssemblyInfo.cs
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.MvcApplicationPartsAssemblyInfo.cache
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets\msbuild.EmployeeLeaveTracking.WebAPI.Microsoft.AspNetCore.StaticWebAssets.props
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets\msbuild.build.EmployeeLeaveTracking.WebAPI.props
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets\msbuild.buildMultiTargeting.EmployeeLeaveTracking.WebAPI.props
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets\msbuild.buildTransitive.EmployeeLeaveTracking.WebAPI.props
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets.pack.json
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets.build.json
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets.development.json
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\scopedcss\bundle\EmployeeLeaveTracking.WebAPI.styles.css
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.csproj.CopyComplete
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\refint\EmployeeLeaveTracking.WebAPI.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.pdb
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.genruntimeconfig.cache
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\ref\EmployeeLeaveTracking.WebAPI.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\appsettings.Development.json
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\appsettings.json
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.WebAPI.staticwebassets.runtime.json
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.WebAPI.exe
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.WebAPI.deps.json
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.WebAPI.runtimeconfig.json
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.WebAPI.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.WebAPI.pdb
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\AutoMapper.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Humanizer.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Net.Http.Formatting.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Web.Http.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.Data.SqlClient.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.EntityFrameworkCore.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Design.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.Identity.Client.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.IdentityModel.Logging.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.IdentityModel.Tokens.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.OpenApi.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.Win32.SystemEvents.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Newtonsoft.Json.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Newtonsoft.Json.Bson.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\NLog.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Swashbuckle.AspNetCore.Swagger.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Configuration.ConfigurationManager.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Drawing.Common.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.IdentityModel.Tokens.Jwt.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Runtime.Caching.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Security.Cryptography.ProtectedData.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Security.Permissions.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Windows.Extensions.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.Data.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.Services.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.Data.pdb
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.Services.pdb
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.csproj.AssemblyReference.cache
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.GeneratedMSBuildEditorConfig.editorconfig
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.AssemblyInfoInputs.cache
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.AssemblyInfo.cs
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.csproj.CoreCompileInputs.cache
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.MvcApplicationPartsAssemblyInfo.cs
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.MvcApplicationPartsAssemblyInfo.cache
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets\msbuild.EmployeeLeaveTracking.WebAPI.Microsoft.AspNetCore.StaticWebAssets.props
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets\msbuild.build.EmployeeLeaveTracking.WebAPI.props
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets\msbuild.buildMultiTargeting.EmployeeLeaveTracking.WebAPI.props
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets\msbuild.buildTransitive.EmployeeLeaveTracking.WebAPI.props
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets.pack.json
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets.build.json
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets.development.json
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\scopedcss\bundle\EmployeeLeaveTracking.WebAPI.styles.css
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.csproj.CopyComplete
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\refint\EmployeeLeaveTracking.WebAPI.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.pdb
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.genruntimeconfig.cache
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\ref\EmployeeLeaveTracking.WebAPI.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\appsettings.Development.json
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\appsettings.json
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.WebAPI.staticwebassets.runtime.json
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.WebAPI.exe
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.WebAPI.deps.json
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.WebAPI.runtimeconfig.json
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.WebAPI.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.WebAPI.pdb
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\AutoMapper.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Humanizer.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Net.Http.Formatting.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Web.Http.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.Data.SqlClient.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.EntityFrameworkCore.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Design.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.Identity.Client.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.IdentityModel.Logging.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.IdentityModel.Tokens.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.OpenApi.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.Win32.SystemEvents.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Newtonsoft.Json.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Newtonsoft.Json.Bson.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\NLog.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Swashbuckle.AspNetCore.Swagger.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Configuration.ConfigurationManager.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Drawing.Common.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Runtime.Caching.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Security.Permissions.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Windows.Extensions.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.Data.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.Services.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.Data.pdb
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.Services.pdb
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.csproj.AssemblyReference.cache
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.AssemblyInfoInputs.cache
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.AssemblyInfo.cs
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.csproj.CoreCompileInputs.cache
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets\msbuild.EmployeeLeaveTracking.WebAPI.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets\msbuild.build.EmployeeLeaveTracking.WebAPI.props
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets\msbuild.buildMultiTargeting.EmployeeLeaveTracking.WebAPI.props
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets\msbuild.buildTransitive.EmployeeLeaveTracking.WebAPI.props
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets.pack.json
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets.build.json
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets.development.json
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\scopedcss\bundle\EmployeeLeaveTracking.WebAPI.styles.css
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.csproj.CopyComplete
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\refint\EmployeeLeaveTracking.WebAPI.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.pdb
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.genruntimeconfig.cache
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\ref\EmployeeLeaveTracking.WebAPI.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\appsettings.Development.json
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\appsettings.json
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.WebAPI.staticwebassets.runtime.json
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.WebAPI.exe
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.WebAPI.deps.json
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.WebAPI.runtimeconfig.json
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.WebAPI.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.WebAPI.pdb
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\AutoMapper.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Humanizer.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Net.Http.Formatting.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Web.Http.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.Data.SqlClient.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.EntityFrameworkCore.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Design.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.Identity.Client.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.IdentityModel.Logging.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.IdentityModel.Tokens.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.OpenApi.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.Win32.SystemEvents.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Newtonsoft.Json.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Newtonsoft.Json.Bson.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\NLog.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Swashbuckle.AspNetCore.Swagger.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Configuration.ConfigurationManager.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Drawing.Common.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.IdentityModel.Tokens.Jwt.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Runtime.Caching.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Security.Cryptography.ProtectedData.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Security.Permissions.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Windows.Extensions.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.Data.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.Services.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.Data.pdb
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.Services.pdb
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.csproj.AssemblyReference.cache
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.GeneratedMSBuildEditorConfig.editorconfig
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.AssemblyInfoInputs.cache
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.AssemblyInfo.cs
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.csproj.CoreCompileInputs.cache
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.MvcApplicationPartsAssemblyInfo.cs
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.MvcApplicationPartsAssemblyInfo.cache
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets\msbuild.EmployeeLeaveTracking.WebAPI.Microsoft.AspNetCore.StaticWebAssets.props
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets\msbuild.build.EmployeeLeaveTracking.WebAPI.props
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets\msbuild.buildMultiTargeting.EmployeeLeaveTracking.WebAPI.props
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets\msbuild.buildTransitive.EmployeeLeaveTracking.WebAPI.props
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets.pack.json
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets.build.json
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\staticwebassets.development.json
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\scopedcss\bundle\EmployeeLeaveTracking.WebAPI.styles.css
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.csproj.CopyComplete
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\refint\EmployeeLeaveTracking.WebAPI.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.pdb
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.genruntimeconfig.cache
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\ref\EmployeeLeaveTracking.WebAPI.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\appsettings.Development.json
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\appsettings.json
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.WebAPI.staticwebassets.runtime.json
@@ -331,6 +8,7 @@ C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracki
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.WebAPI.pdb
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\AutoMapper.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Humanizer.dll
+C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\MailKit.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Net.Http.Formatting.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\System.Web.Http.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
@@ -349,9 +27,12 @@ C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracki
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.OpenApi.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\MimeKit.dll
+C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\NETCore.MailKit.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Newtonsoft.Json.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Newtonsoft.Json.Bson.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\NLog.dll
+C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\BouncyCastle.Crypto.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -378,8 +59,10 @@ C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracki
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmailService.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.Data.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.Services.dll
+C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmailService.pdb
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.Data.pdb
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\EmployeeLeaveTracking.Services.pdb
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.csproj.AssemblyReference.cache

@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeLeaveTracking.Servi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeLeaveTracking.SchedularJob", "EmployeeLeaveTracking.SchedularJob\EmployeeLeaveTracking.SchedularJob.csproj", "{33679D20-DA5D-404F-BA2B-D4BE8E70B538}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailService", "EmailService\EmailService.csproj", "{4A110423-3C47-42CA-BC9B-C285CE38235E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{33679D20-DA5D-404F-BA2B-D4BE8E70B538}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33679D20-DA5D-404F-BA2B-D4BE8E70B538}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33679D20-DA5D-404F-BA2B-D4BE8E70B538}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A110423-3C47-42CA-BC9B-C285CE38235E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A110423-3C47-42CA-BC9B-C285CE38235E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A110423-3C47-42CA-BC9B-C285CE38235E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A110423-3C47-42CA-BC9B-C285CE38235E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

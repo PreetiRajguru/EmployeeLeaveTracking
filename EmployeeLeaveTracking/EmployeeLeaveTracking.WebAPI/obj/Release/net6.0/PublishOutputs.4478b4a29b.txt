@@ -5,6 +5,7 @@ C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracki
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\EmployeeLeaveTracking.WebAPI.runtimeconfig.json
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\EmployeeLeaveTracking.WebAPI.pdb
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\AutoMapper.dll
+C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\MailKit.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\System.Net.Http.Formatting.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\System.Web.Http.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Authentication.JwtBearer.dll
@@ -22,9 +23,12 @@ C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracki
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\Microsoft.IdentityModel.Tokens.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\Microsoft.OpenApi.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\Microsoft.Win32.SystemEvents.dll
+C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\MimeKit.dll
+C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\NETCore.MailKit.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\Newtonsoft.Json.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\Newtonsoft.Json.Bson.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\NLog.dll
+C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\BouncyCastle.Crypto.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -51,8 +55,10 @@ C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracki
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\EmailService.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\EmployeeLeaveTracking.Data.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\EmployeeLeaveTracking.Services.dll
+C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\EmailService.pdb
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\EmployeeLeaveTracking.Data.pdb
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\EmployeeLeaveTracking.Services.pdb
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\PubTmp\Out\EmployeeLeaveTracking.WebAPI.deps.json

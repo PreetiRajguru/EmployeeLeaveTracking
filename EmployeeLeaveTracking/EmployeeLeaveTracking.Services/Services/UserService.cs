@@ -115,9 +115,6 @@ namespace EmployeeLeaveTracking.Services.Services
         }
 
 
-
-
-
         public string GetCurrentUserByRole()
         {
             string? userRole = _httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.Role);
@@ -129,16 +126,6 @@ namespace EmployeeLeaveTracking.Services.Services
 
             return userRole;
         }
-
-
-
-
-
-
-
-
-
-
 
 
         public CurrentUserDTO GetCurrentUser(string employeeId)

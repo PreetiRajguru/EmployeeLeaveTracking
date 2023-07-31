@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EmailService\EmailService.csproj" />
     <ProjectReference Include="..\EmployeeLeaveTracking.Data\EmployeeLeaveTracking.Data.csproj" />
     <ProjectReference Include="..\EmployeeLeaveTracking.Services\EmployeeLeaveTracking.Services.csproj" />
   </ItemGroup>

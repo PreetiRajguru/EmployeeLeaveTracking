@@ -1,71 +1,3 @@
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Services.deps.json
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Services.runtimeconfig.json
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Services.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Services.pdb
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Data.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Data.pdb
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.csproj.AssemblyReference.cache
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.GeneratedMSBuildEditorConfig.editorconfig
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.AssemblyInfoInputs.cache
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.AssemblyInfo.cs
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.csproj.CoreCompileInputs.cache
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.csproj.CopyComplete
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\refint\EmployeeLeaveTracking.Services.dll
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.pdb
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.genruntimeconfig.cache
-D:\Final Project BE\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\ref\EmployeeLeaveTracking.Services.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Services.deps.json
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Services.runtimeconfig.json
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Services.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Services.pdb
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Data.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Data.pdb
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.csproj.AssemblyReference.cache
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.GeneratedMSBuildEditorConfig.editorconfig
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.AssemblyInfoInputs.cache
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.AssemblyInfo.cs
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.csproj.CoreCompileInputs.cache
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.csproj.CopyComplete
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\refint\EmployeeLeaveTracking.Services.dll
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.pdb
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.genruntimeconfig.cache
-D:\ProjectAgain\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\ref\EmployeeLeaveTracking.Services.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Services.deps.json
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Services.runtimeconfig.json
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Services.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Services.pdb
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Data.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Data.pdb
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.csproj.AssemblyReference.cache
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.AssemblyInfoInputs.cache
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.AssemblyInfo.cs
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.csproj.CoreCompileInputs.cache
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.csproj.CopyComplete
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\refint\EmployeeLeaveTracking.Services.dll
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.pdb
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.genruntimeconfig.cache
-C:\Users\IncubXperts\Desktop\ELT-API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\ref\EmployeeLeaveTracking.Services.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Services.deps.json
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Services.runtimeconfig.json
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Services.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Services.pdb
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Data.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Data.pdb
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.csproj.AssemblyReference.cache
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.GeneratedMSBuildEditorConfig.editorconfig
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.AssemblyInfoInputs.cache
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.AssemblyInfo.cs
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.csproj.CoreCompileInputs.cache
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.csproj.CopyComplete
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\refint\EmployeeLeaveTracking.Services.dll
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.pdb
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.genruntimeconfig.cache
-D:\ELT API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\ref\EmployeeLeaveTracking.Services.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Services.deps.json
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Services.runtimeconfig.json
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmployeeLeaveTracking.Services.dll
@@ -83,3 +15,5 @@ C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracki
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.pdb
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\EmployeeLeaveTracking.Services.genruntimeconfig.cache
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\obj\Release\net6.0\ref\EmployeeLeaveTracking.Services.dll
+C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmailService.dll
+C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.Services\bin\Release\net6.0\EmailService.pdb

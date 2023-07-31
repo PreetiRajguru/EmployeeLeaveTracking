@@ -16,9 +16,8 @@ namespace EmployeeLeaveTracking.Data.Mappers
             /*CreateMap<Notification, DetailedNotificationDTO>();
             CreateMap<LeaveRequest, DetailedLeaveDTO>();*/
 
-
             CreateMap<Notification, DetailedNotificationDTO>()
-            .ForMember(dest => dest.Leave, opt => opt.Ignore()); // Ignore mapping for nested property
+            .ForMember(d => d.Leave, opt => opt.Ignore()); //ignore mapping for nested property
 
             CreateMap<LeaveRequest, DetailedLeaveDTO>();
         }

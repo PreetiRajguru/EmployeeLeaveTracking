@@ -1,4 +1,5 @@
-﻿using EmployeeLeaveTracking.Data.DTOs;
+﻿using EmailService;
+using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -264,16 +265,18 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
         
         //new method
         [HttpPost("newleaverequest")]
+        [Authorize(Roles = "Manager,Employee")]
         public IActionResult NewCreateNewLeaveRequest(NewLeaveRequestDTO leaveRequest)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
+                NewLeaveRequestDTO createdLeaveRequest = _leaveRequestService.NewCreateNewLeaveRequest(leaveRequest);
+                return Ok(createdLeaveRequest);
             }
-
-            NewLeaveRequestDTO createdLeaveRequest = _leaveRequestService.NewCreateNewLeaveRequest(leaveRequest);
-
-            return CreatedAtRoute(new { id = createdLeaveRequest.Id }, createdLeaveRequest);
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
     }
 }

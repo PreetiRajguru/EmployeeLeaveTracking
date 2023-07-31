@@ -1,4 +1,5 @@
 using AutoMapper;
+using EmailService;
 using EmployeeLeaveTracking.Data.Context;
 using EmployeeLeaveTracking.Data.Mappers;
 using EmployeeLeaveTracking.Data.Models;
@@ -35,6 +36,7 @@ var mapperConfig = new MapperConfiguration(map =>
     map.AddProfile<NotificationProfile>();
 });
 
+
 builder.Services.AddSingleton(mapperConfig.CreateMapper());
 
 builder.Services.AddControllers();
@@ -53,6 +55,7 @@ builder.Services.AddScoped<ICompOff, CompOffService>();
 builder.Services.AddScoped<IOnDuty, OnDutyService>();
 builder.Services.AddScoped<INotification, NotificationService>();
 
+builder.Services.AddControllers();
 
 builder.Services.AddCors(options =>
 {

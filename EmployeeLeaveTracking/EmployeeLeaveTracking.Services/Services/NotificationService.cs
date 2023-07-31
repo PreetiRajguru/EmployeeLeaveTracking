@@ -61,9 +61,6 @@ namespace EmployeeLeaveTracking.Services.Services
         }
 
 
-
-
-
         public IEnumerable<DetailedNotificationDTO> GetAllNotifications(string id, string userRole)
         {
             IQueryable<DetailedNotificationDTO> query = from notification in _dbContext.Notifications

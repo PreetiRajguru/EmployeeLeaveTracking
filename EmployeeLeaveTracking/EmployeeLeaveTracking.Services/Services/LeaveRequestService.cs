@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using EmailService;
 using EmployeeLeaveTracking.Data.Context;
 using EmployeeLeaveTracking.Data.DTOs;
 using EmployeeLeaveTracking.Data.Mappers;
@@ -7,6 +8,7 @@ using EmployeeLeaveTracking.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Resources;
 
 namespace EmployeeLeaveTracking.Services.Services
 {
@@ -142,16 +144,15 @@ namespace EmployeeLeaveTracking.Services.Services
             return leaveRequest;
         }
 
-
-
         public NewLeaveRequestDTO NewCreateNewLeaveRequest(NewLeaveRequestDTO leaveRequest)
         {
-            //checking if there are any existing leave requests for the same user and overlapping dates
+            //checking if there are any existing approved leave requests for the same user and overlapping dates
             bool isLeaveAlreadyExists = _dbContext.LeaveRequests
                 .Any(lr => lr.EmployeeId == leaveRequest.EmployeeId &&
                            lr.StartDate <= leaveRequest.EndDate &&
                            lr.EndDate >= leaveRequest.StartDate &&
                            lr.StatusId == 2);
+
 
             if (isLeaveAlreadyExists)
             {
@@ -193,7 +194,6 @@ namespace EmployeeLeaveTracking.Services.Services
                 balance.Balance -= leaveRequest.TotalDays;
             }
 
-
             Notification notification = _mapper.Map<NotificationDTO, Notification>(new NotificationDTO
             {
                 UserId = leaveRequest.ManagerId,
@@ -202,9 +202,44 @@ namespace EmployeeLeaveTracking.Services.Services
                 IsViewed = false
             });
 
-
             _dbContext.Notifications.Add(notification);
             _dbContext.SaveChanges();
+
+            // Retrieve employee and manager details
+            User employee = _dbContext.Users.FirstOrDefault(u => u.Id == leaveRequest.EmployeeId);
+            User manager = _dbContext.Users.FirstOrDefault(u => u.Id == leaveRequest.ManagerId);
+
+            if (employee == null || manager == null)
+            {
+                throw new Exception("Employee or manager not found.");
+            }
+
+            User managerEmail = _dbContext.Users.FirstOrDefault(u => u.Id == leaveRequest.ManagerId);
+
+            if (managerEmail == null)
+            {
+                throw new Exception("Manager not found.");
+            }
+
+            //accessing the resource file
+            ResourceManager resourceManager = new ResourceManager("EmailService.EmailTemplates", typeof(EmailHelper).Assembly);
+
+            //retrieving the LeaveRequestTemplate from the resource file
+            string leaveRequestTemplate = resourceManager.GetString("LeaveRequestTemplate");
+
+            //replacing placeholders with appropriate values
+            string emailBody = string.Format(leaveRequestTemplate,
+                employee.FirstName + " " + employee.LastName,
+                manager.FirstName + " " + manager.LastName,
+                leaveRequest.StartDate.ToShortDateString(),
+                leaveRequest.EndDate.ToShortDateString(),
+                leaveRequest.TotalDays,
+                leaveRequest.RequestComments);
+
+            EmailHelper emailService = new EmailHelper();
+            string emailToAddress = manager.Email; //manager's email address
+            string subject = "Leave Request";
+            emailService.SendEmail(emailToAddress, subject, emailBody);
 
             return leaveRequest;
         }
@@ -363,7 +398,7 @@ namespace EmployeeLeaveTracking.Services.Services
             _dbContext.Entry(leaveRequest).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
 
-            if (statusId == 2 || statusId == 3) 
+            if (statusId == 2 || statusId == 3)
             {
                 NotificationDTO notification = new NotificationDTO
                 {
@@ -378,9 +413,40 @@ namespace EmployeeLeaveTracking.Services.Services
                 await _dbContext.SaveChangesAsync();
             }
 
+            User employeeEmail = await _dbContext.Users.FindAsync(leaveRequest.EmployeeId);
+
+            if (employeeEmail == null)
+            {
+                throw new Exception("Employee not found.");
+            }
+
+            // using the appropriate email template based on the statusId
+            string emailTemplateKey = (statusId == 2) ? "LeaveApprovedTemplate" : "LeaveRejectedTemplate";
+
+            //accessing the resource file
+            ResourceManager resourceManager = new ResourceManager("EmailService.EmailTemplates", typeof(EmailHelper).Assembly);
+
+            //retrieving the email template from the resource file
+            string emailTemplate = resourceManager.GetString(emailTemplateKey);
+
+            //replace placeholders with appropriate values
+            string leaveStatus = (statusId == 2) ? "Approved" : "Rejected";
+            string emailBody = string.Format(emailTemplate,
+                leaveRequest.StartDate.ToShortDateString(),
+                leaveRequest.EndDate.ToShortDateString(),
+                leaveRequest.TotalDays,
+                leaveRequest.RequestComments,
+                leaveStatus);
+            //return manager and employee names with this response to display in email template
+
+            EmailHelper emailService = new EmailHelper();
+            string emailToAddress = "rajgurupreeti0@gmail.com";
+            /*string emailToAddress = employeeEmail.Email;*/
+            string subject = "Leave Response";
+            emailService.SendEmail(emailToAddress, subject, emailBody);
+
             return statusId;
         }
-
 
 
         public double LeaveBalance(string employeeId)
