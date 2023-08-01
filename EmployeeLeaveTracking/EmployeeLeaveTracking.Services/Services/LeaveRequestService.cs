@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System.Resources;
+using EmployeeLeaveTracking.Data.Constants;
 
 namespace EmployeeLeaveTracking.Services.Services
 {
@@ -54,14 +55,14 @@ namespace EmployeeLeaveTracking.Services.Services
 
                 if (leaveRequests.Count == 0)
                 {
-                    throw new Exception("No leave requests found.");
+                    throw new Exception(ConstantMessages.NoLeaveRequests);
                 }
 
                 return leaveRequests;
             }
             catch (Exception ex)
             {
-                throw new Exception("Error retrieving leave requests.", ex);
+                throw new Exception(ConstantMessages.ErrorLeaveRequests, ex);
             }
         }
 
@@ -147,6 +148,12 @@ namespace EmployeeLeaveTracking.Services.Services
             return leaveRequest;
         }
 
+
+
+
+
+
+
         public NewLeaveRequestDTO NewCreateNewLeaveRequest(NewLeaveRequestDTO leaveRequest)
         {
             //checking if there are any existing approved leave requests for the same user and overlapping dates
@@ -159,7 +166,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
             if (isLeaveAlreadyExists)
             {
-                throw new Exception("Leave request already approved for the same dates.");
+                throw new Exception(ConstantMessages.LeaveApproved);
             }
 
             LeaveRequest newLeaveRequest = new()
@@ -214,14 +221,14 @@ namespace EmployeeLeaveTracking.Services.Services
 
             if (employee == null || manager == null)
             {
-                throw new Exception("Employee or manager not found.");
+                throw new Exception(ConstantMessages.UserNotFound);
             }
 
             User emailToManager = _dbContext.Users.FirstOrDefault(u => u.Id == leaveRequest.ManagerId);
 
             if (emailToManager == null)
             {
-                throw new Exception("Manager not found.");
+                throw new Exception(ConstantMessages.ManagerNotFound);
             }
 
             //accessing the resource file
@@ -241,11 +248,16 @@ namespace EmployeeLeaveTracking.Services.Services
 
             EmailHelper emailService = new(_configuration);
             string emailToAddress = manager.Email; //manager's email address
-            string subject = "Leave Request";
+            string subject = ConstantMessages.LeaveRequestSubject;
             emailService.SendEmail(emailToAddress, subject, emailBody);
 
             return leaveRequest;
         }
+
+
+
+
+
 
 
         public LeaveRequestDTO Update(LeaveRequestDTO leaveRequest)
@@ -255,18 +267,18 @@ namespace EmployeeLeaveTracking.Services.Services
 
             if (existingLeaveRequest == null)
             {
-                throw new ArgumentException("The leave request with the given ID does not exist or has been deleted.");
+                throw new ArgumentException(ConstantMessages.LeaveRequestDoesNotExist);
             }
 
             if (leaveRequest.StartDate > leaveRequest.EndDate)
             {
-                throw new ArgumentException("The start date cannot be later than the end date.");
+                throw new ArgumentException(ConstantMessages.DateValidation);
             }
 
             int totalDays = (int)(leaveRequest.EndDate - leaveRequest.StartDate).TotalDays + 1;
             if (totalDays != leaveRequest.TotalDays)
             {
-                throw new ArgumentException("The total days must be equal to the number of days between start date and end date.");
+                throw new ArgumentException(ConstantMessages.TotalDaysValidation);
             }
 
             existingLeaveRequest.RequestComments = leaveRequest.RequestComments;
@@ -307,7 +319,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
             if (string.IsNullOrEmpty(Id))
             {
-                throw new ArgumentNullException(nameof(Id), "The employee ID cannot be null or empty.");
+                throw new ArgumentNullException(nameof(Id), ConstantMessages.EmpIdValidation);
             }
 
             IQueryable<LeaveRequest> leaveRequestByEmployeeId = _dbContext.LeaveRequests
@@ -327,7 +339,7 @@ namespace EmployeeLeaveTracking.Services.Services
         {
             if (statusId <= 0)
             {
-                throw new ArgumentException("Invalid status ID");
+                throw new ArgumentException(ConstantMessages.StatusIdValidation);
             }
 
             List<LeaveRequest> leaveRequests = await _dbContext.LeaveRequests
@@ -381,7 +393,7 @@ namespace EmployeeLeaveTracking.Services.Services
         {
             if (id <= 0)
             {
-                throw new ArgumentException("Leave ID must be greater than zero.", nameof(id));
+                throw new ArgumentException(ConstantMessages.LeaveIdValidation, nameof(id));
             }
 
             return await _dbContext.LeaveRequests.FirstOrDefaultAsync(l => l.Id == id);
@@ -420,7 +432,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
             if (emailToEmployee == null)
             {
-                throw new Exception("Employee not found.");
+                throw new Exception(ConstantMessages.EmployeeNotFound);
             }
 
             // using the appropriate email template based on the statusId
@@ -446,7 +458,7 @@ namespace EmployeeLeaveTracking.Services.Services
 
             string emailToAddress = "rajgurupreeti0@gmail.com";
             /*string emailToAddress = employeeEmail.Email;*/
-            string subject = "Leave Response";
+            string subject = ConstantMessages.LeaveResponseSubject;
             emailService.SendEmail(emailToAddress, subject, emailBody);
 
             return statusId;
