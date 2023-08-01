@@ -33,11 +33,17 @@ namespace EmailService
             mail.Body = body;                           
             mail.IsBodyHtml = htmlBody;
             //mail.Attachments.Add(new Attachment("C:\\Users\\IncubXperts\\Downloads\\Demo.docx")); //to send any attachment  
-            using (SmtpClient smtp = new(smtpAddress, portNumber))
+
+            try
             {
+                using SmtpClient smtp = new(smtpAddress, portNumber);
                 smtp.Credentials = new NetworkCredential(emailFromAddress, password);
                 smtp.EnableSsl = enableSSL;
                 smtp.Send(mail);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to send email: {ex.Message}");
             }
         }
     }   

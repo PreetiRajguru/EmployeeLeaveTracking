@@ -8,6 +8,6 @@ namespace EmployeeLeaveTracking.Data.DTOs
 
         [Required(ErrorMessage = "Designation type name is a required field.")]
         [MaxLength(50, ErrorMessage = "Maximum length for the designation type name is 50 characters.")]
-        public string? DesignationName { get; set; }
+        public string DesignationName { get; set; }
     }
 }
