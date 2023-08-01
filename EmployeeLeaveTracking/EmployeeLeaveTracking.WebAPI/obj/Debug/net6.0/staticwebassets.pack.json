@@ -1,0 +1,73 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\IncubXperts\\Desktop\\ELT - API\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\03f3525d-aaaa-4101-8242-e839644790871.jpg",
+      "PackagePath": "staticwebassets\\Images\\03f3525d-aaaa-4101-8242-e839644790871.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IncubXperts\\Desktop\\ELT - API\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\0690f09d-ab94-4477-93f8-ed65475a6fd22.jpg",
+      "PackagePath": "staticwebassets\\Images\\0690f09d-ab94-4477-93f8-ed65475a6fd22.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IncubXperts\\Desktop\\ELT - API\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\11168730-7317-4863-8575-dfae5d5ccfbe1.jpg",
+      "PackagePath": "staticwebassets\\Images\\11168730-7317-4863-8575-dfae5d5ccfbe1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IncubXperts\\Desktop\\ELT - API\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\256e85a2-a906-4bd3-af78-1d43e5b69fd63.jpg",
+      "PackagePath": "staticwebassets\\Images\\256e85a2-a906-4bd3-af78-1d43e5b69fd63.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IncubXperts\\Desktop\\ELT - API\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\85fc4b52-7fce-41fb-910d-a54a8bc8dc041.jpg",
+      "PackagePath": "staticwebassets\\Images\\85fc4b52-7fce-41fb-910d-a54a8bc8dc041.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IncubXperts\\Desktop\\ELT - API\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\87556353-f4aa-4182-8beb-4699ce7d26a12.jpg",
+      "PackagePath": "staticwebassets\\Images\\87556353-f4aa-4182-8beb-4699ce7d26a12.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IncubXperts\\Desktop\\ELT - API\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\88665b21-3b1b-4e12-913b-561073a09bf04.jpg",
+      "PackagePath": "staticwebassets\\Images\\88665b21-3b1b-4e12-913b-561073a09bf04.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IncubXperts\\Desktop\\ELT - API\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\99d97c58-4038-444c-9a36-e51a08dc328f1.jpg",
+      "PackagePath": "staticwebassets\\Images\\99d97c58-4038-444c-9a36-e51a08dc328f1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IncubXperts\\Desktop\\ELT - API\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\9b8bfbe0-b788-4804-b9cc-8434cfe28d4f1.jpg",
+      "PackagePath": "staticwebassets\\Images\\9b8bfbe0-b788-4804-b9cc-8434cfe28d4f1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IncubXperts\\Desktop\\ELT - API\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\abcd.jpg",
+      "PackagePath": "staticwebassets\\Images\\abcd.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IncubXperts\\Desktop\\ELT - API\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\adcc4069-6b9c-43b0-9c70-6aabc70037b32.jpg",
+      "PackagePath": "staticwebassets\\Images\\adcc4069-6b9c-43b0-9c70-6aabc70037b32.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IncubXperts\\Desktop\\ELT - API\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\c7a489c2-1de4-49cd-bfb8-511ca0bc4dde7.jpg",
+      "PackagePath": "staticwebassets\\Images\\c7a489c2-1de4-49cd-bfb8-511ca0bc4dde7.jpg"
+    },
+    {
+      "Id": "C:\\Users\\IncubXperts\\Desktop\\ELT - API\\EmployeeLeaveTracking\\EmployeeLeaveTracking\\EmployeeLeaveTracking.WebAPI\\wwwroot\\Images\\e139b68a-f0a8-47b7-bfda-ad64741be5858.jpg",
+      "PackagePath": "staticwebassets\\Images\\e139b68a-f0a8-47b7-bfda-ad64741be5858.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.EmployeeLeaveTracking.WebAPI.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.EmployeeLeaveTracking.WebAPI.props",
+      "PackagePath": "build\\EmployeeLeaveTracking.WebAPI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.EmployeeLeaveTracking.WebAPI.props",
+      "PackagePath": "buildMultiTargeting\\EmployeeLeaveTracking.WebAPI.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.EmployeeLeaveTracking.WebAPI.props",
+      "PackagePath": "buildTransitive\\EmployeeLeaveTracking.WebAPI.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

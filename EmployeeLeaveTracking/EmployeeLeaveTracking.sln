@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeLeaveTracking.WebAPI", "EmployeeLeaveTracking.WebAPI\EmployeeLeaveTracking.WebAPI.csproj", "{A636D7AB-0EEF-4825-AE39-A97422F8D658}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeLeaveTracking.Data", "EmployeeLeaveTracking.Data\EmployeeLeaveTracking.Data.csproj", "{C05A3407-4105-41AF-8396-5B77AAEB76A2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeLeaveTracking.Services", "EmployeeLeaveTracking.Services\EmployeeLeaveTracking.Services.csproj", "{B8A8EB10-D2A0-4C5B-9A6B-E150B1068BB4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmployeeLeaveTracking.SchedularJob", "EmployeeLeaveTracking.SchedularJob\EmployeeLeaveTracking.SchedularJob.csproj", "{33679D20-DA5D-404F-BA2B-D4BE8E70B538}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailService", "EmailService\EmailService.csproj", "{4A110423-3C47-42CA-BC9B-C285CE38235E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A636D7AB-0EEF-4825-AE39-A97422F8D658}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A636D7AB-0EEF-4825-AE39-A97422F8D658}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A636D7AB-0EEF-4825-AE39-A97422F8D658}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A636D7AB-0EEF-4825-AE39-A97422F8D658}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C05A3407-4105-41AF-8396-5B77AAEB76A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C05A3407-4105-41AF-8396-5B77AAEB76A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C05A3407-4105-41AF-8396-5B77AAEB76A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C05A3407-4105-41AF-8396-5B77AAEB76A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8A8EB10-D2A0-4C5B-9A6B-E150B1068BB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8A8EB10-D2A0-4C5B-9A6B-E150B1068BB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8A8EB10-D2A0-4C5B-9A6B-E150B1068BB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8A8EB10-D2A0-4C5B-9A6B-E150B1068BB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33679D20-DA5D-404F-BA2B-D4BE8E70B538}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33679D20-DA5D-404F-BA2B-D4BE8E70B538}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33679D20-DA5D-404F-BA2B-D4BE8E70B538}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33679D20-DA5D-404F-BA2B-D4BE8E70B538}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A110423-3C47-42CA-BC9B-C285CE38235E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A110423-3C47-42CA-BC9B-C285CE38235E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A110423-3C47-42CA-BC9B-C285CE38235E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A110423-3C47-42CA-BC9B-C285CE38235E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {81A5FC75-6B5F-47C6-B225-B12871FC782F}
+	EndGlobalSection
+EndGlobal
