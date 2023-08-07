@@ -18,6 +18,7 @@ C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracki
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\bin\Debug\net6.0\Microsoft.Extensions.Configuration.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Binder.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\bin\Debug\net6.0\Microsoft.Extensions.Configuration.FileExtensions.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Json.dll
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Abstractions.dll

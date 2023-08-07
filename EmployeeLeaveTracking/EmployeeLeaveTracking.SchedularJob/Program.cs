@@ -25,13 +25,13 @@ namespace SchedulerJob
 
 
             //build the service provider
-            var serviceProvider = services.BuildServiceProvider();
+            var serviceProvider = services.BuildServiceProvider();  
 
             //resolving the required dependencies
             var dbContext = serviceProvider.GetRequiredService<EmployeeLeaveDbContext>();
             var scheduler = serviceProvider.GetRequiredService<Scheduler>();
 
-            string filePath = @"D:\ProjectAdditions\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.SchedularJob\Logs\LogFile.txt";
+            string filePath = @"C:\Users\IncubXperts\Documents\LogFile.txt";
 
             scheduler.LeaveAddition(filePath);
         }

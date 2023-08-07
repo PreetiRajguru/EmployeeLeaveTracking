@@ -102,7 +102,7 @@ namespace EmployeeLeaveTracking.WebAPI.Controllers
 
 
         [HttpGet("count")]
-/*        [Authorize(Roles = "Manager,Employee")]*/
+        [Authorize(Roles = "Manager,Employee")]
         public ActionResult<int> GetNotViewedNotificationCount()
         {
             try

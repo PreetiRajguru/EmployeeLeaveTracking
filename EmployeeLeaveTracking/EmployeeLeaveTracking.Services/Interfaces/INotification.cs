@@ -4,12 +4,6 @@ namespace EmployeeLeaveTracking.Services.Interfaces
 {
     public interface INotification
     {
-        /*IEnumerable<DetailedNotificationDTO> GetAllNotificationsForManager(string id);
-
-        IEnumerable<DetailedNotificationDTO> GetAllNotificationsForEmployee(string id);*/
-
-
-
         IEnumerable<DetailedNotificationDTO> GetTopNotifications(string id, string userRole);
 
         IEnumerable<DetailedNotificationDTO> GetAllNotifications(string id, string userRole);

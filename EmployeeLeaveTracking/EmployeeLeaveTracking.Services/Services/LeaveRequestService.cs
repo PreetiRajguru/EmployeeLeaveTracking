@@ -149,24 +149,44 @@ namespace EmployeeLeaveTracking.Services.Services
         }
 
 
+        public List<DateTime> CheckForOverlappingLeaveRequests(NewLeaveRequestDTO leaveRequest)
+        {
+            List<LeaveRequest> overlappingRequests = _dbContext.LeaveRequests
+                .Where(lr => lr.EmployeeId == leaveRequest.EmployeeId &&
+                             lr.StatusId == 2 &&
+                             lr.StartDate <= leaveRequest.EndDate &&
+                             lr.EndDate >= leaveRequest.StartDate)
+                .ToList();
 
+            List<DateTime> overlappingDates = new List<DateTime>();
+            foreach (var request in overlappingRequests)
+            {
+                DateTime startDate = request.StartDate > leaveRequest.StartDate ? request.StartDate : leaveRequest.StartDate;
+                DateTime endDate = request.EndDate < leaveRequest.EndDate ? request.EndDate : leaveRequest.EndDate;
 
+                for (DateTime date = startDate; date <= endDate; date = date.AddDays(1))
+                {
+                    overlappingDates.Add(date.Date);
+                }
+            }
+
+            return overlappingDates.Distinct().ToList();
+        }
 
 
 
         public NewLeaveRequestDTO NewCreateNewLeaveRequest(NewLeaveRequestDTO leaveRequest)
         {
-            //checking if there are any existing approved leave requests for the same user and overlapping dates
-            bool isLeaveAlreadyExists = _dbContext.LeaveRequests
-                .Any(lr => lr.EmployeeId == leaveRequest.EmployeeId &&
-                           lr.StartDate <= leaveRequest.EndDate &&
-                           lr.EndDate >= leaveRequest.StartDate &&
-                           lr.StatusId == 2);
-
-
-            if (isLeaveAlreadyExists)
+            List<DateTime> overlappingDates = CheckForOverlappingLeaveRequests(leaveRequest);
+            if (overlappingDates.Count > 0)
             {
-                throw new Exception(ConstantMessages.LeaveApproved);
+                string overlappingDatesMessage = " Overlapping leave requests found for the following dates :  ";
+                foreach (var date in overlappingDates)
+                {
+                    overlappingDatesMessage += date.ToShortDateString() + "  " ;
+                }
+
+                throw new Exception(overlappingDatesMessage);
             }
 
             LeaveRequest newLeaveRequest = new()
@@ -253,11 +273,6 @@ namespace EmployeeLeaveTracking.Services.Services
 
             return leaveRequest;
         }
-
-
-
-
-
 
 
         public LeaveRequestDTO Update(LeaveRequestDTO leaveRequest)

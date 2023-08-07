@@ -86,3 +86,6 @@ C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracki
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.pdb
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\EmployeeLeaveTracking.WebAPI.genruntimeconfig.cache
 C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\obj\Release\net6.0\ref\EmployeeLeaveTracking.WebAPI.dll
+C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\IncubXperts\Desktop\ELT - API\EmployeeLeaveTracking\EmployeeLeaveTracking\EmployeeLeaveTracking.WebAPI\bin\Release\net6.0\Microsoft.Extensions.Primitives.dll

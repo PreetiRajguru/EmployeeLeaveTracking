@@ -58,6 +58,24 @@ namespace EmployeeLeaveTracking.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "NotificationTypes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NotificationTypeName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedBy = table.Column<int>(type: "int", nullable: true),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    ModifiedBy = table.Column<int>(type: "int", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_NotificationTypes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Status",
                 columns: table => new
                 {
@@ -360,13 +378,49 @@ namespace EmployeeLeaveTracking.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Notifications",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LeaveRequestId = table.Column<int>(type: "int", nullable: false),
+                    NotificationTypeId = table.Column<int>(type: "int", nullable: false),
+                    IsViewed = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Notifications", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Notifications_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Notifications_LeaveRequests_LeaveRequestId",
+                        column: x => x.LeaveRequestId,
+                        principalTable: "LeaveRequests",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Notifications_NotificationTypes_NotificationTypeId",
+                        column: x => x.NotificationTypeId,
+                        principalTable: "NotificationTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "1", "1", "Manager", "Manager" },
-                    { "2", "2", "Employee", "Employee" }
+                    { "2", "2", "Employee", "Employee" },
+                    { "1", "1", "Manager", "Manager" }
                 });
 
             migrationBuilder.InsertData(
@@ -374,10 +428,10 @@ namespace EmployeeLeaveTracking.Data.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "DesignationName", "IsDeleted", "ModifiedBy", "ModifiedDate" },
                 values: new object[,]
                 {
-                    { 1, null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(8077), "Intern", false, null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(8849) },
-                    { 2, null, new DateTime(2023, 7, 4, 13, 32, 35, 436, DateTimeKind.Utc).AddTicks(857), "Software Engineer", false, null, new DateTime(2023, 7, 4, 13, 32, 35, 436, DateTimeKind.Utc).AddTicks(858) },
-                    { 3, null, new DateTime(2023, 7, 4, 13, 32, 35, 436, DateTimeKind.Utc).AddTicks(861), "Senior Software Engineer", false, null, new DateTime(2023, 7, 4, 13, 32, 35, 436, DateTimeKind.Utc).AddTicks(861) },
-                    { 4, null, new DateTime(2023, 7, 4, 13, 32, 35, 436, DateTimeKind.Utc).AddTicks(864), "Tech Lead", false, null, new DateTime(2023, 7, 4, 13, 32, 35, 436, DateTimeKind.Utc).AddTicks(864) }
+                    { 4, null, new DateTime(2023, 8, 7, 6, 46, 18, 150, DateTimeKind.Utc).AddTicks(8494), "Tech Lead", false, null, new DateTime(2023, 8, 7, 6, 46, 18, 150, DateTimeKind.Utc).AddTicks(8495) },
+                    { 1, null, new DateTime(2023, 8, 7, 6, 46, 18, 150, DateTimeKind.Utc).AddTicks(7131), "Intern", false, null, new DateTime(2023, 8, 7, 6, 46, 18, 150, DateTimeKind.Utc).AddTicks(7533) },
+                    { 2, null, new DateTime(2023, 8, 7, 6, 46, 18, 150, DateTimeKind.Utc).AddTicks(8490), "Software Engineer", false, null, new DateTime(2023, 8, 7, 6, 46, 18, 150, DateTimeKind.Utc).AddTicks(8491) },
+                    { 3, null, new DateTime(2023, 8, 7, 6, 46, 18, 150, DateTimeKind.Utc).AddTicks(8493), "Senior Software Engineer", false, null, new DateTime(2023, 8, 7, 6, 46, 18, 150, DateTimeKind.Utc).AddTicks(8493) }
                 });
 
             migrationBuilder.InsertData(
@@ -385,12 +439,21 @@ namespace EmployeeLeaveTracking.Data.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "IsDeleted", "LeaveTypeName", "ModifiedBy", "ModifiedDate" },
                 values: new object[,]
                 {
-                    { 1, null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(1816), false, "Paid Leave", null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(3038) },
-                    { 2, null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(4998), false, "Unpaid Leave", null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(4999) },
-                    { 3, null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(5002), false, "Forgot ID Card", null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(5003) },
-                    { 4, null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(5005), false, "Work From Home", null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(5006) },
-                    { 5, null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(5008), false, "Compensatory Off", null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(5009) },
-                    { 6, null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(5010), false, "On Duty", null, new DateTime(2023, 7, 4, 13, 32, 35, 435, DateTimeKind.Utc).AddTicks(5011) }
+                    { 1, null, new DateTime(2023, 8, 7, 6, 46, 18, 150, DateTimeKind.Utc).AddTicks(3634), false, "Paid Leave", null, new DateTime(2023, 8, 7, 6, 46, 18, 150, DateTimeKind.Utc).AddTicks(4296) },
+                    { 2, null, new DateTime(2023, 8, 7, 6, 46, 18, 150, DateTimeKind.Utc).AddTicks(5578), false, "Unpaid Leave", null, new DateTime(2023, 8, 7, 6, 46, 18, 150, DateTimeKind.Utc).AddTicks(5579) },
+                    { 3, null, new DateTime(2023, 8, 7, 6, 46, 18, 150, DateTimeKind.Utc).AddTicks(5581), false, "Forgot ID Card", null, new DateTime(2023, 8, 7, 6, 46, 18, 150, DateTimeKind.Utc).AddTicks(5582) },
+                    { 4, null, new DateTime(2023, 8, 7, 6, 46, 18, 150, DateTimeKind.Utc).AddTicks(5583), false, "Work From Home", null, new DateTime(2023, 8, 7, 6, 46, 18, 150, DateTimeKind.Utc).AddTicks(5583) },
+                    { 6, null, new DateTime(2023, 8, 7, 6, 46, 18, 150, DateTimeKind.Utc).AddTicks(5586), false, "On Duty", null, new DateTime(2023, 8, 7, 6, 46, 18, 150, DateTimeKind.Utc).AddTicks(5586) },
+                    { 5, null, new DateTime(2023, 8, 7, 6, 46, 18, 150, DateTimeKind.Utc).AddTicks(5584), false, "Compensatory Off", null, new DateTime(2023, 8, 7, 6, 46, 18, 150, DateTimeKind.Utc).AddTicks(5585) }
+                });
+
+            migrationBuilder.InsertData(
+                table: "NotificationTypes",
+                columns: new[] { "Id", "CreatedBy", "CreatedDate", "IsDeleted", "ModifiedBy", "ModifiedDate", "NotificationTypeName" },
+                values: new object[,]
+                {
+                    { 1, null, new DateTime(2023, 8, 7, 6, 46, 18, 151, DateTimeKind.Utc).AddTicks(2419), false, null, new DateTime(2023, 8, 7, 6, 46, 18, 151, DateTimeKind.Utc).AddTicks(2775), "Leave Request" },
+                    { 2, null, new DateTime(2023, 8, 7, 6, 46, 18, 151, DateTimeKind.Utc).AddTicks(3541), false, null, new DateTime(2023, 8, 7, 6, 46, 18, 151, DateTimeKind.Utc).AddTicks(3542), "Leave Response" }
                 });
 
             migrationBuilder.InsertData(
@@ -398,9 +461,9 @@ namespace EmployeeLeaveTracking.Data.Migrations
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "IsDeleted", "ModifiedBy", "ModifiedDate", "StatusType" },
                 values: new object[,]
                 {
-                    { 1, null, new DateTime(2023, 7, 4, 13, 32, 35, 436, DateTimeKind.Utc).AddTicks(3490), false, null, new DateTime(2023, 7, 4, 13, 32, 35, 436, DateTimeKind.Utc).AddTicks(4240), "Pending" },
-                    { 2, null, new DateTime(2023, 7, 4, 13, 32, 35, 437, DateTimeKind.Utc).AddTicks(6808), false, null, new DateTime(2023, 7, 4, 13, 32, 35, 437, DateTimeKind.Utc).AddTicks(6822), "Approved" },
-                    { 3, null, new DateTime(2023, 7, 4, 13, 32, 35, 437, DateTimeKind.Utc).AddTicks(6828), false, null, new DateTime(2023, 7, 4, 13, 32, 35, 437, DateTimeKind.Utc).AddTicks(6829), "Rejected" }
+                    { 1, null, new DateTime(2023, 8, 7, 6, 46, 18, 150, DateTimeKind.Utc).AddTicks(9916), false, null, new DateTime(2023, 8, 7, 6, 46, 18, 151, DateTimeKind.Utc).AddTicks(315), "Pending" },
+                    { 2, null, new DateTime(2023, 8, 7, 6, 46, 18, 151, DateTimeKind.Utc).AddTicks(1103), false, null, new DateTime(2023, 8, 7, 6, 46, 18, 151, DateTimeKind.Utc).AddTicks(1104), "Approved" },
+                    { 3, null, new DateTime(2023, 8, 7, 6, 46, 18, 151, DateTimeKind.Utc).AddTicks(1105), false, null, new DateTime(2023, 8, 7, 6, 46, 18, 151, DateTimeKind.Utc).AddTicks(1106), "Rejected" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -476,6 +539,21 @@ namespace EmployeeLeaveTracking.Data.Migrations
                 name: "IX_LeaveRequests_StatusId",
                 table: "LeaveRequests",
                 column: "StatusId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Notifications_LeaveRequestId",
+                table: "Notifications",
+                column: "LeaveRequestId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Notifications_NotificationTypeId",
+                table: "Notifications",
+                column: "NotificationTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Notifications_UserId",
+                table: "Notifications",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -502,7 +580,7 @@ namespace EmployeeLeaveTracking.Data.Migrations
                 name: "LeaveBalances");
 
             migrationBuilder.DropTable(
-                name: "LeaveRequests");
+                name: "Notifications");
 
             migrationBuilder.DropTable(
                 name: "OnDutys");
@@ -514,13 +592,19 @@ namespace EmployeeLeaveTracking.Data.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
+                name: "LeaveRequests");
+
+            migrationBuilder.DropTable(
+                name: "NotificationTypes");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
                 name: "LeaveTypes");
 
             migrationBuilder.DropTable(
                 name: "Status");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Designations");
