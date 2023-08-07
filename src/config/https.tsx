@@ -70,10 +70,10 @@ const useHttp = () => {
     async (error) => {
       const originalRequest = error.config;
       setLoading(false);
+      
       document.body.classList.remove('loading-indicator');
       if (error.response.status === 401 && !originalRequest._retry) {
         if (isRefreshing) {
-          alert();
           // Token refresh is already in progress, add the request to the queue
           try {
             const token = await new Promise((resolve, reject) => {

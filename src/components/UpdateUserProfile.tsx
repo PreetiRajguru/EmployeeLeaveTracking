@@ -220,20 +220,6 @@ useEffect(() => {
       setUnAuthorized(true);
       console.log(error.response.data.message);
     }
-    // setData({
-    //   firstname: "",
-    //   lastname: "",
-    //   username: "",
-    //   email: "",
-    //   phonenumber: "",
-    //   errors: {
-    //     firstname: "",
-    //     lastname: "",
-    //     username: "",
-    //     email: "",
-    //     phonenumber: "",
-    //   },
-    // });
   };
   const handleDelete = () => {
    //delete functionality

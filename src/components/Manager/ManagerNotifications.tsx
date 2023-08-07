@@ -160,13 +160,6 @@ const ManagerNotifications = () => {
                       Leave Request 
                     </Typography>
                     <br></br>
-                    {/* <Typography
-                      id="modal-modal-description"
-                      sx={{ mt: 2 }}
-                    >
-                      Duis mollis, est non commodo luctus, nisi erat
-                      porttitor ligula.
-                    </Typography> */}
                     <Button variant="outlined" color="success" sx={{mb:0, ml:0}}>Approve</Button>
                     <Button variant="outlined" color="error"sx={{mb:0, ml:25}}>Reject</Button>
                   </Box>
